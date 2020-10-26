@@ -1,0 +1,10 @@
+﻿@using System.Globalization
+@model string
+@if (string.IsNullOrEmpty(Model))
+{
+    @:-
+}
+else
+{
+    @Model <span class="currency-symbol">@NumberFormatInfo.GetInstance(CultureInfo.GetCultureInfo("tr-tr")).CurrencySymbol</span>
+}

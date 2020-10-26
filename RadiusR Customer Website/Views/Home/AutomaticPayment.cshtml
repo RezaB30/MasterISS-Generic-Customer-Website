@@ -1,0 +1,47 @@
+﻿@model RadiusR_Customer_Website.Models.CustomerAutomaticPaymentViewModel
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.AutomaticPayment;
+    ViewBag.AllCards = Model != null ? Model.Cards : Enumerable.Empty<RadiusR_Customer_Website.Models.CustomerAutomaticPaymentViewModel.CardViewModel>();
+}
+
+<div class="content-box title shallow-blue">
+    <div>@RadiusRCustomerWebSite.Localization.Common.AutomaticPayment</div>
+</div>
+
+@if (ViewBag.ServiceError != null)
+{
+    <div class="content-box">
+        <span class="field-validation-error">@ViewBag.ServiceError</span>
+    </div>
+}
+else
+{
+    <div class="content-box title light-red">
+        @Html.DisplayNameFor(model => model.Cards)
+    </div>
+
+    <div class="content-box">
+        @Html.Partial("_CardsPartial", Model.Cards)
+        <div style="margin-top: 1em;">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.AddCard, "AddCard", null, new { @class = "link-button jungle" })
+        </div>
+    </div>
+
+    <div class="content-box title light-green">
+        @Html.DisplayNameFor(model => model.AutomaticPayments)
+    </div>
+
+    <div class="content-box">
+        @Html.Partial("_PaymentAssignmentsPartial", Model.AutomaticPayments)
+    </div>
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $('form.confirm-check').submit(function (e) {
+            e.preventDefault();
+            ShowConfirm($(this));
+        });
+    </script>
+}

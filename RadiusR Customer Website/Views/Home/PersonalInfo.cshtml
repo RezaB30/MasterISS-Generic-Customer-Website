@@ -1,0 +1,70 @@
+﻿
+@model RadiusR_Customer_Website.Models.PersonalInfoViewModel
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.PersonalInfo;
+}
+
+<div class="content-box title shallow-blue">
+    @RadiusRCustomerWebSite.Localization.Common.PersonalInfo
+</div>
+
+<div class="content-box">
+    <div class="data-label">
+        @Html.DisplayNameFor(model => model.ValidDisplayName)
+    </div>
+    <div class="data-value">
+        @Html.DisplayFor(model => model.ValidDisplayName)
+    </div>
+    <div class="data-label">
+        @Html.DisplayNameFor(model => model.ReferenceNo)
+    </div>
+    <div class="data-value">
+        @Html.DisplayFor(model => model.ReferenceNo)
+    </div>
+    <div class="data-label">
+        @Html.DisplayNameFor(model => model.PhoneNo)
+    </div>
+    <div class="data-value">
+        @Html.DisplayFor(model => model.PhoneNo)
+    </div>
+    <div class="data-label">
+        @Html.DisplayNameFor(model => model.EMail)
+    </div>
+    <div class="data-value">
+        @Html.DisplayFor(model => model.EMail)
+    </div>
+    <div class="data-label">
+        @Html.DisplayNameFor(model => model.InstallationAddress)
+    </div>
+    <div class="data-value">
+        @Html.DisplayFor(model => model.InstallationAddress)
+    </div>
+    <div class="data-label">
+        @Html.DisplayNameFor(model => model.TTSubscriberNo)
+    </div>
+    <div class="data-value">
+        @Html.DisplayFor(model => model.TTSubscriberNo)
+    </div>
+    @if (Model.PSTN != null)
+    {
+        <div class="data-label">
+            @Html.DisplayNameFor(model => model.PSTN)
+        </div>
+        <div class="data-value">
+            @Html.DisplayFor(model => model.PSTN)
+        </div>
+    }
+    <div class="data-label">
+        @Html.DisplayNameFor(model => model.Username)
+    </div>
+    <div class="data-value">
+        @Html.DisplayFor(model => model.Username)
+    </div>
+    <div class="data-label">
+        @Html.DisplayNameFor(model => model.Password)
+    </div>
+    <div class="data-value">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+</div>

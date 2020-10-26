@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.Payment;
+}
+
+<div class="content-box title shallow-blue">
+    @RadiusRCustomerWebSite.Localization.Common.PaymentSelection
+</div>
+<div class="content-box">
+    @if (ViewBag.ServiceError != null)
+    {
+        <span class="field-validation-error">@ViewBag.ServiceError</span>
+    }
+    else
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <table>
+                <tr>
+                    <td>
+                        @RadiusRCustomerWebSite.Localization.Common.Cards
+                    </td>
+                    <td>
+                        @Html.DropDownList("token", new SelectList(ViewBag.CardsList, "CardToken", "MaskedCardNumber"))
+                    </td>
+                    <td>
+                        <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.PayNow" class="link-button jungle" />
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+</div>
+<div class="content-box">
+    @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.PayWithOtherCards, "Payment", ViewContext.RouteData.Values.ContainsKey("id") ? new { id = ViewContext.RouteData.Values["id"] } : null, new { @class = "link-button jungle" })
+</div>

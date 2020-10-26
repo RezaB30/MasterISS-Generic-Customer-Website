@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.PleaseWait;
+}
+
+<div class="content-box card-payment-container" style="text-align: center; color: orange;">
+    <form name="payment" id="payment-response-repost" action="@Url.Action(actionName: ViewBag.ActionPart, routeValues: ViewBag.IdValue != null ? new { id = ViewBag.IdValue } : null)" method="post" class="vpos-redirect-container">
+        @RadiusRCustomerWebSite.Localization.Common.PleaseWait
+        @foreach (var formField in Request.Form.AllKeys)
+        {
+            <input type="hidden" name="@formField" value="@Request.Form[formField]" />
+        }
+    </form>
+</div>
+
+@section scripts{
+    <script>
+        document.payment.submit();
+    </script>
+}

@@ -1,0 +1,75 @@
+﻿@using RezaB.Web.Helpers
+
+@model IEnumerable<RadiusR_Customer_Website.Models.SupportAndRequestsViewModel>
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.SupportAndRequests;
+    var newRequest = ((RadiusR_Customer_Website.Models.SupportAndRequestsViewModel)ViewBag.SupportRequest) ?? new RadiusR_Customer_Website.Models.SupportAndRequestsViewModel();
+    var canSendNewRequest = ViewBag.canSendNewRequest as bool? ?? false;
+}
+
+<div class="content-box title light-red">
+    @RadiusRCustomerWebSite.Localization.Common.SupportAndRequests
+</div>
+
+    <div class="content-box shallow-blue">
+        @if (canSendNewRequest)
+        {
+            using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="centered">
+                    @Html.TextAreaFor(modelItem => newRequest.Message, new { @placeholder = RadiusRCustomerWebSite.Localization.Common.NewSupportRequest, @class = "new-request-text", @maxlength = "250" })
+                </div>
+                <div class="centered">
+                    @Html.ValidationMessageFor(modelItem => newRequest.Message)
+                </div>
+                <div class="centered">
+                    <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.SendSupportRequest" class="link-button red" />
+                </div>
+            }
+        }
+        else
+        {
+            <div class="active-request-info">
+                @RadiusRCustomerWebSite.Localization.Common.HasActiveRequest
+            </div>
+        }
+        
+    </div>
+
+<div class="content-box">
+    <table class="data-table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdminResponse)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StateID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdminResponse)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

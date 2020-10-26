@@ -1,0 +1,24 @@
+﻿@using RezaB.Web.Helpers
+
+@model RadiusR_Customer_Website.Models.LoginViewModel
+
+@{
+    ViewBag.Title = @RadiusR.Localization.Pages.Common.Login;
+    Layout = "~/Views/Shared/_NoMenuLayout.cshtml";
+}
+
+<div class="login-logo"></div>
+@using (Html.BeginForm("SMSConfirm", "Auth"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.CustomerCode)
+    <div class="login-form">
+        <div class="login-title">@RadiusRCustomerWebSite.Localization.Common.SiteTitle</div>
+        @Html.EditorFor(model => model.SMSPassword, new { htmlAttributes = new { @placeholder = Html.DisplayNameTextFor(model => model.SMSPassword), @autocomplete = "off" } })
+        <div class="validation-container">
+            @Html.ValidationMessageFor(model => model.SMSPassword)
+        </div>
+        <input type="submit" value="@RadiusR.Localization.Pages.Common.Login" />
+        <div class="copyright"> @ViewBag.Copyright | @Html.Raw(ViewBag.WebSite) </div>
+    </div>
+}

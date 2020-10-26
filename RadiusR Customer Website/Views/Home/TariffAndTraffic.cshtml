@@ -1,0 +1,109 @@
+﻿@model RadiusR_Customer_Website.Models.HomePageViewModel
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.TariffAndTraffic;
+    var sampleUsageModel = new RadiusR_Customer_Website.Models.ClientUsageInfoViewModel();
+}
+
+<div class="welcome-message">
+    <div class="message-title">
+        @Html.DisplayNameFor(model => model.ServiceName) <span class="welcome-message">@Html.DisplayFor(model => model.ServiceName)</span>
+    </div>
+</div>
+
+<div class="content-box">
+    <div>@*
+        <div class="shared-space-4">
+            <div class="usage-info-item cyan">
+                <div>
+                    @if (Model.FUPLimit != "0")
+                    {
+                        @Html.DisplayFor(model => model.FUPLimit)
+                    }
+                    else
+                    {
+                        @:-
+                    }
+                </div>
+                <div class="title">
+                    @Html.DisplayNameFor(model => model.FUPLimit)
+                </div>
+                <div class="bottom-line"></div>
+            </div>
+        </div><div class="shared-space-4">
+            <div class="usage-info-item deep-red">
+                <div>
+                    @if (Model.RemainingFUP != 0)
+                    {
+                        @Html.DisplayFor(model => model.RemainingFUP)
+                    }
+                    else
+                    {
+                        @:-
+                    }
+                </div>
+                <div class="title">
+                    @Html.DisplayNameFor(model => model.RemainingFUP)
+                </div>
+                <div class="bottom-line"></div>
+            </div>
+        </div>*@<div class="shared-space-2">
+            <div class="usage-info-item standard-blue">
+                <div>
+                    @Html.DisplayFor(model => model.Download)
+                </div>
+                <div class="title">
+                    @Html.DisplayNameFor(model => model.Download)
+                </div>
+                <div class="bottom-line"></div>
+            </div>
+        </div><div class="shared-space-2">
+            <div class="usage-info-item purple">
+                <div>
+                    @Html.DisplayFor(model => model.Upload)
+                </div>
+                <div class="title">
+                    @Html.DisplayNameFor(model => model.Upload)
+                </div>
+                <div class="bottom-line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-box title shallow-blue">
+    <div>
+        @RadiusRCustomerWebSite.Localization.Common.Last3PeriodsUsage
+    </div>
+</div>
+
+<div class="content-box">
+    <table class="data-table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => sampleUsageModel.TotalDownload)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => sampleUsageModel.TotalUpload)
+            </th>
+            <th>
+                @RadiusRCustomerWebSite.Localization.Common.Details
+            </th>
+        </tr>
+        @foreach (var item in Model.MonthlyUsage)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalDownload)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalUpload)
+                </td>
+                <td>
+                    @item._year&nbsp;
+                    @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item._month.Value)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

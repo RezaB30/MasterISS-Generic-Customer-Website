@@ -1,0 +1,14 @@
+﻿@model bool?
+
+@if (Model == true)
+{
+    <img class="boolean-symbol" src="@Url.Content("~/Content/Images/Icons/check.svg")" alt="V" />
+}
+else if (Model == false)
+{
+    <img class="boolean-symbol" src="@Url.Content("~/Content/Images/Icons/crossed.svg")" alt="X" />
+}
+else
+{
+    @:-
+}

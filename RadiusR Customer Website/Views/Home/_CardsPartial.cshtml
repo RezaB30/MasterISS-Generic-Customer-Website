@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RadiusR_Customer_Website.Models.CustomerAutomaticPaymentViewModel.CardViewModel>
+
+<table class="data-table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaskedCardNo)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaskedCardNo)
+            </td>
+            <td>
+                @if (item.HasAutoPayments)
+                {
+                    <span class="field-validation-error">@RadiusRCustomerWebSite.Localization.Common.CardWithActiveAutoPayment</span>
+                }
+                else
+                {
+                    using (Html.BeginForm("RemoveCard", null, FormMethod.Post, new { @class = "confirm-check" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("id", item.Token)
+                        <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.Remove" class="link-button red" />
+                    }
+                }
+            </td>
+        </tr>
+    }
+</table>

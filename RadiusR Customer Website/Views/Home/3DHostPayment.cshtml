@@ -1,0 +1,10 @@
+﻿@using RezaB.Web.VPOS
+@model RezaB.Web.VPOS.VPOS3DHostModel
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.BillsAndPayments;
+}
+
+<div class="content-box card-payment-container" style="text-align: center; color: orange;">
+    @Html.VPOS3DHostFormFor(model => model)
+</div>

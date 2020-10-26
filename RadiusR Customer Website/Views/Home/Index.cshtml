@@ -1,0 +1,62 @@
+﻿@model RadiusR_Customer_Website.Models.HomePageViewModel
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.GeneralState;
+}
+
+<div class="welcome-message">
+    <div class="message-title">
+        @Html.Raw(string.Format(RadiusRCustomerWebSite.Localization.Common.WelcomeMessageHeader, User.Identity.Name.ToUpper()))
+    </div>
+    <div>
+        @string.Format(RadiusRCustomerWebSite.Localization.Common.WelcomeMessageText, ViewBag.CompanyTitle)
+    </div>
+</div>
+@if (Model.BillCount > 0)
+{
+    <div class="content-box content-box-unpaid-bills">
+        <div>
+            @Html.Raw(string.Format(RadiusRCustomerWebSite.Localization.Common.UnpaidBillsMessage, Html.DisplayFor(model => model.BillCount), Html.DisplayFor(model => model.BillsTotal)))
+        </div>
+        <div>
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.PayNow, "PaymentSelection", null, new { @class = "link-button jungle" })
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ViewAllBills, "BillsAndPayments", null, new { @class = "link-button stencil-blue" })
+        </div>
+    </div>
+}
+<div class="content-box">
+    <div>
+        <div class="shared-space-2">
+            <div class="usage-info-item standard-blue">
+                <div>
+                    @Html.DisplayFor(model => model.Download)
+                </div>
+                <div class="title">
+                    @Html.DisplayNameFor(model => model.Download)
+                </div>
+                <div class="bottom-line"></div>
+            </div>
+        </div><div class="shared-space-2">
+            <div class="usage-info-item purple">
+                <div>
+                    @Html.DisplayFor(model => model.Upload)
+                </div>
+                <div class="title">
+                    @Html.DisplayNameFor(model => model.Upload)
+                </div>
+                <div class="bottom-line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-box">
+    <div class="shared-space-2">
+        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.TariffAndTraffic, "TariffAndTraffic", null, new { @class = "home-page-button home-page-button-1" })
+    </div><div class="shared-space-2">
+        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.SupportAndRequests, "SupportAndRequests", null, new { @class = "home-page-button home-page-button-2" })
+    </div><div class="shared-space-2">
+        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.BillsAndPayments, "BillsAndPayments", null, new { @class = "home-page-button home-page-button-3" })
+    </div><div class="shared-space-2">
+        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ConnectionStatus, "ConnectionStatus", null, new { @class = "home-page-button home-page-button-4" })
+    </div>
+</div>

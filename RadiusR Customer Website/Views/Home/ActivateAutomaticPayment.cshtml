@@ -1,0 +1,34 @@
+﻿@model RadiusR_Customer_Website.Models.ActivateAutomaticPaymentViewModel
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.ActivateAutomaticPayment;
+}
+
+<div class="content-box title light-green">
+    @RadiusRCustomerWebSite.Localization.Common.ActivateAutomaticPayment
+</div>
+
+<div class="content-box">
+    @using (Html.BeginForm("ActivateAutomaticPaymentConfirm", null, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.SubscriptionID)
+        @Html.HiddenFor(model => model.CardToken)
+        <table class="">
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.PaymentType)
+                </td>
+                <td>
+                    @Html.DropDownListFor(model => model.PaymentType, (SelectList)ViewBag.PaymentTypes)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.Back, "AutomaticPayment", null, new { @class = "link-button red" })
+                    <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.ActivateAutomaticPayment" class="link-button jungle" />
+                </td>
+            </tr>
+        </table>
+    }
+</div>

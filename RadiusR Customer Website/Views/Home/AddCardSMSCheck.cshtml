@@ -1,0 +1,38 @@
+﻿@model RadiusR_Customer_Website.Models.AutoPaymentCardViewModel
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.AddCard;
+}
+
+<div class="content-box title light-red">
+    @RadiusRCustomerWebSite.Localization.Common.AddCard
+</div>
+
+<div class="content-box card-payment-container">
+    @using (Html.BeginForm("AddCardSMSCheck", null, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.CardholderName)
+        @Html.HiddenFor(model => model.CardNo)
+        @Html.HiddenFor(model => model.ExpirationMonth)
+        @Html.HiddenFor(model => model.ExpirationYear)
+        <table>
+            <tr>
+                <td>
+                    @RadiusRCustomerWebSite.Localization.Common.LoginSMSPassword
+                </td>
+                <td>
+                    @Html.TextBox("smsCode", "", new { @maxlength = 6, @autocomplete = "off" })
+                </td>
+                <td>
+                    <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.Send" class="link-button jungle" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <span class="field-validation-error">@ViewBag.WrongPassword</span>
+                </td>
+            </tr>
+        </table>
+    }
+</div>

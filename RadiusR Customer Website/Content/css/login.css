@@ -1,0 +1,70 @@
+﻿body {
+    background-color: #250f30;
+}
+
+div.login-logo {
+    background-image: url('../Images/Shared/logo.png');
+    height: 3em;
+    background-size: 9em;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 3em 0 1em 0;
+}
+
+div.login-form {
+    display: table;
+    margin: auto;
+    width: 20em;
+    background-color: #858585;
+    background-color: rgba(255,255,255,0.2);
+    padding: 3em 2em 2em 2em;
+    color: white;
+}
+
+    div.login-form input {
+        padding: 0.6em;
+        width: 22.5em;
+        margin: 1em 0;
+    }
+
+        div.login-form input[type=submit] {
+            border-color: transparent;
+            color: white;
+            background-color: #d05454;
+            font-weight: 500;
+            transition: all 0.5s ease;
+        }
+
+            div.login-form input[type=submit]:hover {
+                background-color: #bd3434;
+            }
+
+    div.login-form span.field-validation-error {
+        color: orange;
+    }
+
+    div.login-form div.validation-container {
+        margin-bottom: 1em;
+    }
+
+div.login-title {
+    font-size: 1.3em;
+    text-align: center;
+}
+
+div.copyright {
+    font-size: 0.7em;
+    text-align: center;
+}
+
+div.sms-warning {
+    font-size: 0.8em;
+    text-align: center;
+    margin-bottom: 1em;
+    color: #ffc391;
+    font-weight: 100;
+}
+
+a{
+    color: #fef7f8;
+}

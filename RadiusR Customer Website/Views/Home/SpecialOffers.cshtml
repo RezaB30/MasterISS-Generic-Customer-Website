@@ -1,0 +1,117 @@
+﻿@using RezaB.Web.Helpers
+
+@model IEnumerable<RadiusR_Customer_Website.Models.SpecialOffersReportViewModel>
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.SpecialOffers;
+    var totalRow = ViewBag.TotalRow as RadiusR_Customer_Website.Models.SpecialOffersReportViewModel;
+}
+
+<div class="content-box title shallow-blue">
+    @RadiusRCustomerWebSite.Localization.Common.SpecialOffers
+</div>
+
+<div class="content-box">
+    <table class="data-table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReferenceNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsedCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MissedCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RemainingCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsApplicableThisPeriod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReferralSubscriberState)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReferenceNo)
+                </td>
+                <td class="centered">
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td class="centered">
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td class="centered">
+                    @Html.DisplayFor(modelItem => item.TotalCount)
+                </td>
+                <td class="centered">
+                    @Html.DisplayFor(modelItem => item.UsedCount)
+                </td>
+                <td class="centered">
+                    @Html.DisplayFor(modelItem => item.MissedCount)
+                </td>
+                <td class="centered">
+                    @Html.DisplayFor(modelItem => item.RemainingCount)
+                </td>
+                <td class="centered">
+                    @Html.DisplayFor(modelItem => item.IsApplicableThisPeriod)
+                </td>
+                <td class="centered">
+                    @switch (item.ReferralSubscriberState)
+                    {
+                        case (short)RadiusR.DB.Enums.CustomerState.PreRegisterd:
+                        case (short)RadiusR.DB.Enums.CustomerState.Registered:
+                            @RadiusRCustomerWebSite.Localization.ReferenceSubscirberState.InProcess;
+                            break;
+                        case (short)RadiusR.DB.Enums.CustomerState.Reserved:
+                        case (short)RadiusR.DB.Enums.CustomerState.Active:
+                            @RadiusRCustomerWebSite.Localization.ReferenceSubscirberState.Active;
+                            break;
+                        case (short)RadiusR.DB.Enums.CustomerState.Disabled:
+                        case (short)RadiusR.DB.Enums.CustomerState.Cancelled:
+                            @RadiusRCustomerWebSite.Localization.ReferenceSubscirberState.Inactive;
+                            break;
+                        default:
+                            break;
+                    }
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="3">
+                @RadiusRCustomerWebSite.Localization.Common.TotalDiscountCount
+            </td>
+            <td class="centered">
+                @ViewBag.TotalCount
+            </td>
+            <td class="centered">
+                @ViewBag.TotalUsed
+            </td>
+            <td class="centered">
+                @ViewBag.TotalMissed
+            </td>
+            <td class="centered">
+                @ViewBag.TotalRemaining
+            </td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td colspan="9">
+                @Html.PagedList((int)ViewBag.PageCount, 5)
+            </td>
+        </tr>
+    </table>
+</div>

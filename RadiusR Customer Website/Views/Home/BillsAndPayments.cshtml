@@ -1,0 +1,143 @@
+﻿@using RezaB.Web.Helpers
+
+@model IEnumerable<RadiusR_Customer_Website.Models.PaymentsAndBillsViewModel>
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.BillsAndPayments;
+    var hasUnpaidBills = (bool)ViewBag.HasUnpaidBills;
+    var isPrePaid = (bool)ViewBag.IsPrePaid;
+    var POSErrorMessage = ViewBag.POSErrorMessage as string;
+    var POSSuccessMessage = ViewBag.POSSuccessMessage as string;
+    var ClientCredit = ViewBag.ClientCredits as decimal?;
+    var quotaPackages = ViewBag.QuotaPackages as IEnumerable<RadiusR_Customer_Website.Models.QuotaPackageViewModel>;
+}
+
+<div class="content-box title shallow-blue">
+    <div>
+        @RadiusRCustomerWebSite.Localization.Common.BillsAndPayments
+    </div>
+    @if (hasUnpaidBills)
+    {
+        <div>
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.PayAll, "PaymentSelection", null, new { @class = "link-button stencil-blue", @style = "font-size: 1em; font-weight: 600;" })
+        </div>
+    }
+    @if (isPrePaid)
+    {
+        <div>
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ExtendPacket, "Payment", null, new { @class = "link-button stencil-blue", @style = "font-size: 1em; font-weight: 600;" })
+        </div>
+    }
+</div>
+
+@if (ViewBag.CanBuyQuota == true && quotaPackages != null && quotaPackages.Count() > 0)
+{
+    <div class="content-box title shallow-blue">
+        <div>
+            @RadiusRCustomerWebSite.Localization.Common.QuotaPakages
+        </div>
+        @foreach (var quotaPackage in quotaPackages)
+        {
+            <a href="@Url.Action("BuyQuota", new { id = quotaPackage.ID })" class="link-button red force-color" style="font-size: 1em; font-weight: 600;">@Html.DisplayFor(model => quotaPackage.Name).ToHtmlString() (@Html.DisplayFor(model => quotaPackage.Amount)) &nbsp;&nbsp; @Html.DisplayFor(model => quotaPackage.Price)</a>
+        }
+    </div>
+}
+
+
+@if (ClientCredit.HasValue)
+{
+    <div class="content-box title">
+        @RadiusRCustomerWebSite.Localization.Common.DiscountAmount <span class="discount-amount">@Html.Partial("DisplayTemplates/Currency", ClientCredit.Value.ToString("###,##0.00"))</span>
+    </div>
+}
+@if (ViewBag.ServiceError != null)
+{
+    <div class="content-box important-message error-message">
+        @ViewBag.ServiceError
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(POSSuccessMessage))
+{
+    <div class="content-box important-message success-message">
+        @POSSuccessMessage
+    </div>
+}
+else if (!string.IsNullOrEmpty(POSErrorMessage))
+{
+    <div class="content-box important-message error-message">
+        @POSErrorMessage
+    </div>
+}
+
+<div class="content-box">
+    <table class="data-table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastPaymentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @RadiusRCustomerWebSite.Localization.Common.Payment
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            var cancelledStyle = item.Status == RadiusR.DB.Enums.BillState.Cancelled ? "text-decoration: line-through; background-color: #ffdfa1;" : string.Empty;
+            <tr style="@cancelledStyle">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BillDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastPaymentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @if (item.Status == RadiusR.DB.Enums.BillState.Cancelled)
+                    {
+                        <a href="#" class="link-button red">@RadiusRCustomerWebSite.Localization.Common.Cancelled</a>
+                    }
+                    else
+                    {
+                        if (item.Status == RadiusR.DB.Enums.BillState.Paid)
+                        {
+                            <a href="#" class="link-button jungle">@RadiusRCustomerWebSite.Localization.Common.Payed</a>
+                        }
+                        else if (item.CanBePaid)
+                        {
+                            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.PayNow, "PaymentSelection", new { id = item.ID }, new { @class = "link-button stencil-blue" })
+                        }
+                        if (item.HasEArchiveBill)
+                        {
+                            using (Html.BeginForm("EArchivePDF", null, FormMethod.Post, new { @style = "display: inline-block;" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.Hidden("id", item.ID)
+                                <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.EArchivePDF" class="link-button purple" />
+                            }
+                        }
+                    }
+
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="5">
+                @Html.PagedList((int)ViewBag.PageCount, 5)
+            </td>
+        </tr>
+    </table>
+</div>

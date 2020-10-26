@@ -1,0 +1,50 @@
+﻿@{
+    var actionName = ViewContext.RouteData.Values["action"] as string;
+}
+<div class="page-nav-bar">
+    <ul>
+        <li class="@Html.Raw(actionName == "Index" ? "selected" : "")">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.GeneralState, "Index", null, new { @class = actionName == "Index" ? "selected" : "" })
+            <div class="menu-bookmark"></div>
+        </li>
+        @*<li class="@Html.Raw(actionName == "MyDocuments" ? "selected" : "")">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.MyDocuments, "MyDocuments", null, new { @class = actionName == "MyDocuments" ? "selected" : "" })
+            <div class="menu-bookmark"></div>
+        </li>*@
+        <li class="@Html.Raw(actionName == "BillsAndPayments" ? "selected" : "")">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.BillsAndPayments, "BillsAndPayments", null, new { @class = actionName == "BillsAndPayments" ? "selected" : "" })
+            <div class="menu-bookmark"></div>
+        </li>
+        @if (RadiusR.DB.MobilExpressSettings.MobilExpressIsActive)
+        {
+            <li class="@Html.Raw(actionName == "AutomaticPayment" ? "selected" : "")">
+                @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.AutomaticPayment, "AutomaticPayment", null, new { @class = actionName == "AutomaticPayment" ? "selected" : "" })
+                <div class="menu-bookmark"></div>
+            </li>
+        }
+        <li class="@Html.Raw(actionName == "TariffAndTrafic" ? "selected" : "")">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.TariffAndTraffic, "TariffAndTraffic", null, new { @class = actionName == "TariffAndTraffic" ? "selected" : "" })
+            <div class="menu-bookmark"></div>
+        </li>
+        <li class="@Html.Raw(actionName == "SupportAndRequests" ? "selected" : "")">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.SupportAndRequests, "SupportAndRequests", null, new { @class = actionName == "SupportAndRequests" ? "selected" : "" })
+            <div class="menu-bookmark"></div>
+        </li>
+        @*<li class="@Html.Raw(actionName == "ConnectionStatus" ? "selected" : "")">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ConnectionStatus, "ConnectionStatus", null, new { @class = actionName == "ConnectionStatus" ? "selected" : "" })
+            <div class="menu-bookmark"></div>
+        </li>
+        <li class="@Html.Raw(actionName == "Services" ? "selected" : "")">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.Services, "Services", null, new { @class = actionName == "Services" ? "selected" : "" })
+            <div class="menu-bookmark"></div>
+        </li>*@
+        <li class="@Html.Raw(actionName == "PersonalInfo" ? "selected" : "")">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.PersonalInfo, "PersonalInfo", null, new { @class = actionName == "PersonalInfo" ? "selected" : "" })
+            <div class="menu-bookmark"></div>
+        </li>
+        <li class="@Html.Raw(actionName == "SpecialOffers" ? "selected" : "")">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.SpecialOffers, "SpecialOffers", null, new { @class = actionName == "SpecialOffers" ? "selected" : "" })
+            <div class="menu-bookmark"></div>
+        </li>
+    </ul>
+</div>

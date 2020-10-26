@@ -1,0 +1,88 @@
+﻿@model RadiusR_Customer_Website.Models.AutoPaymentCardViewModel
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.AddCard;
+}
+
+<div class="content-box title light-red">
+    @RadiusRCustomerWebSite.Localization.Common.AddCard
+</div>
+
+<div class="content-box card-payment-container">
+    @using (Html.BeginForm("AddCard", null, FormMethod.Post, new { @style = "display: inline-block; text-align: left;" }))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <table class="">
+                <tr>
+                    <td style="padding-right: 1em;">
+                        @Html.LabelFor(model => model.CardholderName)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.CardholderName, new { @htmlAttributes = new {  @maxlength = 150, @style = "width: 10.5em;", @autocomplete = "off" } })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.CardholderName)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-right: 1em;">
+                        @Html.LabelFor(model => model.CardNo)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.CardNo, new { @htmlAttributes = new { @placeholder = "1234-1234-1234-1234", @maxlength = 19, @style = "width: 10.5em;", @autocomplete = "off" } })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.CardNo)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-right: 1em;">
+                        @Html.LabelFor(model => model.ExpirationYear, RadiusRCustomerWebSite.Localization.Common.ExpirationDate)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.ExpirationMonth, new { @htmlAttributes = new { @placeholder = RadiusRCustomerWebSite.Localization.Common.ExpirationDateMonthPlaceHolder, @maxlength = 2, @style = "width: 1.2em;", @autocomplete = "off" } })
+                        &#47;
+                        @Html.EditorFor(model => model.ExpirationYear, new { @htmlAttributes = new { @placeholder = RadiusRCustomerWebSite.Localization.Common.ExpirationDateYearPlaceHolder, @maxlength = 2, @style = "width: 1.2em;", @autocomplete = "off" } })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.ExpirationYear)
+                        @Html.ValidationMessageFor(model => model.ExpirationMonth)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: right;">
+                        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.Back, "AutomaticPayment", null, new { @class = "link-button red", @style = "float: left;" })
+                        <input type="submit" class="link-button jungle" value="@RadiusRCustomerWebSite.Localization.Common.AddCard" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <span class="field-validation-error">@ViewBag.ServiceError</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
+
+@section Scripts{
+    <script>
+        $('#CardNo').bind('input', function () {
+            var value = $(this).val().substring(0, 19);
+            value = value.replace(/\-/g, '');
+            var length = value.length;
+            for (var i = 0; i < value.length; i++) {
+                if ((i != 0) && ((i % 4) - Math.floor(i / 4) + 1 == 0)) {
+                    if (value[i] != '-')
+                        value = [value.slice(0, i), '-', value.slice(i)].join('');
+                    length++;
+                }
+            }
+
+            $(this).val(value);
+        });
+    </script>
+}

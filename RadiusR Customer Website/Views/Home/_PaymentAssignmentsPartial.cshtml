@@ -1,0 +1,54 @@
+﻿@model IEnumerable<RadiusR_Customer_Website.Models.CustomerAutomaticPaymentViewModel.AutomaticPaymentViewModel>
+
+<table class="data-table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubscriberNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Card.MaskedCardNo)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubscriberNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Card.MaskedCardNo)
+            </td>
+            <td>
+                @if (item.Card != null)
+                {
+                    using (Html.BeginForm("DeactivateAutomaticPayment", null, FormMethod.Post, new { @class = "confirm-check" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("id", item.SubscriberID)
+                        <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.DeactivateAutomaticPayment" class="link-button red" />
+                    }
+                }
+                else if (ViewBag.AllCards.Length > 0)
+                {
+                    using (Html.BeginForm("ActivateAutomaticPayment", null, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("id", item.SubscriberID)
+                        @Html.DropDownList("token", new SelectList(ViewBag.AllCards, "Token", "MaskedCardNo"))
+                        <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.ActivateAutomaticPayment" class="link-button jungle" />
+                    }
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+@section scripts{
+    <script type="text/javascript">
+        $('form.confirm-check').submit(function (e) {
+            e.preventDefault();
+            alert('shit');
+        });
+    </script>
+}

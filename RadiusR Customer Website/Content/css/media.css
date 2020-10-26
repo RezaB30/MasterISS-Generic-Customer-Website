@@ -1,0 +1,114 @@
+﻿@media only screen and (max-width: 50em) {
+    div.page-nav-bar {
+        width: unset;
+        position: fixed;
+        height: 0;
+        width: 100%;
+        overflow: hidden;
+        padding-top: 0;
+        transition: 0.5s all ease;
+    }
+
+        div.page-nav-bar.open {
+            height: 17.5em;
+        }
+
+    div.page-body {
+        margin: unset;
+    }
+
+    div.page-nav-bar li.selected div.menu-bookmark {
+        display: none;
+    }
+
+    div.menu-zip-button {
+        display: inline-block;
+    }
+
+    li.user-management-icon {
+        max-width: 12em;
+    }
+
+    li.user-management-icon {
+        line-height: 3em;
+    }
+
+    div.user-drop-down-icon {
+        height: 3em;
+    }
+
+    div.shared-space-4, div.shared-space-2 {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 38em) {
+    div.page-content-wrapper {
+        margin-top: 6em;
+    }
+
+    div.page-nav-bar {
+        top: 6em;
+    }
+
+    div.header-right-container {
+        top: 3em;
+    }
+
+    div.page-header {
+        height: 6em;
+    }
+
+    div.header-logo {
+        width: unset;
+    }
+
+    div.home-link {
+        right: 8em;
+    }
+
+    div.language-container{
+        right: 3em;
+    }
+
+    div.header-popup {
+        position: fixed;
+        right: 0;
+        left: 0;
+        top: 6em;
+    }
+
+    li.user-management-icon {
+        max-width: 9em;
+    }
+
+    table.data-table td, table.data-table th {
+        display: block;
+        border-width: 1px 0 0 0;
+    }
+
+    table.data-table tr {
+        border-bottom: 2px solid #b0c1d2;
+    }
+
+    div.login-form {
+        display: block;
+        margin: unset;
+        width: unset;
+        text-align: center;
+    }
+
+        div.login-form input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+    div.captcha-image-wrapper input {
+        width: 1em;
+        box-sizing: initial;
+    }
+
+    li.change-account-icon span {
+        font-size: 0.85em;
+    }
+}

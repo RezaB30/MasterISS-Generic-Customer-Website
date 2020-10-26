@@ -1,0 +1,74 @@
+﻿@using RadiusR_Customer_Website.Utilities
+@using RezaB.Web.Authentication
+
+@{ 
+    var subscriptionBag = User.GetSubscriptionBag();
+    //var currentClient = ViewBag.ClientViewModel as RadiusR_Manager.Models.RadiusViewModels.SubscriptionViewModel;
+    //long? currentClientCode = currentClient != null ? currentClient.ID : (long?)null;
+    var currentLanguageImage = Url.Content("~/Content/Images/flags/" + System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName + ".svg");
+    var languageLink = Url.LanguageLink(System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "tr" ? "en-US" : "tr-tr", ViewContext);
+}
+
+<div class="page-header">
+    <div class="header-logo">
+        <a href="@Url.Action("Index", "Home")"><div class="home-link"></div></a>
+        <a href="@languageLink"><div class="language-container" style="background-image: url('@currentLanguageImage')"></div></a>
+        <div class="menu-zip-button">&nbsp;</div>
+    </div>
+    <div class="header-right-container">
+        <ul>
+            <li class="header-right-item change-account-icon" title="@RadiusR.Localization.Model.RadiusR.SubscriberNo">
+                <span>@subscriptionBag.FirstOrDefault(sb => sb.ID == User.GiveUserId().Value.ToString()).SubscriberNo</span>
+                <div class="header-popup">
+                    <div class="menu-bookmark"></div>
+                    <ul>
+                        <li class="popup-title">
+                            <table>
+                                <tr>
+                                    <td style="white-space: nowrap;">
+                                        <span class="bold">
+                                            @subscriptionBag.Count()
+                                        </span>
+                                        @RadiusRCustomerWebSite.Localization.Common.Service_Services
+                                    </td>
+                                    <td style="text-align: right;">
+                                        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ShowAll, "Services", null, new { @style = "white-space: nowrap;" })
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        @foreach (var item in subscriptionBag)
+                        {
+                            if (item.ID == User.GiveUserId().Value.ToString())
+                            {
+                                <li>
+                                    <a href="#" class="icon-item info-icon">@item.SubscriberNo &nbsp;<img src="@Url.Content("~/Content/Images/Icons/check-symbol.svg")" style="width: 1.5em; vertical-align: middle;" /></a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    @Html.ActionLink(item.SubscriberNo, "ChangeSubClient", new { id = item.ID }, new { @class = "icon-item info-icon" })
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </li>
+            <li class="header-right-item user-management-icon">
+                <div class="text-container"><span class="header-user-name">@User.Identity.Name</span><div class="user-drop-down-icon"></div></div>
+                <div class="header-popup">
+                    <div class="menu-bookmark"></div>
+                    <ul>
+                        <li>
+                            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.PersonalInfo, "PersonalInfo", null, new { @class = "icon-item user-icon" })
+                        </li>
+                        <li>
+                            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.Logout, "Logout", "Auth", null, new { @class = "icon-item logout-icon" })
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

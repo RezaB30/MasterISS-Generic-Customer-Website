@@ -1,0 +1,11 @@
+﻿@using RezaB.Data.Formating
+
+@model decimal
+
+@{ 
+    var value = RateLimitFormatter.ToDecimalTrafficStandard(Model);
+    var number = value.Split(' ')[0];
+    var suffix = value.Split(' ')[1];
+}
+
+@number <span class="rate-suffix">@suffix</span>

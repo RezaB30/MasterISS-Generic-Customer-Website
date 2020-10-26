@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RadiusR_Customer_Website.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Copyright" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">© Netspeed İnternet A.Ş</Value>
+    </Setting>
+    <Setting Name="WebSite" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">&lt;a href="https://www.netspeed.com.tr" title="Netspeed" target="_blank"&gt;www.netspeed.com.tr&lt;/a&gt;</Value>
+    </Setting>
+    <Setting Name="CompanyTitle" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Netspeed</Value>
+    </Setting>
+    <Setting Name="Version" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1.0.2</Value>
+    </Setting>
+    <Setting Name="CookieExpiration" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">03:00:00</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

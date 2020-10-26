@@ -1,0 +1,23 @@
+﻿@using RezaB.Web.Helpers
+
+@model RadiusR_Customer_Website.Models.LoginViewModel
+
+@{
+    ViewBag.Title = @RadiusR.Localization.Pages.Common.Login;
+    Layout = "~/Views/Shared/_NoMenuLayout.cshtml";
+}
+
+<div class="login-logo"></div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="login-form">
+        <div class="login-title">@RadiusRCustomerWebSite.Localization.Common.SiteTitle</div>
+        @Html.EditorFor(model => model.CustomerCode, new { htmlAttributes = new { @placeholder = Html.DisplayNameFor(model => model.CustomerCode), @autocomplete = "off" } })
+        <div class="validation-container">
+            @Html.ValidationMessageFor(model => model.CustomerCode)
+        </div>
+        <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.Send" />
+        <div class="copyright"> @ViewBag.Copyright | @Html.Raw(ViewBag.WebSite) </div>
+    </div>
+}

@@ -22,6 +22,7 @@ using RadiusR.SystemLogs;
 using RadiusR.VPOS;
 using RadiusR_Customer_Website.VPOSToken;
 using RezaB.Data.Formating;
+using RadiusR.DB.Enums.SupportRequests;
 
 namespace RadiusR_Customer_Website.Controllers
 {
@@ -53,7 +54,6 @@ namespace RadiusR_Customer_Website.Controllers
         {
             return RedirectToAction("Index");
         }
-
         public ActionResult BillsAndPayments(int? page)
         {
             using (RadiusREntities db = new RadiusREntities())
@@ -240,8 +240,8 @@ namespace RadiusR_Customer_Website.Controllers
                 var VPOSModel = VPOSManager.GetVPOSModel(
                     //Url.Action("SuccessfulPayRepost", null, new { id = id }, Request.Url.Scheme),
                     //Url.Action("FailedPayRepost", null, new { id = id }, Request.Url.Scheme),
-                    Url.Action("VPOSSuccess",null, new { id = tokenKey }, Request.Url.Scheme),
-                    Url.Action("VPOSFail",null, new { id = tokenKey }, Request.Url.Scheme),
+                    Url.Action("VPOSSuccess", null, new { id = tokenKey }, Request.Url.Scheme),
+                    Url.Action("VPOSFail", null, new { id = tokenKey }, Request.Url.Scheme),
                     payableAmount,
                     dbSubscription.Customer.Culture.Split('-').FirstOrDefault(),
                     dbSubscription.SubscriberNo + "-" + dbSubscription.ValidDisplayName);
@@ -499,7 +499,6 @@ namespace RadiusR_Customer_Website.Controllers
                 return RedirectToAction("AutomaticPayment");
             }
         }
-
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult ActivateAutomaticPayment(long id, string token)
@@ -507,14 +506,13 @@ namespace RadiusR_Customer_Website.Controllers
             if (!MobilExpressSettings.MobilExpressIsActive)
                 return RedirectToAction("BillsAndPayments");
 
-            ViewBag.PaymentTypes = new SelectList(new RezaB.Data.Localization.LocalizedList<AutoPaymentType, RadiusR.Localization.Lists.AutoPaymentType>().GetList(), "Key", "Value");
+            ViewBag.PaymentTypes = new SelectList(new RezaB.Data.Localization.LocalizedList<AutoPaymentType, RadiusR.DB.Enums.AutoPaymentType>().GetList(), "Key", "Value");
             return View(new ActivateAutomaticPaymentViewModel()
             {
                 CardToken = token,
                 SubscriptionID = id
             });
         }
-
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult ActivateAutomaticPaymentConfirm(ActivateAutomaticPaymentViewModel automaticPayment)
@@ -647,65 +645,6 @@ namespace RadiusR_Customer_Website.Controllers
                 return View(results);
             }
         }
-
-        [HttpGet]
-        public ActionResult SupportAndRequests()
-        {
-            using (RadiusREntities db = new RadiusREntities())
-            {
-                var subscription = db.Subscriptions.Find(User.GiveUserId());
-                var viewResults = subscription.SubscriptionSupportRequests.Where(request => !request.IssuerID.HasValue).OrderByDescending(request => request.Date).Select(request => new SupportAndRequestsViewModel()
-                {
-                    ID = request.ID,
-                    Date = request.Date,
-                    ClientID = request.SubscriptionID,
-                    Message = request.Message,
-                    StateID = request.StateID,
-                    AdminResponse = request.SupportResponse
-                });
-
-                ViewBag.canSendNewRequest = !viewResults.Any(request => request.StateID == (short)SupportRequestStateID.Sent || request.StateID == (short)SupportRequestStateID.Assigned);
-                return View(viewResults.ToList());
-            }
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SupportAndRequests([Bind(Prefix = "newRequest", Include = "Message")] SupportAndRequestsViewModel supportRequest)
-        {
-            using (RadiusREntities db = new RadiusREntities())
-            {
-                var subscription = db.Subscriptions.Find(User.GiveUserId());
-                if (ModelState.IsValid && !subscription.SubscriptionSupportRequests.Any(request => request.StateID == (short)SupportRequestStateID.Sent || request.StateID == (short)SupportRequestStateID.Assigned))
-                {
-                    db.SubscriptionSupportRequests.Add(new SubscriptionSupportRequest()
-                    {
-                        Message = supportRequest.Message,
-                        SubscriptionID = subscription.ID,
-                        StateID = (short)SupportRequestStateID.Sent,
-                        Date = DateTime.Now
-                    });
-
-                    db.SaveChanges();
-
-                    return RedirectToAction("SupportAndRequests");
-                }
-                ViewBag.SupportRequest = supportRequest;
-                var viewResults = subscription.SubscriptionSupportRequests.Where(request => !request.IssuerID.HasValue).OrderByDescending(request => request.Date).Select(request => new SupportAndRequestsViewModel()
-                {
-                    ID = request.ID,
-                    Date = request.Date,
-                    ClientID = request.SubscriptionID,
-                    Message = request.Message,
-                    StateID = request.StateID,
-                    AdminResponse = request.SupportResponse
-                });
-
-                ViewBag.canSendNewRequest = !viewResults.Any(request => request.StateID == (short)SupportRequestStateID.Sent || request.StateID == (short)SupportRequestStateID.Assigned);
-                return View(viewResults.ToList());
-            }
-        }
-
         public ActionResult ConnectionStatus()
         {
             return RedirectToAction("Index");
@@ -748,7 +687,6 @@ namespace RadiusR_Customer_Website.Controllers
                 if (dbBill.Subscription.ID != User.GiveUserId())
                     return RedirectToAction("BillsAndPayments");
                 var serviceClient = new RezaB.NetInvoice.Wrapper.NetInvoiceClient(AppSettings.EBillCompanyCode, AppSettings.EBillApiUsername, AppSettings.EBillApiPassword);
-
                 var response = serviceClient.GetEArchivePDF(dbBill.EBill.ReferenceNo);
                 if (response.PDFData == null)
                     return RedirectToAction("BillsAndPayments");
@@ -1002,7 +940,7 @@ namespace RadiusR_Customer_Website.Controllers
 
                 ViewBag.TotalRow = new SpecialOffersReportViewModel()
                 {
-                    TotalCount = viewResults.Select(r=>r.TotalCount).DefaultIfEmpty(0).Sum(),
+                    TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum(),
                     UsedCount = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum(),
                     MissedCount = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum(),
                 };

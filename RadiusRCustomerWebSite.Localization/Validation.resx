@@ -117,13 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Active" xml:space="preserve">
-    <value>Aktif</value>
+  <data name="Failed" xml:space="preserve">
+    <value>Failed</value>
   </data>
-  <data name="Inactive" xml:space="preserve">
-    <value>Pasif</value>
+  <data name="MaxLength" xml:space="preserve">
+    <value>{0} can not be more than {1} characters.</value>
   </data>
-  <data name="InProcess" xml:space="preserve">
-    <value>İşlemde</value>
+  <data name="MinLength" xml:space="preserve">
+    <value>{0} can not be less than {1} characters.</value>
+  </data>
+  <data name="OpenedRequestAgain" xml:space="preserve">
+    <value>&lt;span class="text-green"&gt;Your request is opened again&lt;/span&gt;</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>&lt;span class="text-red"&gt;{0} is required.&lt;/span&gt;</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>&lt;span class="text-green"&gt;Send Message&lt;/span&gt;</value>
+  </data>
+  <data name="TaskCompleted" xml:space="preserve">
+    <value>&lt;span class="text-green"&gt;Task Completed&lt;/span&gt;</value>
   </data>
 </root>

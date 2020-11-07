@@ -117,13 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Active" xml:space="preserve">
-    <value>Aktif</value>
+  <data name="ApprovalDate" xml:space="preserve">
+    <value>Onay Tarihi</value>
   </data>
-  <data name="Inactive" xml:space="preserve">
-    <value>Pasif</value>
+  <data name="AutomaticPaymentInstruction" xml:space="preserve">
+    <value>Otomatik Ödeme Talimatı</value>
   </data>
-  <data name="InProcess" xml:space="preserve">
-    <value>İşlemde</value>
+  <data name="BeginDate" xml:space="preserve">
+    <value>Başlangıç Tarihi</value>
+  </data>
+  <data name="BillAmount" xml:space="preserve">
+    <value>Fatura Tutarı</value>
+  </data>
+  <data name="BillNo" xml:space="preserve">
+    <value>Fatura No</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Tarih</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>Departman</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Bitiş Tarihi</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Ad Soyad</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Durum</value>
+  </data>
+  <data name="SubscriberNo" xml:space="preserve">
+    <value>Abone No</value>
+  </data>
+  <data name="SupportDate" xml:space="preserve">
+    <value>Destek Tarihi</value>
+  </data>
+  <data name="SupportNo" xml:space="preserve">
+    <value>Destek No</value>
+  </data>
+  <data name="SupportRequestSubType" xml:space="preserve">
+    <value>Destek Talebi Açıklaması</value>
+  </data>
+  <data name="SupportRequestType" xml:space="preserve">
+    <value>Destek Talebi Türü</value>
+  </data>
+  <data name="TariffName" xml:space="preserve">
+    <value>Tarife Adı</value>
   </data>
 </root>

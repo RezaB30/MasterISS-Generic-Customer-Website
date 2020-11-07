@@ -14,14 +14,17 @@ namespace RadiusR_Customer_Website
                         "~/Scripts/Custom/header-popups.js",
                         "~/Scripts/Custom/confirm-box.js",
                         "~/Scripts/Custom/initialize-ui.js",
-                        "~/Scripts/Custom/menu-zip-button.js"
+                        "~/Scripts/Custom/menu-zip-button.js",
+                        "~/Scripts/Custom/notification.js",
+                        "~/Scripts/Custom/jquery-confirm.min.js"
                         ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/css/main.css",
                 "~/Content/css/captcha.css",
                 "~/Content/css/data-table.css",
-                "~/Content/css/media.css"
+                "~/Content/css/media.css",
+                "~/Content/css/jquery-confirm.min.css"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css/login").Include(

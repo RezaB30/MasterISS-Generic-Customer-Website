@@ -13,7 +13,7 @@ namespace RadiusR_Customer_Website.Models
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "CardholderName")]
         [Required(ErrorMessage = "*")]
         [RegularExpression(@"^([\p{L}|\.]+\s[\p{L}|\.]+)+$", ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), ErrorMessageResourceName = "NotValid")]
-        [MaxLength(150, ErrorMessageResourceType = typeof(RadiusR.Localization.Validation.Common), ErrorMessageResourceName = "MaxLength")]
+        [MaxLength(150, ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Validation), ErrorMessageResourceName = "MaxLength")]
         public string CardholderName { get; set; }
 
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "CardNumber")]

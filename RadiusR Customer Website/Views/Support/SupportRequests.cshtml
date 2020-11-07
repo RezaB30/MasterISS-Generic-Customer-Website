@@ -1,0 +1,62 @@
+﻿@using RezaB.Web.Helpers
+
+@model IEnumerable<RadiusR_Customer_Website.Models.ViewModels.Supports.SupportRequestsVM>
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.SupportAndRequests;
+}
+
+<div class="content-box title shallow-blue">
+    <table class="data-table">
+        <tbody>
+            <tr>
+                <th class="borderless">@RadiusRCustomerWebSite.Localization.Common.NewRequestDescription</th>
+                <th class="borderless">
+                    @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.NewRequest, "NewRequest", "Support", null, new { @class = "link-button jungle" })
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="content-box">
+    <table class="data-table">
+        <tbody>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.SupportNo)</th>
+                <th>@Html.DisplayNameFor(m => m.SupportRequestType)</th>
+                <th>@Html.DisplayNameFor(m => m.SupportRequestSubType)</th>
+                <th>@Html.DisplayNameFor(m => m.State)</th>
+                <th>@Html.DisplayNameFor(m => m.Date)</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr id="@item.ID">
+                    <td class="centered">@Html.DisplayFor(m => item.SupportNo)</td>
+                    <td class="centered">@Html.DisplayFor(m => item.SupportRequestType)</td>
+                    <td class="centered">@Html.DisplayFor(m => item.SupportRequestSubType)</td>
+                    <td class="centered">
+                        @Html.DisplayFor(m => item.State)
+                        @*<div class="centered">
+                                @if (item.State == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done)
+                                {
+                                    <img class="state-icon" src="/Content/Images/Icons/check.svg" />
+                                }
+                                else
+                                {
+                                    <img class="state-icon" src="/Content/Images/Icons/info.svg" />
+                                }
+                            </div>*@
+                    </td>
+                    <td class="centered">@Html.DisplayFor(m => item.Date)</td>
+                    <td class="centered">@Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.Details, "SupportDetails", "Support", new { id = item.ID }, new { @class = "link-button stencil-blue" })</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="6">
+                    @Html.PagedList((int)ViewBag.PageCount, 5)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

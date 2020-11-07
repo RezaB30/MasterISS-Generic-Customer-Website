@@ -1,0 +1,157 @@
+﻿@model RadiusR_Customer_Website.Models.ViewModels.Supports.SupportMessagesVM
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.SupportDetails;
+}
+
+<div class="content-box title shallow-blue">
+    <h4>@RadiusRCustomerWebSite.Localization.Common.SupportAndRequests</h4>
+</div>
+<div class="content-box">
+    <div class="shared-space-4">
+        <div class="">
+            <div class="usage-info-item standard-blue">
+                <div>
+                    @Html.DisplayFor(m => m.SupportRequestName)
+                </div>
+                <div class="title">
+                    @Html.DisplayFor(m => m.SupportRequestSummary)
+                </div>
+            </div>
+        </div>
+        <table class="data-table">
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.SupportNo)</td>
+                    <td class="centered">@Html.DisplayFor(m => m.SupportNo)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.SupportDate)</td>
+                    <td class="centered">@Html.DisplayFor(m => m.SupportDate)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.State)</td>
+                    <td>
+                        <div class="centered">
+                            @*@if (Model.State == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done)
+                                {
+                                    <img class="state-icon" src="/Content/Images/Icons/check.svg" />
+                                }
+                                else
+                                {
+                                    <img class="state-icon" src="/Content/Images/Icons/info.svg" />
+                                }*@
+                            @Html.DisplayFor(m => m.State)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="centered">
+                        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.AllSupportRequests, "SupportRequests", "Support")
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="content-box">
+    <table class="data-table">
+        <tbody>
+            @if (Model.CustomerApprovalDate == null && Model.State == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done && Model.IsPassedRequestOpenTime)
+            {
+
+            }
+            else
+            {
+                if (Model.CustomerApprovalDate == null)
+                {
+                    <tr class="seperate">
+                        <td>
+                            @using (Html.BeginForm("NewSupportMessage", "Support", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(m => m.ID)
+                                @Html.HiddenFor(m => m.IsPassedRequestOpenTime)
+                                <table class="data-table" style="table-layout:fixed;">
+                                    <tbody>
+                                        <tr>
+                                            <td class="borderless" colspan="2">
+                                                <div class="centered" style="margin-top:1em;">
+                                                    @Html.TextAreaFor(m => m.Message, new { @placeholder = RadiusRCustomerWebSite.Localization.Common.SupportRequestMessage, @class = "new-request-text", @maxlength = "250" })
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="borderless">
+                                                <div class="centered">
+                                                    <input type="button" id="_solved" class="link-button jungle" value="@RadiusRCustomerWebSite.Localization.Common.ProblemSolved" />
+                                                </div>
+                                            </td>
+                                            <td class="borderless">
+                                                <div class="centered">
+                                                    @if (Model.State == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done && !Model.IsPassedRequestOpenTime)
+                                                    {
+                                                        @Html.Hidden("ForOpenRequest", true)
+                                                        <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.OpenRequestAgain" class="link-button red" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.AddNote" class="link-button stencil-blue" />
+                                                    }
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            @if (TempData["Errors"] != null)
+            {
+                <tr>
+                    <td>
+                        <div class="centered">
+                            <span class="field-validation-error">@Html.Raw(TempData["Errors"])</span>
+                        </div>
+                    </td>
+                </tr>
+            }
+            @foreach (var item in Model.SupportMessageList)
+            {
+                <tr class="support-message-seperate">
+                    <td>
+                        @if (item.IsCustomer)
+                        {
+                            <div class="user-management-icon centered support-right-item">
+                                <span class="bold">@Html.DisplayFor(m => item.SenderName)</span>
+                                <small>@Html.DisplayFor(m => item.MessageDate)</small>
+                            </div>
+                            <div class="content-box light-red">@Html.DisplayFor(m => item.Message)</div>
+                        }
+                        else
+                        {
+                            <div class="agent-support-icon centered support-right-item">
+                                <span class="bold">@Html.DisplayFor(m => item.SenderName)</span>
+                                <small>@Html.DisplayFor(m => item.MessageDate)</small>
+                            </div>
+                            <div class="content-box shallow-blue">@Html.DisplayFor(m => item.Message)</div>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section scripts{
+    <script>
+        $('#_solved').click(function () {
+            $('form').append('<input id="IsSolved" name="IsSolved" type="hidden" value="True">');
+            ShowConfirm($('form'));
+            //$('form').submit();
+        });
+
+    </script>
+}

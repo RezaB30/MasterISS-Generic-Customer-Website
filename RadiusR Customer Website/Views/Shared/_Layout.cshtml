@@ -21,5 +21,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+    <script>
+        GetSupportStatus('@Url.Action("SupportStatus","Support")');
+    </script>
 </body>
 </html>

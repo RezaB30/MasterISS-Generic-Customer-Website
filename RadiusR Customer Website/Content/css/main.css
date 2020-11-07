@@ -74,7 +74,7 @@ a {
     background-image: url('../Images/Icons/info.svg');
 }
 
-img.boolean-symbol{
+img.boolean-symbol {
     width: 1em;
     height: 1em;
     display: inline-block;
@@ -673,3 +673,94 @@ div.error-wrapper {
         color: orange;
         font-size: 2em;
     }
+
+select {
+    width: 100%;
+    max-width: 20em;
+    height: 2em;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid #c2cad8;
+    box-sizing: border-box;
+}
+/*
+    new css
+*/
+.text-red {
+    color: red;
+}
+
+text-green {
+    color: darkgreen;
+}
+
+.support-management-icon {
+    background-image: url('../Images/Icons/info.svg');
+    padding-left: 3em;
+    background-position: 0.3em center;
+    background-size: 2.2em;
+    background-repeat: no-repeat;
+    padding-right: 0.5em;
+}
+
+    .support-management-icon .text-container {
+        max-height: 3em;
+        overflow: hidden;
+    }
+
+.agent-support-icon {
+    background-image: url('../Images/Icons/agent.ico');
+    padding-left: 3em;
+    background-position: 0.3em center;
+    background-size: 2.2em;
+    background-repeat: no-repeat;
+    padding-right: 0.5em;
+}
+
+.support-right-item {
+    display: inline-block;
+    cursor: pointer;
+    height: 3em;
+    line-height: 3em;
+    vertical-align: top;
+    color: #000;
+    position: relative;
+    white-space: nowrap;
+}
+
+    .support-right-item > span, small {
+        white-space: nowrap;
+    }
+
+    .support-right-item > small {
+        margin-left: 1em;
+    }
+
+.support-message-seperate {
+    border-bottom: solid #aed6ff;
+}
+
+.seperate {
+    border-bottom: 1em solid #fff;
+}
+
+.state-icon {
+    width: 1em;
+    height: 1em;
+}
+
+span.notification-badge {
+    float: right;
+    border: 1px solid #fff;
+    padding: 0 2px;
+    border-radius: 25%;
+    background-color: #3d3d3d;
+    font-size: small;
+}
+
+.notification-row {
+    background-color: #d8fba182 !important;
+}
+
+.borderless {
+    border: none !important;
+}

@@ -1,0 +1,60 @@
+﻿@model RadiusR_Customer_Website.Models.ViewModels.Supports.NewRequestVM
+@using RezaB.Web.Helpers
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.NewRequest;
+}
+
+<div class="content-box light-red bold">
+    @RadiusRCustomerWebSite.Localization.Common.NewRequest
+</div>
+<div class="content-box">
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="centered">
+            @Html.DropDownListFor(m => m.RequestTypeId, Model.RequestTypeList, RadiusRCustomerWebSite.Localization.Common.NewSupportRequest)
+        </div>
+        <div id="SubRequestContent" class="centered" style="margin-top:1em;">
+            @*@Html.DropDownListFor(m => m.SubRequestTypeId, Model.SubRequestTypeList, new { @class = "invisible-text" })*@
+
+        </div>
+        <div class="centered" style="margin-top:1em;">
+            @Html.TextAreaFor(m => m.Description, new { @placeholder = RadiusRCustomerWebSite.Localization.Common.DescribeSupportRequest, @class = "new-request-text", @maxlength = "250" })
+        </div>
+        <div class="centered">
+            <input type="button" onclick="ShowConfirm($('form'));" class="link-button red" value="@RadiusRCustomerWebSite.Localization.Common.SendSupportRequest" />
+        </div>
+    }
+    <div class="centered error-message" style="margin-top:1em;">
+        <span class="text-red">@Html.Raw(TempData["Errors"])</span>
+    </div>
+    <div class="confirm-box"></div>
+</div>
+@section scripts{
+    <script>        
+        $('#RequestTypeId').change(function () {
+            $('#SubRequestContent').html("");
+            if ($(this).val()) {
+                $.ajax({
+                    url: '@Url.Action("NewRequest","Support")',
+                    method: 'GET',
+                    data: { RequestTypeId: $(this).val() },
+                    complete: function (data, status) {
+                        try {
+                            if (status == "success") {
+                                var result = data.responseJSON;
+                                var options = "";
+                                for (var i = 0; i < result.length; i++) {
+                                    options += "<option value='" + result[i].Value + "'>" + result[i].Text + "</option>";
+                                }
+                                $('#SubRequestContent').html("<select id='SubRequestTypeId' name ='SubRequestTypeId' >" + options + "</select>");
+                            }
+                        } catch (e) {
+                            console.log(e);
+                        }
+                    }
+                })
+            }
+        })
+    </script>
+}

@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -50,6 +52,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Model.Designer.cs">
+      <DependentUpon>Model.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Model.tr-tr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tr-tr.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReferenceSubscirberState.tr-tr.Designer.cs">
       <DependentUpon>ReferenceSubscirberState.tr-tr.resx</DependentUpon>
@@ -61,6 +73,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReferenceSubscirberState.resx</DependentUpon>
     </Compile>
+    <Compile Include="Validation.tr-tr.Designer.cs">
+      <DependentUpon>Validation.tr-tr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Validation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Validation.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Common.tr-tr.resx">
@@ -71,6 +93,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\Model.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Model.tr-tr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Model.tr-tr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReferenceSubscirberState.tr-tr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ReferenceSubscirberState.tr-tr.Designer.cs</LastGenOutput>
@@ -79,7 +109,16 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ReferenceSubscirberState.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Validation.tr-tr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Validation.tr-tr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Validation.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Validation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

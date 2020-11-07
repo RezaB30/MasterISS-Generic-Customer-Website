@@ -82,7 +82,7 @@ namespace RadiusR_Customer_Website.Controllers
 
                     if (dbCustomers.Count() > 0 && dbClient != null)
                     {
-                        
+
                         // if need to send a new password
                         if (string.IsNullOrEmpty(dbClient.OnlinePassword) || !dbClient.OnlinePasswordExpirationDate.HasValue)
                             return RedirectToAction("Login");
@@ -118,10 +118,8 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 return Url.Action("Index", "Home");
             }
-
             return returnUrl;
         }
-
         internal static void SignInUser(Subscription dbSubscription, IEnumerable<Customer> relatedCustomers, IOwinContext context)
         {
             var identity = new ClaimsIdentity(new[]
@@ -142,12 +140,10 @@ namespace RadiusR_Customer_Website.Controllers
                 var dbSubscription = db.Subscriptions.Include(s => s.Customer.CustomerIDCard).FirstOrDefault(s => s.ID == subId);
                 // find customers
                 var dbCustomers = db.Customers.Where(c => c.CustomerIDCard.TCKNo == dbSubscription.Customer.CustomerIDCard.TCKNo || c.ContactPhoneNo == dbSubscription.Customer.ContactPhoneNo).ToArray();
-
                 context.Authentication.SignOut();
                 SignInUser(dbSubscription, dbCustomers, context);
             }
         }
-
         internal static void SignoutUser(IOwinContext context)
         {
             context.Authentication.SignOut();

@@ -5,29 +5,23 @@ namespace RadiusR_Customer_Website.Models
 {
     internal class UsageInfoViewModel
     {
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "Date")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Date")]
         public DateTime Date { get; set; }
 
         public int? _month { get; set; }
 
         public int? _year { get; set; }
 
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "Download")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Download")]
         [UIHint("FormattedBytes")]
         public decimal Download { get; set; }
 
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "Upload")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Upload")]
         [UIHint("FormattedBytes")]
         public decimal Upload { get; set; }
 
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "Total")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Total")]
         [UIHint("FormattedBytes")]
-        public decimal Total
-        {
-            get
-            {
-                return Download + Upload;
-            }
-        }
+        public decimal Total => Download + Upload;
     }
 }

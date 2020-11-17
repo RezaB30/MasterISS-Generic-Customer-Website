@@ -15,12 +15,12 @@ namespace RadiusR_Customer_Website.Models
         public long ClientID { get; set; }
 
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Message")]
-        [MaxLength(250, ErrorMessageResourceType = typeof(RadiusR.Localization.Validation.Common), ErrorMessageResourceName = "MaxLength")]
-        [Required(ErrorMessageResourceType = typeof(RadiusR.Localization.Validation.Common), ErrorMessageResourceName = "Required")]
+        [MaxLength(250, ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Validation), ErrorMessageResourceName = "MaxLength")]
+        [Required(ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Validation), ErrorMessageResourceName = "Required")]
         public string Message { get; set; }
 
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "State")]
-        [EnumType(typeof(SupportRequestStateID), typeof(RadiusR.Localization.Lists.SupportRequestStateID))]
+        [EnumType(typeof(SupportRequestStateID), typeof(RadiusR.Localization.Lists.SubscriptionSupportRequestStateID))]
         [UIHint("LocalizedList")]
         public short StateID { get; set; }
 

@@ -240,8 +240,8 @@ namespace RadiusR_Customer_Website.Controllers
                 var VPOSModel = VPOSManager.GetVPOSModel(
                     //Url.Action("SuccessfulPayRepost", null, new { id = id }, Request.Url.Scheme),
                     //Url.Action("FailedPayRepost", null, new { id = id }, Request.Url.Scheme),
-                    Url.Action("VPOSSuccess",null, new { id = tokenKey }, Request.Url.Scheme),
-                    Url.Action("VPOSFail",null, new { id = tokenKey }, Request.Url.Scheme),
+                    Url.Action("VPOSSuccess", null, new { id = tokenKey }, Request.Url.Scheme),
+                    Url.Action("VPOSFail", null, new { id = tokenKey }, Request.Url.Scheme),
                     payableAmount,
                     dbSubscription.Customer.Culture.Split('-').FirstOrDefault(),
                     dbSubscription.SubscriberNo + "-" + dbSubscription.ValidDisplayName);
@@ -830,7 +830,7 @@ namespace RadiusR_Customer_Website.Controllers
                         {
                             { SMSParamaterRepository.SMSParameterNameCollection.BillTotal, payableAmount }
                         }));
-                        db.SystemLogs.Add(SystemLogProcessor.BillPayment(billIds, null, dbSubscription.ID, SystemLogInterface.CustomerWebsite, billPaymentToken.SubscriberId.ToString(), PaymentType.VirtualPos));
+                        db.SystemLogs.Add(SystemLogProcessor.BillPayment(billIds, null, dbSubscription.ID, SystemLogInterface.CustomerWebsite, dbSubscription.SubscriberNo, PaymentType.VirtualPos));
                         db.SaveChanges();
                     }
                     // pre-paid sub
@@ -1002,7 +1002,7 @@ namespace RadiusR_Customer_Website.Controllers
 
                 ViewBag.TotalRow = new SpecialOffersReportViewModel()
                 {
-                    TotalCount = viewResults.Select(r=>r.TotalCount).DefaultIfEmpty(0).Sum(),
+                    TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum(),
                     UsedCount = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum(),
                     MissedCount = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum(),
                 };

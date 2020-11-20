@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.3.8.0-5.final\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.3.8.0-5.final\build\Microsoft.Net.Compilers.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -26,6 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
+    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -133,6 +135,9 @@
     <Reference Include="RezaB.NetInvoice.Wrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.NetInvoice.Wrapper.1.0.0\lib\net452\RezaB.NetInvoice.Wrapper.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="RezaB.TurkTelekom.WebServices, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RezaB.TurkTelekom.WebServices.1.0.0\lib\net452\RezaB.TurkTelekom.WebServices.dll</HintPath>
     </Reference>
     <Reference Include="RezaB.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.Web.1.0.0\lib\net452\RezaB.Web.dll</HintPath>
@@ -249,6 +254,7 @@
     <Compile Include="Models\QuotaPackageViewModel.cs" />
     <Compile Include="Models\SpecialOffersReportViewModel.cs" />
     <Compile Include="Models\ViewModels\Supports\NewRequestVM.cs" />
+    <Compile Include="Models\ViewModels\Supports\RequestSupportMessage.cs" />
     <Compile Include="Models\ViewModels\Supports\SupportMessagesVM.cs" />
     <Compile Include="Models\ViewModels\Supports\SupportRequestsVM.cs" />
     <Compile Include="Models\ViewModels\Supports\SupportTypes.cs" />
@@ -281,7 +287,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\captcha.css" />
     <Content Include="Content\css\data-table.css" />
-    <Content Include="Content\css\jquery-confirm.min.css" />
     <Content Include="Content\css\login.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\media.css" />
@@ -335,7 +340,6 @@
     <Content Include="Scripts\Custom\confirm-box.js" />
     <Content Include="Scripts\Custom\header-popups.js" />
     <Content Include="Scripts\Custom\initialize-ui.js" />
-    <Content Include="Scripts\Custom\jquery-confirm.min.js" />
     <Content Include="Scripts\Custom\menu-zip-button.js" />
     <Content Include="Scripts\Custom\notification.js" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
@@ -403,6 +407,7 @@
     <Content Include="Views\Support\SupportDetails.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTimeHour.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\LayoutParts\_DisplayMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -420,6 +425,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
@@ -427,6 +433,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

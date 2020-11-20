@@ -34,6 +34,7 @@ namespace RadiusR_Customer_Website.Controllers
                         SupportRequestSubType = m.SubTypeID == null ? null : m.SupportRequestSubType.Name
                     }).AsQueryable();
                 SetupPages(page, ref results, 10);
+                ViewBag.HasOpenRequest = HasOpenRequest();
                 return View(results.ToList());
             }
         }
@@ -42,6 +43,12 @@ namespace RadiusR_Customer_Website.Controllers
         {
             using (var db = new RadiusR.DB.RadiusREntities())
             {
+
+                if (HasOpenRequest())
+                {
+                    TempData["Errors"] = RadiusRCustomerWebSite.Localization.Common.HasActiveRequest;
+                    return RedirectToAction("SupportRequests", "Support");
+                }
                 var supportRequests = db.SupportRequestTypes.Where(m => !m.IsStaffOnly).ToArray();
                 if (Request.IsAjaxRequest())
                 {
@@ -68,6 +75,11 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 using (var db = new RadiusR.DB.RadiusREntities())
                 {
+                    if (HasOpenRequest())
+                    {
+                        TempData["Errors"] = RadiusRCustomerWebSite.Localization.Common.HasActiveRequest;
+                        return RedirectToAction("SupportRequests", "Support");
+                    }
                     db.SupportRequests.Add(new RadiusR.DB.SupportRequest()
                     {
                         Date = DateTime.Now,
@@ -93,7 +105,7 @@ namespace RadiusR_Customer_Website.Controllers
                 TempData["Errors"] = RadiusRCustomerWebSite.Localization.Validation.TaskCompleted;
                 generalLogger.Warn("Created new request. UserId : " + User.GiveUserId());
             }
-            return RedirectToAction("NewRequest");
+            return RedirectToAction("SupportRequests");
         }
         public ActionResult SupportDetails(long ID)
         {
@@ -106,6 +118,8 @@ namespace RadiusR_Customer_Website.Controllers
                     var PassedTimeSpan = new TimeSpan(0, Convert.ToInt32(PassedTime.Split(':')[0]), Convert.ToInt32(PassedTime.Split(':')[1]), Convert.ToInt32(PassedTime.Split(':')[2]), 0);
                     var result = new SupportMessagesVM()
                     {
+                        SupportDisplayType = RequestProgressState(ID),
+                        //HasOpenRequest = HasOpenRequest(),
                         CustomerApprovalDate = SupportProgress.CustomerApprovalDate,
                         ID = ID,
                         State = SupportProgress.StateID,
@@ -113,8 +127,8 @@ namespace RadiusR_Customer_Website.Controllers
                         SupportNo = SupportProgress.SupportPin,
                         SupportRequestName = SupportProgress.TypeID == null ? "" : SupportProgress.SupportRequestType.Name,
                         SupportRequestSummary = SupportProgress.SubTypeID == null ? "" : SupportProgress.SupportRequestSubType.Name,
-                        IsPassedRequestOpenTime = (DateTime.Now - SupportProgress.SupportRequestProgresses
-                        .OrderByDescending(m => m.Date).Select(m => m.Date).FirstOrDefault()) > PassedTimeSpan ? true : false,
+                        //IsPassedRequestOpenTime = (DateTime.Now - SupportProgress.SupportRequestProgresses
+                        //.OrderByDescending(m => m.Date).Select(m => m.Date).FirstOrDefault()) > PassedTimeSpan ? true : false,
                         SupportMessageList = SupportProgress.SupportRequestProgresses.OrderByDescending(m => m.Date).Select(m => new SupportMessageList()
                         {
                             Message = m.Message,
@@ -155,6 +169,11 @@ namespace RadiusR_Customer_Website.Controllers
                     }
                     if (ForOpenRequest)
                     {
+                        if (HasOpenRequest())
+                        {
+                            TempData["Errors"] = RadiusRCustomerWebSite.Localization.Common.HasActiveRequest;
+                            return RedirectToAction("SupportRequests", "Support");
+                        }
                         SupportProgress.StateID = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress;
                         db.SaveChanges();
                         SupportProgress.SupportRequestProgresses.Add(new RadiusR.DB.SupportRequestProgress()
@@ -230,14 +249,74 @@ namespace RadiusR_Customer_Website.Controllers
         private readonly Random _random = new Random();
         private string CreateSupportPin()
         {
-            var keyData = "0123456789QWERTYUIPASDFGHJKLZXCVBNM";
+            var keyData = "0123456789QWERTYUIPASDFGHJKLZXCVBNM0123456789";
             var pin = string.Empty;
             while (pin.Length < 12)
             {
                 var current = _random.Next(0, keyData.Length - 1);
                 pin += keyData[current];
+                //keyData.Remove(current, 1);
+            }
+            using (var db = new RadiusR.DB.RadiusREntities())
+            {
+                if (db.SupportRequests.Where(m => m.SupportPin == pin).FirstOrDefault() != null)
+                {
+                    CreateSupportPin();
+                }
             }
             return pin;
+        }
+        private bool HasOpenRequest()
+        {
+            using (var db = new RadiusR.DB.RadiusREntities())
+            {
+                var subscriptionId = User.GiveUserId();
+                var HasOpenRequest = db.SupportRequests
+                    .Where(m => m.StateID == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress && subscriptionId == m.SubscriptionID)
+                    .FirstOrDefault() != null;
+                return HasOpenRequest;
+            }
+        }
+        private SupportRequestDisplayTypes RequestProgressState(long SupportRequestID)
+        {
+            using (var db = new RadiusR.DB.RadiusREntities())
+            {
+                var SupportRequest = db.SupportRequests.Find(SupportRequestID);
+                if (SupportRequest.CustomerApprovalDate == null)
+                {
+                    if (SupportRequest.StateID == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done)
+                    {
+                        var PassedTime = db.AppSettings.Where(m => m.Key == "SupportRequestPassedTime").Select(m => m.Value).FirstOrDefault();
+                        var PassedTimeSpan = new TimeSpan(0, Convert.ToInt32(PassedTime.Split(':')[0]), Convert.ToInt32(PassedTime.Split(':')[1]), Convert.ToInt32(PassedTime.Split(':')[2]), 0);
+                        var subscriptionId = User.GiveUserId();
+                        var IsPassedTime = (DateTime.Now - SupportRequest.SupportRequestProgresses.OrderByDescending(s => s.Date).Select(s => s.Date).FirstOrDefault()) < PassedTimeSpan ? false : true;
+                        if (IsPassedTime)
+                        {
+                            return SupportRequestDisplayTypes.NoneDisplay;
+                        }
+                        else
+                        {
+
+                            if (HasOpenRequest())
+                            {
+                                return SupportRequestDisplayTypes.NoneDisplay;
+                            }
+                            else
+                            {
+                                return SupportRequestDisplayTypes.OpenRequestAgainDisplay;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        return SupportRequestDisplayTypes.AddNoteDisplay;
+                    }
+                }
+                else
+                {
+                    return SupportRequestDisplayTypes.NoneDisplay;
+                }
+            }
         }
         #endregion
     }

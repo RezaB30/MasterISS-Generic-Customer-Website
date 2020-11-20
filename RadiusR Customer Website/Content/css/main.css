@@ -764,3 +764,36 @@ span.notification-badge {
 .borderless {
     border: none !important;
 }
+
+/* Display Box Css */
+div.display-box {
+    display: none;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(256,256,256,0.7);
+}
+
+    div.display-box.open {
+        animation-name: confirm-box-animation;
+        animation-duration: 0.3s;
+        animation-timing-function: cubic-bezier(.94,0,1,1);
+        display: block;
+    }
+
+    div.display-box div.confirm-contents {
+        background-color: #f2f2f2;
+        display: inline-block;
+        margin-top: 40vh;
+        padding: 1em;
+        border: 1px solid #dfdfdf;
+        border-radius: 0.5em;
+        box-shadow: 0.3em 0.3em 0.5em 0 rgba(0,0,0,0.5);
+    }
+
+        div.display-box div.confirm-contents * {
+            margin: 1em;
+        }

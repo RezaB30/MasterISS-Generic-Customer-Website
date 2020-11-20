@@ -506,7 +506,7 @@ namespace RadiusR_Customer_Website.Controllers
             if (!MobilExpressSettings.MobilExpressIsActive)
                 return RedirectToAction("BillsAndPayments");
 
-            ViewBag.PaymentTypes = new SelectList(new RezaB.Data.Localization.LocalizedList<AutoPaymentType, RadiusR.DB.Enums.AutoPaymentType>().GetList(), "Key", "Value");
+            ViewBag.PaymentTypes = new SelectList(new RezaB.Data.Localization.LocalizedList<AutoPaymentType, RadiusR.Localization.Lists.AutoPaymentType>().GetList(), "Key", "Value");
             return View(new ActivateAutomaticPaymentViewModel()
             {
                 CardToken = token,
@@ -647,6 +647,14 @@ namespace RadiusR_Customer_Website.Controllers
         }
         public ActionResult ConnectionStatus()
         {
+            //using (var db = new RadiusR.DB.RadiusREntities())
+            //{
+            //    var domain = db.TelekomAccessCredentials.Find(1);
+            //    RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(Convert.ToInt64(domain.XDSLWebServiceUsername), domain.XDSLWebServicePassword);
+            //    var subscription = db.Subscriptions.Find(User.GiveUserId());
+            //    var result = client.Check(subscription.SubscriptionTelekomInfo.SubscriptionNo);
+            //}
+
             return RedirectToAction("Index");
         }
 

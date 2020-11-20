@@ -20,3 +20,21 @@ function ShowConfirm(form) {
     confirmForm = form;
     box.addClass('open');
 }
+function SetupDisplayBox() {
+    var box = $('div.display-box');
+    var no = box.find('input.red');
+    no.click(function () {
+        box.removeClass('open');
+    });
+}
+function ShowDisplayMessage() {
+    var box = $('div.display-box');
+    box.addClass('open');
+}
+
+$(document).ready(function () {
+    var msg = $('#display-valid-message').html();
+    if (msg.trim()) {
+        ShowDisplayMessage();
+    }
+})

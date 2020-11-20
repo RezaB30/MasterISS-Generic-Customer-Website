@@ -50,7 +50,7 @@ namespace RadiusR_Customer_Website.Models
         public bool IsCancelled { get; set; }
 
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "SubscriberState")]
-        [EnumType(typeof(RadiusR.DB.Enums.CustomerState), typeof(RadiusR.DB.Enums.CustomerState))]
+        [EnumType(typeof(RadiusR.DB.Enums.CustomerState), typeof(RadiusR.Localization.Lists.CustomerState))]
         [UIHint("LocalizedList")]
         public short? ReferralSubscriberState { get; set; }
 

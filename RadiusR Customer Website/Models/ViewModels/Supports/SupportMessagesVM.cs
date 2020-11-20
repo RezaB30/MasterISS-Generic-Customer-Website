@@ -24,7 +24,7 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Supports
         public short State { get; set; }
         public IEnumerable<SupportMessageList> SupportMessageList { get; set; }
         public string Message { get; set; }
-        public bool IsPassedRequestOpenTime { get; set; }
+        public SupportRequestDisplayTypes SupportDisplayType { get; set; }
     }
     public class SupportMessageList
     {

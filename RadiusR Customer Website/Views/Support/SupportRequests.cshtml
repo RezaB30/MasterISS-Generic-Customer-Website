@@ -4,6 +4,8 @@
 
 @{
     ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.SupportAndRequests;
+
+    var HasOpenRequest = (bool)ViewBag.HasOpenRequest;
 }
 
 <div class="content-box title shallow-blue">
@@ -11,9 +13,12 @@
         <tbody>
             <tr>
                 <th class="borderless">@RadiusRCustomerWebSite.Localization.Common.NewRequestDescription</th>
-                <th class="borderless">
-                    @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.NewRequest, "NewRequest", "Support", null, new { @class = "link-button jungle" })
-                </th>
+                @if (!HasOpenRequest)
+                {
+                    <th class="borderless">
+                        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.NewRequest, "NewRequest", "Support", null, new { @class = "link-button jungle" })
+                    </th>
+                }
             </tr>
         </tbody>
     </table>

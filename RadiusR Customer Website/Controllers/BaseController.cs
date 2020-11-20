@@ -61,12 +61,8 @@ namespace RadiusR_Customer_Website.Controllers
         }
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
-
-
             //Localization in Base controller:
-
             string lang = CookieTools.getCulture(Request.Cookies);
-
             var routeData = RouteData.Values;
             var routeCulture = routeData.Where(r => r.Key == "lang").FirstOrDefault();
             if (string.IsNullOrEmpty((string)routeCulture.Value) || routeCulture.Value.ToString() != lang)

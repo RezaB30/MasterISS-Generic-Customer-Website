@@ -33,14 +33,6 @@
                     <td>@Html.DisplayNameFor(m => m.State)</td>
                     <td>
                         <div class="centered">
-                            @*@if (Model.State == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done)
-                                {
-                                    <img class="state-icon" src="/Content/Images/Icons/check.svg" />
-                                }
-                                else
-                                {
-                                    <img class="state-icon" src="/Content/Images/Icons/info.svg" />
-                                }*@
                             @Html.DisplayFor(m => m.State)
                         </div>
                     </td>
@@ -57,64 +49,74 @@
 <div class="content-box">
     <table class="data-table">
         <tbody>
-            @if (Model.CustomerApprovalDate == null && Model.State == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done && Model.IsPassedRequestOpenTime)
+            @if (Model.SupportDisplayType == RadiusR_Customer_Website.Models.ViewModels.Supports.SupportRequestDisplayTypes.OpenRequestAgainDisplay)
             {
-
-            }
-            else
-            {
-                if (Model.CustomerApprovalDate == null)
-                {
-                    <tr class="seperate">
-                        <td>
-                            @using (Html.BeginForm("NewSupportMessage", "Support", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-                                @Html.HiddenFor(m => m.ID)
-                                @Html.HiddenFor(m => m.IsPassedRequestOpenTime)
-                                <table class="data-table" style="table-layout:fixed;">
-                                    <tbody>
-                                        <tr>
-                                            <td class="borderless" colspan="2">
-                                                <div class="centered" style="margin-top:1em;">
-                                                    @Html.TextAreaFor(m => m.Message, new { @placeholder = RadiusRCustomerWebSite.Localization.Common.SupportRequestMessage, @class = "new-request-text", @maxlength = "250" })
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="borderless">
-                                                <div class="centered">
-                                                    <input type="button" id="_solved" class="link-button jungle" value="@RadiusRCustomerWebSite.Localization.Common.ProblemSolved" />
-                                                </div>
-                                            </td>
-                                            <td class="borderless">
-                                                <div class="centered">
-                                                    @if (Model.State == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done && !Model.IsPassedRequestOpenTime)
-                                                    {
-                                                        @Html.Hidden("ForOpenRequest", true)
-                                                        <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.OpenRequestAgain" class="link-button red" />
-                                                    }
-                                                    else
-                                                    {
-                                                        <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.AddNote" class="link-button stencil-blue" />
-                                                    }
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            }
-                        </td>
-                    </tr>
-                }
-            }
-            @if (TempData["Errors"] != null)
-            {
-                <tr>
+                <tr class="seperate">
                     <td>
-                        <div class="centered">
-                            <span class="field-validation-error">@Html.Raw(TempData["Errors"])</span>
-                        </div>
+                        @using (Html.BeginForm("NewSupportMessage", "Support", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(m => m.ID)
+                            <table class="data-table" style="table-layout:fixed;">
+                                <tbody>
+                                    <tr>
+                                        <td class="borderless" colspan="2">
+                                            <div class="centered" style="margin-top:1em;">
+                                                @Html.TextAreaFor(m => m.Message, new { @placeholder = RadiusRCustomerWebSite.Localization.Common.SupportRequestMessage, @class = "new-request-text", @maxlength = "250" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="borderless">
+                                            <div class="centered">
+                                                <input onclick="FormSubmit(submitType.SOLVED);" type="button" class="link-button jungle" style="font-size:small;" value="@RadiusRCustomerWebSite.Localization.Common.ProblemSolved" />
+                                            </div>
+                                        </td>
+                                        <td class="borderless">
+                                            <div class="centered">
+                                                @Html.Hidden("ForOpenRequest", true)
+                                                <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.OpenRequestAgain" style="font-size:small;" class="link-button red" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </td>
+                </tr>
+            }
+            @if (Model.SupportDisplayType == RadiusR_Customer_Website.Models.ViewModels.Supports.SupportRequestDisplayTypes.AddNoteDisplay)
+            {
+                <tr class="seperate">
+                    <td>
+                        @using (Html.BeginForm("NewSupportMessage", "Support", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(m => m.ID)
+                            <table class="data-table" style="table-layout:fixed;">
+                                <tbody>
+                                    <tr>
+                                        <td class="borderless" colspan="2">
+                                            <div class="centered" style="margin-top:1em;">
+                                                @Html.TextAreaFor(m => m.Message, new { @placeholder = RadiusRCustomerWebSite.Localization.Common.SupportRequestMessage, @class = "new-request-text", @maxlength = "250" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="borderless">
+                                            <div class="centered">
+                                                <input onclick="FormSubmit(submitType.SOLVED);" type="button" class="link-button jungle" style="font-size:small;" value="@RadiusRCustomerWebSite.Localization.Common.ProblemSolved" />
+                                            </div>
+                                        </td>
+                                        <td class="borderless">
+                                            <div class="centered">
+                                                <input onclick="FormSubmit(submitType.ADD);" type="button" value="@RadiusRCustomerWebSite.Localization.Common.AddNote" class="link-button stencil-blue" style="font-size:small;" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
                     </td>
                 </tr>
             }
@@ -147,11 +149,19 @@
 </div>
 @section scripts{
     <script>
-        $('#_solved').click(function () {
-            $('form').append('<input id="IsSolved" name="IsSolved" type="hidden" value="True">');
-            ShowConfirm($('form'));
-            //$('form').submit();
-        });
-
+        const submitType = {
+            SOLVED: 'solved',
+            ADD: 'add'
+        }
+        function FormSubmit(_type) {
+            if (_type == submitType.ADD) {
+                $('#IsSolved').remove();
+                $('form').submit();
+            }
+            if (_type == submitType.SOLVED) {
+                $('form').append('<input id="IsSolved" name="IsSolved" type="hidden" value="True">');
+                ShowConfirm($('form'));
+            }
+        }
     </script>
 }

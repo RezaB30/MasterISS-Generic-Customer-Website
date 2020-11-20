@@ -18,7 +18,7 @@ namespace RadiusR_Customer_Website.Models
 
         [Required]
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "PaymentType")]
-        [EnumType(typeof(AutoPaymentType), typeof(RadiusR.DB.Enums.AutoPaymentType))]
+        [EnumType(typeof(AutoPaymentType), typeof(RadiusR.Localization.Lists.AutoPaymentType))]
         [UIHint("LocalizedList")]
         public short PaymentType { get; set; }
     }

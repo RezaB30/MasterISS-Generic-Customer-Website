@@ -35,4 +35,10 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Supports
     //    StaticIP = 6,
     //    Others = 7
     //}
+    public enum SupportRequestDisplayTypes
+    {
+        NoneDisplay = 1,
+        OpenRequestAgainDisplay = 2,
+        AddNoteDisplay = 3
+    }
 }

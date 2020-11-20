@@ -1,6 +1,6 @@
 ﻿SetupHeaderPopups();
 SetupConfirmBox();
-
+SetupDisplayBox();
 
 function ClosePopups() {
     $('.header-popup').hide();

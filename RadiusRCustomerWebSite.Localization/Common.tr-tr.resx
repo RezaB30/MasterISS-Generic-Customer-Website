@@ -498,73 +498,16 @@
   <data name="UsedCount" xml:space="preserve">
     <value>Kullanılan</value>
   </data>
-  <data name="ClientName" xml:space="preserve">
-    <value>Adı Soyadı/Şirket Ünvanı</value>
+  <data name="ViewAllBills" xml:space="preserve">
+    <value>Tüm Faturaları Gör</value>
   </data>
-  <data name="Download" xml:space="preserve">
-    <value>Download</value>
+  <data name="WelcomeMessageHeader" xml:space="preserve">
+    <value>SAYIN &lt;span class="welcome-message"&gt;{0}&lt;/span&gt; HOŞGELDİNİZ</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>E-Posta</value>
+  <data name="WelcomeMessageText" xml:space="preserve">
+    <value>{0} Online İşlemler'de kredi kartı ile faturanızı anında ödeyebilir ve daha bir çok işlemi 7/24 hızlı ve güvenli bir şekilde gerçekleştirebilirsiniz.</value>
   </data>
-  <data name="IssueDate" xml:space="preserve">
-    <value>Tanzim Tarihi</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Oturum Aç</value>
-  </data>
-  <data name="PhoneNo" xml:space="preserve">
-    <value>Telefon</value>
-  </data>
-  <data name="ServiceName" xml:space="preserve">
-    <value>Tarife Adı</value>
-  </data>
-  <data name="Total" xml:space="preserve">
-    <value>Toplam</value>
-  </data>
-  <data name="Upload" xml:space="preserve">
-    <value>Upload</value>
-  </data>
-  <data name="Completed" xml:space="preserve">
-    <value>Tamamlandı</value>
-  </data>
-  <data name="Processing" xml:space="preserve">
-    <value>İşlemde</value>
-  </data>
-  <data name="NewRequest" xml:space="preserve">
-    <value>Yeni Destek Kaydı</value>
-  </data>
-  <data name="NewRequestDescription" xml:space="preserve">
-    <value>Destek talebinde bulunabilir ve takip edebilirsiniz.</value>
-  </data>
-  <data name="Agent" xml:space="preserve">
-    <value>Müşteri Temsilcisi</value>
-  </data>
-  <data name="AddNote" xml:space="preserve">
-    <value>Note Ekle</value>
-  </data>
-  <data name="DescribeSupportRequest" xml:space="preserve">
-    <value>Destek Talebinizi Açıklayınız.</value>
-  </data>
-  <data name="OpenRequestAgain" xml:space="preserve">
-    <value>Talebi Tekrar Aç</value>
-  </data>
-  <data name="ProblemSolved" xml:space="preserve">
-    <value>Sorunum Çözüldü</value>
-  </data>
-  <data name="SupportRequestMessage" xml:space="preserve">
-    <value>Mesajınızı yazınız.</value>
-  </data>
-  <data name="AllSupportRequests" xml:space="preserve">
-    <value>Tüm Destek Kayıtları</value>
-  </data>
-  <data name="SupportDetails" xml:space="preserve">
-    <value>Destek Detayları</value>
-  </data>
-  <data name="IsMarkedRequestSolved" xml:space="preserve">
-    <value>Talebiniz sorunum çözüldü olarak işaretlensin mi ?</value>
-  </data>
-  <data name="SupportRequestApproval" xml:space="preserve">
-    <value>Destek Talebi Onayı</value>
+  <data name="Yes" xml:space="preserve">
+    <value>Evet</value>
   </data>
 </root>

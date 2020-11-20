@@ -797,3 +797,33 @@ div.display-box {
         div.display-box div.confirm-contents * {
             margin: 1em;
         }
+
+/* Grid system */
+
+.grid-col-4 {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 1em;
+    text-align: center;
+}
+
+.grid-col-2 {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 1em;
+    text-align: center;
+}
+
+.grid-col-8 {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    padding: 1em;
+    text-align: center;
+}
+
+.grid-col-12 {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+    padding: 1em;
+    text-align: center;
+}

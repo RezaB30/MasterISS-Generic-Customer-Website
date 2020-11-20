@@ -88,7 +88,7 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;span class=&quot;text-green&quot;&gt;Your request is opened again&lt;/span&gt;.
+        ///   Looks up a localized string similar to Your request is opened again.
         /// </summary>
         public static string OpenedRequestAgain {
             get {
@@ -97,7 +97,7 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;span class=&quot;text-red&quot;&gt;{0} is required.&lt;/span&gt;.
+        ///   Looks up a localized string similar to {0} is required.
         /// </summary>
         public static string Required {
             get {
@@ -106,7 +106,7 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;span class=&quot;text-green&quot;&gt;Send Message&lt;/span&gt;.
+        ///   Looks up a localized string similar to Send Message.
         /// </summary>
         public static string SendMessage {
             get {
@@ -115,7 +115,7 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;span class=&quot;text-green&quot;&gt;Task Completed&lt;/span&gt;.
+        ///   Looks up a localized string similar to Task Completed.
         /// </summary>
         public static string TaskCompleted {
             get {

@@ -47,6 +47,7 @@ namespace RadiusR_Customer_Website.Controllers
                     Upload = clientUsage.Upload
                 };
             }
+            //github test comment
             return View(results);
         }
 
@@ -776,7 +777,7 @@ namespace RadiusR_Customer_Website.Controllers
                         {
                             { SMSParamaterRepository.SMSParameterNameCollection.BillTotal, payableAmount }
                         }));
-                        db.SystemLogs.Add(SystemLogProcessor.BillPayment(billIds, null, dbSubscription.ID, SystemLogInterface.CustomerWebsite, billPaymentToken.SubscriberId.ToString(), PaymentType.VirtualPos));
+                        db.SystemLogs.Add(SystemLogProcessor.BillPayment(billIds, null, dbSubscription.ID, SystemLogInterface.CustomerWebsite, dbSubscription.SubscriberNo, PaymentType.VirtualPos));
                         db.SaveChanges();
                     }
                     // pre-paid sub

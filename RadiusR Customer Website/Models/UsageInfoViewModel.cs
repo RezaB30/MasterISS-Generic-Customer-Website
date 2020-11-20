@@ -23,12 +23,5 @@ namespace RadiusR_Customer_Website.Models
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Total")]
         [UIHint("FormattedBytes")]
         public decimal Total => Download + Upload;
-        //public decimal Total
-        //{
-        //    get
-        //    {
-        //        return Download + Upload;
-        //    }
-        //}
     }
 }

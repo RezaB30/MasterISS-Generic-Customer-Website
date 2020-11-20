@@ -11,16 +11,16 @@ namespace RadiusR_Customer_Website.Models
     {
         public long ID { get; set; }
 
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.FreeRadius), Name = "ServiceName")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "ServiceName")]
         public string ServiceName { get; set; }
 
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "IssueDate")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "IssueDate")]
         public DateTime BillDate { get; set; }
 
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "LastPaymentDate")]
         public DateTime LastPaymentDate { get; set; }
 
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "Total")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Total")]
         [UIHint("Currency")]
         public string Total { get; set; }
 

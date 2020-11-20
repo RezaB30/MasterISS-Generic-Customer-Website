@@ -8,7 +8,7 @@ namespace RadiusR_Customer_Website.Models
 {
     public class ClientUsageInfoViewModel
     {
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "Date")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Date")]
         public DateTime Date { get; set; }
 
         public int? _month { get; set; }

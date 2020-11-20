@@ -8,7 +8,7 @@ namespace RadiusR_Customer_Website.Models
 {
     public class HomePageViewModel
     {
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.FreeRadius), Name = "ServiceName")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "ServiceName")]
         public string ServiceName { get; set; }
 
         public int BillCount { get; set; }
@@ -16,11 +16,11 @@ namespace RadiusR_Customer_Website.Models
         [UIHint("Currency")]
         public string BillsTotal { get; set; }
 
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "Download")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Download")]
         [UIHint("FormattedBytes")]
         public decimal Download { get; set; }
 
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "Upload")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Upload")]
         [UIHint("FormattedBytes")]
         public decimal Upload { get; set; }
 

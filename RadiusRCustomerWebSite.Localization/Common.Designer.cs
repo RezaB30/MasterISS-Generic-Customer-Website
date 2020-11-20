@@ -19,7 +19,7 @@ namespace RadiusRCustomerWebSite.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Common {
@@ -75,6 +75,33 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string AddCard {
             get {
                 return ResourceManager.GetString("AddCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Note.
+        /// </summary>
+        public static string AddNote {
+            get {
+                return ResourceManager.GetString("AddNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agent.
+        /// </summary>
+        public static string Agent {
+            get {
+                return ResourceManager.GetString("Agent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Support Requests.
+        /// </summary>
+        public static string AllSupportRequests {
+            get {
+                return ResourceManager.GetString("AllSupportRequests", resourceCulture);
             }
         }
         
@@ -187,11 +214,29 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Full Name/Company Title.
+        /// </summary>
+        public static string ClientName {
+            get {
+                return ResourceManager.GetString("ClientName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid input. Please try again..
         /// </summary>
         public static string ClientNotFound {
             get {
                 return ResourceManager.GetString("ClientNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        public static string Completed {
+            get {
+                return ResourceManager.GetString("Completed", resourceCulture);
             }
         }
         
@@ -250,6 +295,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Describe support request..
+        /// </summary>
+        public static string DescribeSupportRequest {
+            get {
+                return ResourceManager.GetString("DescribeSupportRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
@@ -268,6 +322,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        public static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-Archive PDF.
         /// </summary>
         public static string EArchivePDF {
@@ -282,6 +345,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string EArchivePDFFileName {
             get {
                 return ResourceManager.GetString("EArchivePDFFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
@@ -457,6 +529,24 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Should your request be marked as my problem solved?.
+        /// </summary>
+        public static string IsMarkedRequestSolved {
+            get {
+                return ResourceManager.GetString("IsMarkedRequestSolved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Issue Date.
+        /// </summary>
+        public static string IssueDate {
+            get {
+                return ResourceManager.GetString("IssueDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last 3 Periods Usage Report.
         /// </summary>
         public static string Last3PeriodsUsage {
@@ -471,6 +561,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string LastPaymentDate {
             get {
                 return ResourceManager.GetString("LastPaymentDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
             }
         }
         
@@ -538,6 +637,24 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Support Request.
+        /// </summary>
+        public static string NewRequest {
+            get {
+                return ResourceManager.GetString("NewRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can request support and follow up..
+        /// </summary>
+        public static string NewRequestDescription {
+            get {
+                return ResourceManager.GetString("NewRequestDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to How can we help you?.
         /// </summary>
         public static string NewSupportRequest {
@@ -597,6 +714,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string NotValid {
             get {
                 return ResourceManager.GetString("NotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Request Again.
+        /// </summary>
+        public static string OpenRequestAgain {
+            get {
+                return ResourceManager.GetString("OpenRequestAgain", resourceCulture);
             }
         }
         
@@ -691,6 +817,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phone No.
+        /// </summary>
+        public static string PhoneNo {
+            get {
+                return ResourceManager.GetString("PhoneNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Processing...Please Wait....
         /// </summary>
         public static string PleaseWait {
@@ -705,6 +840,24 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string POSSuccessMessage {
             get {
                 return ResourceManager.GetString("POSSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problem Is Solved.
+        /// </summary>
+        public static string ProblemSolved {
+            get {
+                return ResourceManager.GetString("ProblemSolved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Processing.
+        /// </summary>
+        public static string Processing {
+            get {
+                return ResourceManager.GetString("Processing", resourceCulture);
             }
         }
         
@@ -799,6 +952,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service Name.
+        /// </summary>
+        public static string ServiceName {
+            get {
+                return ResourceManager.GetString("ServiceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Services.
         /// </summary>
         public static string Services {
@@ -871,6 +1033,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscriber No.
         /// </summary>
         public static string SubscriberNo {
@@ -907,6 +1078,33 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Support Details.
+        /// </summary>
+        public static string SupportDetails {
+            get {
+                return ResourceManager.GetString("SupportDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Support Request Approval.
+        /// </summary>
+        public static string SupportRequestApproval {
+            get {
+                return ResourceManager.GetString("SupportRequestApproval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write your message..
+        /// </summary>
+        public static string SupportRequestMessage {
+            get {
+                return ResourceManager.GetString("SupportRequestMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tariff and Trafic.
         /// </summary>
         public static string TariffAndTraffic {
@@ -921,6 +1119,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string ThisPeriod {
             get {
                 return ResourceManager.GetString("ThisPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
             }
         }
         
@@ -984,6 +1191,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string UnpaidBillsMessage {
             get {
                 return ResourceManager.GetString("UnpaidBillsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload.
+        /// </summary>
+        public static string Upload {
+            get {
+                return ResourceManager.GetString("Upload", resourceCulture);
             }
         }
         

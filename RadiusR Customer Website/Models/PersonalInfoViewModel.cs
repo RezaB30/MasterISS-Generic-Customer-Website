@@ -8,15 +8,15 @@ namespace RadiusR_Customer_Website.Models
 {
     public class PersonalInfoViewModel
     {
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "ClientName")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "ClientName")]
         [UIHint("TextWithPlaceholder")]
         public string ValidDisplayName { get; set; }
 
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "PhoneNo")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "PhoneNo")]
         [UIHint("TextWithPlaceholder")]
         public string PhoneNo { get; set; }
 
-        [Display(ResourceType = typeof(RadiusR.Localization.Model.RadiusR), Name = "Email")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Email")]
         [UIHint("TextWithPlaceholder")]
         public string EMail { get; set; }
 

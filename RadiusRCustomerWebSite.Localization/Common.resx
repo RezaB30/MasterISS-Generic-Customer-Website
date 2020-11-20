@@ -442,7 +442,7 @@
     <value>State</value>
   </data>
   <data name="String1" xml:space="preserve">
-    <value>String1</value>
+    <value />
   </data>
   <data name="SubscriberNo" xml:space="preserve">
     <value>Subscriber No</value>
@@ -501,76 +501,16 @@
   <data name="UsedCount" xml:space="preserve">
     <value>Used</value>
   </data>
-  <data name="ClientName" xml:space="preserve">
-    <value>Full Name/Company Title</value>
+  <data name="ViewAllBills" xml:space="preserve">
+    <value>View All Bills</value>
   </data>
-  <data name="Download" xml:space="preserve">
-    <value>Download</value>
+  <data name="WelcomeMessageHeader" xml:space="preserve">
+    <value>DEAR &lt;span class="welcome-message"&gt;{0}&lt;/span&gt; WELCOME</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Email</value>
+  <data name="WelcomeMessageText" xml:space="preserve">
+    <value>In {0} Online Services, you can pay your invoice instantly with a credit card and you can perform more transactions 24/7 fast and safely.</value>
   </data>
-  <data name="IssueDate" xml:space="preserve">
-    <value>Issue Date</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="PhoneNo" xml:space="preserve">
-    <value>Phone No</value>
-  </data>
-  <data name="ServiceName" xml:space="preserve">
-    <value>Service Name</value>
-  </data>
-  <data name="Total" xml:space="preserve">
-    <value>Total</value>
-  </data>
-  <data name="Upload" xml:space="preserve">
-    <value>Upload</value>
-  </data>
-  <data name="Completed" xml:space="preserve">
-    <value>Completed</value>
-  </data>
-  <data name="Processing" xml:space="preserve">
-    <value>Processing</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="NewRequest" xml:space="preserve">
-    <value>New Support Request</value>
-  </data>
-  <data name="NewRequestDescription" xml:space="preserve">
-    <value>You can request support and follow up.</value>
-  </data>
-  <data name="Agent" xml:space="preserve">
-    <value>Agent</value>
-  </data>
-  <data name="AddNote" xml:space="preserve">
-    <value>Add Note</value>
-  </data>
-  <data name="DescribeSupportRequest" xml:space="preserve">
-    <value>Describe support request.</value>
-  </data>
-  <data name="OpenRequestAgain" xml:space="preserve">
-    <value>Open Request Again</value>
-  </data>
-  <data name="ProblemSolved" xml:space="preserve">
-    <value>Problem Is Solved</value>
-  </data>
-  <data name="SupportRequestMessage" xml:space="preserve">
-    <value>Write your message.</value>
-  </data>
-  <data name="AllSupportRequests" xml:space="preserve">
-    <value>All Support Requests</value>
-  </data>
-  <data name="SupportDetails" xml:space="preserve">
-    <value>Support Details</value>
-  </data>
-  <data name="IsMarkedRequestSolved" xml:space="preserve">
-    <value>Should your request be marked as my problem solved?</value>
-  </data>
-  <data name="SupportRequestApproval" xml:space="preserve">
-    <value>Support Request Approval</value>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

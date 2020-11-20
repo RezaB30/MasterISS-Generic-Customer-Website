@@ -1033,7 +1033,7 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to String1.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string String1 {
             get {

@@ -404,10 +404,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\RadiusR-Manager\RadiusR.Models\RadiusR_Manager.Models.csproj">
-      <Project>{0b536eed-58dc-4e95-8cc2-67f2a9aa9fa9}</Project>
-      <Name>RadiusR_Manager.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RadiusRCustomerWebSite.Localization\RadiusRCustomerWebSite.Localization.csproj">
       <Project>{a426d38b-a221-44eb-949a-dba0e5cae840}</Project>
       <Name>RadiusRCustomerWebSite.Localization</Name>

@@ -111,4 +111,16 @@
     li.change-account-icon span {
         font-size: 0.85em;
     }
+    /**/
+    div.customer-form {
+        display: block;
+        margin: unset;
+        width: unset;
+        text-align: center;
+    }
+
+        div.customer-form input {
+            width: 100%;
+            box-sizing: border-box;
+        }
 }

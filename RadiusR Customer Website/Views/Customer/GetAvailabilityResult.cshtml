@@ -1,0 +1,40 @@
+﻿@model RadiusR_Customer_Website.Models.ViewModels.Customer.AvailabilityResultViewModel
+
+@{
+    ViewBag.Title = "GetAvailabilityResult";
+    Layout = "~/Views/Shared/_NoMenuLayout.cshtml";
+}
+
+@{
+
+    var InfrastructureState = ViewBag.InfrastructureState == null ? true : false;
+    var IsSuccess = ViewBag.IsSuccess == null ? true : false;
+}
+<div class="content-box centered">
+    <div class="content-box-title">
+        <h1 class="standard-blue">Adres Hız Sorgulama</h1>
+    </div>
+    <div class="page-speed-results">
+        <div>
+            <img style="max-width:10em;" src="/Content/Images/Icons/speedmeter.svg" />
+        </div>
+        <span class="head">@Html.DisplayNameFor(m => m.MaxSpeed)</span>
+        <span class="count">@Html.DisplayFor(m => m.MaxSpeed)</span>
+        <span class="head">@Html.DisplayNameFor(m => m.PortState)</span>
+        <span class="count">@Html.DisplayFor(m => m.PortState)</span>
+        <span class="head">@Html.DisplayNameFor(m => m.SVUID)</span>
+        <span class="count">@Html.DisplayFor(m => m.SVUID)</span>
+        @if (!InfrastructureState)
+        {
+            <span class="count">@Html.ValidationMessageFor(m => m.SVUID)</span>
+        }
+        @if (!IsSuccess)
+        {
+            <span class="count">@Html.ValidationMessageFor(m => m.IsSuccess)</span>
+        }
+        <div class="action-btns">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.CallYou, "CallRequestByBBK", "Customer", null, new { @class = "link-button red" })
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.InquireAgain, "InfrastructureByBBK", "Customer", null, new { @class = "link-button stencil-blue" })
+        </div>
+    </div>
+</div>

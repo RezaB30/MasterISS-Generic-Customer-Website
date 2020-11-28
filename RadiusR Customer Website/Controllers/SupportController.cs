@@ -49,16 +49,18 @@ namespace RadiusR_Customer_Website.Controllers
                     TempData["Errors"] = RadiusRCustomerWebSite.Localization.Common.HasActiveRequest;
                     return RedirectToAction("SupportRequests", "Support");
                 }
-                var supportRequests = db.SupportRequestTypes.Where(m => !m.IsStaffOnly).ToArray();
+                var supportRequests = db.SupportRequestTypes.Where(m => !m.IsStaffOnly && !m.IsDisabled).ToArray();
+                var supportSubRequests = db.SupportRequestSubTypes.Where(m => m.SupportRequestTypeID == RequestTypeId).ToArray();
                 if (Request.IsAjaxRequest())
                 {
                     var list = db.SupportRequestSubTypes
-                        .Where(m => m.SupportRequestTypeID == RequestTypeId).Select(m => new { Text = m.Name, Value = m.ID.ToString() });
+                        .Where(m => m.SupportRequestTypeID == RequestTypeId && !m.IsDisabled).Select(m => new { Text = m.Name, Value = m.ID.ToString() });
                     return Json(list.ToArray(), JsonRequestBehavior.AllowGet);
                 }
                 var newRequest = new NewRequestVM
                 {
-                    RequestTypeList = supportRequests.Select(m => new SelectListItem { Text = m.Name, Value = m.ID.ToString() })
+                    RequestTypeList = supportRequests.Select(m => new SelectListItem { Text = m.Name, Value = m.ID.ToString() }),
+                    SubRequestTypeList = supportSubRequests.Select(m => new SelectListItem { Text = m.Name, Value = m.ID.ToString() })
                 };
                 return View(newRequest);
             }
@@ -70,6 +72,7 @@ namespace RadiusR_Customer_Website.Controllers
             if (!ModelState.IsValid)
             {
                 TempData["Errors"] = string.Format(RadiusRCustomerWebSite.Localization.Validation.Required, RadiusRCustomerWebSite.Localization.Common.Message);
+                return RedirectToAction("NewRequest", new { newRequest.RequestTypeId });
             }
             else
             {
@@ -87,7 +90,7 @@ namespace RadiusR_Customer_Website.Controllers
                         StateID = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress,
                         TypeID = newRequest.RequestTypeId,
                         SubTypeID = newRequest.SubRequestTypeId,
-                        SupportPin = CreateSupportPin(),
+                        SupportPin = Utilities.InternalUtilities.CreateSupportPin(),
                         SubscriptionID = User.GiveUserId(),
                         SupportRequestProgresses =
                         {
@@ -233,11 +236,16 @@ namespace RadiusR_Customer_Website.Controllers
                     var PassedTimeSpan = new TimeSpan(0, Convert.ToInt32(PassedTime.Split(':')[0]), Convert.ToInt32(PassedTime.Split(':')[1]), Convert.ToInt32(PassedTime.Split(':')[2]), 0);
                     var subscriptionId = User.GiveUserId();
                     var IsPassedTime = (DateTime.Now - db.SupportRequestProgresses.Where(s => s.SupportRequest.SubscriptionID == subscriptionId).OrderByDescending(s => s.Date).Select(s => s.Date).FirstOrDefault()) < PassedTimeSpan ? false : true;
-                    var SupportRequests = db.SupportRequests
-                        .Where(m => m.SubscriptionID == subscriptionId
-                        && m.SupportRequestProgresses.OrderByDescending(s => s.Date).FirstOrDefault().AppUserID != null
-                        && IsPassedTime == false && m.CustomerApprovalDate == null);
-                    return Json(new { openRequestCount = SupportRequests.Count(), requestIds = SupportRequests.Select(m => m.ID).ToArray() }, JsonRequestBehavior.AllowGet);
+                    var SupportRequests = db.SupportRequests.OrderByDescending(m => m.Date).Where(m => m.SubscriptionID == subscriptionId).FirstOrDefault();
+                    var IsAppUser = SupportRequests.SupportRequestProgresses.OrderByDescending(m => m.Date).FirstOrDefault().AppUserID != null;
+                    var count = 0;
+                    List<long> requestIds = new List<long>();
+                    if (SupportRequests != null && IsAppUser && !IsPassedTime && SupportRequests.CustomerApprovalDate == null)
+                    {
+                        requestIds.Add(SupportRequests.ID);
+                        count = 1;
+                    }
+                    return Json(new { openRequestCount = count, requestIds = requestIds.ToArray() }, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception)
@@ -245,27 +253,7 @@ namespace RadiusR_Customer_Website.Controllers
                 return Json(new { openRequest = 0, requestIds = new long[] { } }, JsonRequestBehavior.AllowGet);
             }
         }
-        #region private methods
-        private readonly Random _random = new Random();
-        private string CreateSupportPin()
-        {
-            var keyData = "0123456789QWERTYUIPASDFGHJKLZXCVBNM0123456789";
-            var pin = string.Empty;
-            while (pin.Length < 12)
-            {
-                var current = _random.Next(0, keyData.Length - 1);
-                pin += keyData[current];
-                //keyData.Remove(current, 1);
-            }
-            using (var db = new RadiusR.DB.RadiusREntities())
-            {
-                if (db.SupportRequests.Where(m => m.SupportPin == pin).FirstOrDefault() != null)
-                {
-                    CreateSupportPin();
-                }
-            }
-            return pin;
-        }
+        #region private methods        
         private bool HasOpenRequest()
         {
             using (var db = new RadiusR.DB.RadiusREntities())
@@ -279,43 +267,40 @@ namespace RadiusR_Customer_Website.Controllers
         }
         private SupportRequestDisplayTypes RequestProgressState(long SupportRequestID)
         {
-            using (var db = new RadiusR.DB.RadiusREntities())
+            using var db = new RadiusR.DB.RadiusREntities();
+            var SupportRequest = db.SupportRequests.Find(SupportRequestID);
+            if (SupportRequest.CustomerApprovalDate == null)
             {
-                var SupportRequest = db.SupportRequests.Find(SupportRequestID);
-                if (SupportRequest.CustomerApprovalDate == null)
+                if (SupportRequest.StateID == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done)
                 {
-                    if (SupportRequest.StateID == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done)
+                    var PassedTime = db.AppSettings.Where(m => m.Key == "SupportRequestPassedTime").Select(m => m.Value).FirstOrDefault();
+                    var PassedTimeSpan = new TimeSpan(0, Convert.ToInt32(PassedTime.Split(':')[0]), Convert.ToInt32(PassedTime.Split(':')[1]), Convert.ToInt32(PassedTime.Split(':')[2]), 0);
+                    var subscriptionId = User.GiveUserId();
+                    var IsPassedTime = (DateTime.Now - SupportRequest.SupportRequestProgresses.OrderByDescending(s => s.Date).Select(s => s.Date).FirstOrDefault()) < PassedTimeSpan ? false : true;
+                    if (IsPassedTime)
                     {
-                        var PassedTime = db.AppSettings.Where(m => m.Key == "SupportRequestPassedTime").Select(m => m.Value).FirstOrDefault();
-                        var PassedTimeSpan = new TimeSpan(0, Convert.ToInt32(PassedTime.Split(':')[0]), Convert.ToInt32(PassedTime.Split(':')[1]), Convert.ToInt32(PassedTime.Split(':')[2]), 0);
-                        var subscriptionId = User.GiveUserId();
-                        var IsPassedTime = (DateTime.Now - SupportRequest.SupportRequestProgresses.OrderByDescending(s => s.Date).Select(s => s.Date).FirstOrDefault()) < PassedTimeSpan ? false : true;
-                        if (IsPassedTime)
+                        return SupportRequestDisplayTypes.NoneDisplay;
+                    }
+                    else
+                    {
+                        if (HasOpenRequest())
                         {
                             return SupportRequestDisplayTypes.NoneDisplay;
                         }
                         else
                         {
-
-                            if (HasOpenRequest())
-                            {
-                                return SupportRequestDisplayTypes.NoneDisplay;
-                            }
-                            else
-                            {
-                                return SupportRequestDisplayTypes.OpenRequestAgainDisplay;
-                            }
+                            return SupportRequestDisplayTypes.OpenRequestAgainDisplay;
                         }
-                    }
-                    else
-                    {
-                        return SupportRequestDisplayTypes.AddNoteDisplay;
                     }
                 }
                 else
                 {
-                    return SupportRequestDisplayTypes.NoneDisplay;
+                    return SupportRequestDisplayTypes.AddNoteDisplay;
                 }
+            }
+            else
+            {
+                return SupportRequestDisplayTypes.NoneDisplay;
             }
         }
         #endregion

@@ -126,6 +126,12 @@
   <data name="AddNote" xml:space="preserve">
     <value>Note Ekle</value>
   </data>
+  <data name="AddressCode" xml:space="preserve">
+    <value>Adres Kodu</value>
+  </data>
+  <data name="AddressInfrastructureQuery" xml:space="preserve">
+    <value>Adres Altyapı Sorgula</value>
+  </data>
   <data name="Agent" xml:space="preserve">
     <value>Müşteri Temsilcisi</value>
   </data>
@@ -138,14 +144,32 @@
   <data name="AutomaticPaymentSubscriptions" xml:space="preserve">
     <value>Otomatik Ödeme Abonelikleri</value>
   </data>
+  <data name="AvailabilityMaxSpeed" xml:space="preserve">
+    <value>Alabileceğiniz Maksimum Hız</value>
+  </data>
   <data name="Back" xml:space="preserve">
     <value>Geri</value>
+  </data>
+  <data name="BackToSite" xml:space="preserve">
+    <value>Siteye Dön</value>
   </data>
   <data name="BankRedirectWaitMessage" xml:space="preserve">
     <value>Bankaya yönlendiriliyorsunuz, lütfen bekleyin ...</value>
   </data>
   <data name="BillsAndPayments" xml:space="preserve">
     <value>Fatura ve Ödemeler</value>
+  </data>
+  <data name="CallMe" xml:space="preserve">
+    <value>Beni Arayın</value>
+  </data>
+  <data name="CallMeRequestCompleted" xml:space="preserve">
+    <value>Beni ara talebiniz alındı</value>
+  </data>
+  <data name="CallMeTitle" xml:space="preserve">
+    <value>Size uygun internet tarifesini sunabilmemiz için iletişim bilgilerinizi bırakın, sizi arayalım</value>
+  </data>
+  <data name="CallYou" xml:space="preserve">
+    <value>Sizi Arayalım</value>
   </data>
   <data name="Cancelled" xml:space="preserve">
     <value>İptal Edilmiş</value>
@@ -168,6 +192,27 @@
   <data name="CardWithActiveAutoPayment" xml:space="preserve">
     <value>Bu kredi kartına bağlı aktif otomatik ödeme talımatınız var. Kredi kartını kaldırmak için önce talımatı iptal edin.</value>
   </data>
+  <data name="ChooseApartment" xml:space="preserve">
+    <value>Kapı No Seçiniz</value>
+  </data>
+  <data name="ChooseBuilding" xml:space="preserve">
+    <value>Apartman Seçiniz</value>
+  </data>
+  <data name="ChooseDistrict" xml:space="preserve">
+    <value>İlçe Seçiniz</value>
+  </data>
+  <data name="ChooseNeighborhood" xml:space="preserve">
+    <value>Mahalle Seçiniz</value>
+  </data>
+  <data name="ChooseProvince" xml:space="preserve">
+    <value>İl Seçiniz</value>
+  </data>
+  <data name="ChooseRegion" xml:space="preserve">
+    <value>Semt Seçiniz</value>
+  </data>
+  <data name="ChooseStreet" xml:space="preserve">
+    <value>Sokak Seçiniz</value>
+  </data>
   <data name="ClientName" xml:space="preserve">
     <value>Adı Soyadı/Şirket Ünvanı</value>
   </data>
@@ -186,6 +231,9 @@
   <data name="CopyrightText" xml:space="preserve">
     <value>© Netspeed İnternet A.Ş &amp;nbsp;|&amp;nbsp; &lt;a href="https://www.netspeed.com.tr" title="Netspeed" target="_blank"&gt;www.netspeed.com.tr&lt;/a&gt;</value>
   </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Adınız Soyadınız</value>
+  </data>
   <data name="CVV" xml:space="preserve">
     <value>CVV</value>
   </data>
@@ -197,6 +245,9 @@
   </data>
   <data name="DescribeSupportRequest" xml:space="preserve">
     <value>Destek Talebinizi Açıklayınız.</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Açıklama</value>
   </data>
   <data name="Details" xml:space="preserve">
     <value>Detaylar</value>
@@ -255,6 +306,9 @@
   <data name="HasActiveRequest" xml:space="preserve">
     <value>Aktif bir destek talebiniz var. Yeni bir tane gönderemezsiniz.</value>
   </data>
+  <data name="InquireAgain" xml:space="preserve">
+    <value>Tekrar Sorgula</value>
+  </data>
   <data name="InstallationAddress" xml:space="preserve">
     <value>Tesis Adresi</value>
   </data>
@@ -284,6 +338,9 @@
   </data>
   <data name="LastPaymentDate" xml:space="preserve">
     <value>Son Ödeme Tarihi</value>
+  </data>
+  <data name="LearnAddressCode" xml:space="preserve">
+    <value>Adres Kodunuzu Öğrenin</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Oturum Aç</value>
@@ -339,6 +396,9 @@
   <data name="OpenRequestAgain" xml:space="preserve">
     <value>Talebi Tekrar Aç</value>
   </data>
+  <data name="Optional" xml:space="preserve">
+    <value>İsteğe Bağlı</value>
+  </data>
   <data name="PasswordSMS" xml:space="preserve">
     <value>Online işlem merkezi giriş şifreniz {0} 'dir.</value>
   </data>
@@ -375,6 +435,9 @@
   <data name="PleaseWait" xml:space="preserve">
     <value>İşleniyor .. Lütfen Bekleyin...</value>
   </data>
+  <data name="PortState" xml:space="preserve">
+    <value>Port Durumu</value>
+  </data>
   <data name="POSSuccessMessage" xml:space="preserve">
     <value>Ödeme başarılı.</value>
   </data>
@@ -386,6 +449,9 @@
   </data>
   <data name="PSTN" xml:space="preserve">
     <value>PSTN</value>
+  </data>
+  <data name="Query" xml:space="preserve">
+    <value>Sorgula</value>
   </data>
   <data name="QuotaPakages" xml:space="preserve">
     <value>Kota Paketleri</value>
@@ -461,6 +527,9 @@
   </data>
   <data name="SupportRequestMessage" xml:space="preserve">
     <value>Mesajınızı yazınız.</value>
+  </data>
+  <data name="SVUID" xml:space="preserve">
+    <value>Sorgu Numarası</value>
   </data>
   <data name="TariffAndTraffic" xml:space="preserve">
     <value>Tarife ve Trafik</value>

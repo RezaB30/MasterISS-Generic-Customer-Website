@@ -4,7 +4,7 @@
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif,'Franklin Gothic Medium', 'Arial Narrow', Arial;
     font-size: 11pt;
     font-weight: normal;
     margin: 0;
@@ -827,3 +827,101 @@ div.display-box {
     padding: 1em;
     text-align: center;
 }
+
+/*Call me and other customer pages css*/
+div.customer-form {
+    display: table;
+    margin: auto;
+    width: 100%;
+    max-width: 40em;
+    background-color: #858585;
+    background-color: rgba(255,255,255,0.2);
+    padding: 3em 2em 2em 2em;
+    color: white;
+}
+
+    div.customer-form input {
+        padding: 0.6em;
+        width: 100%;
+        margin: 1em 0;
+        max-width: 25em;
+    }
+
+    div.customer-form textarea {
+        margin: 1em 0;
+        width: 100%;
+        max-width: 22em;
+        padding: 0.6em;
+        height: 10em;
+    }
+
+    div.customer-form input[type=submit] {
+        border-color: transparent;
+        color: white;
+        background-color: #d05454;
+        font-weight: 500;
+        transition: all 0.5s ease;
+    }
+
+        div.customer-form input[type=submit]:hover {
+            background-color: #bd3434;
+        }
+
+    div.customer-form span.field-validation-error {
+        color: orange;
+    }
+
+    div.customer-form div.validation-container {
+        margin-bottom: 1em;
+    }
+
+div.customer-title {
+    font-size: 1.3em;
+    text-align: center;
+}
+
+a {
+    color: #fef7f8;
+}
+/**/
+.mt-1 {
+    margin-top: 1em;
+}
+/*GetAvailabilityResult*/
+.page-speed-results {
+    background-color: rgba(255,255,255,0.2);
+    max-width: 50em;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+    .page-speed-results span.count {
+        color: #5c9bd1;
+        font-weight: 600;
+        width: 100%;
+        display: inline-block;
+        font-size: 2em;
+        margin-top: 0.2em;
+    }
+
+    .page-speed-results span.head {
+        font-weight: bold;
+        color: #cacaca;
+        display: inline-block;
+        font-size: 1.2em;
+        margin-top: 1.3em;
+    }
+
+.action-btns {
+    margin: 1em;
+}
+
+    .action-btns a {
+        margin: 1em 5em;
+    }
+
+    .action-btns form {
+        margin: 1em 5em;
+        display: inline-block;
+    }
+/**/

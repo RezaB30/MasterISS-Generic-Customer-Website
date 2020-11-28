@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RadiusRAddressQuery" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RadiusRAddressQuery" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="AddressQueryResultsOfstring">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="AddressQueryResultsOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/RadiusRAddressQuery" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Results" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressQueryResultsOfstring" nillable="true" type="tns:AddressQueryResultsOfstring" />
+  <xs:complexType name="AddressQueryRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="APIHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressQueryRequest" nillable="true" type="tns:AddressQueryRequest" />
+  <xs:complexType name="AddressQueryResultsOfArrayOfKeyValuePairOOn8viJD">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="AddressQueryResultsOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/RadiusRAddressQuery" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfKeyValuePair" Namespace="http://schemas.datacontract.org/2004/07/RadiusRAddressQuery" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfKeyValuePair" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressQueryResultsOfArrayOfKeyValuePairOOn8viJD" nillable="true" type="tns:AddressQueryResultsOfArrayOfKeyValuePairOOn8viJD" />
+  <xs:complexType name="ArrayOfKeyValuePair">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValuePair" nillable="true" type="tns:KeyValuePair" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValuePair" nillable="true" type="tns:ArrayOfKeyValuePair" />
+  <xs:complexType name="KeyValuePair">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:long" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KeyValuePair" nillable="true" type="tns:KeyValuePair" />
+  <xs:complexType name="AddressQueryRequestOflong">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="AddressQueryRequestOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/RadiusRAddressQuery" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="long" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AddressQueryRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RequestValue" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddressQueryRequestOflong" nillable="true" type="tns:AddressQueryRequestOflong" />
+  <xs:complexType name="AddressQueryResultsOfAddressDetailsOOn8viJD">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="AddressQueryResultsOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/RadiusRAddressQuery" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="AddressDetails" Namespace="http://schemas.datacontract.org/2004/07/RadiusRAddressQuery" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:AddressDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressQueryResultsOfAddressDetailsOOn8viJD" nillable="true" type="tns:AddressQueryResultsOfAddressDetailsOOn8viJD" />
+  <xs:complexType name="AddressDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressNo" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressDetails" nillable="true" type="tns:AddressDetails" />
+</xs:schema>

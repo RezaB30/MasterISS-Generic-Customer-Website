@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AddressQueryService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_IAddressQueryService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://nsadres.netspeed.com.tr/AddressQueryService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://nsadres.netspeed.com.tr/AddressQueryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://nsadres.netspeed.com.tr/AddressQueryService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RadiusRAddressQuery" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAddressQueryService_GetSeed_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeed" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetSeed_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetProvinces_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinces" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetProvinces_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvincesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetProvinceDistricts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceDistricts" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetProvinceDistricts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceDistrictsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetDistrictRuralRegions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDistrictRuralRegions" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetDistrictRuralRegions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDistrictRuralRegionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetRuralRegionNeighbourhoods_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRuralRegionNeighbourhoods" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetRuralRegionNeighbourhoods_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRuralRegionNeighbourhoodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetNeighbourhoodStreets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNeighbourhoodStreets" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetNeighbourhoodStreets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNeighbourhoodStreetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetStreetBuildings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStreetBuildings" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetStreetBuildings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStreetBuildingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetBuildingApartments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingApartments" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetBuildingApartments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingApartmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetApartmentAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApartmentAddress" />
+  </wsdl:message>
+  <wsdl:message name="IAddressQueryService_GetApartmentAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApartmentAddressResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAddressQueryService">
+    <wsdl:operation name="GetSeed">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressQueryService/GetSeed" message="tns:IAddressQueryService_GetSeed_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressQueryService/GetSeedResponse" message="tns:IAddressQueryService_GetSeed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinces">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressQueryService/GetProvinces" message="tns:IAddressQueryService_GetProvinces_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressQueryService/GetProvincesResponse" message="tns:IAddressQueryService_GetProvinces_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceDistricts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressQueryService/GetProvinceDistricts" message="tns:IAddressQueryService_GetProvinceDistricts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressQueryService/GetProvinceDistrictsResponse" message="tns:IAddressQueryService_GetProvinceDistricts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDistrictRuralRegions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressQueryService/GetDistrictRuralRegions" message="tns:IAddressQueryService_GetDistrictRuralRegions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressQueryService/GetDistrictRuralRegionsResponse" message="tns:IAddressQueryService_GetDistrictRuralRegions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRuralRegionNeighbourhoods">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressQueryService/GetRuralRegionNeighbourhoods" message="tns:IAddressQueryService_GetRuralRegionNeighbourhoods_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressQueryService/GetRuralRegionNeighbourhoodsResponse" message="tns:IAddressQueryService_GetRuralRegionNeighbourhoods_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNeighbourhoodStreets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressQueryService/GetNeighbourhoodStreets" message="tns:IAddressQueryService_GetNeighbourhoodStreets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressQueryService/GetNeighbourhoodStreetsResponse" message="tns:IAddressQueryService_GetNeighbourhoodStreets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetBuildings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressQueryService/GetStreetBuildings" message="tns:IAddressQueryService_GetStreetBuildings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressQueryService/GetStreetBuildingsResponse" message="tns:IAddressQueryService_GetStreetBuildings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingApartments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressQueryService/GetBuildingApartments" message="tns:IAddressQueryService_GetBuildingApartments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressQueryService/GetBuildingApartmentsResponse" message="tns:IAddressQueryService_GetBuildingApartments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApartmentAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressQueryService/GetApartmentAddress" message="tns:IAddressQueryService_GetApartmentAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressQueryService/GetApartmentAddressResponse" message="tns:IAddressQueryService_GetApartmentAddress_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpsBinding_IAddressQueryService" type="tns:IAddressQueryService">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_IAddressQueryService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSeed">
+      <soap:operation soapAction="http://tempuri.org/IAddressQueryService/GetSeed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinces">
+      <soap:operation soapAction="http://tempuri.org/IAddressQueryService/GetProvinces" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceDistricts">
+      <soap:operation soapAction="http://tempuri.org/IAddressQueryService/GetProvinceDistricts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDistrictRuralRegions">
+      <soap:operation soapAction="http://tempuri.org/IAddressQueryService/GetDistrictRuralRegions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRuralRegionNeighbourhoods">
+      <soap:operation soapAction="http://tempuri.org/IAddressQueryService/GetRuralRegionNeighbourhoods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNeighbourhoodStreets">
+      <soap:operation soapAction="http://tempuri.org/IAddressQueryService/GetNeighbourhoodStreets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetBuildings">
+      <soap:operation soapAction="http://tempuri.org/IAddressQueryService/GetStreetBuildings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingApartments">
+      <soap:operation soapAction="http://tempuri.org/IAddressQueryService/GetBuildingApartments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApartmentAddress">
+      <soap:operation soapAction="http://tempuri.org/IAddressQueryService/GetApartmentAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AddressQueryService">
+    <wsdl:port name="BasicHttpsBinding_IAddressQueryService" binding="tns:BasicHttpsBinding_IAddressQueryService">
+      <soap:address location="https://nsadres.netspeed.com.tr/AddressQueryService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

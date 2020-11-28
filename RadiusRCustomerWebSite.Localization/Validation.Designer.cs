@@ -70,6 +70,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Infrastructure Not Found.
+        /// </summary>
+        public static string InfrastructureNotFound {
+            get {
+                return ResourceManager.GetString("InfrastructureNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} can not be more than {1} characters..
         /// </summary>
         public static string MaxLength {

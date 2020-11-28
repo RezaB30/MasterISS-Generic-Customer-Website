@@ -88,6 +88,24 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address Code.
+        /// </summary>
+        public static string AddressCode {
+            get {
+                return ResourceManager.GetString("AddressCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address Infrastructure Query.
+        /// </summary>
+        public static string AddressInfrastructureQuery {
+            get {
+                return ResourceManager.GetString("AddressInfrastructureQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Agent.
         /// </summary>
         public static string Agent {
@@ -124,11 +142,29 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max Speed.
+        /// </summary>
+        public static string AvailabilityMaxSpeed {
+            get {
+                return ResourceManager.GetString("AvailabilityMaxSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         public static string Back {
             get {
                 return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back To Site.
+        /// </summary>
+        public static string BackToSite {
+            get {
+                return ResourceManager.GetString("BackToSite", resourceCulture);
             }
         }
         
@@ -147,6 +183,42 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string BillsAndPayments {
             get {
                 return ResourceManager.GetString("BillsAndPayments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Call Me.
+        /// </summary>
+        public static string CallMe {
+            get {
+                return ResourceManager.GetString("CallMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your call me request has been received..
+        /// </summary>
+        public static string CallMeRequestCompleted {
+            get {
+                return ResourceManager.GetString("CallMeRequestCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We will call you so that we can offer you the appropriate internet tariff..
+        /// </summary>
+        public static string CallMeTitle {
+            get {
+                return ResourceManager.GetString("CallMeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s Call You.
+        /// </summary>
+        public static string CallYou {
+            get {
+                return ResourceManager.GetString("CallYou", resourceCulture);
             }
         }
         
@@ -214,6 +286,69 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Choose Apartment.
+        /// </summary>
+        public static string ChooseApartment {
+            get {
+                return ResourceManager.GetString("ChooseApartment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Choose Building.
+        /// </summary>
+        public static string ChooseBuilding {
+            get {
+                return ResourceManager.GetString("ChooseBuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Choose District.
+        /// </summary>
+        public static string ChooseDistrict {
+            get {
+                return ResourceManager.GetString("ChooseDistrict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Choose Neighborhood.
+        /// </summary>
+        public static string ChooseNeighborhood {
+            get {
+                return ResourceManager.GetString("ChooseNeighborhood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Choose Province.
+        /// </summary>
+        public static string ChooseProvince {
+            get {
+                return ResourceManager.GetString("ChooseProvince", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Choose Region.
+        /// </summary>
+        public static string ChooseRegion {
+            get {
+                return ResourceManager.GetString("ChooseRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Choose Street.
+        /// </summary>
+        public static string ChooseStreet {
+            get {
+                return ResourceManager.GetString("ChooseStreet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full Name/Company Title.
         /// </summary>
         public static string ClientName {
@@ -268,6 +403,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fullname.
+        /// </summary>
+        public static string CustomerName {
+            get {
+                return ResourceManager.GetString("CustomerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CVV.
         /// </summary>
         public static string CVV {
@@ -300,6 +444,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string DescribeSupportRequest {
             get {
                 return ResourceManager.GetString("DescribeSupportRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -475,6 +628,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inquire Again.
+        /// </summary>
+        public static string InquireAgain {
+            get {
+                return ResourceManager.GetString("InquireAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Installation Address.
         /// </summary>
         public static string InstallationAddress {
@@ -561,6 +723,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string LastPaymentDate {
             get {
                 return ResourceManager.GetString("LastPaymentDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn Your Address Code.
+        /// </summary>
+        public static string LearnAddressCode {
+            get {
+                return ResourceManager.GetString("LearnAddressCode", resourceCulture);
             }
         }
         
@@ -727,6 +898,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Optional.
+        /// </summary>
+        public static string Optional {
+            get {
+                return ResourceManager.GetString("Optional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your customer website password is {0}..
         /// </summary>
         public static string PasswordSMS {
@@ -835,6 +1015,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Port State.
+        /// </summary>
+        public static string PortState {
+            get {
+                return ResourceManager.GetString("PortState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payment successful..
         /// </summary>
         public static string POSSuccessMessage {
@@ -867,6 +1056,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string PSTN {
             get {
                 return ResourceManager.GetString("PSTN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Query.
+        /// </summary>
+        public static string Query {
+            get {
+                return ResourceManager.GetString("Query", resourceCulture);
             }
         }
         
@@ -1101,6 +1299,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string SupportRequestMessage {
             get {
                 return ResourceManager.GetString("SupportRequestMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Query No.
+        /// </summary>
+        public static string SVUID {
+            get {
+                return ResourceManager.GetString("SVUID", resourceCulture);
             }
         }
         

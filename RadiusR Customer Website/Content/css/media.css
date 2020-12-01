@@ -40,6 +40,22 @@
     div.shared-space-4, div.shared-space-2 {
         width: 100%;
     }
+
+    /*TOOLTIP CSS*/
+    .tooltiptext {
+        visibility: visible;
+        width: 13em;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 0.1em 0;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        top: 7em;
+        right: 7em;
+    }
 }
 
 @media only screen and (max-width: 38em) {
@@ -67,7 +83,7 @@
         right: 8em;
     }
 
-    div.language-container{
+    div.language-container {
         right: 3em;
     }
 
@@ -123,4 +139,27 @@
             width: 100%;
             box-sizing: border-box;
         }
+
+    div.availability-form-inputs {
+        width: 100%;
+        display: inline-block;
+        margin: 0 1em;
+        max-width: 20em;
+    }
+
+    /*TOOLTIP CSS*/
+    .tooltiptext {
+        visibility: visible;
+        width: 13em;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 0.1em 0;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        top: 7em;
+        right: 7em;
+    }
 }

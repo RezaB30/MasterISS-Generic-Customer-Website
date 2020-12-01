@@ -132,12 +132,12 @@ namespace RadiusR_Customer_Website.Controllers
                         SupportRequestSummary = SupportProgress.SubTypeID == null ? "" : SupportProgress.SupportRequestSubType.Name,
                         //IsPassedRequestOpenTime = (DateTime.Now - SupportProgress.SupportRequestProgresses
                         //.OrderByDescending(m => m.Date).Select(m => m.Date).FirstOrDefault()) > PassedTimeSpan ? true : false,
-                        SupportMessageList = SupportProgress.SupportRequestProgresses.OrderByDescending(m => m.Date).Select(m => new SupportMessageList()
+                        SupportMessageList = SupportProgress.SupportRequestProgresses.Where(m => m.IsVisibleToCustomer).OrderByDescending(m => m.Date).Select(m => new SupportMessageList()
                         {
                             Message = m.Message,
                             MessageDate = m.Date,
                             SenderName = m.AppUserID == null ? User.Identity.Name.Length > 20 ? User.Identity.Name.Substring(0, 20) + "..." : User.Identity.Name
-                            : RadiusRCustomerWebSite.Localization.Common.Agent,
+                              : RadiusRCustomerWebSite.Localization.Common.Agent,
                             IsCustomer = m.AppUserID == null ? true : false
                         })
                     };
@@ -151,7 +151,7 @@ namespace RadiusR_Customer_Website.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult NewSupportMessage(long ID, string Message, bool ForOpenRequest = false, bool IsSolved = false)
+        public ActionResult NewSupportMessage(long ID, string Message, bool ForOpenRequest = false, bool IsSolved = false, bool ForAddNote = false)
         {
             using (var db = new RadiusR.DB.RadiusREntities())
             {
@@ -166,9 +166,17 @@ namespace RadiusR_Customer_Website.Controllers
                     {
                         SupportProgress.CustomerApprovalDate = DateTime.Now;
                         SupportProgress.StateID = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done;
+                        SupportProgress.SupportRequestProgresses.Add(new RadiusR.DB.SupportRequestProgress()
+                        {
+                            ActionType = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestActionTypes.Create,
+                            Date = DateTime.Now,
+                            IsVisibleToCustomer = true,
+                            Message = Message
+                        });
                         db.SaveChanges();
                         generalLogger.Warn("Problem is solved . User id : " + User.GiveUserId() + " Request Id : " + ID);
                         TempData["Errors"] = RadiusRCustomerWebSite.Localization.Validation.TaskCompleted;
+                        return RedirectToAction("SupportDetails", "Support", new { ID = ID });
                     }
                     if (ForOpenRequest)
                     {
@@ -178,7 +186,8 @@ namespace RadiusR_Customer_Website.Controllers
                             return RedirectToAction("SupportRequests", "Support");
                         }
                         SupportProgress.StateID = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress;
-                        db.SaveChanges();
+                        SupportProgress.AssignedGroupID = null;
+                        SupportProgress.RedirectedGroupID = null;
                         SupportProgress.SupportRequestProgresses.Add(new RadiusR.DB.SupportRequestProgress()
                         {
                             ActionType = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestActionTypes.ChangeState,
@@ -192,7 +201,7 @@ namespace RadiusR_Customer_Website.Controllers
                         generalLogger.Warn("Opened request again. Request id : " + ID + " User id : " + User.GiveUserId());
                         TempData["Errors"] = RadiusRCustomerWebSite.Localization.Validation.OpenedRequestAgain;
                     }
-                    else
+                    if (ForAddNote)
                     {
                         SupportProgress.SupportRequestProgresses.Add(new RadiusR.DB.SupportRequestProgress()
                         {
@@ -237,7 +246,7 @@ namespace RadiusR_Customer_Website.Controllers
                     var subscriptionId = User.GiveUserId();
                     var IsPassedTime = (DateTime.Now - db.SupportRequestProgresses.Where(s => s.SupportRequest.SubscriptionID == subscriptionId).OrderByDescending(s => s.Date).Select(s => s.Date).FirstOrDefault()) < PassedTimeSpan ? false : true;
                     var SupportRequests = db.SupportRequests.OrderByDescending(m => m.Date).Where(m => m.SubscriptionID == subscriptionId).FirstOrDefault();
-                    var IsAppUser = SupportRequests.SupportRequestProgresses.OrderByDescending(m => m.Date).FirstOrDefault().AppUserID != null;
+                    var IsAppUser = SupportRequests == null ? false : SupportRequests.SupportRequestProgresses.Where(m => m.IsVisibleToCustomer == true).OrderByDescending(m => m.Date).FirstOrDefault().AppUserID != null;
                     var count = 0;
                     List<long> requestIds = new List<long>();
                     if (SupportRequests != null && IsAppUser && !IsPassedTime && SupportRequests.CustomerApprovalDate == null)

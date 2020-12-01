@@ -26,14 +26,15 @@
             </div>
             <div class="captcha" style="margin-top:2em;">
                 <div class="captcha-image-wrapper">
-                    <img width="350" height="50" src="@Url.Action("Index","Captcha")" />
+                    <img width="265" height="50" src="@Url.Action("Index","Captcha")" />
                 </div>
             </div>
             @Html.EditorFor(m => m.Captcha, new { htmlAttributes = new { @placeholder = RadiusRCustomerWebSite.Localization.Common.Captcha, @autocomplete = "off" } })
             <div>@Html.ValidationMessageFor(m => m.Captcha)</div>
             <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.Send" />
-            <div class="centered"><a class="link-button stencil-blue" href="https://netspeed.com.tr">@RadiusRCustomerWebSite.Localization.Common.BackToSite</a></div>
-
+            <div class="centered">
+                <a class="link-button stencil-blue" href="https://netspeed.com.tr">@RadiusRCustomerWebSite.Localization.Common.BackToSite</a>
+            </div>
         </div>
     }
 </div>

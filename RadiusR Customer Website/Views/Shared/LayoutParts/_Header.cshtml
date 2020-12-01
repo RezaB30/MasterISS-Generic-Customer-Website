@@ -17,6 +17,8 @@
     </div>
     <div class="header-right-container">
         <ul>
+            @*<li class="header-right-item">Abonelikleriniz</li>
+                <li class="header-right-item"><div class="account-animate"></div></li>*@
             <li class="header-right-item change-account-icon" title="@RadiusR.Localization.Model.RadiusR.SubscriberNo">
                 <span>@subscriptionBag.FirstOrDefault(sb => sb.ID == User.GiveUserId().Value.ToString()).SubscriberNo</span>
                 <div class="header-popup">
@@ -32,7 +34,7 @@
                                         @RadiusRCustomerWebSite.Localization.Common.Service_Services
                                     </td>
                                     <td style="text-align: right;">
-                                        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ShowAll, "Services", null, new { @style = "white-space: nowrap;" })
+                                        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ShowAll, "Services", "Home", null, new { @style = "white-space: nowrap;" })
                                     </td>
                                 </tr>
                             </table>
@@ -48,7 +50,7 @@
                             else
                             {
                                 <li>
-                                    @Html.ActionLink(item.SubscriberNo, "ChangeSubClient", new { id = item.ID }, new { @class = "icon-item info-icon" })
+                                    @Html.ActionLink(item.SubscriberNo, "ChangeSubClient", "Home", new { id = item.ID }, new { @class = "icon-item info-icon" })
                                 </li>
                             }
                         }

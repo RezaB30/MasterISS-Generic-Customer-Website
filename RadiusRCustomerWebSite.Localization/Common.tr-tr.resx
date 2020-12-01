@@ -219,6 +219,9 @@
   <data name="ClientNotFound" xml:space="preserve">
     <value>Hatalı giriş yaptınız. Lütfen tekrar deneyiniz.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Tamamlandı</value>
   </data>
@@ -290,6 +293,9 @@
   </data>
   <data name="ExtendPacket" xml:space="preserve">
     <value>Paketi Uzat</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Ad Soyad</value>
   </data>
   <data name="FUPDownload" xml:space="preserve">
     <value>Gündüz Download</value>
@@ -515,6 +521,9 @@
   </data>
   <data name="SubscriberState" xml:space="preserve">
     <value>Abone Durum</value>
+  </data>
+  <data name="SubscriptionInformationTitle" xml:space="preserve">
+    <value>Diğer aboneliklerinizi buradan görebilirsiniz.</value>
   </data>
   <data name="SupportAndRequests" xml:space="preserve">
     <value>Destek ve Talepler</value>

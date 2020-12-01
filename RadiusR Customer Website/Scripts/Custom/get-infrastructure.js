@@ -58,6 +58,7 @@ function EnableSelectList() {
     })
 }
 function ClearList(responseId) {
+    $('#captcha_content').find("div").remove();
     $(responseId).val("");
     var container = $(responseId + "List");
     container.html("");
@@ -117,3 +118,8 @@ function CheckCaptcha() {
         }
     })
 }
+var enter = document.getElementById("Captcha").addEventListener("keyup", function (event) {
+    if (event.which == 13) {
+        $('input[type=button]').click();
+    }
+})

@@ -1,32 +1,9 @@
 ﻿@model RadiusR_Customer_Website.Models.ViewModels.Customer.InfrastructureBBK
 @using RezaB.Web.Helpers
 @{
-    ViewBag.Title = "InfrastructureByBBK";
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.AddressInfrastructureQuery;
     Layout = "~/Views/Shared/_NoMenuLayout.cshtml";
 }
-<style>
-    #overlay {
-        background-color: rgba(13, 11, 11, 0.61);
-        z-index: 999;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        display: none;
-    }
-
-    .invalidInput {
-        border: 2px solid red;
-    }
-
-    div.availability-inputs {
-        width: 100%;
-        display: inline-block;
-        margin: 0 1em;
-        max-width: 20em;
-    }
-</style>
 <div id="overlay"></div>
 <div class="customer-form centered" style="margin-top:5em; border-radius:10px; max-width:50em;">
     <div class="customer-title" style="margin-bottom:2em;">
@@ -97,20 +74,19 @@
             }
         </datalist>
     </div>
-    <div class="mt-1 availability-inputs" style="width: 100%;max-width: 50em;">
+    <div class="mt-1 availability-form-inputs">
         <div class="captcha" style="margin-top:2em;">
             <div class="captcha-image-wrapper" id="captcha_content">
-                <img src="@Url.Action("AvailabilityCaptcha","Captcha",new { id = 1 })">
+                <img width="265" height="50" src="@Url.Action("AvailabilityCaptcha","Captcha",new { id = 1 })">
             </div>
         </div>
     </div>
-    <div class="mt-1 availability-inputs" style="width: 100%;max-width: 50em;">
+    <div class="mt-1 availability-form-inputs">
         @Html.TextBoxFor(m => m.Captcha, new { @placeholder = RadiusRCustomerWebSite.Localization.Common.Captcha, @autocomplete = "off" })
     </div>
-    <div class="mt-1 availability-inputs" style="width: 100%;max-width: 50em;">
+    <div class="mt-1 availability-form-inputs">
         <input class="red" type="button" onclick="CheckCaptcha();" value="@RadiusRCustomerWebSite.Localization.Common.Query" />
     </div>
-
 </div>
 
 

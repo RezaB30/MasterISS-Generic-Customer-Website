@@ -167,6 +167,26 @@ div.header-right-container {
     padding-left: 1.6em;
 }
 
+.account-animate {
+    background-image: url(../Images/Icons/arrow-right.svg);
+    background-repeat: no-repeat;
+    background-size: 1.5em;
+    width: 2em;
+    height: 2em;
+    margin-top: 0.8em;
+    animation: account-animate 2s infinite;
+}
+
+@keyframes account-animate {
+    from {
+        width: 2em;
+    }
+
+    to {
+        width: 1.5em;
+    }
+}
+
 .user-management-icon {
     background-image: url('../Images/Icons/user.svg');
     padding-left: 3em;
@@ -708,7 +728,7 @@ text-green {
     }
 
 .agent-support-icon {
-    background-image: url('../Images/Icons/agent.ico');
+    background-image: url('../Images/Icons/headset.svg');
     padding-left: 3em;
     background-position: 0.3em center;
     background-size: 2.2em;
@@ -844,13 +864,13 @@ div.customer-form {
         padding: 0.6em;
         width: 100%;
         margin: 1em 0;
-        max-width: 25em;
+        max-width: 20em;
     }
 
     div.customer-form textarea {
         margin: 1em 0;
         width: 100%;
-        max-width: 22em;
+        max-width: 18em;
         padding: 0.6em;
         height: 10em;
     }
@@ -882,6 +902,10 @@ div.customer-title {
 
 a {
     color: #fef7f8;
+}
+
+.multiline-text {
+    white-space: pre-line;
 }
 /**/
 .mt-1 {
@@ -925,3 +949,86 @@ a {
         display: inline-block;
     }
 /**/
+/*Infrastructure BBK*/
+#overlay {
+    background-color: rgba(13, 11, 11, 0.61);
+    z-index: 999;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.invalidInput {
+    border: 2px solid red;
+}
+
+div.availability-inputs {
+    width: 100%;
+    display: inline-block;
+    margin: 0 1em;
+    max-width: 20em;
+}
+
+div.availability-form-inputs {
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: 20em;
+}
+
+input.arrow {
+    background-image: url(/Content/Images/Icons/arrow-right.svg);
+    background-position: right;
+    background-size: 2em;
+    background-repeat: no-repeat;
+}
+
+    input.arrow:hover {
+        background-image: url(/Content/Images/Icons/arrow-down.svg);
+        background-position: right;
+        background-size: 1em;
+        background-repeat: no-repeat;
+    }
+/**/
+
+/*TOOLTIP CSS*/
+.tooltiptext {
+    visibility: visible;
+    width: 13em;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.1em 0;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 4em;
+    right: 7em;
+}
+
+.tooltiptext-animate {
+    background-image: url(../../../Content/Images/Icons/arrow-up-white.svg);
+    background-size: 2em;
+    background-repeat: no-repeat;
+    background-position: top;
+    width: 100%;
+    height: 3em;
+    animation-name: tooltip_img;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes tooltip_img {
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

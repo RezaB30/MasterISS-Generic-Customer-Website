@@ -12,7 +12,8 @@ using System.Web.Mvc;
 
 namespace RadiusR_Customer_Website.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "Closed")]
+    //[AllowAnonymous]
     public class CustomerController : BaseController
     {
         Logger customer = LogManager.GetLogger("customer");
@@ -78,7 +79,7 @@ namespace RadiusR_Customer_Website.Controllers
                 Date = DateTime.Now,
                 IsVisibleToCustomer = false,
                 StateID = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress,
-                TypeID = 2,
+                TypeID = 2, // " BENİ ARA " ID
                 SubTypeID = null,
                 SupportPin = Utilities.InternalUtilities.CreateSupportPin(),
                 SubscriptionID = null,
@@ -88,9 +89,9 @@ namespace RadiusR_Customer_Website.Controllers
                             {
                                 Date = DateTime.Now,
                                 IsVisibleToCustomer = false,
-                                Message =$"[{CallRequest.CustomerName}]{Environment.NewLine}" +
-                                $"[{CallRequest.PhoneNo}]{Environment.NewLine}" +
-                                $"[{CallRequest.Description}]",
+                                Message =$"{RadiusRCustomerWebSite.Localization.Common.CustomerName} : {CallRequest.CustomerName}{Environment.NewLine}" +
+                                $"{RadiusRCustomerWebSite.Localization.Common.PhoneNo} : {CallRequest.PhoneNo}{Environment.NewLine}" +
+                                $"{RadiusRCustomerWebSite.Localization.Common.Description} : {CallRequest.Description}",
                                 ActionType = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestActionTypes.Create
                             }
                         }
@@ -283,7 +284,7 @@ namespace RadiusR_Customer_Website.Controllers
             if (string.IsNullOrEmpty(Captcha) || Captcha.ToLower() != Session["AvailabilityCaptcha"] as string)
             {
                 var validate = "<div><span class='field-validation-error'>" + string.Format(RadiusRCustomerWebSite.Localization.Common.NotValid, RadiusRCustomerWebSite.Localization.Common.Captcha) + "</span></div>";
-                return Json(new { captchaImg = "<img src='" + Url.Action("AvailabilityCaptcha", "Captcha", new { id = random.Next(1, 999999999) }) + "' />" + validate, IsSuccess = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { captchaImg = "<img width='265' height='50' src='" + Url.Action("AvailabilityCaptcha", "Captcha", new { id = random.Next(1, 999999999) }) + "' />" + validate, IsSuccess = false }, JsonRequestBehavior.AllowGet);
             }
             return Json(new { IsSuccess = true }, JsonRequestBehavior.AllowGet);
         }

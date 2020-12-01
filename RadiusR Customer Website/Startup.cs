@@ -49,7 +49,7 @@ namespace RadiusR_Customer_Website
                 CookieName = "RadiusRCustomer",
                 ExpireTimeSpan = Properties.Settings.Default.CookieExpiration,
                 CookieSameSite = SameSiteMode.None,
-                CookieHttpOnly = true,
+                CookieHttpOnly = true,                
                 CookieSecure = CookieSecureOption.SameAsRequest
             });
         }

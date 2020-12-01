@@ -219,6 +219,9 @@
   <data name="ClientNotFound" xml:space="preserve">
     <value>Invalid input. Please try again.</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Completed</value>
   </data>
@@ -290,6 +293,9 @@
   </data>
   <data name="ExtendPacket" xml:space="preserve">
     <value>Extend Packet</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Fullname</value>
   </data>
   <data name="FUPDownload" xml:space="preserve">
     <value>Daily Download</value>
@@ -518,6 +524,9 @@
   </data>
   <data name="SubscriberState" xml:space="preserve">
     <value>Subscriber State</value>
+  </data>
+  <data name="SubscriptionInformationTitle" xml:space="preserve">
+    <value>You can see your other subscriptions from here.</value>
   </data>
   <data name="SupportAndRequests" xml:space="preserve">
     <value>Support and Requests</value>

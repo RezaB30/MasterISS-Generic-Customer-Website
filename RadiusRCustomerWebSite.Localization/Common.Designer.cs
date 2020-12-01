@@ -367,6 +367,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Completed.
         /// </summary>
         public static string Completed {
@@ -579,6 +588,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string ExtendPacket {
             get {
                 return ResourceManager.GetString("ExtendPacket", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fullname.
+        /// </summary>
+        public static string FullName {
+            get {
+                return ResourceManager.GetString("FullName", resourceCulture);
             }
         }
         
@@ -1263,6 +1281,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string SubscriberState {
             get {
                 return ResourceManager.GetString("SubscriberState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can see your other subscriptions from here..
+        /// </summary>
+        public static string SubscriptionInformationTitle {
+            get {
+                return ResourceManager.GetString("SubscriptionInformationTitle", resourceCulture);
             }
         }
         

@@ -121,7 +121,7 @@
     <value>Aktif</value>
   </data>
   <data name="Inactive" xml:space="preserve">
-    <value>Passif</value>
+    <value>Pasif</value>
   </data>
   <data name="InProcess" xml:space="preserve">
     <value>İşlemde</value>

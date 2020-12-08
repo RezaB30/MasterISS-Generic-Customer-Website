@@ -1,0 +1,41 @@
+﻿@model RadiusR_Customer_Website.Models.ViewModels.Supports.SupportMessagesVM
+
+<div class="content-box">
+    <div class="shared-space-2">
+        <div class="">
+            <div class="usage-info-item standard-blue">
+                <div>
+                    @Html.DisplayFor(m => m.SupportRequestName)
+                </div>
+                <div class="title">
+                    @Html.DisplayFor(m => m.SupportRequestSummary)
+                </div>
+            </div>
+        </div>
+        <table class="data-table">
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.SupportNo)</td>
+                    <td class="centered">@Html.DisplayFor(m => m.SupportNo)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.SupportDate)</td>
+                    <td class="centered">@Html.DisplayFor(m => m.SupportDate)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(m => m.State)</td>
+                    <td>
+                        <div class="centered">
+                            @Html.DisplayFor(m => m.State)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="centered">
+                        @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.AllSupportRequests, "SupportRequests", "Support", null, new { @class = "standard-blue" })
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

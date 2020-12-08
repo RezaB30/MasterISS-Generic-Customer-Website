@@ -87,7 +87,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RadiusR.DB, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.DB.1.0.4-alpha2\lib\net452\RadiusR.DB.dll</HintPath>
+      <HintPath>..\packages\RadiusR.DB.1.0.4-alpha4\lib\net452\RadiusR.DB.dll</HintPath>
     </Reference>
     <Reference Include="RadiusR.DB.Utilities, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RadiusR.DB.Utilities.1.0.1\lib\net452\RadiusR.DB.Utilities.dll</HintPath>
@@ -256,6 +256,7 @@
     <Compile Include="Models\ViewModels\Customer\AvailabilityResultViewModel.cs" />
     <Compile Include="Models\ViewModels\Customer\CustomerCallRequest.cs" />
     <Compile Include="Models\ViewModels\Customer\InfrastructureBBK.cs" />
+    <Compile Include="Models\ViewModels\Home\ConnectionStatusViewModel.cs" />
     <Compile Include="Models\ViewModels\Supports\NewRequestVM.cs" />
     <Compile Include="Models\ViewModels\Supports\RequestSupportMessage.cs" />
     <Compile Include="Models\ViewModels\Supports\SupportMessagesVM.cs" />
@@ -266,16 +267,6 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="RadiusRModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RadiusRModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RadiusRModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RadiusRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Utilities\InternalUtilities.cs" />
@@ -305,6 +296,7 @@
     <Content Include="Content\Images\Icons\eye-close-up.svg" />
     <Content Include="Content\Images\Icons\agent.ico" />
     <Content Include="Content\Images\Icons\headset.svg" />
+    <Content Include="Content\Images\Icons\notification-alert.svg" />
     <Content Include="Content\Images\Icons\speedmeter.svg" />
     <Content Include="Content\Images\Shared\header-logo.png" />
     <Content Include="Content\Images\Shared\logo.png" />
@@ -336,14 +328,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="RadiusRModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RadiusRModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="RadiusRModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RadiusRModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\Custom\captcha.js" />
     <Content Include="Scripts\Custom\confirm-box.js" />
     <Content Include="Scripts\Custom\get-infrastructure.js" />
@@ -422,6 +406,7 @@
     <Content Include="Views\Customer\GetAvailabilityResult.cshtml" />
     <Content Include="Views\Customer\CallRequestByBBK.cshtml" />
     <Content Include="Views\Shared\LayoutParts\_InformationMessage.cshtml" />
+    <Content Include="Views\Support\SupportDetailsContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

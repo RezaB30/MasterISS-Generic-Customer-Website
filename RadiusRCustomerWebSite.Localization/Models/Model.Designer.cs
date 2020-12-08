@@ -106,6 +106,24 @@ namespace RadiusRCustomerWebSite.Localization.Models {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection Status.
+        /// </summary>
+        public static string ConnectionStatus {
+            get {
+                return ResourceManager.GetString("ConnectionStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection Type.
+        /// </summary>
+        public static string ConnectionType {
+            get {
+                return ResourceManager.GetString("ConnectionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string Date {
@@ -124,6 +142,15 @@ namespace RadiusRCustomerWebSite.Localization.Models {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download Speed.
+        /// </summary>
+        public static string DownloadSpeed {
+            get {
+                return ResourceManager.GetString("DownloadSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End Date.
         /// </summary>
         public static string EndDate {
@@ -138,6 +165,15 @@ namespace RadiusRCustomerWebSite.Localization.Models {
         public static string FullName {
             get {
                 return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Address.
+        /// </summary>
+        public static string IPAddress {
+            get {
+                return ResourceManager.GetString("IPAddress", resourceCulture);
             }
         }
         
@@ -201,6 +237,24 @@ namespace RadiusRCustomerWebSite.Localization.Models {
         public static string TariffName {
             get {
                 return ResourceManager.GetString("TariffName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Speed.
+        /// </summary>
+        public static string UploadSpeed {
+            get {
+                return ResourceManager.GetString("UploadSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service Number.
+        /// </summary>
+        public static string XDSLNo {
+            get {
+                return ResourceManager.GetString("XDSLNo", resourceCulture);
             }
         }
     }

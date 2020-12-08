@@ -26,29 +26,7 @@ namespace RadiusR_Customer_Website.Utilities
         public class SubscriptionBagItem
         {
             public string ID { get; set; }
-
             public string SubscriberNo { get; set; }
-        }
-
-        private static readonly Random _random = new Random();
-        public static string CreateSupportPin()
-        {
-            var keyData = "0123456789QWERTYUIPASDFGHJKLZXCVBNM0123456789";
-            var pin = string.Empty;
-            while (pin.Length < 12)
-            {
-                var current = _random.Next(0, keyData.Length - 1);
-                pin += keyData[current];
-                //keyData.Remove(current, 1);
-            }
-            using (var db = new RadiusR.DB.RadiusREntities())
-            {
-                if (db.SupportRequests.Where(m => m.SupportPin == pin).FirstOrDefault() != null)
-                {
-                    CreateSupportPin();
-                }
-            }
-            return pin;
         }
         public static string GetUserIP()
         {
@@ -65,7 +43,7 @@ namespace RadiusR_Customer_Website.Utilities
                 }
                 return VisitorsIPAddr;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "???";
             }

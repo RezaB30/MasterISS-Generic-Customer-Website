@@ -309,6 +309,9 @@
   <data name="GeneralState" xml:space="preserve">
     <value>General State</value>
   </data>
+  <data name="Go" xml:space="preserve">
+    <value>Go</value>
+  </data>
   <data name="HasActiveRequest" xml:space="preserve">
     <value>You have an active support request. Can not send a new one.</value>
   </data>
@@ -371,6 +374,9 @@
   </data>
   <data name="MyDocuments" xml:space="preserve">
     <value>My Documents</value>
+  </data>
+  <data name="NewNotification" xml:space="preserve">
+    <value>You have a new notification</value>
   </data>
   <data name="NewRequest" xml:space="preserve">
     <value>New Support Request</value>

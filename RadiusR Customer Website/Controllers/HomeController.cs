@@ -47,7 +47,6 @@ namespace RadiusR_Customer_Website.Controllers
                     Upload = clientUsage.Upload
                 };
             }
-            //github test comment
             return View(results);
         }
 
@@ -650,12 +649,25 @@ namespace RadiusR_Customer_Website.Controllers
         {
             //using (var db = new RadiusR.DB.RadiusREntities())
             //{
-            //    var domain = db.TelekomAccessCredentials.Find(1);
-            //    RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(Convert.ToInt64(domain.XDSLWebServiceUsername), domain.XDSLWebServicePassword);
-            //    var subscription = db.Subscriptions.Find(User.GiveUserId());
-            //    var result = client.Check(subscription.SubscriptionTelekomInfo.SubscriptionNo);
-            //}
+            //    var Subscription = db.Subscriptions.Find(User.GiveUserId());
+            //    if (Subscription == null)
+            //        return RedirectToAction("Index");
 
+            //    var Domain = db.TelekomAccessCredentials.Find(Subscription.DomainID);
+            //    RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(Convert.ToInt64(Domain.XDSLWebServiceUsername), Domain.XDSLWebServicePassword);
+            //    var Result = client.Check(Subscription.SubscriptionTelekomInfo.SubscriptionNo);
+            //    if (Result.InternalException != null)
+            //        return RedirectToAction("Index");
+            //    var model = new Models.ViewModels.Home.ConnectionStatusViewModel()
+            //    {
+            //        ConnectionStatus = Result.Data.OperationStatus.ToString(),
+            //        CurrentDownload = Result.Data.CurrentDown,
+            //        CurrentUpload = Result.Data.CurrentUp,
+            //        XDSLNo = Subscription.SubscriptionTelekomInfo.SubscriptionNo,
+            //        XDSLType = Subscription.SubscriptionTelekomInfo.XDSLType
+            //    };
+            //    return Json(model, JsonRequestBehavior.AllowGet);
+            //}
             return RedirectToAction("Index");
         }
 

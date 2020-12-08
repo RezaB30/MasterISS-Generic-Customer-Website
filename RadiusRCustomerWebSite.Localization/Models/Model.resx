@@ -132,17 +132,29 @@
   <data name="BillNo" xml:space="preserve">
     <value>Bill No</value>
   </data>
+  <data name="ConnectionStatus" xml:space="preserve">
+    <value>Connection Status</value>
+  </data>
+  <data name="ConnectionType" xml:space="preserve">
+    <value>Connection Type</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
   <data name="Department" xml:space="preserve">
     <value>Department</value>
   </data>
+  <data name="DownloadSpeed" xml:space="preserve">
+    <value>Download Speed</value>
+  </data>
   <data name="EndDate" xml:space="preserve">
     <value>End Date</value>
   </data>
   <data name="FullName" xml:space="preserve">
     <value>Fullname</value>
+  </data>
+  <data name="IPAddress" xml:space="preserve">
+    <value>IP Address</value>
   </data>
   <data name="State" xml:space="preserve">
     <value>State</value>
@@ -164,5 +176,11 @@
   </data>
   <data name="TariffName" xml:space="preserve">
     <value>Tariff Name</value>
+  </data>
+  <data name="UploadSpeed" xml:space="preserve">
+    <value>Upload Speed</value>
+  </data>
+  <data name="XDSLNo" xml:space="preserve">
+    <value>Service Number</value>
   </data>
 </root>

@@ -12,8 +12,8 @@ using System.Web.Mvc;
 
 namespace RadiusR_Customer_Website.Controllers
 {
-    [Authorize(Roles = "Closed")]
-    //[AllowAnonymous]
+    //[Authorize(Roles = "Closed")]
+    [AllowAnonymous]
     public class CustomerController : BaseController
     {
         Logger customer = LogManager.GetLogger("customer");
@@ -34,6 +34,16 @@ namespace RadiusR_Customer_Website.Controllers
                 {
                     ModelState.AddModelError("Captcha", string.Format(RadiusRCustomerWebSite.Localization.Common.NotValid, RadiusRCustomerWebSite.Localization.Common.Captcha));
                     return View(CallRequest);
+                }
+                // call me function check phone number 
+                using (var db = new RadiusR.DB.RadiusREntities())
+                {
+                    var hasOpenRequset = db.SupportRequestProgresses.Where(m => m.Message.Contains(CallRequest.PhoneNo) && m.SupportRequest.StateID == (int)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress && m.SupportRequest.TypeID == 2).Any();
+                    if (hasOpenRequset)
+                    {
+                        TempData["Errors"] = RadiusRCustomerWebSite.Localization.Common.HasActiveRequest;
+                        return View(CallRequest);
+                    }
                 }
                 RegisterCallRequest(CallRequest);
                 TempData["Errors"] = RadiusRCustomerWebSite.Localization.Common.CallMeRequestCompleted;
@@ -63,6 +73,16 @@ namespace RadiusR_Customer_Website.Controllers
                     ModelState.AddModelError("Captcha", string.Format(RadiusRCustomerWebSite.Localization.Common.NotValid, RadiusRCustomerWebSite.Localization.Common.Captcha));
                     return View(CallRequest);
                 }
+                // call me function check phone number 
+                using (var db = new RadiusR.DB.RadiusREntities())
+                {
+                    var hasOpenRequset = db.SupportRequestProgresses.Where(m => m.Message.Contains(CallRequest.PhoneNo) && m.SupportRequest.StateID == (int)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress && m.SupportRequest.TypeID == 2).Any();
+                    if (hasOpenRequset)
+                    {
+                        TempData["Errors"] = RadiusRCustomerWebSite.Localization.Common.HasActiveRequest;
+                        return View(CallRequest);
+                    }
+                }
                 RegisterCallRequest(CallRequest);
                 Session.Remove("GetAvailabilityResult"); // remove infrastructure infoes
                 TempData["Errors"] = RadiusRCustomerWebSite.Localization.Common.CallMeRequestCompleted;
@@ -79,9 +99,9 @@ namespace RadiusR_Customer_Website.Controllers
                 Date = DateTime.Now,
                 IsVisibleToCustomer = false,
                 StateID = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress,
-                TypeID = 2, // " BENİ ARA " ID
+                TypeID = 2, // " BENİ ARA " ID or get from name 
                 SubTypeID = null,
-                SupportPin = Utilities.InternalUtilities.CreateSupportPin(),
+                SupportPin = RadiusR.DB.RandomCode.CodeGenerator.GenerateSupportRequestPIN(),
                 SubscriptionID = null,
                 SupportRequestProgresses =
                         {

@@ -132,17 +132,29 @@
   <data name="BillNo" xml:space="preserve">
     <value>Fatura No</value>
   </data>
+  <data name="ConnectionStatus" xml:space="preserve">
+    <value>Bağlantı Durumu</value>
+  </data>
+  <data name="ConnectionType" xml:space="preserve">
+    <value>Bağlantı Tipi</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Tarih</value>
   </data>
   <data name="Department" xml:space="preserve">
     <value>Departman</value>
   </data>
+  <data name="DownloadSpeed" xml:space="preserve">
+    <value>Download Hızı</value>
+  </data>
   <data name="EndDate" xml:space="preserve">
     <value>Bitiş Tarihi</value>
   </data>
   <data name="FullName" xml:space="preserve">
     <value>Ad Soyad</value>
+  </data>
+  <data name="IPAddress" xml:space="preserve">
+    <value>IP Adresi</value>
   </data>
   <data name="State" xml:space="preserve">
     <value>Durum</value>
@@ -164,5 +176,11 @@
   </data>
   <data name="TariffName" xml:space="preserve">
     <value>Tarife Adı</value>
+  </data>
+  <data name="UploadSpeed" xml:space="preserve">
+    <value>Upload Hızı</value>
+  </data>
+  <data name="XDSLNo" xml:space="preserve">
+    <value>Devre Numarası</value>
   </data>
 </root>

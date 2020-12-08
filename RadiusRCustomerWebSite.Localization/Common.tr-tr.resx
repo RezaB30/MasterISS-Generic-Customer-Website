@@ -309,6 +309,9 @@
   <data name="GeneralState" xml:space="preserve">
     <value>Genel Durum</value>
   </data>
+  <data name="Go" xml:space="preserve">
+    <value>Git</value>
+  </data>
   <data name="HasActiveRequest" xml:space="preserve">
     <value>Aktif bir destek talebiniz var. Yeni bir tane gönderemezsiniz.</value>
   </data>
@@ -371,6 +374,9 @@
   </data>
   <data name="MyDocuments" xml:space="preserve">
     <value>Belgelerim</value>
+  </data>
+  <data name="NewNotification" xml:space="preserve">
+    <value>Bir yeni bildiriminiz var.</value>
   </data>
   <data name="NewRequest" xml:space="preserve">
     <value>Yeni Destek Kaydı</value>

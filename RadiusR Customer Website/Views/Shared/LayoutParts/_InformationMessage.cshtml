@@ -1,15 +1,29 @@
 ﻿@using RadiusR_Customer_Website.Utilities
 @{
     var subscriptionBag = User.GetSubscriptionBag();
+    var key = Convert.ToInt64(subscriptionBag.FirstOrDefault().SubscriberNo);
+    var cookieHash = key * key;
 
 }
-
+<div id="info-checker" data-value="@cookieHash" style="display:none;"></div>
 @if (subscriptionBag.Count() > 1)
 {
     <div id="information-message" class="tooltiptext" style="display:none;">
         <div class="tooltiptext-animate"></div>
         @RadiusRCustomerWebSite.Localization.Common.SubscriptionInformationTitle
         <br />
-        <a href="javascript:void(0)" onclick="CloseInformationMessage();" style="color:red;">@RadiusRCustomerWebSite.Localization.Common.Close</a>
+        <div style="margin: 0.3em auto; border: 1px solid white; width:30%;"></div>
+        <a href="javascript:void(0);" onclick="CloseInformationMessage();" style="color:red;">@RadiusRCustomerWebSite.Localization.Common.Close</a>
     </div>
 }
+<div id="new-notification" style="display:none;">
+    <div id="notif-content" class="tooltiptext" style="right:0.5em;">
+        @RadiusRCustomerWebSite.Localization.Common.NewNotification
+        <div style="margin: 0.5em 0;border: 1px solid #5c3f5d;"></div>
+        <a class="standard-blue" href="javascript:void(0);" data-url="#" onclick="GoToUrl($(this).attr('data-url'));">
+            @RadiusRCustomerWebSite.Localization.Common.Go
+        </a>
+        <div style="margin: 0.1em auto; border: 1px solid white; width:30%;"></div>
+        <a href="javascript:void(0)" onclick="CloseNotification();" class="text-red">@RadiusRCustomerWebSite.Localization.Common.Close</a>
+    </div>
+</div>

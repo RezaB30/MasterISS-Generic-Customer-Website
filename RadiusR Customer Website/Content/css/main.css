@@ -785,6 +785,27 @@ span.notification-badge {
     border: none !important;
 }
 
+div.message-box {
+    padding: 1em;
+    border-style: solid;
+    margin: 1.5em 0;
+    font-weight: 300;
+    font-size: 1.1em;
+    line-height: 2em;
+    border-color: #b0c1d2;
+    border-radius: 1em;
+    border-width: 0.05em 0.05em 0.05em 0.3em;
+}
+
+    div.message-box.shallow-blue {
+        border-color: #8bb4e7;
+        background-color: #f5f8fd;
+    }
+
+    div.message-box.light-green {
+        background-color: #f4fff4;
+        border-color: #8aae8a;
+    }
 /* Display Box Css */
 div.display-box {
     display: none;
@@ -998,7 +1019,7 @@ input.arrow {
 .tooltiptext {
     visibility: visible;
     width: 13em;
-    background-color: black;
+    background-color: #1f1f1f;
     color: #fff;
     text-align: center;
     border-radius: 6px;
@@ -1031,4 +1052,11 @@ input.arrow {
     100% {
         opacity: 0;
     }
+}
+
+
+/*notification box resize */
+
+.notification-box-top {
+    top: 12.1em;
 }

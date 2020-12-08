@@ -637,6 +637,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Go.
+        /// </summary>
+        public static string Go {
+            get {
+                return ResourceManager.GetString("Go", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have an active support request. Can not send a new one..
         /// </summary>
         public static string HasActiveRequest {
@@ -822,6 +831,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string MyDocuments {
             get {
                 return ResourceManager.GetString("MyDocuments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have a new notification.
+        /// </summary>
+        public static string NewNotification {
+            get {
+                return ResourceManager.GetString("NewNotification", resourceCulture);
             }
         }
         

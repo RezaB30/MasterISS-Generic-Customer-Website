@@ -99,7 +99,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RadiusR.Localization.Lists, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.Localization.Lists.1.0.1-alpha1\lib\net452\RadiusR.Localization.Lists.dll</HintPath>
+      <HintPath>..\packages\RadiusR.Localization.Lists.1.0.1-alpha2\lib\net452\RadiusR.Localization.Lists.dll</HintPath>
     </Reference>
     <Reference Include="RadiusR.Scheduler.SMS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RadiusR.Scheduler.SMS.1.0.0\lib\net452\RadiusR.Scheduler.SMS.dll</HintPath>

@@ -351,6 +351,9 @@
   <data name="LearnAddressCode" xml:space="preserve">
     <value>Adres Kodunuzu Öğrenin</value>
   </data>
+  <data name="LineState" xml:space="preserve">
+    <value>HAT DURUMU</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Oturum Aç</value>
   </data>

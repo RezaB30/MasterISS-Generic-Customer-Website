@@ -20,27 +20,16 @@
         }
     })
 }
-function CloseNotification() {
-    $('#notif-content').remove();
-    var d = new Date();
-    d.setTime(d.getTime() + ((1 / 24) * 24 * 60 * 60 * 1000));
-    var expires = d.toUTCString();
-    document.cookie = "notification_cookie=" + $('#info-checker').attr("data-value") + "; expires=" + expires + "; path=/";
-}
 function GoToUrl(url) {
-    $('#notif-content').remove();
-    var d = new Date();
-    d.setTime(d.getTime() + ((1 / 24) * 24 * 60 * 60 * 1000));
-    var expires = d.toUTCString();
-    document.cookie = "notification_cookie=" + $('#info-checker').attr("data-value") + "; expires=" + expires + "; path=/";
+    CloseInformationBox("notif-content", CookieTimeType.HOUR, 1, "notification_cookie");
     window.location.href = url;
 }
+function CloseNotification() {
+    CloseInformationBox("notif-content", CookieTimeType.HOUR, 1, "notification_cookie");
+    clearInterval(_notifClosingInterval);
+}
 function CloseInformationMessage() {
-    $('#information-message').remove();
-    var d = new Date();
-    d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
-    var expires = d.toUTCString();
-    document.cookie = "info_cookie=" + $('#info-checker').attr("data-value") + "; expires=" + expires + "; path=/";
+    CloseInformationBox("information-message", CookieTimeType.DAY, 365, "info_cookie");
     ResizeInfoBox();
 }
 function CheckInfoCookie() {
@@ -64,8 +53,12 @@ function CheckInfoCookie() {
     }
     if (hasNotification == true) {
         $('#notif-content').remove();
+    } else {
+        //NotificationClosing();
+        //_notifClosingInterval = setInterval(NotificationClosing, 200);
     }
 }
+var _notifClosingInterval;
 $(document).ready(function () {
     CheckInfoCookie();
     ResizeInfoBox();
@@ -85,3 +78,12 @@ function ResizeInfoBox() {
         $("#notif-content").removeClass("notification-box-top");
     }
 }
+//function NotificationClosing() {
+//    var _width = $('#notif-content').find("div").first().css("width");
+//    if (_width) {
+//        if (_width.replace("px", "") <= 0) {
+//            CloseNotification();
+//        }
+//        $('#notif-content').find("div").first().css("width", (_width.replace("px", "") - 1) + "px");
+//    }
+//}

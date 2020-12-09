@@ -332,6 +332,7 @@
     <Content Include="Scripts\Custom\confirm-box.js" />
     <Content Include="Scripts\Custom\get-infrastructure.js" />
     <Content Include="Scripts\Custom\header-popups.js" />
+    <Content Include="Scripts\Custom\information-box-utility.js" />
     <Content Include="Scripts\Custom\initialize-ui.js" />
     <Content Include="Scripts\Custom\menu-zip-button.js" />
     <Content Include="Scripts\Custom\notification.js" />
@@ -407,6 +408,8 @@
     <Content Include="Views\Customer\CallRequestByBBK.cshtml" />
     <Content Include="Views\Shared\LayoutParts\_InformationMessage.cshtml" />
     <Content Include="Views\Support\SupportDetailsContent.cshtml" />
+    <Content Include="Views\Home\ConnectionStatus.cshtml" />
+    <Content Include="Views\Home\_ConnectionStatusPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

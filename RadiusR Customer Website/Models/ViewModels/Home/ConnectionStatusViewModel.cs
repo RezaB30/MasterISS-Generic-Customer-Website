@@ -16,8 +16,10 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Home
         [UIHint("LocalizedList")]
         public short XDSLType { get; set; }
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "DownloadSpeed")]
+        [UIHint("TextWithPlaceholder")]
         public string CurrentDownload { get; set; }
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "UploadSpeed")]
+        [UIHint("TextWithPlaceholder")]
         public string CurrentUpload { get; set; }
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "ConnectionStatus")]
         [EnumType(typeof(RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient.OperationStatus), typeof(RadiusR.Localization.Lists.TTLineState))]

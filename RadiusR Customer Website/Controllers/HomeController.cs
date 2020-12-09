@@ -647,28 +647,35 @@ namespace RadiusR_Customer_Website.Controllers
         }
         public ActionResult ConnectionStatus()
         {
-            //using (var db = new RadiusR.DB.RadiusREntities())
-            //{
-            //    var Subscription = db.Subscriptions.Find(User.GiveUserId());
-            //    if (Subscription == null)
-            //        return RedirectToAction("Index");
+            if (Request.IsAjaxRequest())
+            {
+                using (var db = new RadiusR.DB.RadiusREntities())
+                {
+                    var Subscription = db.Subscriptions.Find(User.GiveUserId());
+                    if (Subscription == null)
+                        return RedirectToAction("Index");
 
-            //    var Domain = db.TelekomAccessCredentials.Find(Subscription.DomainID);
-            //    RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(Convert.ToInt64(Domain.XDSLWebServiceUsername), Domain.XDSLWebServicePassword);
-            //    var Result = client.Check(Subscription.SubscriptionTelekomInfo.SubscriptionNo);
-            //    if (Result.InternalException != null)
-            //        return RedirectToAction("Index");
-            //    var model = new Models.ViewModels.Home.ConnectionStatusViewModel()
-            //    {
-            //        ConnectionStatus = Result.Data.OperationStatus.ToString(),
-            //        CurrentDownload = Result.Data.CurrentDown,
-            //        CurrentUpload = Result.Data.CurrentUp,
-            //        XDSLNo = Subscription.SubscriptionTelekomInfo.SubscriptionNo,
-            //        XDSLType = Subscription.SubscriptionTelekomInfo.XDSLType
-            //    };
-            //    return Json(model, JsonRequestBehavior.AllowGet);
-            //}
-            return RedirectToAction("Index");
+                    var Domain = db.TelekomAccessCredentials.Find(Subscription.DomainID);
+                    RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(Convert.ToInt64(Domain.XDSLWebServiceUsername), Domain.XDSLWebServicePassword);
+                    var Result = client.Check(Subscription.SubscriptionTelekomInfo.SubscriptionNo);
+                    if (Result.InternalException != null)
+                        return RedirectToAction("Index");
+                    var model = new Models.ViewModels.Home.ConnectionStatusViewModel()
+                    {
+                        ConnectionStatus = (short)Result.Data.OperationStatus,
+                        CurrentDownload = Result.Data.CurrentDown,
+                        CurrentUpload = Result.Data.CurrentUp,
+                        XDSLNo = Subscription.SubscriptionTelekomInfo.SubscriptionNo,
+                        XDSLType = Subscription.SubscriptionTelekomInfo.XDSLType
+                    };
+                    return PartialView("_ConnectionStatusPartial", model);
+                }
+            }
+            else
+            {
+                return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
+            }
+
         }
 
         public ActionResult Services()

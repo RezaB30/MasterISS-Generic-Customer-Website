@@ -351,6 +351,9 @@
   <data name="LearnAddressCode" xml:space="preserve">
     <value>Learn Your Address Code</value>
   </data>
+  <data name="LineState" xml:space="preserve">
+    <value>LINE STATE</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>

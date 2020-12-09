@@ -1,0 +1,27 @@
+﻿@model RadiusR_Customer_Website.Models.ViewModels.Home.ConnectionStatusViewModel
+
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.ConnectionStatus;
+}
+<div class="line-field">
+    <div class="content-box centered title shallow-blue">
+        <div class="title deep-red" style="margin-bottom:1em;">
+            @RadiusRCustomerWebSite.Localization.Common.PleaseWait
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $.ajax({
+            url: '@Url.Action("ConnectionStatus","Home")',
+            method: 'GET',
+            complete: function (data, status) {
+                if (status == "success") {
+                    $('.line-field').html(data.responseText);
+                }
+            }
+        })
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿@model RadiusR_Customer_Website.Models.ViewModels.Home.ConnectionStatusViewModel
+
+<div class="content-box centered title shallow-blue">
+    <div class="title deep-red" style="margin-bottom:1em;">
+        @RadiusRCustomerWebSite.Localization.Common.LineState
+    </div>
+    <div class="shared-space-2">
+        <table class="data-table" style="font-size:1.1em;">
+            <tbody>
+                <tr>
+                    <th style="text-align:left; padding: 1em 1em; border-right: none;">@Html.DisplayNameFor(m => m.ConnectionStatus)</th>
+                    <td style="text-align:left; padding: 1em 1em; border-left:none;"
+                        class="@Html.Raw((RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient.OperationStatus)Model.ConnectionStatus
+                              == RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient.OperationStatus.Open ?
+                              "text-green" : "deep-red")">
+                        @Html.DisplayFor(m => m.ConnectionStatus)
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left; padding: 1em 1em; border-right:none;">@Html.DisplayNameFor(m => m.XDSLNo)</th>
+                    <td style="text-align:left; padding: 1em 1em; border-left:none;">@Html.DisplayFor(m => m.XDSLNo)</td>
+                </tr>
+                <tr>
+                    <th style="text-align:left; padding: 1em 1em; border-right: none;">@Html.DisplayNameFor(m => m.CurrentDownload)</th>
+                    <td style="text-align:left; padding: 1em 1em; border-left:none;">@Html.DisplayFor(m => m.CurrentDownload)</td>
+                </tr>
+                <tr>
+                    <th style="text-align:left; padding: 1em 1em; border-right:none;">@Html.DisplayNameFor(m => m.CurrentUpload)</th>
+                    <td style="text-align:left; padding: 1em 1em; border-left:none;">@Html.DisplayFor(m => m.CurrentUpload)</td>
+                </tr>
+                <tr>
+                    <th style="text-align:left; padding: 1em 1em; border-right:none;">@Html.DisplayNameFor(m => m.XDSLType)</th>
+                    <td style="text-align:left; padding: 1em 1em; border-left:none;">@Html.DisplayFor(m => m.XDSLType)</td>
+                </tr>
+                <tr>
+                    <th style="text-align:left; padding: 1em 1em; border-right:none;">@Html.DisplayNameFor(m => m.IPAddress)</th>
+                    <td style="text-align:left; padding: 1em 1em; border-left:none;">@Html.DisplayFor(m => m.IPAddress)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> 

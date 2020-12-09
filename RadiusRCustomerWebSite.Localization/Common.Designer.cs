@@ -763,6 +763,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LINE STATE.
+        /// </summary>
+        public static string LineState {
+            get {
+                return ResourceManager.GetString("LineState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {

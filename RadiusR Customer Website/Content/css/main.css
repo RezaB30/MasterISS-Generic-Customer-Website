@@ -511,6 +511,7 @@ textarea.new-request-text {
     max-width: 40em;
     border-color: #c2cad8;
     padding: 0.5em;
+    height: 10em;
 }
 
 div.active-request-info {
@@ -709,7 +710,7 @@ select {
     color: red;
 }
 
-text-green {
+.text-green {
     color: darkgreen;
 }
 

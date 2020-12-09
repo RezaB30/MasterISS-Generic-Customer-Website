@@ -19,7 +19,8 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Supports
         public IEnumerable<SelectListItem> RequestTypeList { get; set; }
         public int? SubRequestTypeId { get; set; }
         public IEnumerable<SelectListItem> SubRequestTypeList { get; set; }
-        [Required]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Message")]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Validation))]
         public string Description { get; set; }
     }
 }

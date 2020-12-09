@@ -15,7 +15,8 @@ namespace RadiusR_Customer_Website
                         "~/Scripts/Custom/confirm-box.js",
                         "~/Scripts/Custom/initialize-ui.js",
                         "~/Scripts/Custom/menu-zip-button.js",
-                        "~/Scripts/Custom/notification.js"
+                        "~/Scripts/Custom/notification.js",
+                        "~/Scripts/Custom/information-box-utility.js"
                         ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

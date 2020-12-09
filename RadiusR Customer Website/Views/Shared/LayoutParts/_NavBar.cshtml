@@ -34,11 +34,11 @@
             @*@Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.SupportAndRequests, "SupportRequests", "Support", null, new { @class = actionName == "SupportRequests" ? "selected" : "" })*@
             <div class="menu-bookmark"></div>
         </li>
-        @*<li class="@Html.Raw(actionName == "ConnectionStatus" ? "selected" : "")">
-                @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ConnectionStatus, "ConnectionStatus", null, new { @class = actionName == "ConnectionStatus" ? "selected" : "" })
-                <div class="menu-bookmark"></div>
-            </li>
-            <li class="@Html.Raw(actionName == "Services" ? "selected" : "")">
+        <li class="@Html.Raw(actionName == "ConnectionStatus" ? "selected" : "")">
+            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ConnectionStatus, "ConnectionStatus", "Home", null, new { @class = actionName == "ConnectionStatus" ? "selected" : "" })
+            <div class="menu-bookmark"></div>
+        </li>
+        @*<li class="@Html.Raw(actionName == "Services" ? "selected" : "")">
                 @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.Services, "Services", null, new { @class = actionName == "Services" ? "selected" : "" })
                 <div class="menu-bookmark"></div>
             </li>*@

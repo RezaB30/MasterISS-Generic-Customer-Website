@@ -12,8 +12,8 @@ using System.Web.Mvc;
 
 namespace RadiusR_Customer_Website.Controllers
 {
-    //[Authorize(Roles = "Closed")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Closed")]
+    //[AllowAnonymous]
     public class CustomerController : BaseController
     {
         Logger customer = LogManager.GetLogger("customer");

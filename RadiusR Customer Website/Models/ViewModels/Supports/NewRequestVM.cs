@@ -22,5 +22,14 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Supports
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Message")]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Validation))]
         public string Description { get; set; }
+        public override string ToString()
+        {
+            return string.Join(Environment.NewLine, new string[]
+            {
+                $"RequestTypeId : {RequestTypeId}",
+                $"SubRequestTypeId : {SubRequestTypeId}",
+                $"Description : {Description}"
+            });
+        }
     }
 }

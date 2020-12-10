@@ -102,7 +102,7 @@ namespace RadiusR_Customer_Website.Controllers
                     });
                     db.SaveChanges();
                 }
-                generalLogger.Warn("Created new request. UserId : " + User.GiveUserId());
+                generalLogger.Warn($"Created new request. UserId : {User.GiveUserId()} {Environment.NewLine} Parameters => {Environment.NewLine}{newRequest}");
             }
             return ReturnMessageUrl(Url.Action("SupportRequests", "Support"), RadiusRCustomerWebSite.Localization.Validation.TaskCompleted);
         }
@@ -184,7 +184,7 @@ namespace RadiusR_Customer_Website.Controllers
                         }
 
                         db.SaveChanges();
-                        generalLogger.Warn("Problem is solved . User id : " + User.GiveUserId() + " Request Id : " + requestMessage.ID);
+                        generalLogger.Warn($"Problem is solved . User id : {User.GiveUserId()} {Environment.NewLine} Request Id : {requestMessage.ID}");
                         return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { requestMessage.ID }), RadiusRCustomerWebSite.Localization.Validation.TaskCompleted);
                     }
                     if (requestMessage.ForOpenRequest)
@@ -206,7 +206,7 @@ namespace RadiusR_Customer_Website.Controllers
                             NewState = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress
                         });
                         db.SaveChanges();
-                        generalLogger.Warn("Opened request again. Request id : " + requestMessage.ID + " User id : " + User.GiveUserId());
+                        generalLogger.Warn($"Opened request again. Request id : {requestMessage.ID} {Environment.NewLine} User id : {User.GiveUserId()}");
                         return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { requestMessage.ID }),
                             RadiusRCustomerWebSite.Localization.Validation.OpenedRequestAgain);
                     }
@@ -220,7 +220,7 @@ namespace RadiusR_Customer_Website.Controllers
                             Message = requestMessage.Message
                         });
                         db.SaveChanges();
-                        generalLogger.Warn("Send Message. Request id : " + requestMessage.ID + " User id : " + User.GiveUserId());
+                        generalLogger.Warn($"Send Message. Request id : {requestMessage.ID} {Environment.NewLine} User Id : {User.GiveUserId()}");
                         return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { requestMessage.ID }),
                             RadiusRCustomerWebSite.Localization.Validation.SendMessage);
                         //if (!requestMessage.IsSolved)
@@ -231,7 +231,7 @@ namespace RadiusR_Customer_Website.Controllers
                 }
                 else
                 {
-                    generalLogger.Warn("Wrong subscription id. User id : " + User.GiveUserId() + " and user id : " + SupportProgress.SubscriptionID + " in progress. Request Id : " + requestMessage.ID);
+                    generalLogger.Warn($"Wrong subscription id. User id : {User.GiveUserId()} {Environment.NewLine} Subscription Id : {SupportProgress.SubscriptionID} in progress. {Environment.NewLine} Request Id : {requestMessage.ID}");
                     return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { requestMessage.ID }),
                             RadiusRCustomerWebSite.Localization.Validation.Failed);
                 }

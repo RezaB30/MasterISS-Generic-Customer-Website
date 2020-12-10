@@ -675,7 +675,6 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
             }
-
         }
 
         public ActionResult Services()
@@ -927,7 +926,6 @@ namespace RadiusR_Customer_Website.Controllers
                 else if (paymentToken is QuotaSaleToken)
                 {
                     var quotaSaleToken = (QuotaSaleToken)paymentToken;
-
                     var dbQuota = db.QuotaPackages.Find(id);
 
                     unpaidLogger.Debug("Unsuccessfull payment for clientId= {1} with total of {2}:" + Environment.NewLine + "{0}",

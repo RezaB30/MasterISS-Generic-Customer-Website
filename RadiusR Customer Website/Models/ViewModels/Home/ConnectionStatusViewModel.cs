@@ -9,7 +9,7 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Home
 {
     public class ConnectionStatusViewModel
     {
-        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "XDSLNo")]
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "TTSubscriberNo")]
         public string XDSLNo { get; set; }
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "ConnectionType")]
         [EnumType(typeof(RezaB.TurkTelekom.WebServices.XDSLType), typeof(RadiusR.Localization.Lists.XDSLType))]

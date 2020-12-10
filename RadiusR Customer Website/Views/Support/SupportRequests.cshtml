@@ -40,19 +40,7 @@
                     <td class="centered">@Html.DisplayFor(m => item.SupportNo)</td>
                     <td class="centered">@Html.DisplayFor(m => item.SupportRequestType)</td>
                     <td class="centered">@Html.DisplayFor(m => item.SupportRequestSubType)</td>
-                    <td class="centered">
-                        @Html.DisplayFor(m => item.State)
-                        @*<div class="centered">
-                                @if (item.State == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done)
-                                {
-                                    <img class="state-icon" src="/Content/Images/Icons/check.svg" />
-                                }
-                                else
-                                {
-                                    <img class="state-icon" src="/Content/Images/Icons/info.svg" />
-                                }
-                            </div>*@
-                    </td>
+                    <td class="centered">@Html.DisplayFor(m => item.State)</td>
                     <td class="centered">@Html.DisplayFor(m => item.Date)</td>
                     <td class="centered">@Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.Details, "SupportDetails", "Support", new { id = item.ID }, new { @class = "link-button stencil-blue" })</td>
                 </tr>

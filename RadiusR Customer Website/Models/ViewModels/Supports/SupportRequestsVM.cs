@@ -12,8 +12,10 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Supports
     {
         public long ID { get; set; }
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "SupportRequestType")]
+        [UIHint("TextWithPlaceholder")]
         public string SupportRequestType { get; set; } //  ex: fatura
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "SupportRequestSubType")]
+        [UIHint("TextWithPlaceholder")]
         public string SupportRequestSubType { get; set; } // ex: Faturamı ödeyemiyorum
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "SupportNo")]
         public string SupportNo { get; set; } // can be id

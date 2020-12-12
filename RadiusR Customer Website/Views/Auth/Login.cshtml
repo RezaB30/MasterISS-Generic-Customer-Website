@@ -17,6 +17,13 @@
         <div class="validation-container">
             @Html.ValidationMessageFor(model => model.CustomerCode)
         </div>
+        <div class="captcha">
+            <div class="captcha-image-wrapper">
+                <img width="265" height="50" src="@Url.Action("LoginCaptcha","Captcha")" />
+            </div>
+        </div>
+        @Html.EditorFor(m => m.Captcha, new { htmlAttributes = new { @placeholder = RadiusRCustomerWebSite.Localization.Common.Captcha, @autocomplete = "off" } })
+        <div class="validation-container">@Html.ValidationMessageFor(m => m.Captcha)</div>
         <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.Send" />
         <div class="copyright"> @ViewBag.Copyright | @Html.Raw(ViewBag.WebSite) </div>
     </div>

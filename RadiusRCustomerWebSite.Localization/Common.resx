@@ -471,6 +471,12 @@
   <data name="QuotaPakages" xml:space="preserve">
     <value>Quota Pakages</value>
   </data>
+  <data name="Redirecting" xml:space="preserve">
+    <value>Redirecting...</value>
+  </data>
+  <data name="RedirectPageTitle" xml:space="preserve">
+    <value>&lt;div&gt;You have an active subscription.&lt;/div&gt; You can submit your request through the &lt;span&gt;Customer Service &lt;/span&gt;. You are being redirected to the Customer Service ...</value>
+  </data>
   <data name="ReferenceNo" xml:space="preserve">
     <value>Reference No</value>
   </data>

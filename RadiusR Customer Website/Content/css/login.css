@@ -65,6 +65,18 @@ div.sms-warning {
     font-weight: 100;
 }
 
-a{
+a {
     color: #fef7f8;
+}
+
+
+/**
+    Redirect page 
+*/
+#redirect-title div {
+    color: yellow;
+}
+
+#redirect-title span {
+    color: orangered;
 }

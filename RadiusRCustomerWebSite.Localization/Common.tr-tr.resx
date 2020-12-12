@@ -471,6 +471,12 @@
   <data name="QuotaPakages" xml:space="preserve">
     <value>Kota Paketleri</value>
   </data>
+  <data name="Redirecting" xml:space="preserve">
+    <value>Yönlendiriliyor...</value>
+  </data>
+  <data name="RedirectPageTitle" xml:space="preserve">
+    <value>&lt;div&gt;Aktif aboneliğiniz bulunmaktadır. &lt;/div&gt;Talebinizi &lt;span&gt;Online İşlem Merkezi &lt;/span&gt;üzerinden iletebilirsiniz. Online İşlem Merkezine yönlendiriliyorsunuz...</value>
+  </data>
   <data name="ReferenceNo" xml:space="preserve">
     <value>Referans No</value>
   </data>

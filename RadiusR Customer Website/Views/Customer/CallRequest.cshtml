@@ -9,21 +9,20 @@
     @using (Html.BeginForm("CallRequest", "Customer", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-
         <div class="customer-form centered">
             <div class="customer-title">@RadiusRCustomerWebSite.Localization.Common.CallMeTitle</div>
-            @Html.EditorFor(m => m.CustomerName, new { htmlAttributes = new { @placeholder = Html.DisplayNameFor(m => m.CustomerName), @autocomplete = "off" } })
+            @Html.EditorFor(m => m.CustomerName, new { htmlAttributes = new { @placeholder = Html.DisplayNameFor(m => m.CustomerName), @autocomplete = "off", @maxlength = 50 } })
             <div>
                 @Html.ValidationMessageFor(m => m.CustomerName)
             </div>
-            @Html.EditorFor(m => m.PhoneNo, new { htmlAttributes = new { @placeholder = $"{Html.DisplayNameFor(m => m.PhoneNo)} (5312345678)", @autocomplete = "off" } })
+            @Html.EditorFor(m => m.PhoneNo, new { htmlAttributes = new { @placeholder = $"{Html.DisplayNameFor(m => m.PhoneNo)} (5312345678)", @autocomplete = "off", @maxlength = 10 } })
             <div>
                 @Html.ValidationMessageFor(m => m.PhoneNo)
             </div>
-            @Html.TextAreaFor(m => m.Description, new { @maxlength = "250", @placeholder = $"{RadiusRCustomerWebSite.Localization.Common.Description} ({RadiusRCustomerWebSite.Localization.Common.Optional})" })
-            <div>
-                @Html.ValidationMessageFor(m => m.Description)
-            </div>
+            @*@Html.TextAreaFor(m => m.Description, new { @maxlength = "250", @placeholder = $"{RadiusRCustomerWebSite.Localization.Common.Description} ({RadiusRCustomerWebSite.Localization.Common.Optional})" })
+                <div>
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>*@
             <div class="captcha" style="margin-top:2em;">
                 <div class="captcha-image-wrapper">
                     <img width="265" height="50" src="@Url.Action("Index","Captcha")" />

@@ -27,12 +27,18 @@ namespace RadiusR_Customer_Website.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         // POST: Auth
-        public ActionResult Login([Bind(Include = "CustomerCode")] LoginViewModel login)
+        public ActionResult Login([Bind(Include = "CustomerCode,Captcha")] LoginViewModel login)
         {
             ModelState.Remove("SMSPassword");
 
             if (ModelState.IsValid)
             {
+                var CurrentCaptcha = Session["LoginCaptcha"] as string;
+                if (login.Captcha != CurrentCaptcha )
+                {
+                    ModelState.AddModelError("Captcha", string.Format(RadiusRCustomerWebSite.Localization.Common.NotValid, RadiusRCustomerWebSite.Localization.Common.Captcha));
+                    return View(login);
+                }
                 if (login.CustomerCode.StartsWith("0"))
                     login.CustomerCode = login.CustomerCode.TrimStart('0');
                 using (RadiusREntities db = new RadiusREntities())
@@ -104,7 +110,6 @@ namespace RadiusR_Customer_Website.Controllers
             //ViewBag.SMSWarning = string.Format(RadiusRCustomerWebSite.Localization.Common.SMSWarningMessage, AppSettings.OnlinePasswordDuration.Hours);
             return View(login);
         }
-
         public ActionResult LogOut()
         {
             SignoutUser(Request.GetOwinContext());

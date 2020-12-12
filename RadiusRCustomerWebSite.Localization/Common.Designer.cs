@@ -1123,6 +1123,24 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Redirecting....
+        /// </summary>
+        public static string Redirecting {
+            get {
+                return ResourceManager.GetString("Redirecting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;div&gt;You have an active subscription.&lt;/div&gt; You can submit your request through the &lt;span&gt;Customer Service &lt;/span&gt;. You are being redirected to the Customer Service ....
+        /// </summary>
+        public static string RedirectPageTitle {
+            get {
+                return ResourceManager.GetString("RedirectPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reference No.
         /// </summary>
         public static string ReferenceNo {

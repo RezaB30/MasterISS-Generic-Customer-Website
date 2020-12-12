@@ -10,6 +10,7 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Customer
     {
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "CustomerName")]
         [Required(ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Validation), ErrorMessageResourceName = "Required")]
+        [StringLength(50, ErrorMessageResourceName = "NotValid", ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Common))]
         public string CustomerName { get; set; }
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "PhoneNo")]
         [Required(ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Validation), ErrorMessageResourceName = "Required")]

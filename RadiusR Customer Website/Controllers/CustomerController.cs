@@ -12,8 +12,8 @@ using System.Web.Mvc;
 
 namespace RadiusR_Customer_Website.Controllers
 {
-    //[Authorize(Roles = "Closed")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Closed")]
+    //[AllowAnonymous]
     public class CustomerController : BaseController
     {
         Logger customer = LogManager.GetLogger("customer");
@@ -38,6 +38,10 @@ namespace RadiusR_Customer_Website.Controllers
                 // call me function check phone number 
                 using (var db = new RadiusR.DB.RadiusREntities())
                 {
+                    //if (CheckSubscriber(CallRequest.PhoneNo))
+                    //{
+                    //    return View("RedirectPage");
+                    //}
                     var hasOpenRequset = db.SupportRequestProgresses.Where(m => m.Message.Contains(CallRequest.PhoneNo) && m.SupportRequest.StateID == (int)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress && m.SupportRequest.TypeID == 2).Any();
                     if (hasOpenRequset)
                     {
@@ -51,6 +55,13 @@ namespace RadiusR_Customer_Website.Controllers
                 return RedirectToAction("CallRequest");
             }
             return View(CallRequest);
+        }
+        private bool CheckSubscriber(string phoneNo)
+        {
+            using (var db = new RadiusR.DB.RadiusREntities())
+            {
+                return db.Subscriptions.Where(m => m.Customer.ContactPhoneNo.Contains(phoneNo) && m.State == (short)RadiusR.DB.Enums.CustomerState.Active).Any();
+            }
         }
         public ActionResult CallRequestByBBK()
         {
@@ -86,7 +97,7 @@ namespace RadiusR_Customer_Website.Controllers
                 RegisterCallRequest(CallRequest);
                 Session.Remove("GetAvailabilityResult"); // remove infrastructure infoes
                 TempData["Errors"] = RadiusRCustomerWebSite.Localization.Common.CallMeRequestCompleted;
-                customer.Info(CallRequest.ToString());
+                customer.Info($"{CallRequest}");
                 return RedirectToAction("InfrastructureByBBK");
             }
             return View(CallRequest);
@@ -117,6 +128,7 @@ namespace RadiusR_Customer_Website.Controllers
                         }
             });
             db.SaveChanges();
+            customer.Info($"Call me request => {Environment.NewLine} {CallRequest}");
         }
         RadiusR.API.AddressQueryAdapter.AddressServiceAdapter AddressService = new RadiusR.API.AddressQueryAdapter.AddressServiceAdapter();
         public ActionResult InfrastructureByBBK()

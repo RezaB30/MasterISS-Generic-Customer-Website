@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.Redirecting;
+    Layout = "~/Views/Shared/_NoMenuLayout.cshtml";
+}
+
+<div id="redirect-title" class="customer-form centered" style="color:white; margin-top:5em;">
+    @Html.Raw(RadiusRCustomerWebSite.Localization.Common.RedirectPageTitle)
+</div>
+
+@section scripts{
+    <script>
+            setTimeout(function () { window.location.href = '@Url.Action("Login","Auth")'; }, 5000);
+    </script>
+}

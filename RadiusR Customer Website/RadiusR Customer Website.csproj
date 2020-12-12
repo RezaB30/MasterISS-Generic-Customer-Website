@@ -410,6 +410,7 @@
     <Content Include="Views\Support\SupportDetailsContent.cshtml" />
     <Content Include="Views\Home\ConnectionStatus.cshtml" />
     <Content Include="Views\Home\_ConnectionStatusPartial.cshtml" />
+    <Content Include="Views\Customer\RedirectPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

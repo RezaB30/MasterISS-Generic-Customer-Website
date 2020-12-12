@@ -12,11 +12,11 @@
 
         <div class="customer-form centered">
             <div class="customer-title">@RadiusRCustomerWebSite.Localization.Common.CallMeTitle</div>
-            @Html.EditorFor(m => m.CustomerName, new { htmlAttributes = new { @placeholder = Html.DisplayNameFor(m => m.CustomerName), @autocomplete = "off" } })
+            @Html.EditorFor(m => m.CustomerName, new { htmlAttributes = new { @placeholder = Html.DisplayNameFor(m => m.CustomerName), @autocomplete = "off", @maxlength = 50 } })
             <div>
                 @Html.ValidationMessageFor(m => m.CustomerName)
             </div>
-            @Html.EditorFor(m => m.PhoneNo, new { htmlAttributes = new { @placeholder = $"{Html.DisplayNameFor(m => m.PhoneNo)} (5312345678)", @autocomplete = "off" } })
+            @Html.EditorFor(m => m.PhoneNo, new { htmlAttributes = new { @placeholder = $"{Html.DisplayNameFor(m => m.PhoneNo)} (5312345678)", @autocomplete = "off", @maxlength = 10 } })
             <div>
                 @Html.ValidationMessageFor(m => m.PhoneNo)
             </div>

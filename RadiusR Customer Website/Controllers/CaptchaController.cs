@@ -32,6 +32,16 @@ namespace RadiusR_Customer_Website.Controllers
             captchaPair.Image.Save(stream, ImageFormat.Png);
             return File(stream.ToArray(), "image/png");
         }
+        [AllowAnonymous]
+        public ActionResult LoginCaptcha()
+        {
+            //var captchaPair = Captcha.Generate();
+            var captchaPair = RezaB.Web.Captcha.CaptchaImageGenerator.Generate(_parameters);
+            Session.Add("LoginCaptcha", captchaPair.Key.ToLower());
+            var stream = new MemoryStream();
+            captchaPair.Image.Save(stream, ImageFormat.Png);
+            return File(stream.ToArray(), "image/png");
+        }
         private RezaB.Web.Captcha.CaptchaImageParameters _parameters
         {
             get

@@ -16,7 +16,7 @@ namespace RadiusR.API.AddressQueryAdapter
             {
                 using (var db = new RadiusR.DB.RadiusREntities())
                 {
-                    addressAPIUsername = db.AppSettings.Where(m => m.Key == "AddressAPIUsername").Select(m => m.Value).FirstOrDefault() ?? "test";
+                    addressAPIUsername = db.AppSettings.Where(m => m.Key == "AddressAPIUsername").Select(m => m.Value).FirstOrDefault() ?? string.Empty;
                     return addressAPIUsername;
                 }
 
@@ -30,7 +30,7 @@ namespace RadiusR.API.AddressQueryAdapter
             {
                 using (var db = new RadiusR.DB.RadiusREntities())
                 {
-                    addressAPIPassword = db.AppSettings.Where(m => m.Key == "AddressAPIPassword").Select(m => m.Value).FirstOrDefault() ?? "NUb2?6q+qfcbZ^5y";
+                    addressAPIPassword = db.AppSettings.Where(m => m.Key == "AddressAPIPassword").Select(m => m.Value).FirstOrDefault() ?? string.Empty;
                     return addressAPIPassword;
                 }
 

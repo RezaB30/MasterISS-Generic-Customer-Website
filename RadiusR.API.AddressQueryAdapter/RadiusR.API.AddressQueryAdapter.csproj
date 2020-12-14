@@ -43,7 +43,7 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="RadiusR.DB, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.DB.1.0.4-alpha4\lib\net452\RadiusR.DB.dll</HintPath>
+      <HintPath>..\packages\RadiusR.DB.1.0.4-alpha5\lib\net452\RadiusR.DB.dll</HintPath>
     </Reference>
     <Reference Include="RezaB.DBUtilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.DBUtilities.1.0.0\lib\net452\RezaB.DBUtilities.dll</HintPath>

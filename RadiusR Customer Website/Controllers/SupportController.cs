@@ -30,8 +30,8 @@ namespace RadiusR_Customer_Website.Controllers
                         Date = m.Date,
                         SupportNo = m.SupportPin,
                         State = m.StateID,
-                        SupportRequestType = m.TypeID == null ? null : m.SupportRequestType.Name,
-                        SupportRequestSubType = m.SubTypeID == null ? null : m.SupportRequestSubType.Name
+                        SupportRequestType = m.SupportRequestType.Name,
+                        SupportRequestSubType = m.SupportRequestSubType.Name
                     }).AsQueryable();
                 SetupPages(page, ref results, 10);
                 ViewBag.HasOpenRequest = HasOpenRequest();
@@ -76,6 +76,9 @@ namespace RadiusR_Customer_Website.Controllers
         [HttpPost]
         public ActionResult NewRequest(NewRequestVM newRequest)
         {
+            if (newRequest.Description != null)
+                newRequest.Description = newRequest.Description.Trim(new char[] { ' ', '\n', '\r' });
+            TryValidateModel(ModelState);
             if (!ModelState.IsValid)
             {
                 if (!string.IsNullOrEmpty(newRequest.Description))
@@ -98,8 +101,8 @@ namespace RadiusR_Customer_Website.Controllers
                         Date = DateTime.Now,
                         IsVisibleToCustomer = true,
                         StateID = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress,
-                        TypeID = newRequest.RequestTypeId,
-                        SubTypeID = newRequest.SubRequestTypeId,
+                        TypeID = (int)newRequest.RequestTypeId,
+                        SubTypeID = (int)newRequest.SubRequestTypeId,
                         SupportPin = RadiusR.DB.RandomCode.CodeGenerator.GenerateSupportRequestPIN(),
                         SubscriptionID = User.GiveUserId(),
                         SupportRequestProgresses =
@@ -108,7 +111,7 @@ namespace RadiusR_Customer_Website.Controllers
                             {
                                 Date = DateTime.Now,
                                 IsVisibleToCustomer = true,
-                                Message = newRequest.Description,
+                                Message = newRequest.Description.Trim(new char[]{ ' ' , '\n' , '\r' }),
                                 ActionType = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestActionTypes.Create
                             }
                         }
@@ -136,8 +139,8 @@ namespace RadiusR_Customer_Website.Controllers
                         State = SupportProgress.StateID,
                         SupportDate = SupportProgress.Date,
                         SupportNo = SupportProgress.SupportPin,
-                        SupportRequestName = SupportProgress.TypeID == null ? "" : SupportProgress.SupportRequestType.Name,
-                        SupportRequestSummary = SupportProgress.SubTypeID == null ? "" : SupportProgress.SupportRequestSubType.Name,
+                        SupportRequestName = SupportProgress.SupportRequestType.Name,
+                        SupportRequestSummary = SupportProgress.SupportRequestSubType.Name,
                         SupportMessageList = SupportProgress.SupportRequestProgresses.Where(m => m.IsVisibleToCustomer).OrderByDescending(m => m.Date).Select(m => new SupportMessageList()
                         {
                             Message = m.Message,
@@ -159,6 +162,9 @@ namespace RadiusR_Customer_Website.Controllers
         [HttpPost]
         public ActionResult NewSupportMessage(RequestSupportMessage requestMessage)
         {
+            if (requestMessage.Message != null)
+                requestMessage.Message = requestMessage.Message.Trim(new char[] { ' ', '\n', '\r' });
+            TryValidateModel(ModelState);
             if (!ModelState.IsValid)
             {
                 return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { requestMessage.ID }), ModelErrorMessages(ModelState));

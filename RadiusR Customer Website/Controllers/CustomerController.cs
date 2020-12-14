@@ -111,7 +111,7 @@ namespace RadiusR_Customer_Website.Controllers
                 IsVisibleToCustomer = false,
                 StateID = (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress,
                 TypeID = 2, // " BENİ ARA " ID or get from name 
-                SubTypeID = null,
+                SubTypeID = 1, // will change - random number
                 SupportPin = RadiusR.DB.RandomCode.CodeGenerator.GenerateSupportRequestPIN(),
                 SubscriptionID = null,
                 SupportRequestProgresses =

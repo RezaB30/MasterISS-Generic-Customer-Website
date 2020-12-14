@@ -87,7 +87,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RadiusR.DB, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.DB.1.0.4-alpha4\lib\net452\RadiusR.DB.dll</HintPath>
+      <HintPath>..\packages\RadiusR.DB.1.0.4-alpha5\lib\net452\RadiusR.DB.dll</HintPath>
     </Reference>
     <Reference Include="RadiusR.DB.Utilities, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RadiusR.DB.Utilities.1.0.1\lib\net452\RadiusR.DB.Utilities.dll</HintPath>

@@ -1061,3 +1061,6 @@ input.arrow {
 .notification-box-top {
     top: 12.1em;
 }
+.captcha-image {
+    width: 21.6em;
+}

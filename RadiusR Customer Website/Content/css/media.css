@@ -168,4 +168,7 @@
     .notification-box-top {
         top: 15.1em;
     }
+    .captcha-image {
+        width: 20.6em;
+    }
 }

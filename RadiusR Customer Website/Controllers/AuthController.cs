@@ -34,9 +34,10 @@ namespace RadiusR_Customer_Website.Controllers
             if (ModelState.IsValid)
             {
                 var CurrentCaptcha = Session["LoginCaptcha"] as string;
-                if (login.Captcha != CurrentCaptcha )
+                if (login.Captcha != CurrentCaptcha)
                 {
                     ModelState.AddModelError("Captcha", string.Format(RadiusRCustomerWebSite.Localization.Common.NotValid, RadiusRCustomerWebSite.Localization.Common.Captcha));
+                    login.Captcha = string.Empty;
                     return View(login);
                 }
                 if (login.CustomerCode.StartsWith("0"))
@@ -75,6 +76,7 @@ namespace RadiusR_Customer_Website.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SMSConfirm([Bind(Include = "CustomerCode,SMSPassword")] LoginViewModel login)
         {
+            ModelState.Remove("Captcha");
             if (ModelState.IsValid)
             {
                 if (login.CustomerCode.StartsWith("0"))

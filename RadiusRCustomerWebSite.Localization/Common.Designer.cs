@@ -1186,6 +1186,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select support description type.
+        /// </summary>
+        public static string SelectionSupportSubType {
+            get {
+                return ResourceManager.GetString("SelectionSupportSubType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send.
         /// </summary>
         public static string Send {

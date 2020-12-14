@@ -39,7 +39,7 @@ namespace RadiusR_Customer_Website.Controllers
             }
         }
         [HttpGet]
-        public ActionResult NewRequest(int? RequestTypeId = null)
+        public ActionResult NewRequest(int? RequestTypeId = null, int? SubRequestTypeId = null)
         {
             using (var db = new RadiusR.DB.RadiusREntities())
             {
@@ -53,14 +53,22 @@ namespace RadiusR_Customer_Website.Controllers
                 if (Request.IsAjaxRequest())
                 {
                     var list = db.SupportRequestSubTypes
-                        .Where(m => m.SupportRequestTypeID == RequestTypeId && !m.IsDisabled).Select(m => new { Text = m.Name, Value = m.ID.ToString() });
+                        .Where(m => m.SupportRequestTypeID == RequestTypeId && !m.IsDisabled).Select(m => new { Text = m.Name, Value = m.ID.ToString() }).ToList();
+                    if (list.Count() == 0)
+                    {
+                        list.Add(new { Text = RadiusRCustomerWebSite.Localization.Common.SelectionSupportSubType, Value = "" });
+                    }
                     return Json(list.ToArray(), JsonRequestBehavior.AllowGet);
                 }
                 var newRequest = new NewRequestVM
                 {
                     RequestTypeList = supportRequests.Select(m => new SelectListItem { Text = m.Name, Value = m.ID.ToString() }),
-                    SubRequestTypeList = supportSubRequests.Select(m => new SelectListItem { Text = m.Name, Value = m.ID.ToString() })
+                    SubRequestTypeList = supportSubRequests.Select(m => new SelectListItem { Text = m.Name, Value = m.ID.ToString() }),
+                    RequestTypeId = RequestTypeId,
+                    SubRequestTypeId = SubRequestTypeId,
+                    Description = Session["NewRequestDesc"] as string ?? string.Empty
                 };
+                Session.Remove("NewRequestDesc");
                 return View(newRequest);
             }
         }
@@ -70,7 +78,12 @@ namespace RadiusR_Customer_Website.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return ReturnMessageUrl(Url.Action("NewRequest", "Support"), ModelErrorMessages(ModelState));
+                if (!string.IsNullOrEmpty(newRequest.Description))
+                {
+                    Session["NewRequestDesc"] = newRequest.Description;
+                }
+                //return View(newRequest);
+                return ReturnMessageUrl(Url.Action("NewRequest", "Support", new { newRequest.RequestTypeId, newRequest.SubRequestTypeId }), ModelErrorMessages(ModelState));
             }
             else
             {
@@ -332,7 +345,7 @@ namespace RadiusR_Customer_Website.Controllers
         }
         private string ModelErrorMessages(ModelStateDictionary ModelState)
         {
-            return string.Join(string.Empty, ModelState.Values.Select(m => string.Join(Environment.NewLine, m.Errors.Where(s => !string.IsNullOrEmpty(s.ErrorMessage)).Select(s => s.ErrorMessage))));
+            return string.Join(Environment.NewLine, ModelState.Values.Select(m => string.Join(Environment.NewLine, m.Errors.Where(s => !string.IsNullOrEmpty(s.ErrorMessage)).Select(s => $"<div class='text-red'>{s.ErrorMessage}<div>"))));
         }
         #endregion
     }

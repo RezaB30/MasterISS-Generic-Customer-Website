@@ -51,7 +51,7 @@ namespace RadiusR_Customer_Website.Controllers
                     CharacterCount = 4,
                     Fonts = new System.Drawing.FontFamily[] { new System.Drawing.FontFamily("Arial") },
                     CharacterPallete = "0123456789",
-                    FontAlpha = 200,
+                    FontAlpha = 230,
                     FontSize = 30f,
                     ImageDimentions = new System.Drawing.Size(265, 50),
                     NoisePercentage = 0.1f

@@ -11,14 +11,20 @@
     @using (Html.BeginForm(FormMethod.Post))
     {
         @Html.AntiForgeryToken()
+        <div class="centered bold">@Html.DisplayNameFor(m => m.RequestTypeId)</div>
         <div class="centered">
             @Html.DropDownListFor(m => m.RequestTypeId, Model.RequestTypeList, RadiusRCustomerWebSite.Localization.Common.NewSupportRequest)
         </div>
+
         <div id="SubRequestContent" class="centered" style="margin-top:1em;">
-            @*@Html.DropDownListFor(m => m.SubRequestTypeId, Model.SubRequestTypeList, new { @class = "invisible-text" })*@
+            @if (Model.RequestTypeId != 0 && Model.RequestTypeId != null)
+            {
+                @Html.DropDownListFor(m => m.SubRequestTypeId, Model.SubRequestTypeList, RadiusRCustomerWebSite.Localization.Common.SelectionSupportSubType)
+            }
 
         </div>
-        <div class="centered" style="margin-top:1em;">
+        <div class="centered bold" style="margin-top:1em;">@Html.DisplayNameFor(m => m.Description)</div>
+        <div class="centered">
             @Html.TextAreaFor(m => m.Description, new { @placeholder = RadiusRCustomerWebSite.Localization.Common.DescribeSupportRequest, @class = "new-request-text", @maxlength = "250" })
         </div>
         <div class="centered">
@@ -28,6 +34,7 @@
 </div>
 @section scripts{
     <script>
+
         $('#RequestTypeId').change(function () {
             $('#SubRequestContent').html("");
             if ($(this).val()) {
@@ -39,13 +46,16 @@
                         try {
                             if (status == "success") {
                                 var result = data.responseJSON;
-                                var options = "";
+                                var optionExplain = '@RadiusRCustomerWebSite.Localization.Common.SelectionSupportSubType';
+                                if (result.length != 1) {
+                                    var options = "<option value=''>" + optionExplain + "</option>";
+                                }                                
                                 for (var i = 0; i < result.length; i++) {
                                     options += "<option value='" + result[i].Value + "'>" + result[i].Text + "</option>";
                                 }
                                 if (result.length > 0) {
                                     $('#SubRequestContent').html("<select id='SubRequestTypeId' name ='SubRequestTypeId' >" + options + "</select>");
-                                }                                
+                                }
                             }
                         } catch (e) {
                             console.log(e);

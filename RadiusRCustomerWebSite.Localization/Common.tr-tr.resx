@@ -492,6 +492,9 @@
   <data name="RemoveCard" xml:space="preserve">
     <value>Kredi Kartı Kaldır</value>
   </data>
+  <data name="SelectionSupportSubType" xml:space="preserve">
+    <value>Lütfen destek açıklama türünü seçiniz</value>
+  </data>
   <data name="Send" xml:space="preserve">
     <value>Gönder</value>
   </data>

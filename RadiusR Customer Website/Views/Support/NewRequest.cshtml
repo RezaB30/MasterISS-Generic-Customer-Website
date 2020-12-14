@@ -13,19 +13,17 @@
         @Html.AntiForgeryToken()
         <div class="centered bold">@Html.DisplayNameFor(m => m.RequestTypeId)</div>
         <div class="centered">
-            @Html.DropDownListFor(m => m.RequestTypeId, Model.RequestTypeList, RadiusRCustomerWebSite.Localization.Common.NewSupportRequest)
+            @Html.DropDownListFor(m => m.RequestTypeId, (SelectList)ViewBag.RequestTypes, RadiusRCustomerWebSite.Localization.Common.NewSupportRequest)
         </div>
-
+        <div class="centered">@Html.ValidationMessageFor(m => m.RequestTypeId)</div>
         <div id="SubRequestContent" class="centered" style="margin-top:1em;">
-            @if (Model.RequestTypeId != 0 && Model.RequestTypeId != null)
-            {
-                @Html.DropDownListFor(m => m.SubRequestTypeId, Model.SubRequestTypeList, RadiusRCustomerWebSite.Localization.Common.SelectionSupportSubType)
-            }
-
+            @Html.DropDownListFor(m => m.SubRequestTypeId, (SelectList)ViewBag.SubRequestTypes, RadiusRCustomerWebSite.Localization.Common.SelectionSupportSubType)
         </div>
+        <div class="centered">@Html.ValidationMessageFor(m => m.SubRequestTypeId)</div>
         <div class="centered bold" style="margin-top:1em;">@Html.DisplayNameFor(m => m.Description)</div>
         <div class="centered">
             @Html.TextAreaFor(m => m.Description, new { @placeholder = RadiusRCustomerWebSite.Localization.Common.DescribeSupportRequest, @class = "new-request-text", @maxlength = "250" })
+            <div>@Html.ValidationMessageFor(m => m.Description)</div>
         </div>
         <div class="centered">
             <input type="button" onclick="ShowConfirm($('form'));" class="link-button red" value="@RadiusRCustomerWebSite.Localization.Common.SendSupportRequest" />
@@ -36,32 +34,29 @@
     <script>
 
         $('#RequestTypeId').change(function () {
-            $('#SubRequestContent').html("");
+            //$('#SubRequestContent').html("");
             if ($(this).val()) {
                 $.ajax({
-                    url: '@Url.Action("NewRequest","Support")',
-                    method: 'GET',
+                    url: '@Url.Action("GetSubRequestTypes", "Support")',
+                    method: 'POST',
                     data: { RequestTypeId: $(this).val() },
                     complete: function (data, status) {
                         try {
                             if (status == "success") {
                                 var result = data.responseJSON;
-                                var optionExplain = '@RadiusRCustomerWebSite.Localization.Common.SelectionSupportSubType';
-                                if (result.length != 1) {
-                                    var options = "<option value=''>" + optionExplain + "</option>";
-                                }                                
+                                var options = "";
                                 for (var i = 0; i < result.length; i++) {
                                     options += "<option value='" + result[i].Value + "'>" + result[i].Text + "</option>";
                                 }
-                                if (result.length > 0) {
-                                    $('#SubRequestContent').html("<select id='SubRequestTypeId' name ='SubRequestTypeId' >" + options + "</select>");
-                                }
+                                $('#SubRequestTypeId').html(options);
                             }
                         } catch (e) {
                             console.log(e);
                         }
                     }
                 })
+            } else {
+                $('#SubRequestTypeId').children('option[value!=""]').remove();
             }
         })
     </script>

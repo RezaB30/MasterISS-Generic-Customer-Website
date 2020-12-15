@@ -19,7 +19,6 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Supports
         public string SupportRequestSubType { get; set; } // ex: Faturamı ödeyemiyorum
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "SupportNo")]
         public string SupportNo { get; set; } // can be id
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "Date")]        
         public DateTime Date { get; set; } // dd.MM.yyyy
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "ApprovalDate")]

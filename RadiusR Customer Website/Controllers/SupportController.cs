@@ -1,4 +1,5 @@
 ﻿using NLog;
+using RadiusR.DB.Settings;
 using RadiusR_Customer_Website.Models.ViewModels.Supports;
 using RezaB.Web.Authentication;
 using System;
@@ -124,8 +125,7 @@ namespace RadiusR_Customer_Website.Controllers
                 var SupportProgress = db.SupportRequests.Find(ID);
                 if (SupportProgress != null && SupportProgress.SubscriptionID == User.GiveUserId() && SupportProgress.IsVisibleToCustomer)
                 {
-                    var PassedTime = db.AppSettings.Where(m => m.Key == "SupportRequestPassedTime").Select(m => m.Value).FirstOrDefault();
-                    var PassedTimeSpan = new TimeSpan(0, Convert.ToInt32(PassedTime.Split(':')[0]), Convert.ToInt32(PassedTime.Split(':')[1]), Convert.ToInt32(PassedTime.Split(':')[2]), 0);
+                    var PassedTimeSpan = CustomerWebsiteSettings.SupportRequestPassedTime;
                     var result = new SupportMessagesVM()
                     {
                         SupportDisplayType = RequestProgressState(ID),

@@ -34,14 +34,14 @@
             @*@Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.SupportAndRequests, "SupportRequests", "Support", null, new { @class = actionName == "SupportRequests" ? "selected" : "" })*@
             <div class="menu-bookmark"></div>
         </li>
-        <li class="@Html.Raw(actionName == "ConnectionStatus" ? "selected" : "")">
-            @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ConnectionStatus, "ConnectionStatus", "Home", null, new { @class = actionName == "ConnectionStatus" ? "selected" : "" })
-            <div class="menu-bookmark"></div>
-        </li>
-        @*<li class="@Html.Raw(actionName == "Services" ? "selected" : "")">
-                @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.Services, "Services", null, new { @class = actionName == "Services" ? "selected" : "" })
+        @*<li class="@Html.Raw(actionName == "ConnectionStatus" ? "selected" : "")">
+                @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.ConnectionStatus, "ConnectionStatus", "Home", null, new { @class = actionName == "ConnectionStatus" ? "selected" : "" })
                 <div class="menu-bookmark"></div>
-            </li>*@
+            </li>
+            <li class="@Html.Raw(actionName == "Services" ? "selected" : "")">
+                    @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.Services, "Services", null, new { @class = actionName == "Services" ? "selected" : "" })
+                    <div class="menu-bookmark"></div>
+                </li>*@
         <li class="@Html.Raw(actionName == "PersonalInfo" ? "selected" : "")">
             @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.PersonalInfo, "PersonalInfo", "Home", null, new { @class = actionName == "PersonalInfo" ? "selected" : "" })
             <div class="menu-bookmark"></div>

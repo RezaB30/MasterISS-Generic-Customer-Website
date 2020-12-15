@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Security.Principal;
+using RadiusR.DB.Settings;
 
 namespace RadiusR_Customer_Website.Controllers
 {
@@ -53,10 +54,10 @@ namespace RadiusR_Customer_Website.Controllers
                         {
                             var randomPassword = new Random().Next(100000, 1000000).ToString("000000");
                             dbClients.ForEach(client => client.OnlinePassword = randomPassword);
-                            dbClients.ForEach(client => client.OnlinePasswordExpirationDate = DateTime.Now.Add(AppSettings.OnlinePasswordDuration));
+                            dbClients.ForEach(client => client.OnlinePasswordExpirationDate = DateTime.Now.Add(CustomerWebsiteSettings.OnlinePasswordDuration));
                             validPasswordClient = dbClients.FirstOrDefault();
                             SMSService SMS = new SMSService();
-                            SMS.SendGenericSMS(validPasswordClient.Customer.ContactPhoneNo, validPasswordClient.Customer.Culture, rawText: string.Format(RadiusRCustomerWebSite.Localization.Common.PasswordSMS, validPasswordClient.OnlinePassword, AppSettings.OnlinePasswordDuration.Hours));
+                            SMS.SendGenericSMS(validPasswordClient.Customer.ContactPhoneNo, validPasswordClient.Customer.Culture, rawText: string.Format(RadiusRCustomerWebSite.Localization.Common.PasswordSMS, validPasswordClient.OnlinePassword, CustomerWebsiteSettings.OnlinePasswordDuration.Hours));
                             //SMS.SendPlainText(new[] { validPasswordClient }, string.Format(RadiusRCustomerWebSite.Localization.Common.PasswordSMS, validPasswordClient.OnlinePassword, AppSettings.OnlinePasswordDuration.Hours));
                             db.SaveChanges();
                         }

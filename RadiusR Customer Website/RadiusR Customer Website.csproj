@@ -87,7 +87,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RadiusR.DB, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.DB.1.0.4-alpha5\lib\net452\RadiusR.DB.dll</HintPath>
+      <HintPath>..\packages\RadiusR.DB.1.0.4\lib\net452\RadiusR.DB.dll</HintPath>
     </Reference>
     <Reference Include="RadiusR.DB.Utilities, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RadiusR.DB.Utilities.1.0.1\lib\net452\RadiusR.DB.Utilities.dll</HintPath>
@@ -141,9 +141,8 @@
     <Reference Include="RezaB.Web, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.Web.1.0.1\lib\net452\RezaB.Web.dll</HintPath>
     </Reference>
-    <Reference Include="RezaB.Web.Helpers, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RezaB.Web.Helpers.1.0.2\lib\net452\RezaB.Web.Helpers.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="RezaB.Web.Helpers, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RezaB.Web.Helpers.1.0.3\lib\net452\RezaB.Web.Helpers.dll</HintPath>
     </Reference>
     <Reference Include="RezaB.Web.VPOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.Web.VPOS.1.0.0\lib\net452\RezaB.Web.VPOS.dll</HintPath>

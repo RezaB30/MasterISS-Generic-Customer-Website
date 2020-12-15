@@ -31,6 +31,7 @@ namespace RadiusR_Customer_Website.Controllers
         Logger paymentLogger = LogManager.GetLogger("payments");
         Logger unpaidLogger = LogManager.GetLogger("unpaid");
         Logger generalLogger = LogManager.GetLogger("general");
+        Logger TTErrorslogger = LogManager.GetLogger("TTErrors");
         public ActionResult Index()
         {
             HomePageViewModel results = null;
@@ -289,6 +290,10 @@ namespace RadiusR_Customer_Website.Controllers
                 }
 
                 var subscriptions = dbCustomer.Subscriptions.Where(s => !s.IsCancelled).ToArray();
+
+                var expiredOrInvalidCards = subscriptions.Where(m => m.MobilExpressAutoPayment != null).Select(s => s.MobilExpressAutoPayment).Where(meap => !cards.Select(c => c.Token).Contains(meap.CardToken));
+                db.MobilExpressAutoPayments.RemoveRange(expiredOrInvalidCards);
+                db.SaveChanges();
                 var autoPayments = subscriptions.Select(s => new CustomerAutomaticPaymentViewModel.AutomaticPaymentViewModel()
                 {
                     SubscriberID = s.ID,
@@ -647,35 +652,40 @@ namespace RadiusR_Customer_Website.Controllers
         }
         public ActionResult ConnectionStatus()
         {
-            return RedirectToAction("Index");
-            //if (Request.IsAjaxRequest())
-            //{
-            //    using (var db = new RadiusR.DB.RadiusREntities())
-            //    {
-            //        var Subscription = db.Subscriptions.Find(User.GiveUserId());
-            //        if (Subscription == null)
-            //            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            if (Request.IsAjaxRequest())
+            {
+                using (var db = new RadiusR.DB.RadiusREntities())
+                {
+                    var Subscription = db.Subscriptions.Find(User.GiveUserId());
+                    if (Subscription == null)
+                        return PartialView("Error");
 
-            //        var Domain = db.TelekomAccessCredentials.Find(Subscription.DomainID);
-            //        RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(Convert.ToInt64(Domain.XDSLWebServiceUsername), Domain.XDSLWebServicePassword);
-            //        var Result = client.Check(Subscription.SubscriptionTelekomInfo.SubscriptionNo);
-            //        if (Result.InternalException != null)
-            //            return RedirectToAction("Index");
-            //        var model = new Models.ViewModels.Home.ConnectionStatusViewModel()
-            //        {
-            //            ConnectionStatus = (short)Result.Data.OperationStatus,
-            //            CurrentDownload = Result.Data.CurrentDown,
-            //            CurrentUpload = Result.Data.CurrentUp,
-            //            XDSLNo = Subscription.SubscriptionTelekomInfo.SubscriptionNo,
-            //            XDSLType = Subscription.SubscriptionTelekomInfo.XDSLType
-            //        };
-            //        return PartialView("_ConnectionStatusPartial", model);
-            //    }
-            //}
-            //else
-            //{
-            //    return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
-            //}
+                    var Domain = db.TelekomAccessCredentials.Find(Subscription.DomainID);
+                    RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(Convert.ToInt64(Domain.XDSLWebServiceUsername), Domain.XDSLWebServicePassword);
+                    var Result = client.Check(Subscription.SubscriptionTelekomInfo.SubscriptionNo);
+                    if (Result.InternalException != null)
+                    {
+                        TTErrorslogger.Error(Result.InternalException, "Error telekom line state");
+                        return PartialView("Error");
+                    }
+                    var model = new Models.ViewModels.Home.ConnectionStatusViewModel()
+                    {
+                        ConnectionStatus = (short)Result.Data.OperationStatus,
+                        CurrentDownload = Result.Data.CurrentDown,
+                        CurrentUpload = Result.Data.CurrentUp,
+                        XDSLNo = Subscription.SubscriptionTelekomInfo.SubscriptionNo,
+                        XDSLType = Subscription.SubscriptionTelekomInfo.XDSLType,
+                        DownloadMargin = Result.Data.NoiseRateDown,
+                        UploadMargin = Result.Data.NoiseRateUp
+                    };
+                    return PartialView("_ConnectionStatusPartial", model);
+                }
+            }
+            else
+            {
+                return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
+            }
         }
 
         public ActionResult Services()

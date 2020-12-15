@@ -70,7 +70,8 @@ namespace RadiusR_Customer_Website.Controllers
         {
             if (newRequest.Description != null)
                 newRequest.Description = newRequest.Description.Trim(new char[] { ' ', '\n', '\r' });
-            TryValidateModel(ModelState);
+            ModelState.Clear();
+            TryValidateModel(newRequest);
             if (!ModelState.IsValid)
             {
                 using (var db = new RadiusR.DB.RadiusREntities())
@@ -159,7 +160,13 @@ namespace RadiusR_Customer_Website.Controllers
         {
             if (requestMessage.Message != null)
                 requestMessage.Message = requestMessage.Message.Trim(new char[] { ' ', '\n', '\r' });
-            TryValidateModel(ModelState);
+            if (requestMessage.IsSolved)
+            {
+                if (string.IsNullOrEmpty(requestMessage.Message))
+                    requestMessage.Message = RadiusRCustomerWebSite.Localization.Common.ProblemSolved;
+            }
+            ModelState.Clear();
+            TryValidateModel(requestMessage);
             if (!ModelState.IsValid)
             {
                 return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { requestMessage.ID }), ModelErrorMessages(ModelState));

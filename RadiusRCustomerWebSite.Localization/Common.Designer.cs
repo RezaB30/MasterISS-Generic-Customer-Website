@@ -493,6 +493,24 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download Noise Margin.
+        /// </summary>
+        public static string DownloadNoiseMargin {
+            get {
+                return ResourceManager.GetString("DownloadNoiseMargin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Noise Margin.
+        /// </summary>
+        public static string DownloadUploadMargin {
+            get {
+                return ResourceManager.GetString("DownloadUploadMargin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-Archive PDF.
         /// </summary>
         public static string EArchivePDF {
@@ -1488,6 +1506,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string Upload {
             get {
                 return ResourceManager.GetString("Upload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Noise Margin.
+        /// </summary>
+        public static string UploadNoiseMargin {
+            get {
+                return ResourceManager.GetString("UploadNoiseMargin", resourceCulture);
             }
         }
         

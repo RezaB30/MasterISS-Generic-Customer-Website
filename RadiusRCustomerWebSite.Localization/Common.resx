@@ -261,6 +261,12 @@
   <data name="Download" xml:space="preserve">
     <value>Download</value>
   </data>
+  <data name="DownloadNoiseMargin" xml:space="preserve">
+    <value>Download Noise Margin</value>
+  </data>
+  <data name="DownloadUploadMargin" xml:space="preserve">
+    <value>Upload Noise Margin</value>
+  </data>
   <data name="EArchivePDF" xml:space="preserve">
     <value>E-Archive PDF</value>
   </data>
@@ -593,6 +599,9 @@
   </data>
   <data name="Upload" xml:space="preserve">
     <value>Upload</value>
+  </data>
+  <data name="UploadNoiseMargin" xml:space="preserve">
+    <value>Upload Noise Margin</value>
   </data>
   <data name="UsedCount" xml:space="preserve">
     <value>Used</value>

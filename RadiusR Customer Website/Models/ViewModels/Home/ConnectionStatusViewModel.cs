@@ -28,5 +28,11 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Home
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "IPAddress")]
         public string IPAddress => Utilities.InternalUtilities.GetUserIP();
 
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "DownloadNoiseMargin")]
+        public string DownloadMargin { get; set; }
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "UploadNoiseMargin")]
+        public string UploadMargin { get; set; }
+
+
     }
 }

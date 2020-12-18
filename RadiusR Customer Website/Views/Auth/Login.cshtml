@@ -20,7 +20,7 @@
         </div>
         <div class="captcha">
             <div class="captcha-image-wrapper">
-                <img class="captcha-image" width="265" height="50" src="@Url.Action("LoginCaptcha","Captcha",new { id = random.Next(1000, int.MaxValue) })" />
+                <img class="captcha-image" src="@Url.Action("LoginCaptcha","Captcha",new { id = random.Next(1000, int.MaxValue) })" />
                 <input class="captcha-reload-button" type="button" />
             </div>
         </div>

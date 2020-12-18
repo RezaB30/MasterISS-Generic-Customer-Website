@@ -652,17 +652,20 @@ namespace RadiusR_Customer_Website.Controllers
         }
         public ActionResult ConnectionStatus()
         {
-            //return RedirectToAction("Index");
-            if (Request.IsAjaxRequest())
+            using (var db = new RadiusR.DB.RadiusREntities())
             {
-                using (var db = new RadiusR.DB.RadiusREntities())
-                {
-                    var Subscription = db.Subscriptions.Find(User.GiveUserId());
-                    if (Subscription == null)
-                        return PartialView("Error");
+                var Subscription = db.Subscriptions.Find(User.GiveUserId());
+                if (Subscription == null)
+                    return PartialView("Error");
 
-                    var Domain = db.TelekomAccessCredentials.Find(Subscription.DomainID);
-                    RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(Convert.ToInt64(Domain.XDSLWebServiceUsername), Domain.XDSLWebServicePassword);
+                var domainCache = RadiusR.DB.DomainsCache.DomainsCache.GetDomainByID(Subscription.DomainID);
+                if (domainCache.TelekomCredential == null)
+                {
+                    return RedirectToAction("Index");
+                }
+                if (Request.IsAjaxRequest())
+                {
+                    RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(domainCache.TelekomCredential.XDSLWebServiceUsernameInt, domainCache.TelekomCredential.XDSLWebServicePassword);
                     var Result = client.Check(Subscription.SubscriptionTelekomInfo.SubscriptionNo);
                     if (Result.InternalException != null)
                     {
@@ -681,10 +684,10 @@ namespace RadiusR_Customer_Website.Controllers
                     };
                     return PartialView("_ConnectionStatusPartial", model);
                 }
-            }
-            else
-            {
-                return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
+                else
+                {
+                    return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
+                }
             }
         }
 

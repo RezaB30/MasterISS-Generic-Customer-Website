@@ -16,8 +16,11 @@ namespace RadiusR_Customer_Website.Models
         [Required(ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), ErrorMessageResourceName = "SMSPasswordWrong")]
         public string SMSPassword { get; set; }
 
-        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Captcha")]
+        //[Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Captcha")]
+        //[Required(ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Validation), ErrorMessageResourceName = "Required")]
+        //public string Captcha { get; set; }
+        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "Password")]
         [Required(ErrorMessageResourceType = typeof(RadiusRCustomerWebSite.Localization.Validation), ErrorMessageResourceName = "Required")]
-        public string Captcha { get; set; }
+        public string Password { get; set; }
     }
 }

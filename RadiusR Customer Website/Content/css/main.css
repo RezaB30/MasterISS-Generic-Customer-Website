@@ -422,9 +422,10 @@ div.shared-space-4 {
 }
 
 div.shared-space-2 {
-    width: 50%;
+    width: 49%;
     min-width: 11em;
     display: inline-block;
+    box-sizing: border-box;
 }
 
 div.usage-info-item div.bottom-line {
@@ -1061,6 +1062,7 @@ input.arrow {
 .notification-box-top {
     top: 12.1em;
 }
+
 .captcha-image {
     width: 100%;
 }

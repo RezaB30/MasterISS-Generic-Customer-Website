@@ -150,6 +150,9 @@
   <data name="Back" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="BackToLogin" xml:space="preserve">
+    <value>Back To Login</value>
+  </data>
   <data name="BackToSite" xml:space="preserve">
     <value>Back To Site</value>
   </data>
@@ -315,6 +318,9 @@
   <data name="GeneralState" xml:space="preserve">
     <value>General State</value>
   </data>
+  <data name="GetNewPassword" xml:space="preserve">
+    <value>Get New Password/Forgot Password</value>
+  </data>
   <data name="Go" xml:space="preserve">
     <value>Go</value>
   </data>
@@ -369,6 +375,12 @@
   <data name="LoginSMSPassword" xml:space="preserve">
     <value>Sent SMS Password</value>
   </data>
+  <data name="LoginWithPassword" xml:space="preserve">
+    <value>Login With Password</value>
+  </data>
+  <data name="LoginWithSMS" xml:space="preserve">
+    <value>Login With SMS</value>
+  </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
@@ -419,6 +431,9 @@
   </data>
   <data name="Optional" xml:space="preserve">
     <value>Optional</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="PasswordSMS" xml:space="preserve">
     <value>Your customer website password is {0}.</value>

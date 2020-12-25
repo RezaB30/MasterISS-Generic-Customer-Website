@@ -160,6 +160,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back To Login.
+        /// </summary>
+        public static string BackToLogin {
+            get {
+                return ResourceManager.GetString("BackToLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back To Site.
         /// </summary>
         public static string BackToSite {
@@ -655,6 +664,15 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get New Password/Forgot Password.
+        /// </summary>
+        public static string GetNewPassword {
+            get {
+                return ResourceManager.GetString("GetNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go.
         /// </summary>
         public static string Go {
@@ -817,6 +835,24 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login With Password.
+        /// </summary>
+        public static string LoginWithPassword {
+            get {
+                return ResourceManager.GetString("LoginWithPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login With SMS.
+        /// </summary>
+        public static string LoginWithSMS {
+            get {
+                return ResourceManager.GetString("LoginWithSMS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string Logout {
@@ -966,6 +1002,15 @@ namespace RadiusRCustomerWebSite.Localization {
         public static string Optional {
             get {
                 return ResourceManager.GetString("Optional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         

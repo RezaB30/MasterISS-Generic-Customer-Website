@@ -86,8 +86,11 @@
       <HintPath>..\packages\RadiusR.API.MobilExpress.DBAdapter.1.0.0\lib\net452\RadiusR.API.MobilExpress.DBAdapter.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RadiusR.DB, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.DB.1.0.4\lib\net452\RadiusR.DB.dll</HintPath>
+    <Reference Include="RadiusR.DB, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RadiusR.DB.1.0.5\lib\net452\RadiusR.DB.dll</HintPath>
+    </Reference>
+    <Reference Include="RadiusR.DB.DomainsCache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RadiusR.DB.DomainsCache.1.0.0\lib\net452\RadiusR.DB.DomainsCache.dll</HintPath>
     </Reference>
     <Reference Include="RadiusR.DB.Utilities, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RadiusR.DB.Utilities.1.0.1\lib\net452\RadiusR.DB.Utilities.dll</HintPath>
@@ -362,7 +365,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_NoMenuLayout.cshtml" />
-    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Auth\DirectLogin.cshtml" />
     <Content Include="Views\Auth\SMSConfirm.cshtml" />
     <Content Include="Views\Shared\LayoutParts\_Header.cshtml" />
     <Content Include="Views\Shared\LayoutParts\_NavBar.cshtml" />
@@ -410,6 +413,8 @@
     <Content Include="Views\Home\ConnectionStatus.cshtml" />
     <Content Include="Views\Home\_ConnectionStatusPartial.cshtml" />
     <Content Include="Views\Customer\RedirectPage.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Auth\GetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

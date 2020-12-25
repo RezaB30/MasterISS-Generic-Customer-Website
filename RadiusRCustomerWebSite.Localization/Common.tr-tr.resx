@@ -150,6 +150,9 @@
   <data name="Back" xml:space="preserve">
     <value>Geri</value>
   </data>
+  <data name="BackToLogin" xml:space="preserve">
+    <value>Giriş Sayfasına Dön</value>
+  </data>
   <data name="BackToSite" xml:space="preserve">
     <value>Siteye Dön</value>
   </data>
@@ -312,6 +315,9 @@
   <data name="GeneralState" xml:space="preserve">
     <value>Genel Durum</value>
   </data>
+  <data name="GetNewPassword" xml:space="preserve">
+    <value>Yeni Şifre Al/Şifremi Unuttum</value>
+  </data>
   <data name="Go" xml:space="preserve">
     <value>Git</value>
   </data>
@@ -366,6 +372,12 @@
   <data name="LoginSMSPassword" xml:space="preserve">
     <value>Gönderilen SMS Şifre</value>
   </data>
+  <data name="LoginWithPassword" xml:space="preserve">
+    <value>Şifre İle Giriş İçin Tıklayın</value>
+  </data>
+  <data name="LoginWithSMS" xml:space="preserve">
+    <value>SMS İle Giriş İçin Tıklayın</value>
+  </data>
   <data name="Logout" xml:space="preserve">
     <value>Çıkış</value>
   </data>
@@ -416,6 +428,9 @@
   </data>
   <data name="Optional" xml:space="preserve">
     <value>İsteğe Bağlı</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Şifre</value>
   </data>
   <data name="PasswordSMS" xml:space="preserve">
     <value>Online işlem merkezi giriş şifreniz {0} 'dir.</value>

@@ -37,13 +37,13 @@ namespace RadiusR_Customer_Website
                 routeValues.Add(context.Options.ReturnUrlParameter, returnUrl);
 
                 //Overwrite the redirection uri
-                context.RedirectUri = url.Action("Login", "Auth", routeValues);
+                context.RedirectUri = url.Action("DirectLogin", "Auth", routeValues);
                 originalHandler.Invoke(context);
             };
             app.UseCookieAuthentication(new CookieAuthenticationOptions()
             {
                 AuthenticationType = "ApplicationCookie",
-                LoginPath = new PathString(url.Action("Login", "Auth")),
+                LoginPath = new PathString(url.Action("DirectLogin", "Auth")),
                 //Set the Provider
                 Provider = provider,
                 CookieName = "RadiusRCustomer",

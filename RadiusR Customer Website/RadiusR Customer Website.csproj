@@ -365,7 +365,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_NoMenuLayout.cshtml" />
-    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Auth\DirectLogin.cshtml" />
     <Content Include="Views\Auth\SMSConfirm.cshtml" />
     <Content Include="Views\Shared\LayoutParts\_Header.cshtml" />
     <Content Include="Views\Shared\LayoutParts\_NavBar.cshtml" />
@@ -413,6 +413,8 @@
     <Content Include="Views\Home\ConnectionStatus.cshtml" />
     <Content Include="Views\Home\_ConnectionStatusPartial.cshtml" />
     <Content Include="Views\Customer\RedirectPage.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Auth\GetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

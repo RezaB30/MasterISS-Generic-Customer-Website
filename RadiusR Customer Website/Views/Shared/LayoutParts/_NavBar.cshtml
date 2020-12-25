@@ -26,8 +26,8 @@
             @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.TariffAndTraffic, "TariffAndTraffic", "Home", null, new { @class = actionName == "TariffAndTraffic" ? "selected" : "" })
             <div class="menu-bookmark"></div>
         </li>
-        <li class="@Html.Raw(actionName == "SupportRequests" ? "selected" : actionName == "SupportDetails" ? "selected" : "")">
-            <a href="@Url.Action("SupportRequests","Support")" class="@Html.Raw(actionName == "SupportRequests" ? "selected" : actionName == "SupportDetails" ? "selected" : "")">
+        <li class="@Html.Raw(actionName == "SupportRequests" ? "selected" : actionName == "SupportDetails" ? "selected" : actionName == "NewRequest" ? "selected" : "")">
+            <a href="@Url.Action("SupportRequests","Support")" class="@Html.Raw(actionName == "SupportRequests" ? "selected" : actionName == "SupportDetails" ? "selected" : actionName == "NewRequest" ? "selected" : "")">
                 @RadiusRCustomerWebSite.Localization.Common.SupportAndRequests
                 <span class="notification-badge" style="display:none;"></span>
             </a>

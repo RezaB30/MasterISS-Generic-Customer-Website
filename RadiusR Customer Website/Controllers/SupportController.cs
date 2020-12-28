@@ -274,8 +274,7 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 using (var db = new RadiusR.DB.RadiusREntities())
                 {
-                    var PassedTime = db.AppSettings.Where(m => m.Key == "SupportRequestPassedTime").Select(m => m.Value).FirstOrDefault();
-                    var PassedTimeSpan = new TimeSpan(0, Convert.ToInt32(PassedTime.Split(':')[0]), Convert.ToInt32(PassedTime.Split(':')[1]), Convert.ToInt32(PassedTime.Split(':')[2]), 0);
+                    var PassedTimeSpan = CustomerWebsiteSettings.SupportRequestPassedTime;
                     var subscriptionId = User.GiveUserId();
                     var CurrentSupportProgress = db.SupportRequestProgresses.Where(m => m.SupportRequest.SubscriptionID == subscriptionId && m.SupportRequest.IsVisibleToCustomer).OrderByDescending(m => m.Date).FirstOrDefault();
                     var IsPassedTime = false;
@@ -321,8 +320,7 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 if (SupportRequest.StateID == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.Done)
                 {
-                    var PassedTime = db.AppSettings.Where(m => m.Key == "SupportRequestPassedTime").Select(m => m.Value).FirstOrDefault();
-                    var PassedTimeSpan = new TimeSpan(0, Convert.ToInt32(PassedTime.Split(':')[0]), Convert.ToInt32(PassedTime.Split(':')[1]), Convert.ToInt32(PassedTime.Split(':')[2]), 0);
+                    var PassedTimeSpan = CustomerWebsiteSettings.SupportRequestPassedTime;
                     var subscriptionId = User.GiveUserId();
                     var IsPassedTime = (DateTime.Now - SupportRequest.SupportRequestProgresses.OrderByDescending(s => s.Date).Select(s => s.Date).FirstOrDefault()) < PassedTimeSpan ? false : true;
                     if (IsPassedTime)

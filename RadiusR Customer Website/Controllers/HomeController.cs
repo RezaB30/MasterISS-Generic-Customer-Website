@@ -246,7 +246,8 @@ namespace RadiusR_Customer_Website.Controllers
                     payableAmount,
                     dbSubscription.Customer.Culture.Split('-').FirstOrDefault(),
                     dbSubscription.SubscriberNo + "-" + dbSubscription.ValidDisplayName);
-                return View(viewName: "3DHostPayment", model: VPOSModel);
+                ViewBag.POSForm = VPOSModel.GetHtmlForm();
+                return View(viewName: "3DHostPayment");
             }
         }
 
@@ -759,7 +760,8 @@ namespace RadiusR_Customer_Website.Controllers
                     dbQuota.Price,
                     dbSubscription.Customer.Culture.Split('-').FirstOrDefault(),
                     dbSubscription.ValidDisplayName);
-                return View(viewName: "3DHostPayment", model: VPOSModel);
+                ViewBag.POSForm = VPOSModel.GetHtmlForm();
+                return View(viewName: "3DHostPayment");
             }
         }
 

@@ -23,9 +23,9 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Supports
         public DateTime Date { get; set; } // dd.MM.yyyy
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "ApprovalDate")]
         public DateTime? ApprovalDate { get; set; } // dd.MM.yyyy completed date
-        [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "State")]
-        [EnumType(typeof(RadiusR.DB.Enums.SupportRequests.SupportRequestStateID), typeof(RadiusR.Localization.Lists.SupportRequests.SupportRequestStateID))]
-        [UIHint("LocalizedList")]
-        public short State { get; set; }
+        //[Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "State")]
+        //[EnumType(typeof(RadiusR.DB.Enums.SupportRequests.SupportRequestStateID), typeof(RadiusR.Localization.Lists.SupportRequests.SupportRequestStateID))]
+        //[UIHint("LocalizedList")]
+        public string State { get; set; }
     }
 }

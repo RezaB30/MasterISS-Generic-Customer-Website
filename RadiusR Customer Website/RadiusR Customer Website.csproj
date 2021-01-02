@@ -222,12 +222,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="AuthenticationExtentions.cs" />
+    <Compile Include="Connected Services\GenericCustomerServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SupportController.cs" />
+    <Compile Include="GenericServiceSettings.cs" />
     <Compile Include="Models\UsageInfoViewModel.cs" />
     <Compile Include="CustomAttributes\CardCVV.cs" />
     <Compile Include="CustomAttributes\CardExpirationYear.cs" />
@@ -273,6 +279,103 @@
     <Compile Include="VPOSToken\VPOSTokenManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\GenericCustomerServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\GenericCustomerServiceReference\configuration.svcinfo" />
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceActivateAutomaticPaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAddCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAddCardSMSValidationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceCanHaveQuotaSaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceConnectionStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceCustomerAuthenticationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceEArchivePDFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGetCustomerBillsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGetCustomerInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGetCustomerSpecialOffersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceNameValuePair.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePayBillsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceQuotaPackagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceQuotaSaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardSMSValidationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSupportMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSupportDetailMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSupportRegisterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSFormResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService.wsdl" />
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GenericCustomerServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\captcha.css" />
@@ -432,6 +535,12 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\GenericCustomerServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="36877e48-7f39-4c18-a3d7-5fe491d5d19c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:56365/GenericCustomerService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GenericCustomerService.xsd" MetadataType="Schema" ID="6b0eaf31-f7a7-431f-b6d6-231c07c1e274" SourceId="1" SourceUrl="http://localhost:56365/GenericCustomerService.svc?xsd=xsd5" />
+    <MetadataFile FileName="GenericCustomerService1.xsd" MetadataType="Schema" ID="57ec24be-2430-4ee0-a0c9-fab79b4bd397" SourceId="1" SourceUrl="http://localhost:56365/GenericCustomerService.svc?xsd=xsd4" />
+    <MetadataFile FileName="GenericCustomerService2.xsd" MetadataType="Schema" ID="702c1917-9059-4aa3-89b1-bae8591db5d7" SourceId="1" SourceUrl="http://localhost:56365/GenericCustomerService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GenericCustomerService3.xsd" MetadataType="Schema" ID="0bf8863f-4a64-4ea2-8662-b3528d410d08" SourceId="1" SourceUrl="http://localhost:56365/GenericCustomerService.svc?xsd=xsd3" />
+    <MetadataFile FileName="GenericCustomerService4.xsd" MetadataType="Schema" ID="a219e6ce-519e-4c49-97f4-5013e1b10503" SourceId="1" SourceUrl="http://localhost:56365/GenericCustomerService.svc?xsd=xsd2" />
+    <MetadataFile FileName="GenericCustomerService.wsdl" MetadataType="Wsdl" ID="3481da1e-fc95-45ce-9418-7e589a5ea803" SourceId="1" SourceUrl="http://localhost:56365/GenericCustomerService.svc?wsdl" />
+    <MetadataFile FileName="GenericCustomerService5.xsd" MetadataType="Schema" ID="c528532d-ec40-49cd-9a1a-20c13bf09380" SourceId="1" SourceUrl="http://localhost:56365/GenericCustomerService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

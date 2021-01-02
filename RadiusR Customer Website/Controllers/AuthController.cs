@@ -13,12 +13,14 @@ using System.Data.Entity;
 using System.Security.Principal;
 using RadiusR.DB.Settings;
 using System.Net;
+using RadiusR_Customer_Website.GenericCustomerServiceReference;
 
 namespace RadiusR_Customer_Website.Controllers
 {
     [AllowAnonymous]
     public class AuthController : BaseController
     {
+        GenericCustomerServiceReference.GenericCustomerServiceClient client = new GenericCustomerServiceReference.GenericCustomerServiceClient();
         [HttpGet]
         // GET: Auth
         public ActionResult DirectLogin()
@@ -35,40 +37,29 @@ namespace RadiusR_Customer_Website.Controllers
             ModelState.Remove("Password");
             if (ModelState.IsValid)
             {
-                //var CurrentCaptcha = Session["LoginCaptcha"] as string;
-                //if (login.Captcha != CurrentCaptcha)
-                //{
-                //    ModelState.AddModelError("Captcha", string.Format(RadiusRCustomerWebSite.Localization.Common.NotValid, RadiusRCustomerWebSite.Localization.Common.Captcha));
-                //    login.Captcha = string.Empty;
-                //    return View(login);
-                //}
                 if (login.CustomerCode.StartsWith("0"))
                     login.CustomerCode = login.CustomerCode.TrimStart('0');
-                using (RadiusREntities db = new RadiusREntities())
+
+                var baseRequest = new GenericServiceSettings();
+                var result = client.CustomerAuthentication(new GenericCustomerServiceReference.CustomerServiceAuthenticationRequest()
                 {
-                    var dbClients = db.Subscriptions.Where(sub => (sub.Customer.CustomerIDCard.TCKNo == login.CustomerCode) || sub.Customer.ContactPhoneNo == login.CustomerCode).ToList();
-                    if (dbClients.Count() > 0)
+                    Culture = baseRequest._culture,
+                    Rand = baseRequest._rand,
+                    Username = baseRequest._username,
+                    Hash = baseRequest.hash,
+                    AuthenticationParameters = new GenericCustomerServiceReference.AuthenticationRequest()
                     {
-                        // if need to send a new password
-                        var validPasswordClient = dbClients.FirstOrDefault(client => client.OnlinePassword != null && client.OnlinePasswordExpirationDate != null);
-                        if (validPasswordClient == null || validPasswordClient.OnlinePasswordExpirationDate < DateTime.Now)
-                        {
-                            var randomPassword = new Random().Next(100000, 1000000).ToString("000000");
-                            dbClients.ForEach(client => client.OnlinePassword = randomPassword);
-                            dbClients.ForEach(client => client.OnlinePasswordExpirationDate = DateTime.Now.Add(CustomerWebsiteSettings.OnlinePasswordDuration));
-                            validPasswordClient = dbClients.FirstOrDefault();
-                            SMSService SMS = new SMSService();
-                            SMS.SendGenericSMS(validPasswordClient.Customer.ContactPhoneNo, validPasswordClient.Customer.Culture, rawText: string.Format(RadiusRCustomerWebSite.Localization.Common.PasswordSMS, validPasswordClient.OnlinePassword, CustomerWebsiteSettings.OnlinePasswordDuration.Hours));
-                            //SMS.SendPlainText(new[] { validPasswordClient }, string.Format(RadiusRCustomerWebSite.Localization.Common.PasswordSMS, validPasswordClient.OnlinePassword, AppSettings.OnlinePasswordDuration.Hours));
-                            db.SaveChanges();
-                        }
-                        //ViewBag.SMSWarning = string.Format(RadiusRCustomerWebSite.Localization.Common.SMSWarningMessage, AppSettings.OnlinePasswordDuration.Hours);
-                        return View("SMSConfirm", login);
+                        PhoneNo = login.CustomerCode,
+                        TCK = login.CustomerCode
                     }
-                    else
-                    {
-                        ModelState.AddModelError("CustomerCode", RadiusRCustomerWebSite.Localization.Common.ClientNotFound);
-                    }
+                });
+                if (result.ResponseMessage.ErrorCode == 0)
+                {
+                    return View("SMSConfirm", login);
+                }
+                else
+                {
+                    ModelState.AddModelError("CustomerCode", result.ResponseMessage.ErrorMessage);
                 }
             }
             return View(login);
@@ -78,52 +69,52 @@ namespace RadiusR_Customer_Website.Controllers
             return RedirectToAction("DirectLogin");
             //return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login([Bind(Include = "CustomerCode,Password")] LoginViewModel login)
-        {
-            ModelState.Remove("SMSPassword");
-            if (ModelState.IsValid)
-            {
-                //var CurrentCaptcha = Session["LoginCaptcha"] as string;
-                //if (login.Captcha != CurrentCaptcha)
-                //{
-                //    ModelState.AddModelError("Captcha", string.Format(RadiusRCustomerWebSite.Localization.Common.NotValid, RadiusRCustomerWebSite.Localization.Common.Captcha));
-                //    login.Captcha = string.Empty;
-                //    return View(login);
-                //}
-                if (login.CustomerCode.StartsWith("0"))
-                    login.CustomerCode = login.CustomerCode.TrimStart('0');
-                using (RadiusREntities db = new RadiusREntities())
-                {
-                    // find customers
-                    var dbCustomers = db.Customers.Where(c => c.CustomerIDCard.TCKNo == login.CustomerCode || c.ContactPhoneNo == login.CustomerCode).ToArray();
-                    // select a subscriber
-                    var dbClient = dbCustomers.SelectMany(c => c.Subscriptions).FirstOrDefault();
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Login([Bind(Include = "CustomerCode,Password")] LoginViewModel login)
+        //{
+        //    ModelState.Remove("SMSPassword");
+        //    if (ModelState.IsValid)
+        //    {
+        //        //var CurrentCaptcha = Session["LoginCaptcha"] as string;
+        //        //if (login.Captcha != CurrentCaptcha)
+        //        //{
+        //        //    ModelState.AddModelError("Captcha", string.Format(RadiusRCustomerWebSite.Localization.Common.NotValid, RadiusRCustomerWebSite.Localization.Common.Captcha));
+        //        //    login.Captcha = string.Empty;
+        //        //    return View(login);
+        //        //}
+        //        if (login.CustomerCode.StartsWith("0"))
+        //            login.CustomerCode = login.CustomerCode.TrimStart('0');
+        //        using (RadiusREntities db = new RadiusREntities())
+        //        {
+        //            // find customers
+        //            var dbCustomers = db.Customers.Where(c => c.CustomerIDCard.TCKNo == login.CustomerCode || c.ContactPhoneNo == login.CustomerCode).ToArray();
+        //            // select a subscriber
+        //            var dbClient = dbCustomers.SelectMany(c => c.Subscriptions).FirstOrDefault();
 
-                    if (dbCustomers.Count() > 0 && dbClient != null)
-                    {
+        //            if (dbCustomers.Count() > 0 && dbClient != null)
+        //            {
 
-                        // if need to send a new password
-                        if (string.IsNullOrEmpty(dbClient.OnlinePassword) || !dbClient.OnlinePasswordExpirationDate.HasValue)
-                            return RedirectToAction("DirectLogin");
-                        if (dbClient.OnlinePassword != login.Password)
-                        {
-                            ModelState.AddModelError("Password", RadiusRCustomerWebSite.Localization.Common.SMSPasswordWrong);
-                            return View(login);
-                        }
-                        // sign in
-                        SignInUser(dbClient, dbCustomers, Request.GetOwinContext());
-                        return Redirect(GetRedirectUrl(Request.QueryString["ReturnUrl"]));
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("CustomerCode", RadiusRCustomerWebSite.Localization.Common.ClientNotFound);
-                    }
-                }
-            }
-            return View(login);
-        }
+        //                // if need to send a new password
+        //                if (string.IsNullOrEmpty(dbClient.OnlinePassword) || !dbClient.OnlinePasswordExpirationDate.HasValue)
+        //                    return RedirectToAction("DirectLogin");
+        //                if (dbClient.OnlinePassword != login.Password)
+        //                {
+        //                    ModelState.AddModelError("Password", RadiusRCustomerWebSite.Localization.Common.SMSPasswordWrong);
+        //                    return View(login);
+        //                }
+        //                // sign in
+        //                SignInUser(dbClient, dbCustomers, Request.GetOwinContext());
+        //                return Redirect(GetRedirectUrl(Request.QueryString["ReturnUrl"]));
+        //            }
+        //            else
+        //            {
+        //                ModelState.AddModelError("CustomerCode", RadiusRCustomerWebSite.Localization.Common.ClientNotFound);
+        //            }
+        //        }
+        //    }
+        //    return View(login);
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -134,83 +125,107 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 if (login.CustomerCode.StartsWith("0"))
                     login.CustomerCode = login.CustomerCode.TrimStart('0');
-                using (RadiusREntities db = new RadiusREntities())
+
+                var baseRequest = new GenericServiceSettings();
+                var result = client.AuthenticationSMSConfirm(new GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmRequest()
                 {
-                    // find customers
-                    var dbCustomers = db.Customers.Where(c => c.CustomerIDCard.TCKNo == login.CustomerCode || c.ContactPhoneNo == login.CustomerCode).ToArray();
-                    // select a subscriber
-                    var dbClient = dbCustomers.SelectMany(c => c.Subscriptions).FirstOrDefault();
-
-                    if (dbCustomers.Count() > 0 && dbClient != null)
+                    Culture = baseRequest._culture,
+                    Hash = baseRequest.hash,
+                    Rand = baseRequest._rand,
+                    Username = baseRequest._username,
+                    AuthenticationSMSConfirmParameters = new GenericCustomerServiceReference.AuthenticationSMSConfirmRequest()
                     {
-
-                        // if need to send a new password
-                        if (string.IsNullOrEmpty(dbClient.OnlinePassword) || !dbClient.OnlinePasswordExpirationDate.HasValue)
-                            return RedirectToAction("Login");
-                        if (dbClient.OnlinePassword != login.SMSPassword)
-                        {
-                            ModelState.AddModelError("SMSPassword", RadiusRCustomerWebSite.Localization.Common.SMSPasswordWrong);
-                            return View(login);
-                        }
-                        // sign in
-                        SignInUser(dbClient, dbCustomers, Request.GetOwinContext());
-                        return Redirect(GetRedirectUrl(Request.QueryString["ReturnUrl"]));
+                        CustomerCode = login.CustomerCode,
+                        SMSPassword = login.SMSPassword
                     }
-                    else
-                    {
-                        ModelState.AddModelError("CustomerCode", RadiusRCustomerWebSite.Localization.Common.ClientNotFound);
-                    }
+                });
+                if (result.ResponseMessage.ErrorCode == 0)
+                {
+                    // sign in
+                    SignInUser(result.AuthenticationSMSConfirmResponse.ValidDisplayName, result.AuthenticationSMSConfirmResponse.ID.ToString(), result.AuthenticationSMSConfirmResponse.SubscriberNo, result.AuthenticationSMSConfirmResponse.RelatedCustomers, Request.GetOwinContext());
+                    return Redirect(GetRedirectUrl(Request.QueryString["ReturnUrl"]));
                 }
+                else
+                {
+                    ModelState.AddModelError("CustomerCode", result.ResponseMessage.ErrorMessage);
+                }
+                //using (RadiusREntities db = new RadiusREntities())
+                //{
+                //    // find customers
+                //    var dbCustomers = db.Customers.Where(c => c.CustomerIDCard.TCKNo == login.CustomerCode || c.ContactPhoneNo == login.CustomerCode).ToArray();
+                //    // select a subscriber
+                //    var dbClient = dbCustomers.SelectMany(c => c.Subscriptions).FirstOrDefault();
+
+                //    if (dbCustomers.Count() > 0 && dbClient != null)
+                //    {
+
+                //        // if need to send a new password
+                //        if (string.IsNullOrEmpty(dbClient.OnlinePassword) || !dbClient.OnlinePasswordExpirationDate.HasValue)
+                //            return RedirectToAction("Login");
+                //        if (dbClient.OnlinePassword != login.SMSPassword)
+                //        {
+                //            ModelState.AddModelError("SMSPassword", RadiusRCustomerWebSite.Localization.Common.SMSPasswordWrong);
+                //            return View(login);
+                //        }
+                //        // sign in
+                //        SignInUser(dbClient, dbCustomers, Request.GetOwinContext());
+                //        return Redirect(GetRedirectUrl(Request.QueryString["ReturnUrl"]));
+                //    }
+                //    else
+                //    {
+                //        ModelState.AddModelError("CustomerCode", RadiusRCustomerWebSite.Localization.Common.ClientNotFound);
+                //    }
+                //}
             }
             //ViewBag.SMSWarning = string.Format(RadiusRCustomerWebSite.Localization.Common.SMSWarningMessage, AppSettings.OnlinePasswordDuration.Hours);
             return View(login);
         }
-        public ActionResult GetPassword()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult GetPassword([Bind(Include = "CustomerCode")] LoginViewModel login)
-        {
-            ModelState.Remove("Password");
-            ModelState.Remove("SMSPassword");
-            if (ModelState.IsValid)
-            {
-                if (login.CustomerCode.StartsWith("0"))
-                    login.CustomerCode = login.CustomerCode.TrimStart('0');
-                using (RadiusREntities db = new RadiusREntities())
-                {
-                    var dbClients = db.Subscriptions.Where(sub => (sub.Customer.CustomerIDCard.TCKNo == login.CustomerCode) || sub.Customer.ContactPhoneNo == login.CustomerCode).ToList();
-                    if (dbClients.Count() > 0)
-                    {
-                        // if need to send a new password
-                        var validPasswordClient = dbClients.FirstOrDefault(client => client.OnlinePassword != null && client.OnlinePasswordExpirationDate != null);
-                        if (validPasswordClient == null || validPasswordClient.OnlinePasswordExpirationDate < DateTime.Now)
-                        {
-                            var randomPassword = new Random().Next(100000, 1000000).ToString("000000");
-                            dbClients.ForEach(client => client.OnlinePassword = randomPassword);
-                            dbClients.ForEach(client => client.OnlinePasswordExpirationDate = DateTime.Now.Add(CustomerWebsiteSettings.OnlinePasswordDuration));
-                            validPasswordClient = dbClients.FirstOrDefault();
-                            SMSService SMS = new SMSService();
-                            SMS.SendGenericSMS(validPasswordClient.Customer.ContactPhoneNo, validPasswordClient.Customer.Culture, rawText: string.Format(RadiusRCustomerWebSite.Localization.Common.PasswordSMS, validPasswordClient.OnlinePassword, CustomerWebsiteSettings.OnlinePasswordDuration.Hours));
-                            //SMS.SendPlainText(new[] { validPasswordClient }, string.Format(RadiusRCustomerWebSite.Localization.Common.PasswordSMS, validPasswordClient.OnlinePassword, AppSettings.OnlinePasswordDuration.Hours));
-                            db.SaveChanges();
-                        }
-                        //ViewBag.SMSWarning = string.Format(RadiusRCustomerWebSite.Localization.Common.SMSWarningMessage, AppSettings.OnlinePasswordDuration.Hours);
-                        return RedirectToAction("Login");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("CustomerCode", RadiusRCustomerWebSite.Localization.Common.ClientNotFound);
-                        return View(login);
-                    }
-                }
-            }
-            return View(login);
-        }
+        //public ActionResult GetPassword()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult GetPassword([Bind(Include = "CustomerCode")] LoginViewModel login)
+        //{
+        //    ModelState.Remove("Password");
+        //    ModelState.Remove("SMSPassword");
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (login.CustomerCode.StartsWith("0"))
+        //            login.CustomerCode = login.CustomerCode.TrimStart('0');
+        //        using (RadiusREntities db = new RadiusREntities())
+        //        {
+        //            var dbClients = db.Subscriptions.Where(sub => (sub.Customer.CustomerIDCard.TCKNo == login.CustomerCode) || sub.Customer.ContactPhoneNo == login.CustomerCode).ToList();
+        //            if (dbClients.Count() > 0)
+        //            {
+        //                // if need to send a new password
+        //                var validPasswordClient = dbClients.FirstOrDefault(client => client.OnlinePassword != null && client.OnlinePasswordExpirationDate != null);
+        //                if (validPasswordClient == null || validPasswordClient.OnlinePasswordExpirationDate < DateTime.Now)
+        //                {
+        //                    var randomPassword = new Random().Next(100000, 1000000).ToString("000000");
+        //                    dbClients.ForEach(client => client.OnlinePassword = randomPassword);
+        //                    dbClients.ForEach(client => client.OnlinePasswordExpirationDate = DateTime.Now.Add(CustomerWebsiteSettings.OnlinePasswordDuration));
+        //                    validPasswordClient = dbClients.FirstOrDefault();
+        //                    SMSService SMS = new SMSService();
+        //                    SMS.SendGenericSMS(validPasswordClient.Customer.ContactPhoneNo, validPasswordClient.Customer.Culture, rawText: string.Format(RadiusRCustomerWebSite.Localization.Common.PasswordSMS, validPasswordClient.OnlinePassword, CustomerWebsiteSettings.OnlinePasswordDuration.Hours));
+        //                    //SMS.SendPlainText(new[] { validPasswordClient }, string.Format(RadiusRCustomerWebSite.Localization.Common.PasswordSMS, validPasswordClient.OnlinePassword, AppSettings.OnlinePasswordDuration.Hours));
+        //                    db.SaveChanges();
+        //                }
+        //                //ViewBag.SMSWarning = string.Format(RadiusRCustomerWebSite.Localization.Common.SMSWarningMessage, AppSettings.OnlinePasswordDuration.Hours);
+        //                return RedirectToAction("Login");
+        //            }
+        //            else
+        //            {
+        //                ModelState.AddModelError("CustomerCode", RadiusRCustomerWebSite.Localization.Common.ClientNotFound);
+        //                return View(login);
+        //            }
+        //        }
+        //    }
+        //    return View(login);
+        //}
         public ActionResult LogOut()
-        {
+        { 
             SignoutUser(Request.GetOwinContext());
             return RedirectToAction("Login");
         }
@@ -224,29 +239,35 @@ namespace RadiusR_Customer_Website.Controllers
             }
             return returnUrl;
         }
-        internal static void SignInUser(Subscription dbSubscription, IEnumerable<Customer> relatedCustomers, IOwinContext context)
+        internal static void SignInUser(string ValidDisplayName, string ID, string SubscriberNo, IEnumerable<string> relatedCustomers, IOwinContext context)
         {
             var identity = new ClaimsIdentity(new[]
             {
-                new Claim(ClaimTypes.Name, dbSubscription.ValidDisplayName),
-                new Claim(ClaimTypes.NameIdentifier, dbSubscription.ID.ToString()),
-                new Claim(ClaimTypes.SerialNumber, dbSubscription.SubscriberNo),
-                new Claim("SubscriptionBag", string.Join(";", relatedCustomers.SelectMany(c => c.Subscriptions).Select(s => s.ID + "," + s.SubscriberNo)))
+                new Claim(ClaimTypes.Name, ValidDisplayName),
+                new Claim(ClaimTypes.NameIdentifier, ID),
+                new Claim(ClaimTypes.SerialNumber, SubscriberNo),
+                new Claim("SubscriptionBag", string.Join(";", relatedCustomers))
             }, "ApplicationCookie");
             context.Authentication.SignIn(identity);
         }
 
         internal static void SignInCurrentUserAgain(IOwinContext context)
         {
-            using (RadiusREntities db = new RadiusREntities())
+            GenericCustomerServiceClient client = new GenericCustomerServiceClient();
+            var baseRequest = new GenericServiceSettings();
+            var subId = context.Authentication.User.GiveUserId();
+            var result = client.SubscriptionBasicInfo(new CustomerServiceBaseRequest()
             {
-                var subId = context.Authentication.User.GiveUserId();
-                var dbSubscription = db.Subscriptions.Include(s => s.Customer.CustomerIDCard).FirstOrDefault(s => s.ID == subId);
-                // find customers
-                var dbCustomers = db.Customers.Where(c => c.CustomerIDCard.TCKNo == dbSubscription.Customer.CustomerIDCard.TCKNo || c.ContactPhoneNo == dbSubscription.Customer.ContactPhoneNo).ToArray();
-                context.Authentication.SignOut();
-                SignInUser(dbSubscription, dbCustomers, context);
-            }
+                Culture = baseRequest._culture,
+                Username = baseRequest._username,
+                Rand = baseRequest._rand,
+                Hash = baseRequest.hash,
+                SubscriptionParameters = new BaseSubscriptionRequest()
+                {
+                    SubscriptionId = subId
+                }
+            });
+            SignInUser(result.AuthenticationSMSConfirmResponse.ValidDisplayName, result.AuthenticationSMSConfirmResponse.ID.ToString(), result.AuthenticationSMSConfirmResponse.SubscriberNo, result.AuthenticationSMSConfirmResponse.RelatedCustomers, context);
         }
         internal static void SignoutUser(IOwinContext context)
         {

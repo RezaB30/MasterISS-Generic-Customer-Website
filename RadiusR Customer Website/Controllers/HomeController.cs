@@ -23,6 +23,7 @@ using RadiusR.VPOS;
 using RadiusR_Customer_Website.VPOSToken;
 using RezaB.Data.Formating;
 using RadiusR.DB.Enums.SupportRequests;
+using RadiusR_Customer_Website.GenericCustomerServiceReference;
 
 namespace RadiusR_Customer_Website.Controllers
 {
@@ -32,22 +33,62 @@ namespace RadiusR_Customer_Website.Controllers
         Logger unpaidLogger = LogManager.GetLogger("unpaid");
         Logger generalLogger = LogManager.GetLogger("general");
         Logger TTErrorslogger = LogManager.GetLogger("TTErrors");
+
+        GenericCustomerServiceClient client = new GenericCustomerServiceClient();
         public ActionResult Index()
         {
             HomePageViewModel results = null;
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var getCustomerBills = client.GetCustomerBills(new CustomerServiceBaseRequest()
             {
-                var dbClient = db.Subscriptions.Find(User.GiveUserId());
-                var unpaidBills = dbClient.Bills.Where(bill => bill.BillStatusID == (short)BillState.Unpaid).ToList();
-                var clientUsage = dbClient.GetPeriodUsageInfo(dbClient.GetCurrentBillingPeriod(ignoreActivationDate: true), db);
-                results = new HomePageViewModel()
+                Culture = baseRequest._culture,
+                Username = baseRequest._username,
+                Rand = baseRequest._rand,
+                Hash = baseRequest.hash,
+                SubscriptionParameters = new BaseSubscriptionRequest()
                 {
-                    BillsTotal = unpaidBills.Sum(bill => bill.GetPayableCost()).ToString("###,##0.00"),
-                    BillCount = unpaidBills.Count(),
-                    Download = clientUsage.Download,
-                    Upload = clientUsage.Upload
-                };
+                    SubscriptionId = User.GiveUserId()
+                }
+            });
+            if (getCustomerBills.ResponseMessage.ErrorCode == 0)
+            {
+                var unpaidBills = getCustomerBills.GetCustomerBillsResponse.CustomerBills.Where(bill => bill.Status == 1).ToList();
+                var periodBaseRequest = new GenericServiceSettings();
+                var getPeriodUsage = client.GetCustomerTariffAndTrafficInfo(new CustomerServiceBaseRequest()
+                {
+                    Culture = periodBaseRequest._culture,
+                    Username = periodBaseRequest._username,
+                    Rand = periodBaseRequest._rand,
+                    Hash = periodBaseRequest.hash,
+                    SubscriptionParameters = new BaseSubscriptionRequest()
+                    {
+                        SubscriptionId = User.GiveUserId()
+                    }
+                });
+                if (getPeriodUsage.ResponseMessage.ErrorCode == 0)
+                {
+                    results = new HomePageViewModel()
+                    {
+                        Download = getPeriodUsage.GetCustomerTariffAndTrafficInfoResponse.Download,
+                        Upload = getPeriodUsage.GetCustomerTariffAndTrafficInfoResponse.Upload,
+                        BillCount = unpaidBills.Count(),
+                        BillsTotal = unpaidBills.Sum(bill => bill.Total).ToString("###,##0.00")
+                    };
+                }
             }
+            //using (RadiusREntities db = new RadiusREntities())
+            //{
+            //    var dbClient = db.Subscriptions.Find(User.GiveUserId());
+            //    var unpaidBills = dbClient.Bills.Where(bill => bill.BillStatusID == (short)BillState.Unpaid).ToList();
+            //    var clientUsage = dbClient.GetPeriodUsageInfo(dbClient.GetCurrentBillingPeriod(ignoreActivationDate: true), db);
+            //    results = new HomePageViewModel()
+            //    {
+            //        BillsTotal = unpaidBills.Sum(bill => bill.GetPayableCost()).ToString("###,##0.00"),
+            //        BillCount = unpaidBills.Count(),
+            //        Download = clientUsage.Download,
+            //        Upload = clientUsage.Upload
+            //    };
+            //}
             return View(results);
         }
 
@@ -57,76 +98,151 @@ namespace RadiusR_Customer_Website.Controllers
         }
         public ActionResult BillsAndPayments(int? page)
         {
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var response = client.GetCustomerBills(new CustomerServiceBaseRequest()
             {
-                var dbClient = db.Subscriptions.Find(User.GiveUserId());
-                var firstUnpaidBill = dbClient.Bills.Where(bill => bill.BillStatusID == (short)BillState.Unpaid).OrderBy(bill => bill.IssueDate).FirstOrDefault();
-                var results = dbClient.Bills.OrderByDescending(bill => bill.IssueDate).Select(bill => new PaymentsAndBillsViewModel()
+                Culture = baseRequest._culture,
+                Username = baseRequest._username,
+                Rand = baseRequest._rand,
+                Hash = baseRequest.hash,
+                SubscriptionParameters = new BaseSubscriptionRequest()
                 {
-                    ID = bill.ID,
-                    ServiceName = bill.BillFees.Any(bf => bf.FeeTypeID == (short)FeeType.Tariff) ? bill.BillFees.FirstOrDefault(bf => bf.FeeTypeID == (short)FeeType.Tariff).Description : "-",
-                    BillDate = bill.IssueDate,
-                    LastPaymentDate = bill.DueDate,
-                    Total = bill.GetPayableCost().ToString("###,##0.00"),
-                    Status = (BillState)bill.BillStatusID,
-                    CanBePaid = firstUnpaidBill != null && bill.ID == firstUnpaidBill.ID,
-                    HasEArchiveBill = bill.EBill != null && bill.EBill.EBillType == (short)EBillType.EArchive
-                }).AsQueryable();
-
-                SetupPages(page, ref results, 10);
-                ViewBag.HasUnpaidBills = firstUnpaidBill != null;
-                ViewBag.IsPrePaid = !dbClient.HasBilling;
-                // quota
-                if (dbClient.Service.CanHaveQuotaSale)
-                {
-                    ViewBag.CanBuyQuota = true;
-                    ViewBag.QuotaPackages = db.QuotaPackages.Select(q => new QuotaPackageViewModel()
-                    {
-                        ID = q.ID,
-                        _amount = q.Amount,
-                        _price = q.Price,
-                        Name = q.Name
-                    }).ToArray();
+                    SubscriptionId = User.GiveUserId()
                 }
-                // errors
-                if (!string.IsNullOrEmpty(Session["POSErrorMessage"] as string))
-                {
-                    ViewBag.POSErrorMessage = Session["POSErrorMessage"];
-                    Session.Remove("POSErrorMessage");
-                }
-                if (!string.IsNullOrEmpty(Session["POSSuccessMessage"] as string))
-                {
-                    ViewBag.POSSuccessMessage = Session["POSSuccessMessage"];
-                    Session.Remove("POSSuccessMessage");
-                }
-                if (TempData.ContainsKey("ServiceError"))
-                    ViewBag.ServiceError = TempData["ServiceError"];
-                // view credits
-                var credits = dbClient.SubscriptionCredits.Select(credit => credit.Amount).DefaultIfEmpty(0m).Sum();
-                if (credits > 0m)
-                    ViewBag.ClientCredits = credits;
-                return View(results.ToList());
+            });
+            if (response.ResponseMessage.ErrorCode != 0)
+            {
+                return View(Enumerable.Empty<PaymentsAndBillsViewModel>());
             }
+
+            var results = response.GetCustomerBillsResponse.CustomerBills.OrderByDescending(bill => bill.BillDate).Select(bill => new PaymentsAndBillsViewModel()
+            {
+                ID = bill.ID,
+                ServiceName = bill.ServiceName,
+                BillDate = bill.BillDate,
+                LastPaymentDate = bill.LastPaymentDate,
+                Total = bill.Total.ToString("###,##0.00"),
+                Status = bill.Status,
+                CanBePaid = bill.CanBePaid,
+                HasEArchiveBill = bill.HasEArchiveBill
+            }).AsQueryable();
+            SetupPages(page, ref results, 10);
+            ViewBag.HasUnpaidBills = response.GetCustomerBillsResponse.HasUnpaidBills;
+            ViewBag.IsPrePaid = !response.GetCustomerBillsResponse.IsPrePaid;
+            //quota
+            if (response.GetCustomerBillsResponse.CanHaveQuotaSale)
+            {
+                ViewBag.CanBuyQuota = true;
+                var QuotaListResponse = client.QuotaPackageList(new CustomerServiceQuotaPackagesRequest()
+                {
+                    Culture = baseRequest._culture,
+                    Hash = baseRequest.hash,
+                    Username = baseRequest._username,
+                    Rand = baseRequest._rand
+                });
+                ViewBag.QuotaPackages = QuotaListResponse.ResponseMessage.ErrorCode != 0 ? Enumerable.Empty<QuotaPackageViewModel>() : QuotaListResponse.QuotaPackageListResponse.Select(q => new QuotaPackageViewModel()
+                {
+                    ID = q.ID,
+                    _amount = q.Amount,
+                    _price = q.Price,
+                    Name = q.Name
+                }).ToArray();
+            }
+            // errors
+            if (!string.IsNullOrEmpty(Session["POSErrorMessage"] as string))
+            {
+                ViewBag.POSErrorMessage = Session["POSErrorMessage"];
+                Session.Remove("POSErrorMessage");
+            }
+            if (!string.IsNullOrEmpty(Session["POSSuccessMessage"] as string))
+            {
+                ViewBag.POSSuccessMessage = Session["POSSuccessMessage"];
+                Session.Remove("POSSuccessMessage");
+            }
+            if (TempData.ContainsKey("ServiceError"))
+                ViewBag.ServiceError = TempData["ServiceError"];
+            // view credits
+            var credits = response.GetCustomerBillsResponse.SubscriptionCredits;
+            if (credits > 0m)
+                ViewBag.ClientCredits = credits;
+            return View(results.ToList());
+            //using (RadiusREntities db = new RadiusREntities())
+            //{
+            //    var dbClient = db.Subscriptions.Find(User.GiveUserId());
+            //    var firstUnpaidBill = dbClient.Bills.Where(bill => bill.BillStatusID == (short)BillState.Unpaid).OrderBy(bill => bill.IssueDate).FirstOrDefault();
+            //    var results = dbClient.Bills.OrderByDescending(bill => bill.IssueDate).Select(bill => new PaymentsAndBillsViewModel()
+            //    {
+            //        ID = bill.ID,
+            //        ServiceName = bill.BillFees.Any(bf => bf.FeeTypeID == (short)FeeType.Tariff) ? bill.BillFees.FirstOrDefault(bf => bf.FeeTypeID == (short)FeeType.Tariff).Description : "-",
+            //        BillDate = bill.IssueDate,
+            //        LastPaymentDate = bill.DueDate,
+            //        Total = bill.GetPayableCost().ToString("###,##0.00"),
+            //        Status = (BillState)bill.BillStatusID,
+            //        CanBePaid = firstUnpaidBill != null && bill.ID == firstUnpaidBill.ID,
+            //        HasEArchiveBill = bill.EBill != null && bill.EBill.EBillType == (short)EBillType.EArchive
+            //    }).AsQueryable();
+
+            //    SetupPages(page, ref results, 10);
+            //    ViewBag.HasUnpaidBills = firstUnpaidBill != null;
+            //    ViewBag.IsPrePaid = !dbClient.HasBilling;
+            //    // quota
+            //    if (dbClient.Service.CanHaveQuotaSale)
+            //    {
+            //        ViewBag.CanBuyQuota = true;
+            //        ViewBag.QuotaPackages = db.QuotaPackages.Select(q => new QuotaPackageViewModel()
+            //        {
+            //            ID = q.ID,
+            //            _amount = q.Amount,
+            //            _price = q.Price,
+            //            Name = q.Name
+            //        }).ToArray();
+            //    }
+            //    // errors
+            //    if (!string.IsNullOrEmpty(Session["POSErrorMessage"] as string))
+            //    {
+            //        ViewBag.POSErrorMessage = Session["POSErrorMessage"];
+            //        Session.Remove("POSErrorMessage");
+            //    }
+            //    if (!string.IsNullOrEmpty(Session["POSSuccessMessage"] as string))
+            //    {
+            //        ViewBag.POSSuccessMessage = Session["POSSuccessMessage"];
+            //        Session.Remove("POSSuccessMessage");
+            //    }
+            //    if (TempData.ContainsKey("ServiceError"))
+            //        ViewBag.ServiceError = TempData["ServiceError"];
+            //    // view credits
+            //    var credits = dbClient.SubscriptionCredits.Select(credit => credit.Amount).DefaultIfEmpty(0m).Sum();
+            //    if (credits > 0m)
+            //        ViewBag.ClientCredits = credits;
+            //    return View(results.ToList());
+            //}
         }
 
         public ActionResult ChangeSubClient(long id)
         {
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var response = client.ChangeSubClient(new CustomerServiceChangeSubClientRequest()
             {
-                // current subscription
-                var currentClient = db.Subscriptions.Find(User.GiveUserId());
-                // target subscription
-                var targetClient = db.Subscriptions.Find(id);
-                if (currentClient.Customer.CustomerIDCard.TCKNo != targetClient.Customer.CustomerIDCard.TCKNo && currentClient.Customer.ContactPhoneNo != targetClient.Customer.ContactPhoneNo)
+                Culture = baseRequest._culture,
+                Hash = baseRequest.hash,
+                Rand = baseRequest._rand,
+                Username = baseRequest._username,
+                ChangeSubClientRequest = new ChangeSubClientRequest()
                 {
-                    return RedirectToAction("Index");
+                    TargetSubscriptionID = id,
+                    CurrentSubscriptionID = User.GiveUserId()
                 }
-                // find customers
-                var dbCustomers = db.Customers.Where(c => c.CustomerIDCard.TCKNo == targetClient.Customer.CustomerIDCard.TCKNo || c.ContactPhoneNo == targetClient.Customer.ContactPhoneNo).ToArray();
-
-                AuthController.SignoutUser(Request.GetOwinContext());
-                AuthController.SignInUser(targetClient, dbCustomers, Request.GetOwinContext());
+            });
+            if (response.ResponseMessage.ErrorCode != 0)
+            {
+                return RedirectToAction("Index");
             }
+            AuthController.SignoutUser(Request.GetOwinContext());
+            AuthController.SignInUser(response.ChangeSubClientResponse.ValidDisplayName,
+                response.ChangeSubClientResponse.ID.ToString(),
+                response.ChangeSubClientResponse.SubscriberNo,
+                response.ChangeSubClientResponse.RelatedCustomers,
+                Request.GetOwinContext());
             return RedirectToAction("Index");
         }
 
@@ -721,48 +837,119 @@ namespace RadiusR_Customer_Website.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EArchivePDF(long id)
         {
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var response = client.EArchivePDF(new CustomerServiceEArchivePDFRequest()
             {
-                var dbBill = db.Bills.Find(id);
-                if (dbBill == null || dbBill.EBill == null || dbBill.EBill.EBillType != (short)EBillType.EArchive)
-                    return RedirectToAction("BillsAndPayments");
-                if (dbBill.Subscription.ID != User.GiveUserId())
-                    return RedirectToAction("BillsAndPayments");
-                var serviceClient = new RezaB.NetInvoice.Wrapper.NetInvoiceClient(AppSettings.EBillCompanyCode, AppSettings.EBillApiUsername, AppSettings.EBillApiPassword);
-                var response = serviceClient.GetEArchivePDF(dbBill.EBill.ReferenceNo);
-                if (response.PDFData == null)
-                    return RedirectToAction("BillsAndPayments");
-
-                return File(response.PDFData, "application/pdf", RadiusRCustomerWebSite.Localization.Common.EArchivePDFFileName + "_" + dbBill.IssueDate.ToString("yyyy-MM-dd") + ".pdf");
+                Culture = baseRequest._culture,
+                Hash = baseRequest.hash,
+                Username = baseRequest._username,
+                Rand = baseRequest._rand,
+                EArchivePDFParameters = new EArchivePDFRequest()
+                {
+                    BillId = id,
+                    SubscriptionId = User.GiveUserId()
+                }
+            });
+            if (response.ResponseMessage.ErrorCode != 0)
+            {
+                return RedirectToAction("BillsAndPayments");
             }
+            return File(response.EArchivePDFResponse.FileContent, response.EArchivePDFResponse.ContentType, response.EArchivePDFResponse.FileDownloadName);
+            //using (RadiusREntities db = new RadiusREntities())
+            //{
+            //    var dbBill = db.Bills.Find(id);
+            //    if (dbBill == null || dbBill.EBill == null || dbBill.EBill.EBillType != (short)EBillType.EArchive)
+            //        return RedirectToAction("BillsAndPayments");
+            //    if (dbBill.Subscription.ID != User.GiveUserId())
+            //        return RedirectToAction("BillsAndPayments");
+            //    var serviceClient = new RezaB.NetInvoice.Wrapper.NetInvoiceClient(AppSettings.EBillCompanyCode, AppSettings.EBillApiUsername, AppSettings.EBillApiPassword);
+            //    var response = serviceClient.GetEArchivePDF(dbBill.EBill.ReferenceNo);
+            //    if (response.PDFData == null)
+            //        return RedirectToAction("BillsAndPayments");
+
+            //    return File(response.PDFData, "application/pdf", RadiusRCustomerWebSite.Localization.Common.EArchivePDFFileName + "_" + dbBill.IssueDate.ToString("yyyy-MM-dd") + ".pdf");
+            //}
         }
 
         public ActionResult BuyQuota(int id)
         {
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var response = client.QuotaPackageList(new CustomerServiceQuotaPackagesRequest()
             {
-                var dbSubscription = db.Subscriptions.Find(User.GiveUserId());
-                var dbQuota = db.QuotaPackages.Find(id);
-                if (dbSubscription == null || dbQuota == null || !dbSubscription.Service.CanHaveQuotaSale)
-                    return RedirectToAction("BillsAndPayments");
-
-                var tokenKey = VPOSTokenManager.RegisterPaymentToken(new QuotaSaleToken()
-                {
-                    SubscriberId = User.GiveUserId().Value,
-                    PackageID = id
-                });
-
-                var VPOSModel = VPOSManager.GetVPOSModel(
-                    //Url.Action("QuotaBuySuccess", null, new { id = dbQuota.ID }, Request.Url.Scheme),
-                    //Url.Action("QuotaBuyFail", null, new { id = dbQuota.ID }, Request.Url.Scheme),
-                    Url.Action("VPOSSuccess", null, new { id = tokenKey }, Request.Url.Scheme),
-                    Url.Action("VPOSFail", null, new { id = tokenKey }, Request.Url.Scheme),
-                    dbQuota.Price,
-                    dbSubscription.Customer.Culture.Split('-').FirstOrDefault(),
-                    dbSubscription.ValidDisplayName);
-                ViewBag.POSForm = VPOSModel.GetHtmlForm();
-                return View(viewName: "3DHostPayment");
+                Culture = baseRequest._culture,
+                Hash = baseRequest.hash,
+                Rand = baseRequest._rand,
+                Username = baseRequest._username,
+            });
+            if (response.ResponseMessage.ErrorCode != 0)
+            {
+                return RedirectToAction("BillsAndPayments");
             }
+
+            var quotaBaseRequest = new GenericServiceSettings();
+            var quotaResponse = client.CanHaveQuotaSale(new CustomerServiceBaseRequest()
+            {
+                SubscriptionParameters = new BaseSubscriptionRequest()
+                {
+                    SubscriptionId = User.GiveUserId()
+                },
+                Culture = quotaBaseRequest._culture,
+                Hash = quotaBaseRequest.hash,
+                Username = quotaBaseRequest._username,
+                Rand = quotaBaseRequest._rand
+            });
+            if (quotaResponse.ResponseMessage.ErrorCode != 0)
+            {
+                return RedirectToAction("BillsAndPayments");
+            }
+            var tokenKey = VPOSTokenManager.RegisterPaymentToken(new QuotaSaleToken()
+            {
+                SubscriberId = User.GiveUserId().Value,
+                PackageID = id
+            });
+            var vposBaseRequest = new GenericServiceSettings();
+            var quotaPrice = response.QuotaPackageListResponse.Where(q => q.ID == id).FirstOrDefault();
+            var vposResponse = client.GetVPOSForm(new CustomerServiceVPOSFormRequest()
+            {
+                Culture = vposBaseRequest._culture,
+                Hash = vposBaseRequest.hash,
+                Rand = vposBaseRequest._rand,
+                Username = vposBaseRequest._username,
+                VPOSFormParameters = new VPOSFormRequest()
+                {
+                    FailUrl = Url.Action("VPOSFail", null, new { id = tokenKey }, Request.Url.Scheme),
+                    OkUrl = Url.Action("VPOSSuccess", null, new { id = tokenKey }, Request.Url.Scheme),
+                    PayableAmount = quotaPrice.Price,
+                    SubscriptionId = User.GiveUserId(),
+                }
+            });
+            if (vposResponse.ResponseMessage.ErrorCode != 0)
+            {
+                return RedirectToAction("BillsAndPayments");
+            }
+            ViewBag.POSForm = vposResponse.VPOSFormResponse.HtmlForm;
+            return View(viewName: "3DHostPayment");
+
+            //using (RadiusREntities db = new RadiusREntities())
+            //{
+            //    var dbSubscription = db.Subscriptions.Find(User.GiveUserId());
+            //    var dbQuota = db.QuotaPackages.Find(id);
+            //    if (dbSubscription == null || dbQuota == null || !dbSubscription.Service.CanHaveQuotaSale)
+            //        return RedirectToAction("BillsAndPayments");
+
+
+
+            //    var VPOSModel = VPOSManager.GetVPOSModel(
+            //        //Url.Action("QuotaBuySuccess", null, new { id = dbQuota.ID }, Request.Url.Scheme),
+            //        //Url.Action("QuotaBuyFail", null, new { id = dbQuota.ID }, Request.Url.Scheme),
+            //        Url.Action("VPOSSuccess", null, new { id = tokenKey }, Request.Url.Scheme),
+            //        Url.Action("VPOSFail", null, new { id = tokenKey }, Request.Url.Scheme),
+            //        dbQuota.Price,
+            //        dbSubscription.Customer.Culture.Split('-').FirstOrDefault(),
+            //        dbSubscription.ValidDisplayName);
+            //    ViewBag.POSForm = VPOSModel.GetHtmlForm();
+            //    return View(viewName: "3DHostPayment");
+            //}
         }
 
         [HttpPost]
@@ -957,83 +1144,121 @@ namespace RadiusR_Customer_Website.Controllers
 
         public ActionResult SpecialOffers(int? page)
         {
-            var currentSubId = User.GiveUserId();
-            var minDate = DateTime.Now.Date.AddYears(-1);
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var response = client.GetCustomerSpecialOffers(new CustomerServiceBaseRequest()
             {
-                var dbSubscription = db.Subscriptions.Find(currentSubId);
-                var viewResults = db.RecurringDiscounts.Where(rd => rd.SubscriptionID == dbSubscription.ID).Where(rd => rd.ReferrerRecurringDiscount != null || rd.ReferringRecurringDiscounts.Any())
-                    .OrderByDescending(rd => rd.CreationTime)
-                    .Select(rd => new SpecialOffersReportViewModel()
-                    {
-                        IsCancelled = rd.IsDisabled,
-                        StartDate = rd.CreationTime,
-                        TotalCount = rd.ApplicationTimes,
-                        UsedCount = rd.AppliedRecurringDiscounts.Where(ard => ard.ApplicationState == (short)RecurringDiscountApplicationState.Applied).Count(),
-                        MissedCount = rd.AppliedRecurringDiscounts.Where(ard => ard.ApplicationState == (short)RecurringDiscountApplicationState.Passed).Count(),
-                        ReferenceNo = rd.ReferrerRecurringDiscount != null ? rd.ReferrerRecurringDiscount.Subscription.ReferenceNo : rd.ReferringRecurringDiscounts.Any() ? rd.ReferringRecurringDiscounts.FirstOrDefault().Subscription.ReferenceNo : null,
-                        ReferralSubscriberState = rd.ReferrerRecurringDiscount != null ? rd.ReferrerRecurringDiscount.Subscription.State : rd.ReferringRecurringDiscounts.Any() ? rd.ReferringRecurringDiscounts.FirstOrDefault().Subscription.State : (short?)null,
-                    });
-
-                ViewBag.TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum();
-                ViewBag.TotalUsed = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum();
-                ViewBag.TotalMissed = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum();
-                ViewBag.TotalRemaining = viewResults.Where(r => !r.IsCancelled).Select(r => r.TotalCount - (r.UsedCount + r.MissedCount)).DefaultIfEmpty(0).Sum();
-
-                ViewBag.TotalRow = new SpecialOffersReportViewModel()
+                Culture = baseRequest._culture,
+                Username = baseRequest._username,
+                Rand = baseRequest._rand,
+                Hash = baseRequest.hash,
+                SubscriptionParameters = new BaseSubscriptionRequest()
                 {
-                    TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum(),
-                    UsedCount = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum(),
-                    MissedCount = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum(),
-                };
+                    SubscriptionId = User.GiveUserId()
+                }
+            });
+            var viewResults = response.GetCustomerSpecialOffersResponse.Select(rd => new SpecialOffersReportViewModel()
+            {
+                IsCancelled = rd.IsCancelled,
+                StartDate = rd.StartDate,
+                TotalCount = rd.TotalCount,
+                UsedCount = rd.UsedCount,
+                MissedCount = rd.MissedCount,
+                ReferenceNo = rd.ReferenceNo,
+                ReferralSubscriberState = rd.ReferralSubscriberState
+            }).AsQueryable();
+            ViewBag.TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum();
+            ViewBag.TotalUsed = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum();
+            ViewBag.TotalMissed = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum();
+            ViewBag.TotalRemaining = viewResults.Where(r => !r.IsCancelled).Select(r => r.TotalCount - (r.UsedCount + r.MissedCount)).DefaultIfEmpty(0).Sum();
 
-                SetupPages(page, ref viewResults);
-                ////var rawData = db.RecurringDiscounts.Include(rd => rd.Bills.Select(b => b.BillFees)).Where(rd => rd.SubscriptionID == currentSubId && (rd.ReferrerRecurringDiscount != null || rd.ReferringRecurringDiscounts.Any()) && rd.Bills.Any(b => b.IssueDate >= minDate)).ToArray();
-                //var rawData = db.Bills
-                //    .OrderBy(b => b.IssueDate)
-                //    .Include(b => b.BillFees)
-                //    .Include(b => b.AppliedRecurringDiscounts.Select(rd=>rd.RecurringDiscount.ReferrerRecurringDiscount.Subscription))
-                //    .Include(b => b.AppliedRecurringDiscounts.Select(rd => rd.RecurringDiscount.ReferringRecurringDiscounts.Select(rd2 => rd2.Subscription)))
-                //    .Where(b => b.SubscriptionID == currentSubId && b.IssueDate >= minDate && b.AppliedRecurringDiscounts.Any(rd => rd.RecurringDiscount.ReferrerRecurringDiscount != null || rd.RecurringDiscount.ReferringRecurringDiscounts.Any()))
-                //    .ToArray();
-                //var discounts = rawData.SelectMany(b => b.AppliedRecurringDiscounts.Select(ard => ard.RecurringDiscount).Select(rd => rd)).OrderBy(rd => rd.CreationTime).ToArray();
-                //var viewResults = new List<SpecialOffersReportViewModel>();
-                //foreach (var discount in discounts)
-                //{
-                //    var currentViewModel = new SpecialOffersReportViewModel()
-                //    {
-                //        CreationDate = discount.CreationTime,
-                //        ReferenceNo = discount.ReferrerRecurringDiscount != null ? discount.ReferrerRecurringDiscount.Subscription.ReferenceNo : discount.ReferringRecurringDiscounts.FirstOrDefault().Subscription.ReferenceNo,
-                //        TotalCount = discount.IsDisabled ? discount.AppliedRecurringDiscounts.Count() : discount.ApplicationTimes,
-                //        UsedCount = discount.AppliedRecurringDiscounts.Count(),
-                //        Bills = new List<DiscountRelatedBillViewModel>()
-                //    };
-                //    foreach (var bill in rawData)
-                //    {
-                //        var currentRelatedBill = new DiscountRelatedBillViewModel()
-                //        {
-                //            ID = bill.ID,
-                //            IssueDate = bill.IssueDate,
-                //            Amount = 0m
-                //        };
-                //        if(discount.AppliedRecurringDiscounts.Select(ard=> ard.Bill).Any(b=>b.ID == bill.ID))
-                //        {
-                //            currentRelatedBill.Amount = discount.DiscountType == (short)RecurringDiscountType.Static
-                //                ? discount.Amount
-                //                : discount.DiscountType == (short)RecurringDiscountType.Percentage
-                //                ? discount.ApplicationType == (short)RecurringDiscountApplicationType.FeeBased ? bill.BillFees.FirstOrDefault(bf=>bf.FeeTypeID == discount.FeeTypeID).CurrentCost * discount.Amount : discount.ApplicationType == (short)RecurringDiscountApplicationType.BillBased ? bill.GetTotalCost() * discount.Amount : 0m
-                //                : 0m;
+            ViewBag.TotalRow = new SpecialOffersReportViewModel()
+            {
+                TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum(),
+                UsedCount = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum(),
+                MissedCount = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum(),
+            };
+            SetupPages(page, ref viewResults);
+            return View(viewResults.ToArray());
 
-                //            if (discount.DiscountType == (short)RecurringDiscountType.Percentage)
-                //                currentRelatedBill.Percentage = discount.Amount;
-                //        }
-                //        currentViewModel.Bills.Add(currentRelatedBill);
-                //    }
-                //    viewResults.Add(currentViewModel);
-                //}
+            //var currentSubId = User.GiveUserId();
+            //var minDate = DateTime.Now.Date.AddYears(-1);
+            //using (RadiusREntities db = new RadiusREntities())
+            //{
+            //    var dbSubscription = db.Subscriptions.Find(currentSubId);
+            //    var viewResults = db.RecurringDiscounts.Where(rd => rd.SubscriptionID == dbSubscription.ID).Where(rd => rd.ReferrerRecurringDiscount != null || rd.ReferringRecurringDiscounts.Any())
+            //        .OrderByDescending(rd => rd.CreationTime)
+            //        .Select(rd => new SpecialOffersReportViewModel()
+            //        {
+            //            IsCancelled = rd.IsDisabled,
+            //            StartDate = rd.CreationTime,
+            //            TotalCount = rd.ApplicationTimes,
+            //            UsedCount = rd.AppliedRecurringDiscounts.Where(ard => ard.ApplicationState == (short)RecurringDiscountApplicationState.Applied).Count(),
+            //            MissedCount = rd.AppliedRecurringDiscounts.Where(ard => ard.ApplicationState == (short)RecurringDiscountApplicationState.Passed).Count(),
+            //            ReferenceNo = rd.ReferrerRecurringDiscount != null ? rd.ReferrerRecurringDiscount.Subscription.ReferenceNo : rd.ReferringRecurringDiscounts.Any() ? rd.ReferringRecurringDiscounts.FirstOrDefault().Subscription.ReferenceNo : null,
+            //            ReferralSubscriberState = rd.ReferrerRecurringDiscount != null ? rd.ReferrerRecurringDiscount.Subscription.State : rd.ReferringRecurringDiscounts.Any() ? rd.ReferringRecurringDiscounts.FirstOrDefault().Subscription.State : (short?)null,
+            //        });
 
-                return View(viewResults.ToArray());
-            }
+            //    ViewBag.TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum();
+            //    ViewBag.TotalUsed = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum();
+            //    ViewBag.TotalMissed = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum();
+            //    ViewBag.TotalRemaining = viewResults.Where(r => !r.IsCancelled).Select(r => r.TotalCount - (r.UsedCount + r.MissedCount)).DefaultIfEmpty(0).Sum();
+
+            //    ViewBag.TotalRow = new SpecialOffersReportViewModel()
+            //    {
+            //        TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum(),
+            //        UsedCount = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum(),
+            //        MissedCount = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum(),
+            //    };
+
+            //    SetupPages(page, ref viewResults);
+
+
+            //    ////var rawData = db.RecurringDiscounts.Include(rd => rd.Bills.Select(b => b.BillFees)).Where(rd => rd.SubscriptionID == currentSubId && (rd.ReferrerRecurringDiscount != null || rd.ReferringRecurringDiscounts.Any()) && rd.Bills.Any(b => b.IssueDate >= minDate)).ToArray();
+            //    //var rawData = db.Bills
+            //    //    .OrderBy(b => b.IssueDate)
+            //    //    .Include(b => b.BillFees)
+            //    //    .Include(b => b.AppliedRecurringDiscounts.Select(rd=>rd.RecurringDiscount.ReferrerRecurringDiscount.Subscription))
+            //    //    .Include(b => b.AppliedRecurringDiscounts.Select(rd => rd.RecurringDiscount.ReferringRecurringDiscounts.Select(rd2 => rd2.Subscription)))
+            //    //    .Where(b => b.SubscriptionID == currentSubId && b.IssueDate >= minDate && b.AppliedRecurringDiscounts.Any(rd => rd.RecurringDiscount.ReferrerRecurringDiscount != null || rd.RecurringDiscount.ReferringRecurringDiscounts.Any()))
+            //    //    .ToArray();
+            //    //var discounts = rawData.SelectMany(b => b.AppliedRecurringDiscounts.Select(ard => ard.RecurringDiscount).Select(rd => rd)).OrderBy(rd => rd.CreationTime).ToArray();
+            //    //var viewResults = new List<SpecialOffersReportViewModel>();
+            //    //foreach (var discount in discounts)
+            //    //{
+            //    //    var currentViewModel = new SpecialOffersReportViewModel()
+            //    //    {
+            //    //        CreationDate = discount.CreationTime,
+            //    //        ReferenceNo = discount.ReferrerRecurringDiscount != null ? discount.ReferrerRecurringDiscount.Subscription.ReferenceNo : discount.ReferringRecurringDiscounts.FirstOrDefault().Subscription.ReferenceNo,
+            //    //        TotalCount = discount.IsDisabled ? discount.AppliedRecurringDiscounts.Count() : discount.ApplicationTimes,
+            //    //        UsedCount = discount.AppliedRecurringDiscounts.Count(),
+            //    //        Bills = new List<DiscountRelatedBillViewModel>()
+            //    //    };
+            //    //    foreach (var bill in rawData)
+            //    //    {
+            //    //        var currentRelatedBill = new DiscountRelatedBillViewModel()
+            //    //        {
+            //    //            ID = bill.ID,
+            //    //            IssueDate = bill.IssueDate,
+            //    //            Amount = 0m
+            //    //        };
+            //    //        if(discount.AppliedRecurringDiscounts.Select(ard=> ard.Bill).Any(b=>b.ID == bill.ID))
+            //    //        {
+            //    //            currentRelatedBill.Amount = discount.DiscountType == (short)RecurringDiscountType.Static
+            //    //                ? discount.Amount
+            //    //                : discount.DiscountType == (short)RecurringDiscountType.Percentage
+            //    //                ? discount.ApplicationType == (short)RecurringDiscountApplicationType.FeeBased ? bill.BillFees.FirstOrDefault(bf=>bf.FeeTypeID == discount.FeeTypeID).CurrentCost * discount.Amount : discount.ApplicationType == (short)RecurringDiscountApplicationType.BillBased ? bill.GetTotalCost() * discount.Amount : 0m
+            //    //                : 0m;
+
+            //    //            if (discount.DiscountType == (short)RecurringDiscountType.Percentage)
+            //    //                currentRelatedBill.Percentage = discount.Amount;
+            //    //        }
+            //    //        currentViewModel.Bills.Add(currentRelatedBill);
+            //    //    }
+            //    //    viewResults.Add(currentViewModel);
+            //    //}
+
+            //    return View(viewResults.ToArray());
+            //}
         }
 
         #region Private Methods

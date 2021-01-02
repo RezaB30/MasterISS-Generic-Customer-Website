@@ -91,7 +91,7 @@ else if (!string.IsNullOrEmpty(POSErrorMessage))
         </tr>
         @foreach (var item in Model)
         {
-            var cancelledStyle = item.Status == RadiusR.DB.Enums.BillState.Cancelled ? "text-decoration: line-through; background-color: #ffdfa1;" : string.Empty;
+            var cancelledStyle = item.Status == 3 ? "text-decoration: line-through; background-color: #ffdfa1;" : string.Empty;
             <tr style="@cancelledStyle">
                 <td>
                     @Html.DisplayFor(modelItem => item.ServiceName)
@@ -106,13 +106,13 @@ else if (!string.IsNullOrEmpty(POSErrorMessage))
                     @Html.DisplayFor(modelItem => item.Total)
                 </td>
                 <td>
-                    @if (item.Status == RadiusR.DB.Enums.BillState.Cancelled)
+                    @if (item.Status == 3)
                     {
                         <a href="#" class="link-button red">@RadiusRCustomerWebSite.Localization.Common.Cancelled</a>
                     }
                     else
                     {
-                        if (item.Status == RadiusR.DB.Enums.BillState.Paid)
+                        if (item.Status == 2)
                         {
                             <a href="#" class="link-button jungle">@RadiusRCustomerWebSite.Localization.Common.Payed</a>
                         }

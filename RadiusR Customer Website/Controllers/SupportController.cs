@@ -1,5 +1,6 @@
 ﻿using NLog;
 using RadiusR.DB.Settings;
+using RadiusR_Customer_Website.GenericCustomerServiceReference;
 using RadiusR_Customer_Website.Models.ViewModels.Supports;
 using RezaB.Web.Authentication;
 using System;
@@ -13,31 +14,75 @@ namespace RadiusR_Customer_Website.Controllers
     public class SupportController : BaseController
     {
         Logger generalLogger = LogManager.GetLogger("general");
+        GenericCustomerServiceClient client = new GenericCustomerServiceClient();
         // GET: Support
         public ActionResult SupportRequests(int? page)
         {
-            var supportRequests = new List<SupportRequestsVM>();
-            using (var db = new RadiusR.DB.RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var response = client.GetSupportList(new CustomerServiceBaseRequest()
             {
-                var SubscriptionID = User.GiveUserId();
-                var results = db.SupportRequests
-                    .Where(m => m.SubscriptionID == SubscriptionID && m.IsVisibleToCustomer == true)
-                    .OrderByDescending(m => m.StateID == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress)
-                    .ThenByDescending(m => m.Date)
-                    .Select(m => new SupportRequestsVM()
-                    {
-                        ID = m.ID,
-                        ApprovalDate = m.CustomerApprovalDate,
-                        Date = m.Date,
-                        SupportNo = m.SupportPin,
-                        State = m.StateID,
-                        SupportRequestType = m.SupportRequestType.Name,
-                        SupportRequestSubType = m.SupportRequestSubType.Name
-                    }).AsQueryable();
-                SetupPages(page, ref results, 10);
-                ViewBag.HasOpenRequest = HasOpenRequest();
-                return View(results.ToList());
+                Culture = baseRequest._culture,
+                Username = baseRequest._username,
+                Rand = baseRequest._rand,
+                Hash = baseRequest.hash,
+                SubscriptionParameters = new BaseSubscriptionRequest()
+                {
+                    SubscriptionId = User.GiveUserId()
+                }
+            });
+            var results = response.ResponseMessage.ErrorCode != 0 ? Enumerable.Empty<SupportRequestsVM>().AsQueryable() : response.GetCustomerSupportListResponse.Select(m => new SupportRequestsVM()
+            {
+                ID = m.ID,
+                ApprovalDate = m.ApprovalDate,
+                Date = m.Date,
+                SupportNo = m.SupportNo,
+                State = m.StateText,
+                SupportRequestType = m.SupportRequestType,
+                SupportRequestSubType = m.SupportRequestSubType
+            }).AsQueryable();
+            var hasOpenBaseRequest = new GenericServiceSettings();
+            var hasOpenResponse = client.SupportHasActiveRequest(new CustomerServiceBaseRequest()
+            {
+                Culture = hasOpenBaseRequest._culture,
+                Username = hasOpenBaseRequest._username,
+                Rand = hasOpenBaseRequest._rand,
+                Hash = hasOpenBaseRequest.hash,
+                SubscriptionParameters = new BaseSubscriptionRequest()
+                {
+                    SubscriptionId = User.GiveUserId()
+                }
+            });
+            if (hasOpenResponse.ResponseMessage.ErrorCode != 0)
+            {
+                //get error message
             }
+            SetupPages(page, ref results, 10);
+            ViewBag.HasOpenRequest = hasOpenResponse.ResponseMessage.ErrorCode != 0 ? true : hasOpenResponse.HasActiveRequest;
+            return View(results.ToList());
+
+
+            //var supportRequests = new List<SupportRequestsVM>();
+            //using (var db = new RadiusR.DB.RadiusREntities())
+            //{
+            //    var SubscriptionID = User.GiveUserId();
+            //    var results = db.SupportRequests
+            //        .Where(m => m.SubscriptionID == SubscriptionID && m.IsVisibleToCustomer == true)
+            //        .OrderByDescending(m => m.StateID == (short)RadiusR.DB.Enums.SupportRequests.SupportRequestStateID.InProgress)
+            //        .ThenByDescending(m => m.Date)
+            //        .Select(m => new SupportRequestsVM()
+            //        {
+            //            ID = m.ID,
+            //            ApprovalDate = m.CustomerApprovalDate,
+            //            Date = m.Date,
+            //            SupportNo = m.SupportPin,
+            //            State = m.StateID,
+            //            SupportRequestType = m.SupportRequestType.Name,
+            //            SupportRequestSubType = m.SupportRequestSubType.Name
+            //        }).AsQueryable();
+            //    SetupPages(page, ref results, 10);
+            //    ViewBag.HasOpenRequest = HasOpenRequest();
+            //    return View(results.ToList());
+            //}
         }
         [HttpGet]
         public ActionResult NewRequest()

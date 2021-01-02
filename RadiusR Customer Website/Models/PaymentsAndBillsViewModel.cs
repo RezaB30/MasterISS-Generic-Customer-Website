@@ -24,7 +24,8 @@ namespace RadiusR_Customer_Website.Models
         [UIHint("Currency")]
         public string Total { get; set; }
 
-        public BillState Status { get; set; }
+        //public BillState Status { get; set; }
+        public short Status { get; set; }
 
         public bool CanBePaid { get; set; }
 

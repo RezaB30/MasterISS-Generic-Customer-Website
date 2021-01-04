@@ -184,6 +184,12 @@
   <wsdl:message name="IGenericCustomerService_SupportHasActiveRequest_OutputMessage">
     <wsdl:part name="parameters" element="tns:SupportHasActiveRequestResponse" />
   </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_SupportStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:SupportStatus" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_SupportStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SupportStatusResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGenericCustomerService">
     <wsdl:operation name="GetCustomerInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GetCustomerInfo" message="tns:IGenericCustomerService_GetCustomerInfo_InputMessage" />
@@ -300,6 +306,10 @@
     <wsdl:operation name="SupportHasActiveRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/SupportHasActiveRequest" message="tns:IGenericCustomerService_SupportHasActiveRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/SupportHasActiveRequestResponse" message="tns:IGenericCustomerService_SupportHasActiveRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SupportStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/SupportStatus" message="tns:IGenericCustomerService_SupportStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/SupportStatusResponse" message="tns:IGenericCustomerService_SupportStatus_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGenericCustomerService" type="tns:IGenericCustomerService">
@@ -558,6 +568,15 @@
     </wsdl:operation>
     <wsdl:operation name="SupportHasActiveRequest">
       <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/SupportHasActiveRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SupportStatus">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/SupportStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

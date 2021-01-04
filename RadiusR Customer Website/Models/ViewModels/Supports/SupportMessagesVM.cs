@@ -19,9 +19,9 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Supports
         public DateTime SupportDate { get; set; }
         public DateTime? CustomerApprovalDate { get; set; }
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Models.Model), Name = "State")]
-        [EnumType(typeof(RadiusR.DB.Enums.SupportRequests.SupportRequestStateID), typeof(RadiusR.Localization.Lists.SupportRequests.SupportRequestStateID))]
-        [UIHint("LocalizedList")]
-        public short State { get; set; }
+        //[EnumType(typeof(RadiusR.DB.Enums.SupportRequests.SupportRequestStateID), typeof(RadiusR.Localization.Lists.SupportRequests.SupportRequestStateID))]
+        //[UIHint("LocalizedList")]
+        public string State { get; set; }
         public IEnumerable<SupportMessageList> SupportMessageList { get; set; }
         public string Message { get; set; }
         public SupportRequestDisplayTypes SupportDisplayType { get; set; }

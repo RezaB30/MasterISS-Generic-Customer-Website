@@ -41,4 +41,10 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Supports
         OpenRequestAgainDisplay = 2,
         AddNoteDisplay = 3
     }
+    public enum SupportMesssageTypes
+    {
+        AddNote = 1,
+        ProblemSolved = 2,
+        OpenRequestAgain = 3
+    }
 }

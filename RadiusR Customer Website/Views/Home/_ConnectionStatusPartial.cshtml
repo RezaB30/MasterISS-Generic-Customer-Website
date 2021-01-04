@@ -9,10 +9,7 @@
             <tbody>
                 <tr>
                     <th style="text-align:left; padding: 1em 1em; border-right: none;">@Html.DisplayNameFor(m => m.ConnectionStatus)</th>
-                    <td style="text-align:left; padding: 1em 1em; border-left:none;"
-                        class="@Html.Raw((RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient.OperationStatus)Model.ConnectionStatus
-                              == RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient.OperationStatus.Open ?
-                              "text-green" : "deep-red")">
+                    <td style="text-align:left; padding: 1em 1em; border-left:none;" class="@Html.Raw(Model.ConnectionStatusValue == 0 ? "text-green" : "deep-red")">
                         @Html.DisplayFor(m => m.ConnectionStatus)
                     </td>
                 </tr>

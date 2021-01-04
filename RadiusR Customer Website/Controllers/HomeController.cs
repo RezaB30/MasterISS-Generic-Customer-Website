@@ -128,7 +128,7 @@ namespace RadiusR_Customer_Website.Controllers
             }).AsQueryable();
             SetupPages(page, ref results, 10);
             ViewBag.HasUnpaidBills = response.GetCustomerBillsResponse.HasUnpaidBills;
-            ViewBag.IsPrePaid = !response.GetCustomerBillsResponse.IsPrePaid;
+            ViewBag.IsPrePaid = response.GetCustomerBillsResponse.IsPrePaid;
             //quota
             if (response.GetCustomerBillsResponse.CanHaveQuotaSale)
             {
@@ -769,43 +769,77 @@ namespace RadiusR_Customer_Website.Controllers
         }
         public ActionResult ConnectionStatus()
         {
-            using (var db = new RadiusR.DB.RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var response = client.ConnectionStatus(new CustomerServiceBaseRequest()
             {
-                var Subscription = db.Subscriptions.Find(User.GiveUserId());
-                if (Subscription == null)
-                    return PartialView("Error");
-
-                var domainCache = RadiusR.DB.DomainsCache.DomainsCache.GetDomainByID(Subscription.DomainID);
-                if (domainCache.TelekomCredential == null)
+                Culture = baseRequest._culture,
+                Hash = baseRequest.hash,
+                Rand = baseRequest._rand,
+                Username = baseRequest._username,
+                SubscriptionParameters = new BaseSubscriptionRequest()
                 {
-                    return RedirectToAction("Index");
+                    SubscriptionId = User.GiveUserId()
                 }
-                if (Request.IsAjaxRequest())
-                {
-                    RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(domainCache.TelekomCredential.XDSLWebServiceUsernameInt, domainCache.TelekomCredential.XDSLWebServicePassword);
-                    var Result = client.Check(Subscription.SubscriptionTelekomInfo.SubscriptionNo);
-                    if (Result.InternalException != null)
-                    {
-                        TTErrorslogger.Error(Result.InternalException, "Error telekom line state");
-                        return PartialView("Error");
-                    }
-                    var model = new Models.ViewModels.Home.ConnectionStatusViewModel()
-                    {
-                        ConnectionStatus = (short)Result.Data.OperationStatus,
-                        CurrentDownload = Result.Data.CurrentDown,
-                        CurrentUpload = Result.Data.CurrentUp,
-                        XDSLNo = Subscription.SubscriptionTelekomInfo.SubscriptionNo,
-                        XDSLType = Subscription.SubscriptionTelekomInfo.XDSLType,
-                        DownloadMargin = Result.Data.NoiseRateDown,
-                        UploadMargin = Result.Data.NoiseRateUp
-                    };
-                    return PartialView("_ConnectionStatusPartial", model);
-                }
-                else
-                {
-                    return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
-                }
+            });
+            if (response.ResponseMessage.ErrorCode != 0)
+            {
+                return RedirectToAction("Index");
             }
+            if (Request.IsAjaxRequest())
+            {
+                var model = new Models.ViewModels.Home.ConnectionStatusViewModel()
+                {
+                    ConnectionStatus = response.GetCustomerConnectionStatusResponse.ConnectionStatusText,
+                    CurrentDownload = response.GetCustomerConnectionStatusResponse.CurrentDownload,
+                    CurrentUpload = response.GetCustomerConnectionStatusResponse.CurrentUpload,
+                    XDSLNo = response.GetCustomerConnectionStatusResponse.XDSLNo,
+                    XDSLType = response.GetCustomerConnectionStatusResponse.XDSLTypeText,
+                    DownloadMargin = response.GetCustomerConnectionStatusResponse.DownloadMargin,
+                    UploadMargin = response.GetCustomerConnectionStatusResponse.UploadMargin
+                };
+                return PartialView("_ConnectionStatusPartial", model);
+            }
+            else
+            {
+                return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
+            }
+            //using (var db = new RadiusR.DB.RadiusREntities())
+            //{
+            //    var Subscription = db.Subscriptions.Find(User.GiveUserId());
+            //    if (Subscription == null)
+            //        return PartialView("Error");
+
+            //    var domainCache = RadiusR.DB.DomainsCache.DomainsCache.GetDomainByID(Subscription.DomainID);
+            //    if (domainCache.TelekomCredential == null)
+            //    {
+            //        return RedirectToAction("Index");
+            //    }
+            //    if (Request.IsAjaxRequest())
+            //    {
+            //        RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(domainCache.TelekomCredential.XDSLWebServiceUsernameInt, domainCache.TelekomCredential.XDSLWebServicePassword);
+            //        var Result = client.Check(Subscription.SubscriptionTelekomInfo.SubscriptionNo);
+            //        if (Result.InternalException != null)
+            //        {
+            //            TTErrorslogger.Error(Result.InternalException, "Error telekom line state");
+            //            return PartialView("Error");
+            //        }
+            //        var model = new Models.ViewModels.Home.ConnectionStatusViewModel()
+            //        {
+            //            ConnectionStatus = (short)Result.Data.OperationStatus,
+            //            CurrentDownload = Result.Data.CurrentDown,
+            //            CurrentUpload = Result.Data.CurrentUp,
+            //            XDSLNo = Subscription.SubscriptionTelekomInfo.SubscriptionNo,
+            //            XDSLType = Subscription.SubscriptionTelekomInfo.XDSLType,
+            //            DownloadMargin = Result.Data.NoiseRateDown,
+            //            UploadMargin = Result.Data.NoiseRateUp
+            //        };
+            //        return PartialView("_ConnectionStatusPartial", model);
+            //    }
+            //    else
+            //    {
+            //        return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
+            //    }
+            //}
         }
 
         public ActionResult Services()
@@ -815,23 +849,51 @@ namespace RadiusR_Customer_Website.Controllers
 
         public ActionResult PersonalInfo()
         {
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var subscription = client.GetCustomerInfo(new CustomerServiceBaseRequest()
             {
-                var subscription = db.Subscriptions.Find(User.GiveUserId());
-                var viewResults = new PersonalInfoViewModel()
+                Culture = baseRequest._culture,
+                Hash = baseRequest.hash,
+                Username = baseRequest._username,
+                SubscriptionParameters = new BaseSubscriptionRequest()
                 {
-                    EMail = subscription.Customer.Email,
-                    PhoneNo = subscription.Customer.ContactPhoneNo,
-                    ValidDisplayName = subscription.ValidDisplayName,
-                    InstallationAddress = subscription.Address.AddressText,
-                    Username = subscription.Username,
-                    Password = subscription.RadiusPassword,
-                    ReferenceNo = subscription.ReferenceNo,
-                    TTSubscriberNo = subscription.SubscriptionTelekomInfo != null ? subscription.SubscriptionTelekomInfo.SubscriptionNo : null,
-                    PSTN = subscription.SubscriptionTelekomInfo != null && !string.IsNullOrWhiteSpace(subscription.SubscriptionTelekomInfo.PSTN) ? subscription.SubscriptionTelekomInfo.PSTN : null
-                };
-                return View(viewResults);
+                    SubscriptionId = User.GiveUserId()
+                }
+            });
+            if (subscription.ResponseMessage.ErrorCode != 0)
+            {
+                return View(new PersonalInfoViewModel());
             }
+            var viewResults = new PersonalInfoViewModel()
+            {
+                EMail = subscription.GetCustomerInfoResponse.EMail,
+                PhoneNo = subscription.GetCustomerInfoResponse.PhoneNo,
+                ValidDisplayName = subscription.GetCustomerInfoResponse.ValidDisplayName,
+                InstallationAddress = subscription.GetCustomerInfoResponse.InstallationAddress,
+                Username = subscription.GetCustomerInfoResponse.Username,
+                Password = subscription.GetCustomerInfoResponse.Password,
+                ReferenceNo = subscription.GetCustomerInfoResponse.ReferenceNo,
+                TTSubscriberNo = subscription.GetCustomerInfoResponse.TTSubscriberNo,
+                PSTN = subscription.GetCustomerInfoResponse.PSTN
+            };
+            return View(viewResults);
+            //using (RadiusREntities db = new RadiusREntities())
+            //{
+            //    var subscription = db.Subscriptions.Find(User.GiveUserId());
+            //    var viewResults = new PersonalInfoViewModel()
+            //    {
+            //        EMail = subscription.Customer.Email,
+            //        PhoneNo = subscription.Customer.ContactPhoneNo,
+            //        ValidDisplayName = subscription.ValidDisplayName,
+            //        InstallationAddress = subscription.Address.AddressText,
+            //        Username = subscription.Username,
+            //        Password = subscription.RadiusPassword,
+            //        ReferenceNo = subscription.ReferenceNo,
+            //        TTSubscriberNo = subscription.SubscriptionTelekomInfo != null ? subscription.SubscriptionTelekomInfo.SubscriptionNo : null,
+            //        PSTN = subscription.SubscriptionTelekomInfo != null && !string.IsNullOrWhiteSpace(subscription.SubscriptionTelekomInfo.PSTN) ? subscription.SubscriptionTelekomInfo.PSTN : null
+            //    };
+            //    return View(viewResults);
+            //}
         }
 
         [ValidateAntiForgeryToken]

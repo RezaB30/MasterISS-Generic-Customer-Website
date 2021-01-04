@@ -549,4 +549,21 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="CustomerServiceHasActiveRequestResponse" nillable="true" type="tns:CustomerServiceHasActiveRequestResponse" />
+  <xs:complexType name="CustomerServiceSupportStatusResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q32="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q32:BaseResponseOfSupportStatusResponseSHA1KVWl_PpN3">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SupportStatusResponse" nillable="true" type="tns:SupportStatusResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceSupportStatusResponse" nillable="true" type="tns:CustomerServiceSupportStatusResponse" />
+  <xs:complexType name="SupportStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element xmlns:q33="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SupportRequestIds" nillable="true" type="q33:ArrayOflong" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SupportStatusResponse" nillable="true" type="tns:SupportStatusResponse" />
 </xs:schema>

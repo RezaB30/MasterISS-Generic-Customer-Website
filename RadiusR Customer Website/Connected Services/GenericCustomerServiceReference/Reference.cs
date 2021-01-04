@@ -6951,6 +6951,200 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfSupportStatusResponseSHA1KVWl_PpN3", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSupportStatusResponse))]
+    public partial class BaseResponseOfSupportStatusResponseSHA1KVWl_PpN3 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CultureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HashField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RandField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.ServiceResponse ResponseMessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Culture {
+            get {
+                return this.CultureField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CultureField, value) != true)) {
+                    this.CultureField = value;
+                    this.RaisePropertyChanged("Culture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hash {
+            get {
+                return this.HashField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HashField, value) != true)) {
+                    this.HashField = value;
+                    this.RaisePropertyChanged("Hash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rand {
+            get {
+                return this.RandField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RandField, value) != true)) {
+                    this.RandField = value;
+                    this.RaisePropertyChanged("Rand");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.ServiceResponse ResponseMessage {
+            get {
+                return this.ResponseMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseMessageField, value) != true)) {
+                    this.ResponseMessageField = value;
+                    this.RaisePropertyChanged("ResponseMessage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceSupportStatusResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceSupportStatusResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfSupportStatusResponseSHA1KVWl_PpN3 {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.SupportStatusResponse SupportStatusResponseField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.SupportStatusResponse SupportStatusResponse {
+            get {
+                return this.SupportStatusResponseField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupportStatusResponseField, value) != true)) {
+                    this.SupportStatusResponseField = value;
+                    this.RaisePropertyChanged("SupportStatusResponse");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SupportStatusResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class SupportStatusResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long[] SupportRequestIdsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Count {
+            get {
+                return this.CountField;
+            }
+            set {
+                if ((this.CountField.Equals(value) != true)) {
+                    this.CountField = value;
+                    this.RaisePropertyChanged("Count");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long[] SupportRequestIds {
+            get {
+                return this.SupportRequestIdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupportRequestIdsField, value) != true)) {
+                    this.SupportRequestIdsField = value;
+                    this.RaisePropertyChanged("SupportRequestIds");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GenericCustomerServiceReference.IGenericCustomerService")]
     public interface IGenericCustomerService {
@@ -7130,6 +7324,12 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/SupportHasActiveRequest", ReplyAction="http://tempuri.org/IGenericCustomerService/SupportHasActiveRequestResponse")]
         System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasActiveRequestResponse> SupportHasActiveRequestAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/SupportStatus", ReplyAction="http://tempuri.org/IGenericCustomerService/SupportStatusResponse")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSupportStatusResponse SupportStatus(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/SupportStatus", ReplyAction="http://tempuri.org/IGenericCustomerService/SupportStatusResponse")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSupportStatusResponse> SupportStatusAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -7389,6 +7589,14 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         
         public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasActiveRequestResponse> SupportHasActiveRequestAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
             return base.Channel.SupportHasActiveRequestAsync(request);
+        }
+        
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSupportStatusResponse SupportStatus(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
+            return base.Channel.SupportStatus(request);
+        }
+        
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSupportStatusResponse> SupportStatusAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
+            return base.Channel.SupportStatusAsync(request);
         }
     }
 }

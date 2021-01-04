@@ -673,4 +673,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseResponseOfChangeSubClientResponseSHA1KVWl_PpN3" nillable="true" type="tns:BaseResponseOfChangeSubClientResponseSHA1KVWl_PpN3" />
+  <xs:complexType name="BaseResponseOfSupportStatusResponseSHA1KVWl_PpN3">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BaseResponseOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="SupportStatusResponse" Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" />
+          <GenericParameter Name="SHA1" Namespace="http://schemas.datacontract.org/2004/07/System.Security.Cryptography" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Culture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rand" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResponseMessage" nillable="true" type="tns:ServiceResponse" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseResponseOfSupportStatusResponseSHA1KVWl_PpN3" nillable="true" type="tns:BaseResponseOfSupportStatusResponseSHA1KVWl_PpN3" />
 </xs:schema>

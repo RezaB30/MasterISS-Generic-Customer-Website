@@ -14,6 +14,7 @@
   <xs:element name="CustomerServiceGetCustomerInfoResponse" nillable="true" type="tns:CustomerServiceGetCustomerInfoResponse" />
   <xs:complexType name="GetCustomerInfoResponse">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CurrentSubscriberNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InstallationAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PSTN" nillable="true" type="xs:string" />
@@ -665,14 +666,24 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="CustomerServicePaymentSystemLogResponse" nillable="true" type="tns:CustomerServicePaymentSystemLogResponse" />
-  <xs:complexType name="CustomerServiceMobileExpressPayBillResponse">
+  <xs:complexType name="CustomerServiceMobilexpressPayBillResponse">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q41="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q41:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
         <xs:sequence>
-          <xs:element minOccurs="0" name="MobileExpressPayBillResult" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MobilexpressPayBillResult" nillable="true" type="xs:boolean" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="CustomerServiceMobileExpressPayBillResponse" nillable="true" type="tns:CustomerServiceMobileExpressPayBillResponse" />
+  <xs:element name="CustomerServiceMobilexpressPayBillResponse" nillable="true" type="tns:CustomerServiceMobilexpressPayBillResponse" />
+  <xs:complexType name="CustomerServiceVPOSErrorParameterNameResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q42="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q42:BaseResponseOfstringSHA1Miy85_SUl">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="VPOSErrorParameterName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceVPOSErrorParameterNameResponse" nillable="true" type="tns:CustomerServiceVPOSErrorParameterNameResponse" />
 </xs:schema>

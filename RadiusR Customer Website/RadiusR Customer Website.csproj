@@ -85,70 +85,21 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RadiusR.API.MobilExpress.DBAdapter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.API.MobilExpress.DBAdapter.1.0.0\lib\net452\RadiusR.API.MobilExpress.DBAdapter.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RadiusR.DB, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.DB.1.0.6\lib\net452\RadiusR.DB.dll</HintPath>
-    </Reference>
-    <Reference Include="RadiusR.DB.DomainsCache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.DB.DomainsCache.1.0.0\lib\net452\RadiusR.DB.DomainsCache.dll</HintPath>
-    </Reference>
-    <Reference Include="RadiusR.DB.Utilities, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.DB.Utilities.1.0.1\lib\net452\RadiusR.DB.Utilities.dll</HintPath>
-    </Reference>
     <Reference Include="RadiusR.Localization, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RadiusR.Localization.1.0.1\lib\net452\RadiusR.Localization.dll</HintPath>
     </Reference>
-    <Reference Include="RadiusR.Localization.Lists, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.Localization.Lists.1.0.2\lib\net452\RadiusR.Localization.Lists.dll</HintPath>
-    </Reference>
-    <Reference Include="RadiusR.Scheduler.SMS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.Scheduler.SMS.1.0.0\lib\net452\RadiusR.Scheduler.SMS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RadiusR.SMS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.SMS.1.0.0\lib\net452\RadiusR.SMS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RadiusR.SystemLogs, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.SystemLogs.1.0.1\lib\net452\RadiusR.SystemLogs.dll</HintPath>
-    </Reference>
-    <Reference Include="RadiusR.VPOS, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.VPOS.1.0.1\lib\net452\RadiusR.VPOS.dll</HintPath>
-    </Reference>
-    <Reference Include="RezaB.API.MobilExpress, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RezaB.API.MobilExpress.1.0.0\lib\net452\RezaB.API.MobilExpress.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="RadiusR.Localization.Lists, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RadiusR.Localization.Lists.1.0.3\lib\net452\RadiusR.Localization.Lists.dll</HintPath>
     </Reference>
     <Reference Include="RezaB.Data, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.Data.1.0.1\lib\net452\RezaB.Data.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="RezaB.DBUtilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RezaB.DBUtilities.1.0.0\lib\net452\RezaB.DBUtilities.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RezaB.NetInvoice, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RezaB.NetInvoice.1.0.0\lib\net452\RezaB.NetInvoice.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RezaB.NetInvoice.Wrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RezaB.NetInvoice.Wrapper.1.0.0\lib\net452\RezaB.NetInvoice.Wrapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RezaB.TurkTelekom.WebServices, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RezaB.TurkTelekom.WebServices.1.0.0\lib\net452\RezaB.TurkTelekom.WebServices.dll</HintPath>
     </Reference>
     <Reference Include="RezaB.Web, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.Web.1.0.1\lib\net452\RezaB.Web.dll</HintPath>
     </Reference>
     <Reference Include="RezaB.Web.Helpers, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.Web.Helpers.1.0.3\lib\net452\RezaB.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="RezaB.Web.VPOS, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RezaB.Web.VPOS.1.0.3\lib\net452\RezaB.Web.VPOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -236,7 +187,9 @@
     <Compile Include="DomainCache.cs" />
     <Compile Include="GenericServiceSettings.cs" />
     <Compile Include="Models\Enums\AccountantType.cs" />
+    <Compile Include="Models\Enums\AutoPaymentType.cs" />
     <Compile Include="Models\Enums\BillState.cs" />
+    <Compile Include="Models\Enums\CustomerState.cs" />
     <Compile Include="Models\Enums\PaymentType.cs" />
     <Compile Include="Models\Enums\SubscriptionPaidType.cs" />
     <Compile Include="Models\UsageInfoViewModel.cs" />
@@ -396,6 +349,21 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\GenericCustomerServiceReference\Reference.svcmap">

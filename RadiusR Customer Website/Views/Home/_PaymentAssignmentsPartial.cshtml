@@ -29,7 +29,7 @@
                         <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.DeactivateAutomaticPayment" class="link-button red" />
                     }
                 }
-                else if (ViewBag.AllCards.Length > 0)
+                else if (((IEnumerable<RadiusR_Customer_Website.Models.CustomerAutomaticPaymentViewModel.CardViewModel>)ViewBag.AllCards).Count() > 0)
                 {
                     using (Html.BeginForm("ActivateAutomaticPayment", null, FormMethod.Post))
                     {

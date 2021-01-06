@@ -1,6 +1,4 @@
-﻿using RadiusR.DB;
-using RadiusR.DB.Utilities.Billing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,19 +7,10 @@ using System.Data.Entity;
 using RezaB.Web.Authentication;
 using RadiusR_Customer_Website.Models;
 //using RadiusR_Manager.Models.ViewModels;
-using RadiusR.SMS;
 using NLog;
-using RadiusR.DB.Enums.RecurringDiscount;
-using RadiusR.DB.ModelExtentions;
-using RezaB.Web.VPOS;
 using System.Collections.Specialized;
-using RadiusR.API.MobilExpress.DBAdapter;
-using RadiusR.API.MobilExpress.DBAdapter.AdapterClient;
-using RadiusR.SystemLogs;
-using RadiusR.VPOS;
 using RadiusR_Customer_Website.VPOSToken;
 using RezaB.Data.Formating;
-using RadiusR.DB.Enums.SupportRequests;
 using RadiusR_Customer_Website.GenericCustomerServiceReference;
 
 namespace RadiusR_Customer_Website.Controllers
@@ -235,7 +224,7 @@ namespace RadiusR_Customer_Website.Controllers
             }
             // get m.express cards
             var cardBaseRequest = new GenericServiceSettings();
-            var cardList = client.RegisteredMobileExpressCardList(new CustomerServiceRegisteredCardsRequest()
+            var cardList = client.RegisteredMobilexpressCardList(new CustomerServiceRegisteredCardsRequest()
             {
                 Culture = cardBaseRequest.Culture,
                 Hash = cardBaseRequest.Hash,
@@ -256,7 +245,11 @@ namespace RadiusR_Customer_Website.Controllers
                 ViewBag.ServiceError = RadiusRCustomerWebSite.Localization.Common.PaymentWithCardNotAvailable;
                 return View();
             }
-            ViewBag.CardsList = cardList.RegisteredCardList.Select(c => new { CardToken = c.Token, MaskedCardNumber = c.MaskedCardNo }).ToList();
+            if (cardList.RegisteredCardList == null)
+            {
+                return RedirectToAction("Payment", new { id = id });
+            }
+            ViewBag.CardsList = cardList.RegisteredCardList == null ? Enumerable.Empty<object>() : cardList.RegisteredCardList.Select(c => new { CardToken = c.Token, MaskedCardNumber = c.MaskedCardNo }).ToList();
 
             return View();
         }
@@ -269,13 +262,13 @@ namespace RadiusR_Customer_Website.Controllers
             if (payableAmount == 0m)
                 return RedirectToAction("PaymentSelection");
             var baseRequest = new GenericServiceSettings();
-            var mobileExpressPayBill = client.MobileExpressPayBill(new CustomerServiceMobileExpressPayBillRequest()
+            var mobileExpressPayBill = client.MobilexpressPayBill(new CustomerServiceMobilexpressPayBillRequest()
             {
                 Culture = baseRequest.Culture,
                 Hash = baseRequest.Hash,
                 Rand = baseRequest.Rand,
                 Username = baseRequest.Username,
-                MobileExpressPayBillParameters = new MobileExpressPayBillRequest()
+                MobileExpressPayBillParameters = new MobilexpressPayBillRequest()
                 {
                     BillId = id,
                     PayableAmount = payableAmount,
@@ -344,7 +337,7 @@ namespace RadiusR_Customer_Website.Controllers
                 return RedirectToAction("BillsAndPayments");
             }
             var cardBaseRequest = new GenericServiceSettings();
-            var cardList = client.RegisteredMobileExpressCardList(new CustomerServiceRegisteredCardsRequest()
+            var cardList = client.RegisteredMobilexpressCardList(new CustomerServiceRegisteredCardsRequest()
             {
                 Culture = cardBaseRequest.Culture,
                 Hash = cardBaseRequest.Hash,
@@ -366,12 +359,12 @@ namespace RadiusR_Customer_Website.Controllers
                 ViewBag.ServiceError = RadiusRCustomerWebSite.Localization.Common.GeneralError;
                 return View();
             }
-            var cards = cardList.RegisteredCardList.Select(cl => new CustomerAutomaticPaymentViewModel.CardViewModel()
+            var cards = cardList.RegisteredCardList == null ? Enumerable.Empty<CustomerAutomaticPaymentViewModel.CardViewModel>() : cardList.RegisteredCardList.Select(cl => new CustomerAutomaticPaymentViewModel.CardViewModel()
             {
                 HasAutoPayments = cl.HasAutoPayments,
                 Token = cl.Token,
                 MaskedCardNo = cl.MaskedCardNo
-            });
+            }).ToArray();
             var autoPaymentsBaseRequest = new GenericServiceSettings();
             var autoPaymentList = client.AutoPaymentList(new CustomerServiceAutoPaymentListRequest()
             {
@@ -406,16 +399,7 @@ namespace RadiusR_Customer_Website.Controllers
             return View(new CustomerAutomaticPaymentViewModel()
             {
                 Cards = cards,
-                AutomaticPayments = autoPaymentList.AutoPaymentListResult.Select(ap => new CustomerAutomaticPaymentViewModel.AutomaticPaymentViewModel()
-                {
-                    Card = ap.Cards == null ? null : new CustomerAutomaticPaymentViewModel.CardViewModel()
-                    {
-                        MaskedCardNo = ap.Cards.MaskedCardNo,
-                        Token = ap.Cards.Token
-                    },
-                    SubscriberID = ap.SubscriberID,
-                    SubscriberNo = ap.SubscriberNo
-                })
+                AutomaticPayments = autoPayments
             });
         }
 
@@ -628,7 +612,7 @@ namespace RadiusR_Customer_Website.Controllers
                 {
                     return RedirectToAction("AutomaticPayment");
                 }
-                if (dbSubscription.SubscriptionBasicInformationResponse.CustomerID != currentCustomer.SubscriptionBasicInformationResponse.ID || dbSubscription.SubscriptionBasicInformationResponse.IsCancelled)
+                if (dbSubscription.SubscriptionBasicInformationResponse.CustomerID != currentCustomer.SubscriptionBasicInformationResponse.CustomerID || dbSubscription.SubscriptionBasicInformationResponse.IsCancelled)
                 {
                     return RedirectToAction("AutomaticPayment");
                 }
@@ -737,24 +721,24 @@ namespace RadiusR_Customer_Website.Controllers
         }
         public ActionResult ConnectionStatus()
         {
-            var baseRequest = new GenericServiceSettings();
-            var response = client.ConnectionStatus(new CustomerServiceBaseRequest()
-            {
-                Culture = baseRequest.Culture,
-                Hash = baseRequest.Hash,
-                Rand = baseRequest.Rand,
-                Username = baseRequest.Username,
-                SubscriptionParameters = new BaseSubscriptionRequest()
-                {
-                    SubscriptionId = User.GiveUserId()
-                }
-            });
-            if (response.ResponseMessage.ErrorCode != 0)
-            {
-                return RedirectToAction("Index");
-            }
             if (Request.IsAjaxRequest())
             {
+                var baseRequest = new GenericServiceSettings();
+                var response = client.ConnectionStatus(new CustomerServiceBaseRequest()
+                {
+                    Culture = baseRequest.Culture,
+                    Hash = baseRequest.Hash,
+                    Rand = baseRequest.Rand,
+                    Username = baseRequest.Username,
+                    SubscriptionParameters = new BaseSubscriptionRequest()
+                    {
+                        SubscriptionId = User.GiveUserId()
+                    }
+                });
+                if (response.ResponseMessage.ErrorCode != 0)
+                {
+                    return PartialView("_ConnectionStatusPartial", new Models.ViewModels.Home.ConnectionStatusViewModel());
+                }
                 var model = new Models.ViewModels.Home.ConnectionStatusViewModel()
                 {
                     ConnectionStatus = response.GetCustomerConnectionStatusResponse.ConnectionStatusText,
@@ -1190,7 +1174,15 @@ namespace RadiusR_Customer_Website.Controllers
 
         private string GetErrorMessage()
         {
-            return Request.Form[VPOSManager.GetErrorMessageParameterName()];
+            var baseRequest = new GenericServiceSettings();
+            var getVPOSError = client.GetVPOSErrorParameterName(new CustomerServiceVPOSErrorParameterNameRequest()
+            {
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username
+            });
+            return Request.Form[getVPOSError.ResponseMessage.ErrorCode != 0 ? string.Empty : getVPOSError.VPOSErrorParameterName];
         }
 
         private decimal GetPayableAmount(long? subscriptionId, long? billId)

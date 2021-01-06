@@ -1,5 +1,4 @@
 ﻿using NLog;
-using RadiusR.DB;
 using RezaB.Web.Authentication;
 using RadiusR_Customer_Website.Properties;
 //using RadiusR_Manager.Models.RadiusViewModels;
@@ -129,7 +128,7 @@ namespace RadiusR_Customer_Website.Controllers
 
         protected void SetupPages<T>(int? page, ref IQueryable<T> viewResults, int? rowCount = null)
         {
-            rowCount = rowCount ?? AppSettings.TableRows;
+            rowCount = rowCount ?? RadiusR_Customer_Website.Properties.Settings.Default.TableRows;
             var totalCount = viewResults.Count();
             var pagesCount = Math.Ceiling((float)totalCount / (float)rowCount);
             ViewBag.PageCount = pagesCount;

@@ -832,11 +832,11 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BaseRequestOfPaymentSystemLogRequestSHA1CuT410mT" nillable="true" type="tns:BaseRequestOfPaymentSystemLogRequestSHA1CuT410mT" />
-  <xs:complexType name="BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT">
+  <xs:complexType name="BaseRequestOfMobilexpressPayBillRequestSHA1CuT410mT">
     <xs:annotation>
       <xs:appinfo>
         <GenericType Name="BaseRequestOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="MobileExpressPayBillRequest" Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" />
+          <GenericParameter Name="MobilexpressPayBillRequest" Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" />
           <GenericParameter Name="SHA1" Namespace="http://schemas.datacontract.org/2004/07/System.Security.Cryptography" />
         </GenericType>
       </xs:appinfo>
@@ -847,5 +847,5 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT" nillable="true" type="tns:BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT" />
+  <xs:element name="BaseRequestOfMobilexpressPayBillRequestSHA1CuT410mT" nillable="true" type="tns:BaseRequestOfMobilexpressPayBillRequestSHA1CuT410mT" />
 </xs:schema>

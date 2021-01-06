@@ -282,17 +282,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RegisteredMobileExpressCardList">
+  <xs:element name="RegisteredMobilexpressCardList">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" minOccurs="0" name="request" nillable="true" type="q41:CustomerServiceRegisteredCardsRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RegisteredMobileExpressCardListResponse">
+  <xs:element name="RegisteredMobilexpressCardListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" minOccurs="0" name="RegisteredMobileExpressCardListResult" nillable="true" type="q42:CustomerServiceRegisteredCardsResponse" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" minOccurs="0" name="RegisteredMobilexpressCardListResult" nillable="true" type="q42:CustomerServiceRegisteredCardsResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -506,17 +506,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="MobileExpressPayBill">
+  <xs:element name="MobilexpressPayBill">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" minOccurs="0" name="request" nillable="true" type="q73:CustomerServiceMobileExpressPayBillRequest" />
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" minOccurs="0" name="request" nillable="true" type="q73:CustomerServiceMobilexpressPayBillRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="MobileExpressPayBillResponse">
+  <xs:element name="MobilexpressPayBillResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" minOccurs="0" name="MobileExpressPayBillResult" nillable="true" type="q74:CustomerServiceMobileExpressPayBillResponse" />
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" minOccurs="0" name="MobilexpressPayBillResult" nillable="true" type="q74:CustomerServiceMobilexpressPayBillResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVPOSErrorParameterName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" minOccurs="0" name="request" nillable="true" type="q75:CustomerServiceVPOSErrorParameterNameRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVPOSErrorParameterNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" minOccurs="0" name="GetVPOSErrorParameterNameResult" nillable="true" type="q76:CustomerServiceVPOSErrorParameterNameResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

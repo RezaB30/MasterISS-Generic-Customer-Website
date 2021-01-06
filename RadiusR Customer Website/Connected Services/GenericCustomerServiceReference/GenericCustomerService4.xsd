@@ -478,17 +478,17 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PaymentSystemLogRequest" nillable="true" type="tns:PaymentSystemLogRequest" />
-  <xs:complexType name="CustomerServiceMobileExpressPayBillRequest">
+  <xs:complexType name="CustomerServiceMobilexpressPayBillRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q30="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q30:BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT">
+      <xs:extension xmlns:q30="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q30:BaseRequestOfMobilexpressPayBillRequestSHA1CuT410mT">
         <xs:sequence>
-          <xs:element minOccurs="0" name="MobileExpressPayBillParameters" nillable="true" type="tns:MobileExpressPayBillRequest" />
+          <xs:element minOccurs="0" name="MobileExpressPayBillParameters" nillable="true" type="tns:MobilexpressPayBillRequest" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="CustomerServiceMobileExpressPayBillRequest" nillable="true" type="tns:CustomerServiceMobileExpressPayBillRequest" />
-  <xs:complexType name="MobileExpressPayBillRequest">
+  <xs:element name="CustomerServiceMobilexpressPayBillRequest" nillable="true" type="tns:CustomerServiceMobilexpressPayBillRequest" />
+  <xs:complexType name="MobilexpressPayBillRequest">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseSubscriptionRequest">
         <xs:sequence>
@@ -500,5 +500,13 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="MobileExpressPayBillRequest" nillable="true" type="tns:MobileExpressPayBillRequest" />
+  <xs:element name="MobilexpressPayBillRequest" nillable="true" type="tns:MobilexpressPayBillRequest" />
+  <xs:complexType name="CustomerServiceVPOSErrorParameterNameRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q31="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q31:BaseRequestOfSHA1o_Pr6u_PMh">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceVPOSErrorParameterNameRequest" nillable="true" type="tns:CustomerServiceVPOSErrorParameterNameRequest" />
 </xs:schema>

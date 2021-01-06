@@ -1,5 +1,4 @@
-﻿using RadiusR.DB.Enums;
-using RezaB.Web.CustomAttributes;
+﻿using RezaB.Web.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,7 +17,7 @@ namespace RadiusR_Customer_Website.Models
 
         [Required]
         [Display(ResourceType = typeof(RadiusRCustomerWebSite.Localization.Common), Name = "PaymentType")]
-        [EnumType(typeof(AutoPaymentType), typeof(RadiusR.Localization.Lists.AutoPaymentType))]
+        [EnumType(typeof(Models.Enums.AutoPaymentType), typeof(RadiusR.Localization.Lists.AutoPaymentType))]
         [UIHint("LocalizedList")]
         public short PaymentType { get; set; }
     }

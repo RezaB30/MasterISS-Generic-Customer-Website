@@ -59,11 +59,12 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfPaymentSystemLogRequestSHA1CuT410mT))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfMobilexpressPayBillRequestSHA1CuT410mT))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceQuotaPackagesRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfBaseSubscriptionRequestSHA1CuT410mT))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest))]
     public partial class BaseRequestOfSHA1o_Pr6u_PMh : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -808,23 +809,23 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfMobilexpressPayBillRequestSHA1CuT410mT", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest))]
-    public partial class BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillRequest))]
+    public partial class BaseRequestOfMobilexpressPayBillRequestSHA1CuT410mT : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceMobileExpressPayBillRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceMobilexpressPayBillRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
     [System.SerializableAttribute()]
-    public partial class CustomerServiceMobileExpressPayBillRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT {
+    public partial class CustomerServiceMobilexpressPayBillRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfMobilexpressPayBillRequestSHA1CuT410mT {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RadiusR_Customer_Website.GenericCustomerServiceReference.MobileExpressPayBillRequest MobileExpressPayBillParametersField;
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.MobilexpressPayBillRequest MobileExpressPayBillParametersField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public RadiusR_Customer_Website.GenericCustomerServiceReference.MobileExpressPayBillRequest MobileExpressPayBillParameters {
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.MobilexpressPayBillRequest MobileExpressPayBillParameters {
             get {
                 return this.MobileExpressPayBillParametersField;
             }
@@ -856,6 +857,13 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceGenericAppSettingsRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
     [System.SerializableAttribute()]
     public partial class CustomerServiceGenericAppSettingsRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceVPOSErrorParameterNameRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceVPOSErrorParameterNameRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -905,7 +913,7 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.SendSubscriberSMSRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.AutoPaymentListRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.PaymentSystemLogRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.MobileExpressPayBillRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.MobilexpressPayBillRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.SupportDetailMessagesRequest))]
     public partial class BaseSubscriptionRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1656,9 +1664,9 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MobileExpressPayBillRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MobilexpressPayBillRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
     [System.SerializableAttribute()]
-    public partial class MobileExpressPayBillRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseSubscriptionRequest {
+    public partial class MobilexpressPayBillRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseSubscriptionRequest {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<long> BillIdField;
@@ -2524,6 +2532,9 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CurrentSubscriberNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EMailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2557,6 +2568,19 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CurrentSubscriberNo {
+            get {
+                return this.CurrentSubscriberNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CurrentSubscriberNoField, value) != true)) {
+                    this.CurrentSubscriberNoField = value;
+                    this.RaisePropertyChanged("CurrentSubscriberNo");
+                }
             }
         }
         
@@ -5146,7 +5170,7 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasActiveRequestResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSupportMessageResponse))]
     public partial class BaseResponseOfNullableOfbooleanSHA1qBRhzOKh : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -5462,22 +5486,22 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceMobileExpressPayBillResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceMobilexpressPayBillResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
     [System.SerializableAttribute()]
-    public partial class CustomerServiceMobileExpressPayBillResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfNullableOfbooleanSHA1qBRhzOKh {
+    public partial class CustomerServiceMobilexpressPayBillResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfNullableOfbooleanSHA1qBRhzOKh {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> MobileExpressPayBillResultField;
+        private System.Nullable<bool> MobilexpressPayBillResultField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> MobileExpressPayBillResult {
+        public System.Nullable<bool> MobilexpressPayBillResult {
             get {
-                return this.MobileExpressPayBillResultField;
+                return this.MobilexpressPayBillResultField;
             }
             set {
-                if ((this.MobileExpressPayBillResultField.Equals(value) != true)) {
-                    this.MobileExpressPayBillResultField = value;
-                    this.RaisePropertyChanged("MobileExpressPayBillResult");
+                if ((this.MobilexpressPayBillResultField.Equals(value) != true)) {
+                    this.MobilexpressPayBillResultField = value;
+                    this.RaisePropertyChanged("MobilexpressPayBillResult");
                 }
             }
         }
@@ -6609,6 +6633,7 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfstringSHA1Miy85_SUl", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardSMSValidationResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAddCardSMSValidationResponse))]
     public partial class BaseResponseOfstringSHA1Miy85_SUl : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -6733,6 +6758,29 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.SMSCodeField, value) != true)) {
                     this.SMSCodeField = value;
                     this.RaisePropertyChanged("SMSCode");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceVPOSErrorParameterNameResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceVPOSErrorParameterNameResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfstringSHA1Miy85_SUl {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VPOSErrorParameterNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VPOSErrorParameterName {
+            get {
+                return this.VPOSErrorParameterNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VPOSErrorParameterNameField, value) != true)) {
+                    this.VPOSErrorParameterNameField = value;
+                    this.RaisePropertyChanged("VPOSErrorParameterName");
                 }
             }
         }
@@ -8730,13 +8778,13 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/AddCard", ReplyAction="http://tempuri.org/IGenericCustomerService/AddCardResponse")]
         System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAddCardResponse> AddCardAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAddCardRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardList", ReplyAction="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardListRespons" +
-            "e")]
-        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse RegisteredMobileExpressCardList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/RegisteredMobilexpressCardList", ReplyAction="http://tempuri.org/IGenericCustomerService/RegisteredMobilexpressCardListResponse" +
+            "")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse RegisteredMobilexpressCardList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardList", ReplyAction="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardListRespons" +
-            "e")]
-        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse> RegisteredMobileExpressCardListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/RegisteredMobilexpressCardList", ReplyAction="http://tempuri.org/IGenericCustomerService/RegisteredMobilexpressCardListResponse" +
+            "")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse> RegisteredMobilexpressCardListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/RemoveCardSMSCheck", ReplyAction="http://tempuri.org/IGenericCustomerService/RemoveCardSMSCheckResponse")]
         RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardSMSValidationResponse RemoveCardSMSCheck(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardSMSCheckRequest request);
@@ -8828,11 +8876,17 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/PaymentSystemLog", ReplyAction="http://tempuri.org/IGenericCustomerService/PaymentSystemLogResponse")]
         System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse> PaymentSystemLogAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/MobileExpressPayBill", ReplyAction="http://tempuri.org/IGenericCustomerService/MobileExpressPayBillResponse")]
-        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse MobileExpressPayBill(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/MobilexpressPayBill", ReplyAction="http://tempuri.org/IGenericCustomerService/MobilexpressPayBillResponse")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillResponse MobilexpressPayBill(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/MobileExpressPayBill", ReplyAction="http://tempuri.org/IGenericCustomerService/MobileExpressPayBillResponse")]
-        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse> MobileExpressPayBillAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/MobilexpressPayBill", ReplyAction="http://tempuri.org/IGenericCustomerService/MobilexpressPayBillResponse")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillResponse> MobilexpressPayBillAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GetVPOSErrorParameterName", ReplyAction="http://tempuri.org/IGenericCustomerService/GetVPOSErrorParameterNameResponse")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameResponse GetVPOSErrorParameterName(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GetVPOSErrorParameterName", ReplyAction="http://tempuri.org/IGenericCustomerService/GetVPOSErrorParameterNameResponse")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameResponse> GetVPOSErrorParameterNameAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameRequest request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -9022,12 +9076,12 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
             return base.Channel.AddCardAsync(request);
         }
         
-        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse RegisteredMobileExpressCardList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request) {
-            return base.Channel.RegisteredMobileExpressCardList(request);
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse RegisteredMobilexpressCardList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request) {
+            return base.Channel.RegisteredMobilexpressCardList(request);
         }
         
-        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse> RegisteredMobileExpressCardListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request) {
-            return base.Channel.RegisteredMobileExpressCardListAsync(request);
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse> RegisteredMobilexpressCardListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request) {
+            return base.Channel.RegisteredMobilexpressCardListAsync(request);
         }
         
         public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardSMSValidationResponse RemoveCardSMSCheck(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardSMSCheckRequest request) {
@@ -9150,12 +9204,20 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
             return base.Channel.PaymentSystemLogAsync(request);
         }
         
-        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse MobileExpressPayBill(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest request) {
-            return base.Channel.MobileExpressPayBill(request);
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillResponse MobilexpressPayBill(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillRequest request) {
+            return base.Channel.MobilexpressPayBill(request);
         }
         
-        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse> MobileExpressPayBillAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest request) {
-            return base.Channel.MobileExpressPayBillAsync(request);
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillResponse> MobilexpressPayBillAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillRequest request) {
+            return base.Channel.MobilexpressPayBillAsync(request);
+        }
+        
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameResponse GetVPOSErrorParameterName(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameRequest request) {
+            return base.Channel.GetVPOSErrorParameterName(request);
+        }
+        
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameResponse> GetVPOSErrorParameterNameAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameRequest request) {
+            return base.Channel.GetVPOSErrorParameterNameAsync(request);
         }
     }
 }

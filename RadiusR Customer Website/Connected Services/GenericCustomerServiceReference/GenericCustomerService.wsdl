@@ -130,11 +130,11 @@
   <wsdl:message name="IGenericCustomerService_AddCard_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddCardResponse" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_RegisteredMobileExpressCardList_InputMessage">
-    <wsdl:part name="parameters" element="tns:RegisteredMobileExpressCardList" />
+  <wsdl:message name="IGenericCustomerService_RegisteredMobilexpressCardList_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisteredMobilexpressCardList" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_RegisteredMobileExpressCardList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RegisteredMobileExpressCardListResponse" />
+  <wsdl:message name="IGenericCustomerService_RegisteredMobilexpressCardList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisteredMobilexpressCardListResponse" />
   </wsdl:message>
   <wsdl:message name="IGenericCustomerService_RemoveCardSMSCheck_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveCardSMSCheck" />
@@ -226,11 +226,17 @@
   <wsdl:message name="IGenericCustomerService_PaymentSystemLog_OutputMessage">
     <wsdl:part name="parameters" element="tns:PaymentSystemLogResponse" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_MobileExpressPayBill_InputMessage">
-    <wsdl:part name="parameters" element="tns:MobileExpressPayBill" />
+  <wsdl:message name="IGenericCustomerService_MobilexpressPayBill_InputMessage">
+    <wsdl:part name="parameters" element="tns:MobilexpressPayBill" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_MobileExpressPayBill_OutputMessage">
-    <wsdl:part name="parameters" element="tns:MobileExpressPayBillResponse" />
+  <wsdl:message name="IGenericCustomerService_MobilexpressPayBill_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MobilexpressPayBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_GetVPOSErrorParameterName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVPOSErrorParameterName" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_GetVPOSErrorParameterName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVPOSErrorParameterNameResponse" />
   </wsdl:message>
   <wsdl:portType name="IGenericCustomerService">
     <wsdl:operation name="GetCustomerInfo">
@@ -313,9 +319,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/AddCard" message="tns:IGenericCustomerService_AddCard_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/AddCardResponse" message="tns:IGenericCustomerService_AddCard_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="RegisteredMobileExpressCardList">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardList" message="tns:IGenericCustomerService_RegisteredMobileExpressCardList_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardListResponse" message="tns:IGenericCustomerService_RegisteredMobileExpressCardList_OutputMessage" />
+    <wsdl:operation name="RegisteredMobilexpressCardList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/RegisteredMobilexpressCardList" message="tns:IGenericCustomerService_RegisteredMobilexpressCardList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/RegisteredMobilexpressCardListResponse" message="tns:IGenericCustomerService_RegisteredMobilexpressCardList_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RemoveCardSMSCheck">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/RemoveCardSMSCheck" message="tns:IGenericCustomerService_RemoveCardSMSCheck_InputMessage" />
@@ -377,9 +383,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/PaymentSystemLog" message="tns:IGenericCustomerService_PaymentSystemLog_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/PaymentSystemLogResponse" message="tns:IGenericCustomerService_PaymentSystemLog_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="MobileExpressPayBill">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/MobileExpressPayBill" message="tns:IGenericCustomerService_MobileExpressPayBill_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/MobileExpressPayBillResponse" message="tns:IGenericCustomerService_MobileExpressPayBill_OutputMessage" />
+    <wsdl:operation name="MobilexpressPayBill">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/MobilexpressPayBill" message="tns:IGenericCustomerService_MobilexpressPayBill_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/MobilexpressPayBillResponse" message="tns:IGenericCustomerService_MobilexpressPayBill_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVPOSErrorParameterName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GetVPOSErrorParameterName" message="tns:IGenericCustomerService_GetVPOSErrorParameterName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/GetVPOSErrorParameterNameResponse" message="tns:IGenericCustomerService_GetVPOSErrorParameterName_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGenericCustomerService" type="tns:IGenericCustomerService">
@@ -564,8 +574,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RegisteredMobileExpressCardList">
-      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardList" style="document" />
+    <wsdl:operation name="RegisteredMobilexpressCardList">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/RegisteredMobilexpressCardList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -708,8 +718,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="MobileExpressPayBill">
-      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/MobileExpressPayBill" style="document" />
+    <wsdl:operation name="MobilexpressPayBill">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/MobilexpressPayBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVPOSErrorParameterName">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/GetVPOSErrorParameterName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

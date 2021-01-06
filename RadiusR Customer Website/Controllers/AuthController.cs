@@ -1,6 +1,4 @@
 ﻿using Microsoft.Owin;
-using RadiusR.DB;
-using RadiusR.SMS;
 using RezaB.Web.Authentication;
 using RadiusR_Customer_Website.Models;
 using System;
@@ -11,7 +9,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Security.Principal;
-using RadiusR.DB.Settings;
 using System.Net;
 using RadiusR_Customer_Website.GenericCustomerServiceReference;
 

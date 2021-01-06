@@ -10,16 +10,16 @@ namespace RadiusR_Customer_Website
 {
     public class GenericServiceSettings
     {
-        public string _culture { get; set; }
-        public string _rand { get; set; }
-        public string _username { get; set; }
+        public string Culture { get; set; }
+        public string Rand { get; set; }
+        public string Username { get; set; }
         public GenericServiceSettings()
         {
-            _culture = Thread.CurrentThread.CurrentUICulture.Name;
-            _rand = Guid.NewGuid().ToString();
-            _username = "onur";
+            Culture = Thread.CurrentThread.CurrentUICulture.Name;
+            Rand = Guid.NewGuid().ToString();
+            Username = "onur";
         }
-        public string hash { get { return HashUtilities.CalculateHash<SHA1>(_username + _rand + HashUtilities.CalculateHash<SHA1>("123456")); } }
+        public string Hash { get { return HashUtilities.CalculateHash<SHA1>(Username + Rand + HashUtilities.CalculateHash<SHA1>("123456")); } }
     }
     public static class HashUtilities
     {

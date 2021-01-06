@@ -59,6 +59,7 @@
       <xs:element minOccurs="0" name="HasEArchiveBill" type="xs:boolean" />
       <xs:element minOccurs="0" name="ID" type="xs:long" />
       <xs:element minOccurs="0" name="LastPaymentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PaymentTypeID" type="xs:short" />
       <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" type="xs:short" />
       <xs:element minOccurs="0" name="StatusText" nillable="true" type="xs:string" />
@@ -505,7 +506,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q27="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q27:BaseResponseOfSubscriptionBasicInformationResponseSHA1KVWl_PpN3">
         <xs:sequence>
-          <xs:element minOccurs="0" name="AuthenticationSMSConfirmResponse" nillable="true" type="tns:SubscriptionBasicInformationResponse" />
+          <xs:element minOccurs="0" name="SubscriptionBasicInformationResponse" nillable="true" type="tns:SubscriptionBasicInformationResponse" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -513,13 +514,23 @@
   <xs:element name="CustomerServiceSubscriptionBasicInformationResponse" nillable="true" type="tns:CustomerServiceSubscriptionBasicInformationResponse" />
   <xs:complexType name="SubscriptionBasicInformationResponse">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerID" type="xs:long" />
+      <xs:element minOccurs="0" name="HasBilling" type="xs:boolean" />
       <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsCancelled" type="xs:boolean" />
       <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RelatedCustomers" nillable="true" type="q28:ArrayOfstring" />
       <xs:element minOccurs="0" name="SubscriberNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubscriptionService" nillable="true" type="tns:SubscriptionBasicInformationResponse.Service" />
       <xs:element minOccurs="0" name="ValidDisplayName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SubscriptionBasicInformationResponse" nillable="true" type="tns:SubscriptionBasicInformationResponse" />
+  <xs:complexType name="SubscriptionBasicInformationResponse.Service">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubscriptionBasicInformationResponse.Service" nillable="true" type="tns:SubscriptionBasicInformationResponse.Service" />
   <xs:complexType name="CustomerServiceChangeSubClientResponse">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q29="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q29:BaseResponseOfChangeSubClientResponseSHA1KVWl_PpN3">
@@ -566,4 +577,102 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SupportStatusResponse" nillable="true" type="tns:SupportStatusResponse" />
+  <xs:complexType name="CustomerServiceBillPayableAmountResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q34="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q34:BaseResponseOfNullableOfdecimalSHA1qBRhzOKh">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PayableAmount" nillable="true" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceBillPayableAmountResponse" nillable="true" type="tns:CustomerServiceBillPayableAmountResponse" />
+  <xs:complexType name="CustomerServicePaymentTypeListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q35="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q35:BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ">
+        <xs:sequence>
+          <xs:element xmlns:q36="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PaymentTypes" nillable="true" type="q36:ArrayOfKeyValueOfintstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServicePaymentTypeListResponse" nillable="true" type="tns:CustomerServicePaymentTypeListResponse" />
+  <xs:complexType name="CustomerServiceGenericAppSettingsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q37="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q37:BaseResponseOfGenericAppSettingsResponseSHA1KVWl_PpN3">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GenericAppSettings" nillable="true" type="tns:GenericAppSettingsResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceGenericAppSettingsResponse" nillable="true" type="tns:CustomerServiceGenericAppSettingsResponse" />
+  <xs:complexType name="GenericAppSettingsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HasAnyTelekomDomains" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MobilExpressIsActive" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenericAppSettingsResponse" nillable="true" type="tns:GenericAppSettingsResponse" />
+  <xs:complexType name="CustomerServiceSendSubscriberSMSResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q38="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q38:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SendSubscriberSMSResponse" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceSendSubscriberSMSResponse" nillable="true" type="tns:CustomerServiceSendSubscriberSMSResponse" />
+  <xs:complexType name="CustomerServiceAutoPaymentListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q39="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q39:BaseResponseOfArrayOfAutoPaymentListResponseSHA1KVWl_PpN3">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AutoPaymentListResult" nillable="true" type="tns:ArrayOfAutoPaymentListResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceAutoPaymentListResponse" nillable="true" type="tns:CustomerServiceAutoPaymentListResponse" />
+  <xs:complexType name="ArrayOfAutoPaymentListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AutoPaymentListResponse" nillable="true" type="tns:AutoPaymentListResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAutoPaymentListResponse" nillable="true" type="tns:ArrayOfAutoPaymentListResponse" />
+  <xs:complexType name="AutoPaymentListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cards" nillable="true" type="tns:AutoPaymentListResponse.Card" />
+      <xs:element minOccurs="0" name="SubscriberID" type="xs:long" />
+      <xs:element minOccurs="0" name="SubscriberNo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AutoPaymentListResponse" nillable="true" type="tns:AutoPaymentListResponse" />
+  <xs:complexType name="AutoPaymentListResponse.Card">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaskedCardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AutoPaymentListResponse.Card" nillable="true" type="tns:AutoPaymentListResponse.Card" />
+  <xs:complexType name="CustomerServicePaymentSystemLogResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q40="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q40:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PaymentSystemLogResult" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServicePaymentSystemLogResponse" nillable="true" type="tns:CustomerServicePaymentSystemLogResponse" />
+  <xs:complexType name="CustomerServiceMobileExpressPayBillResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q41="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q41:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MobileExpressPayBillResult" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceMobileExpressPayBillResponse" nillable="true" type="tns:CustomerServiceMobileExpressPayBillResponse" />
 </xs:schema>

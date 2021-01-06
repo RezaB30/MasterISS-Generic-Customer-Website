@@ -130,11 +130,11 @@
   <wsdl:message name="IGenericCustomerService_AddCard_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddCardResponse" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_RegisteredCardList_InputMessage">
-    <wsdl:part name="parameters" element="tns:RegisteredCardList" />
+  <wsdl:message name="IGenericCustomerService_RegisteredMobileExpressCardList_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisteredMobileExpressCardList" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_RegisteredCardList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RegisteredCardListResponse" />
+  <wsdl:message name="IGenericCustomerService_RegisteredMobileExpressCardList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisteredMobileExpressCardListResponse" />
   </wsdl:message>
   <wsdl:message name="IGenericCustomerService_RemoveCardSMSCheck_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveCardSMSCheck" />
@@ -189,6 +189,48 @@
   </wsdl:message>
   <wsdl:message name="IGenericCustomerService_SupportStatus_OutputMessage">
     <wsdl:part name="parameters" element="tns:SupportStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_BillPayableAmount_InputMessage">
+    <wsdl:part name="parameters" element="tns:BillPayableAmount" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_BillPayableAmount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BillPayableAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_PaymentTypeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentTypeList" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_PaymentTypeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_GenericAppSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenericAppSettings" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_GenericAppSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenericAppSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_SendSubscriberSMS_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendSubscriberSMS" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_SendSubscriberSMS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendSubscriberSMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_AutoPaymentList_InputMessage">
+    <wsdl:part name="parameters" element="tns:AutoPaymentList" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_AutoPaymentList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AutoPaymentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_PaymentSystemLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentSystemLog" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_PaymentSystemLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentSystemLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_MobileExpressPayBill_InputMessage">
+    <wsdl:part name="parameters" element="tns:MobileExpressPayBill" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_MobileExpressPayBill_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MobileExpressPayBillResponse" />
   </wsdl:message>
   <wsdl:portType name="IGenericCustomerService">
     <wsdl:operation name="GetCustomerInfo">
@@ -271,9 +313,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/AddCard" message="tns:IGenericCustomerService_AddCard_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/AddCardResponse" message="tns:IGenericCustomerService_AddCard_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="RegisteredCardList">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/RegisteredCardList" message="tns:IGenericCustomerService_RegisteredCardList_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/RegisteredCardListResponse" message="tns:IGenericCustomerService_RegisteredCardList_OutputMessage" />
+    <wsdl:operation name="RegisteredMobileExpressCardList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardList" message="tns:IGenericCustomerService_RegisteredMobileExpressCardList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardListResponse" message="tns:IGenericCustomerService_RegisteredMobileExpressCardList_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RemoveCardSMSCheck">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/RemoveCardSMSCheck" message="tns:IGenericCustomerService_RemoveCardSMSCheck_InputMessage" />
@@ -310,6 +352,34 @@
     <wsdl:operation name="SupportStatus">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/SupportStatus" message="tns:IGenericCustomerService_SupportStatus_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/SupportStatusResponse" message="tns:IGenericCustomerService_SupportStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BillPayableAmount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/BillPayableAmount" message="tns:IGenericCustomerService_BillPayableAmount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/BillPayableAmountResponse" message="tns:IGenericCustomerService_BillPayableAmount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentTypeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/PaymentTypeList" message="tns:IGenericCustomerService_PaymentTypeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/PaymentTypeListResponse" message="tns:IGenericCustomerService_PaymentTypeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenericAppSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GenericAppSettings" message="tns:IGenericCustomerService_GenericAppSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/GenericAppSettingsResponse" message="tns:IGenericCustomerService_GenericAppSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSubscriberSMS">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/SendSubscriberSMS" message="tns:IGenericCustomerService_SendSubscriberSMS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/SendSubscriberSMSResponse" message="tns:IGenericCustomerService_SendSubscriberSMS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AutoPaymentList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/AutoPaymentList" message="tns:IGenericCustomerService_AutoPaymentList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/AutoPaymentListResponse" message="tns:IGenericCustomerService_AutoPaymentList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentSystemLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/PaymentSystemLog" message="tns:IGenericCustomerService_PaymentSystemLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/PaymentSystemLogResponse" message="tns:IGenericCustomerService_PaymentSystemLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MobileExpressPayBill">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/MobileExpressPayBill" message="tns:IGenericCustomerService_MobileExpressPayBill_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/MobileExpressPayBillResponse" message="tns:IGenericCustomerService_MobileExpressPayBill_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGenericCustomerService" type="tns:IGenericCustomerService">
@@ -494,8 +564,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RegisteredCardList">
-      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/RegisteredCardList" style="document" />
+    <wsdl:operation name="RegisteredMobileExpressCardList">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -577,6 +647,69 @@
     </wsdl:operation>
     <wsdl:operation name="SupportStatus">
       <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/SupportStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillPayableAmount">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/BillPayableAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentTypeList">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/PaymentTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenericAppSettings">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/GenericAppSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSubscriberSMS">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/SendSubscriberSMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutoPaymentList">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/AutoPaymentList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentSystemLog">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/PaymentSystemLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MobileExpressPayBill">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/MobileExpressPayBill" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

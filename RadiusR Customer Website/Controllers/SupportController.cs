@@ -20,10 +20,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var response = client.GetSupportList(new CustomerServiceBaseRequest()
             {
-                Culture = baseRequest._culture,
-                Username = baseRequest._username,
-                Rand = baseRequest._rand,
-                Hash = baseRequest.hash,
+                Culture = baseRequest.Culture,
+                Username = baseRequest.Username,
+                Rand = baseRequest.Rand,
+                Hash = baseRequest.Hash,
                 SubscriptionParameters = new BaseSubscriptionRequest()
                 {
                     SubscriptionId = User.GiveUserId()
@@ -42,10 +42,10 @@ namespace RadiusR_Customer_Website.Controllers
             var hasOpenBaseRequest = new GenericServiceSettings();
             var hasOpenResponse = client.SupportHasActiveRequest(new CustomerServiceBaseRequest()
             {
-                Culture = hasOpenBaseRequest._culture,
-                Username = hasOpenBaseRequest._username,
-                Rand = hasOpenBaseRequest._rand,
-                Hash = hasOpenBaseRequest.hash,
+                Culture = hasOpenBaseRequest.Culture,
+                Username = hasOpenBaseRequest.Username,
+                Rand = hasOpenBaseRequest.Rand,
+                Hash = hasOpenBaseRequest.Hash,
                 SubscriptionParameters = new BaseSubscriptionRequest()
                 {
                     SubscriptionId = User.GiveUserId()
@@ -66,10 +66,10 @@ namespace RadiusR_Customer_Website.Controllers
 
             var hasActiveRequest = client.SupportHasActiveRequest(new CustomerServiceBaseRequest()
             {
-                Culture = hasActiveBase._culture,
-                Hash = hasActiveBase.hash,
-                Username = hasActiveBase._username,
-                Rand = hasActiveBase._rand,
+                Culture = hasActiveBase.Culture,
+                Hash = hasActiveBase.Hash,
+                Username = hasActiveBase.Username,
+                Rand = hasActiveBase.Rand,
                 SubscriptionParameters = new BaseSubscriptionRequest()
                 {
                     SubscriptionId = User.GiveUserId()
@@ -117,9 +117,9 @@ namespace RadiusR_Customer_Website.Controllers
                 var baseRequest = new GenericServiceSettings();
                 var register = client.SupportRegister(new CustomerServiceSupportRegisterRequest()
                 {
-                    Culture = baseRequest._culture,
-                    Hash = baseRequest.hash,
-                    Rand = baseRequest._rand,
+                    Culture = baseRequest.Culture,
+                    Hash = baseRequest.Hash,
+                    Rand = baseRequest.Rand,
                     SupportRegisterParameters = new SupportRegisterRequest()
                     {
                         Description = newRequest.Description,
@@ -127,7 +127,7 @@ namespace RadiusR_Customer_Website.Controllers
                         SubRequestTypeId = newRequest.SubRequestTypeId,
                         SubscriptionId = User.GiveUserId()
                     },
-                    Username = baseRequest._username
+                    Username = baseRequest.Username
                 });
                 if (register.ResponseMessage.ErrorCode != 0)
                 {
@@ -142,10 +142,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var supportDetailResponse = client.GetSupportDetailMessages(new CustomerServiceSupportDetailMessagesRequest()
             {
-                Culture = baseRequest._culture,
-                Hash = baseRequest.hash,
-                Rand = baseRequest._rand,
-                Username = baseRequest._username,
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username,
                 SupportDetailMessagesParameters = new SupportDetailMessagesRequest()
                 {
                     SupportId = ID,
@@ -201,10 +201,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var newMessageResponse = client.SendSupportMessage(new CustomerServiceSendSupportMessageRequest()
             {
-                Culture = baseRequest._culture,
-                Hash = baseRequest.hash,
-                Rand = baseRequest._rand,
-                Username = baseRequest._username,
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username,
                 SendSupportMessageParameters = new SendSupportMessageRequest()
                 {
                     Message = requestMessage.Message,
@@ -237,10 +237,10 @@ namespace RadiusR_Customer_Website.Controllers
                 var baseRequest = new GenericServiceSettings();
                 var statusResponse = client.SupportStatus(new CustomerServiceBaseRequest()
                 {
-                    Culture = baseRequest._culture,
-                    Hash = baseRequest.hash,
-                    Rand = baseRequest._rand,
-                    Username = baseRequest._username,
+                    Culture = baseRequest.Culture,
+                    Hash = baseRequest.Hash,
+                    Rand = baseRequest.Rand,
+                    Username = baseRequest.Username,
                     SubscriptionParameters = new BaseSubscriptionRequest()
                     {
                         SubscriptionId = User.GiveUserId()
@@ -266,10 +266,10 @@ namespace RadiusR_Customer_Website.Controllers
 
             var hasActiveRequest = client.SupportHasActiveRequest(new CustomerServiceBaseRequest()
             {
-                Culture = hasActiveBase._culture,
-                Hash = hasActiveBase.hash,
-                Username = hasActiveBase._username,
-                Rand = hasActiveBase._rand,
+                Culture = hasActiveBase.Culture,
+                Hash = hasActiveBase.Hash,
+                Username = hasActiveBase.Username,
+                Rand = hasActiveBase.Rand,
                 SubscriptionParameters = new BaseSubscriptionRequest()
                 {
                     SubscriptionId = User.GiveUserId()
@@ -290,10 +290,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var response = client.GetSupportTypes(new CustomerServiceSupportTypesRequest()
             {
-                Culture = baseRequest._culture,
-                Hash = baseRequest.hash,
-                Rand = baseRequest._rand,
-                Username = baseRequest._username,
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username,
                 SupportTypesParameters = new SupportTypesRequest()
                 {
                     IsDisabled = false,
@@ -311,10 +311,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var response = client.GetSupportSubTypes(new CustomerServiceSupportSubTypesRequest()
             {
-                Culture = baseRequest._culture,
-                Hash = baseRequest.hash,
-                Rand = baseRequest._rand,
-                Username = baseRequest._username,
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username,
                 SupportSubTypesParameters = new SupportSubTypesRequest()
                 {
                     IsDisabled = false,

@@ -233,7 +233,12 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SupportController.cs" />
+    <Compile Include="DomainCache.cs" />
     <Compile Include="GenericServiceSettings.cs" />
+    <Compile Include="Models\Enums\AccountantType.cs" />
+    <Compile Include="Models\Enums\BillState.cs" />
+    <Compile Include="Models\Enums\PaymentType.cs" />
+    <Compile Include="Models\Enums\SubscriptionPaidType.cs" />
     <Compile Include="Models\UsageInfoViewModel.cs" />
     <Compile Include="CustomAttributes\CardCVV.cs" />
     <Compile Include="CustomAttributes\CardExpirationYear.cs" />
@@ -382,6 +387,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSupportStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\GenericCustomerServiceReference\Reference.svcmap">

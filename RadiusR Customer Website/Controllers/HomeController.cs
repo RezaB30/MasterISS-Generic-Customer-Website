@@ -11,7 +11,6 @@ using RadiusR_Customer_Website.Models;
 //using RadiusR_Manager.Models.ViewModels;
 using RadiusR.SMS;
 using NLog;
-using RadiusR.DB.Enums;
 using RadiusR.DB.Enums.RecurringDiscount;
 using RadiusR.DB.ModelExtentions;
 using RezaB.Web.VPOS;
@@ -41,10 +40,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var getCustomerBills = client.GetCustomerBills(new CustomerServiceBaseRequest()
             {
-                Culture = baseRequest._culture,
-                Username = baseRequest._username,
-                Rand = baseRequest._rand,
-                Hash = baseRequest.hash,
+                Culture = baseRequest.Culture,
+                Username = baseRequest.Username,
+                Rand = baseRequest.Rand,
+                Hash = baseRequest.Hash,
                 SubscriptionParameters = new BaseSubscriptionRequest()
                 {
                     SubscriptionId = User.GiveUserId()
@@ -56,10 +55,10 @@ namespace RadiusR_Customer_Website.Controllers
                 var periodBaseRequest = new GenericServiceSettings();
                 var getPeriodUsage = client.GetCustomerTariffAndTrafficInfo(new CustomerServiceBaseRequest()
                 {
-                    Culture = periodBaseRequest._culture,
-                    Username = periodBaseRequest._username,
-                    Rand = periodBaseRequest._rand,
-                    Hash = periodBaseRequest.hash,
+                    Culture = periodBaseRequest.Culture,
+                    Username = periodBaseRequest.Username,
+                    Rand = periodBaseRequest.Rand,
+                    Hash = periodBaseRequest.Hash,
                     SubscriptionParameters = new BaseSubscriptionRequest()
                     {
                         SubscriptionId = User.GiveUserId()
@@ -76,19 +75,6 @@ namespace RadiusR_Customer_Website.Controllers
                     };
                 }
             }
-            //using (RadiusREntities db = new RadiusREntities())
-            //{
-            //    var dbClient = db.Subscriptions.Find(User.GiveUserId());
-            //    var unpaidBills = dbClient.Bills.Where(bill => bill.BillStatusID == (short)BillState.Unpaid).ToList();
-            //    var clientUsage = dbClient.GetPeriodUsageInfo(dbClient.GetCurrentBillingPeriod(ignoreActivationDate: true), db);
-            //    results = new HomePageViewModel()
-            //    {
-            //        BillsTotal = unpaidBills.Sum(bill => bill.GetPayableCost()).ToString("###,##0.00"),
-            //        BillCount = unpaidBills.Count(),
-            //        Download = clientUsage.Download,
-            //        Upload = clientUsage.Upload
-            //    };
-            //}
             return View(results);
         }
 
@@ -101,10 +87,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var response = client.GetCustomerBills(new CustomerServiceBaseRequest()
             {
-                Culture = baseRequest._culture,
-                Username = baseRequest._username,
-                Rand = baseRequest._rand,
-                Hash = baseRequest.hash,
+                Culture = baseRequest.Culture,
+                Username = baseRequest.Username,
+                Rand = baseRequest.Rand,
+                Hash = baseRequest.Hash,
                 SubscriptionParameters = new BaseSubscriptionRequest()
                 {
                     SubscriptionId = User.GiveUserId()
@@ -135,10 +121,10 @@ namespace RadiusR_Customer_Website.Controllers
                 ViewBag.CanBuyQuota = true;
                 var QuotaListResponse = client.QuotaPackageList(new CustomerServiceQuotaPackagesRequest()
                 {
-                    Culture = baseRequest._culture,
-                    Hash = baseRequest.hash,
-                    Username = baseRequest._username,
-                    Rand = baseRequest._rand
+                    Culture = baseRequest.Culture,
+                    Hash = baseRequest.Hash,
+                    Username = baseRequest.Username,
+                    Rand = baseRequest.Rand
                 });
                 ViewBag.QuotaPackages = QuotaListResponse.ResponseMessage.ErrorCode != 0 ? Enumerable.Empty<QuotaPackageViewModel>() : QuotaListResponse.QuotaPackageListResponse.Select(q => new QuotaPackageViewModel()
                 {
@@ -166,56 +152,6 @@ namespace RadiusR_Customer_Website.Controllers
             if (credits > 0m)
                 ViewBag.ClientCredits = credits;
             return View(results.ToList());
-            //using (RadiusREntities db = new RadiusREntities())
-            //{
-            //    var dbClient = db.Subscriptions.Find(User.GiveUserId());
-            //    var firstUnpaidBill = dbClient.Bills.Where(bill => bill.BillStatusID == (short)BillState.Unpaid).OrderBy(bill => bill.IssueDate).FirstOrDefault();
-            //    var results = dbClient.Bills.OrderByDescending(bill => bill.IssueDate).Select(bill => new PaymentsAndBillsViewModel()
-            //    {
-            //        ID = bill.ID,
-            //        ServiceName = bill.BillFees.Any(bf => bf.FeeTypeID == (short)FeeType.Tariff) ? bill.BillFees.FirstOrDefault(bf => bf.FeeTypeID == (short)FeeType.Tariff).Description : "-",
-            //        BillDate = bill.IssueDate,
-            //        LastPaymentDate = bill.DueDate,
-            //        Total = bill.GetPayableCost().ToString("###,##0.00"),
-            //        Status = (BillState)bill.BillStatusID,
-            //        CanBePaid = firstUnpaidBill != null && bill.ID == firstUnpaidBill.ID,
-            //        HasEArchiveBill = bill.EBill != null && bill.EBill.EBillType == (short)EBillType.EArchive
-            //    }).AsQueryable();
-
-            //    SetupPages(page, ref results, 10);
-            //    ViewBag.HasUnpaidBills = firstUnpaidBill != null;
-            //    ViewBag.IsPrePaid = !dbClient.HasBilling;
-            //    // quota
-            //    if (dbClient.Service.CanHaveQuotaSale)
-            //    {
-            //        ViewBag.CanBuyQuota = true;
-            //        ViewBag.QuotaPackages = db.QuotaPackages.Select(q => new QuotaPackageViewModel()
-            //        {
-            //            ID = q.ID,
-            //            _amount = q.Amount,
-            //            _price = q.Price,
-            //            Name = q.Name
-            //        }).ToArray();
-            //    }
-            //    // errors
-            //    if (!string.IsNullOrEmpty(Session["POSErrorMessage"] as string))
-            //    {
-            //        ViewBag.POSErrorMessage = Session["POSErrorMessage"];
-            //        Session.Remove("POSErrorMessage");
-            //    }
-            //    if (!string.IsNullOrEmpty(Session["POSSuccessMessage"] as string))
-            //    {
-            //        ViewBag.POSSuccessMessage = Session["POSSuccessMessage"];
-            //        Session.Remove("POSSuccessMessage");
-            //    }
-            //    if (TempData.ContainsKey("ServiceError"))
-            //        ViewBag.ServiceError = TempData["ServiceError"];
-            //    // view credits
-            //    var credits = dbClient.SubscriptionCredits.Select(credit => credit.Amount).DefaultIfEmpty(0m).Sum();
-            //    if (credits > 0m)
-            //        ViewBag.ClientCredits = credits;
-            //    return View(results.ToList());
-            //}
         }
 
         public ActionResult ChangeSubClient(long id)
@@ -223,10 +159,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var response = client.ChangeSubClient(new CustomerServiceChangeSubClientRequest()
             {
-                Culture = baseRequest._culture,
-                Hash = baseRequest.hash,
-                Rand = baseRequest._rand,
-                Username = baseRequest._username,
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username,
                 ChangeSubClientRequest = new ChangeSubClientRequest()
                 {
                     TargetSubscriptionID = id,
@@ -249,220 +185,278 @@ namespace RadiusR_Customer_Website.Controllers
         [HttpGet]
         public ActionResult PaymentSelection(long? id)
         {
-            if (!MobilExpressSettings.MobilExpressIsActive)
-                return RedirectToAction("Payment", new { id = id });
-
-            using (RadiusREntities db = new RadiusREntities())
+            var settings = GenericAppSettings();
+            if (settings.ResponseMessage.ErrorCode != 0 || !settings.GenericAppSettings.MobilExpressIsActive)
             {
-                var dbSubscription = db.Subscriptions.Find(User.GiveUserId());
-                var payableAmount = GetPayableAmount(dbSubscription, id);
-                if (payableAmount == 0m)
+                return RedirectToAction("Payment", new { id = id });
+            }
+            var payableAmount = GetPayableAmount(User.GiveUserId(), id);
+            if (payableAmount == 0m)
+            {
+                var dbBills = GetCustomerBillList(User.GiveUserId());
+                if (dbBills.ResponseMessage.ErrorCode != 0)
                 {
-                    var billIDs = id.HasValue ? new[] { id.Value } : dbSubscription.Bills.Where(b => b.PaymentTypeID == (short)PaymentType.None).Select(b => b.ID).ToArray();
-                    PayBills(db, dbSubscription, id, PaymentType.Cash);
-                    db.SystemLogs.Add(SystemLogProcessor.BillPayment(billIDs, null, dbSubscription.ID, SystemLogInterface.CustomerWebsite, User.GiveClientSubscriberNo(), PaymentType.Cash));
-                    db.SaveChanges();
+                    generalLogger.Error($"Error calling 'get bills' from web service. Code : {dbBills.ResponseMessage.ErrorCode} - Message : {dbBills.ResponseMessage.ErrorMessage}");
                     return RedirectToAction("BillsAndPayments");
                 }
-                var dbCustomer = dbSubscription.Customer;
-
-                var client = new MobilExpressAdapterClient(MobilExpressSettings.MobilExpressMerchantKey, MobilExpressSettings.MobilExpressAPIPassword, new ClientConnectionDetails()
+                var billIDs = id.HasValue ? new[] { id.Value } : dbBills.GetCustomerBillsResponse.CustomerBills.Where(b => b.PaymentTypeID == (short)Models.Enums.PaymentType.None).Select(b => b.ID).ToArray(); // enum paymentType
+                if (billIDs.Any())
                 {
-                    IP = Request.UserHostAddress,
-                    UserAgent = Request.UserAgent
-                });
-
-                var response = client.GetCards(dbCustomer);
-                if (response.InternalException != null || response.Response.ResponseCode != RezaB.API.MobilExpress.Response.ResponseCodes.Success)
-                {
-                    if (response.Response.ResponseCode == RezaB.API.MobilExpress.Response.ResponseCodes.CardNotFound)
-                        return RedirectToAction("Payment", new { id = id });
-                    ViewBag.ServiceError = RadiusRCustomerWebSite.Localization.Common.PaymentWithCardNotAvailable;
-                    return View();
+                    var payBills = PayBills(billIDs, (short)Models.Enums.SubscriptionPaidType.Billing, User.GiveUserId(), (int)Models.Enums.PaymentType.Cash, (int)Models.Enums.AccountantType.Admin);
+                    generalLogger.Debug($"Payment selection 'Pay Bills' web service result. Code : {payBills.ResponseMessage.ErrorCode}");
+                    if (payBills.ResponseMessage.ErrorCode != 0)
+                    {
+                        return RedirectToAction("BillsAndPayments");
+                    }
                 }
-                ViewBag.CardsList = response.Response.CardList;
 
+                // log - need web service
+                var logBaseRequest = new GenericServiceSettings();
+                var systemLog = client.PaymentSystemLog(new CustomerServicePaymentSystemLogRequest()
+                {
+                    Culture = logBaseRequest.Culture,
+                    Hash = logBaseRequest.Hash,
+                    Rand = logBaseRequest.Rand,
+                    Username = logBaseRequest.Username,
+                    PaymentSystemLogParameters = new PaymentSystemLogRequest()
+                    {
+                        BillIds = billIDs,
+                        PaymentType = (int)Models.Enums.PaymentType.Cash,
+                        SubscriberNo = User.GiveClientSubscriberNo(),
+                        SubscriptionId = User.GiveUserId(),
+                        UserId = null
+                    }
+                });
+                if (systemLog.ResponseMessage.ErrorCode != 0)
+                {
+                    generalLogger.Error($"Error Calling 'system log payment' from webservice. Code : {systemLog.ResponseMessage.ErrorCode} ");
+                }
+                return RedirectToAction("BillsAndPayments");
+            }
+            // get m.express cards
+            var cardBaseRequest = new GenericServiceSettings();
+            var cardList = client.RegisteredMobileExpressCardList(new CustomerServiceRegisteredCardsRequest()
+            {
+                Culture = cardBaseRequest.Culture,
+                Hash = cardBaseRequest.Hash,
+                Rand = cardBaseRequest.Rand,
+                Username = cardBaseRequest.Username,
+                RegisteredCardsParameters = new RegisteredCardsRequest()
+                {
+                    HttpContextParameters = new HttpContextParameters()
+                    {
+                        UserAgent = Request.UserAgent,
+                        UserHostAddress = Request.UserHostAddress
+                    },
+                    SubscriptionId = User.GiveUserId()
+                }
+            });
+            if (cardList.ResponseMessage.ErrorCode != 0)
+            {
+                ViewBag.ServiceError = RadiusRCustomerWebSite.Localization.Common.PaymentWithCardNotAvailable;
                 return View();
             }
+            ViewBag.CardsList = cardList.RegisteredCardList.Select(c => new { CardToken = c.Token, MaskedCardNumber = c.MaskedCardNo }).ToList();
+
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult PaymentSelection(long? id, string token)
         {
-            using (RadiusREntities db = new RadiusREntities())
+            var payableAmount = GetPayableAmount(User.GiveUserId(), id);
+            if (payableAmount == 0m)
+                return RedirectToAction("PaymentSelection");
+            var baseRequest = new GenericServiceSettings();
+            var mobileExpressPayBill = client.MobileExpressPayBill(new CustomerServiceMobileExpressPayBillRequest()
             {
-                var dbSubscription = db.Subscriptions.Find(User.GiveUserId());
-                var dbCustomer = dbSubscription.Customer;
-                var payableAmount = GetPayableAmount(dbSubscription, id);
-                if (payableAmount == 0m)
-                    return RedirectToAction("PaymentSelection");
-                var dbBills = dbSubscription.Bills.Where(b => b.BillStatusID == (short)BillState.Unpaid).ToList();
-                if (id.HasValue)
-                    dbBills = dbBills.Where(b => b.ID == id).ToList();
-
-                var client = new MobilExpressAdapterClient(MobilExpressSettings.MobilExpressMerchantKey, MobilExpressSettings.MobilExpressAPIPassword, new ClientConnectionDetails()
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username,
+                MobileExpressPayBillParameters = new MobileExpressPayBillRequest()
                 {
-                    IP = Request.UserHostAddress,
-                    UserAgent = Request.UserAgent
-                });
-
-                var response = client.PayBill(dbCustomer, payableAmount, token);
-                if (response.InternalException != null)
-                {
-                    generalLogger.Warn(response.InternalException, "Error calling 'DeleteCard' from MobilExpress client");
-                    TempData["ServiceError"] = RadiusRCustomerWebSite.Localization.Common.GeneralError;
-                    return RedirectToAction("BillsAndPayments");
+                    BillId = id,
+                    PayableAmount = payableAmount,
+                    Token = token,
+                    SubscriptionId = User.GiveUserId(),
+                    HttpContextParameters = new HttpContextParameters()
+                    {
+                        UserAgent = Request.UserAgent,
+                        UserHostAddress = Request.UserHostAddress
+                    }
                 }
-                if (response.Response.ResponseCode != RezaB.API.MobilExpress.Response.ResponseCodes.Success)
-                {
-                    TempData["ServiceError"] = response.Response.ErrorMessage;
-                    return RedirectToAction("BillsAndPayments");
-                }
-                db.PayBills(dbBills, PaymentType.MobilExpress, BillPayment.AccountantType.Admin);
-                var smsService = new SMSService();
-                db.SMSArchives.AddSafely(smsService.SendSubscriberSMS(dbSubscription, SMSType.PaymentDone, new Dictionary<string, object>()
-                {
-                    { SMSParamaterRepository.SMSParameterNameCollection.BillTotal, payableAmount }
-                }));
-                db.SystemLogs.Add(SystemLogProcessor.BillPayment(dbBills.Select(b => b.ID), null, dbSubscription.ID, SystemLogInterface.CustomerWebsite, User.GiveClientSubscriberNo(), PaymentType.MobilExpress));
-
-                db.SaveChanges();
-
-                return RedirectToAction("BillsAndPayments");
+            });
+            if (mobileExpressPayBill.ResponseMessage.ErrorCode != 0)
+            {
+                generalLogger.Error($"Error calling 'Mobile express pay bill' from web service. Code : {mobileExpressPayBill.ResponseMessage.ErrorCode} ");
+                return RedirectToAction("PaymentSelection");
             }
+
+            return RedirectToAction("BillsAndPayments");
         }
 
         [HttpGet]
         public ActionResult Payment(long? id)
         {
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var tokenKey = VPOSTokenManager.RegisterPaymentToken(new BillPaymentToken()
             {
-                var dbSubscription = db.Subscriptions.Find(User.GiveUserId());
-                // to prevent logouts before payment
-                {
-                    AuthController.SignoutUser(Request.GetOwinContext());
-                    AuthController.SignInCurrentUserAgain(Request.GetOwinContext());
-                }
-                var payableAmount = GetPayableAmount(dbSubscription, id);
-                if (payableAmount == 0)
-                    return RedirectToAction("BillsAndPayments");
-
-                var tokenKey = VPOSTokenManager.RegisterPaymentToken(new BillPaymentToken()
-                {
-                    SubscriberId = User.GiveUserId().Value,
-                    BillID = id
-                });
-
-                var VPOSModel = VPOSManager.GetVPOSModel(
-                    //Url.Action("SuccessfulPayRepost", null, new { id = id }, Request.Url.Scheme),
-                    //Url.Action("FailedPayRepost", null, new { id = id }, Request.Url.Scheme),
-                    Url.Action("VPOSSuccess", null, new { id = tokenKey }, Request.Url.Scheme),
-                    Url.Action("VPOSFail", null, new { id = tokenKey }, Request.Url.Scheme),
-                    payableAmount,
-                    dbSubscription.Customer.Culture.Split('-').FirstOrDefault(),
-                    dbSubscription.SubscriberNo + "-" + dbSubscription.ValidDisplayName);
-                ViewBag.POSForm = VPOSModel.GetHtmlForm();
-                return View(viewName: "3DHostPayment");
+                SubscriberId = User.GiveUserId().Value,
+                BillID = id
+            });
+            if (GetPayableAmount(User.GiveUserId(), id) == 0m)
+            {
+                return RedirectToAction("BillsAndPayments");
             }
+            {
+                AuthController.SignoutUser(Request.GetOwinContext());
+                AuthController.SignInCurrentUserAgain(Request.GetOwinContext());
+            }
+            var VPOSFormResponse = client.GetVPOSForm(new CustomerServiceVPOSFormRequest()
+            {
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username,
+                VPOSFormParameters = new VPOSFormRequest()
+                {
+                    FailUrl = Url.Action("VPOSFail", null, new { id = tokenKey }, Request.Url.Scheme),
+                    OkUrl = Url.Action("VPOSSuccess", null, new { id = tokenKey }, Request.Url.Scheme),
+                    PayableAmount = GetPayableAmount(User.GiveUserId(), id),
+                    SubscriptionId = User.GiveUserId()
+                }
+            });
+            if (VPOSFormResponse.ResponseMessage.ErrorCode != 0)
+            {
+                return RedirectToAction("BillsAndPayments");
+            }
+            ViewBag.POSForm = VPOSFormResponse.VPOSFormResponse.HtmlForm;
+            return View(viewName: "3DHostPayment");
         }
 
         public ActionResult AutomaticPayment()
         {
-            if (!MobilExpressSettings.MobilExpressIsActive)
-                return RedirectToAction("BillsAndPayments");
-
-            using (RadiusREntities db = new RadiusREntities())
+            var settings = GenericAppSettings();
+            if (settings.ResponseMessage.ErrorCode != 0 || !settings.GenericAppSettings.MobilExpressIsActive)
             {
-                var dbCustomer = db.Subscriptions.Find(User.GiveUserId()).Customer;
-                var client = new MobilExpressAdapterClient(MobilExpressSettings.MobilExpressMerchantKey, MobilExpressSettings.MobilExpressAPIPassword, new ClientConnectionDetails()
-                {
-                    IP = Request.UserHostAddress.ToString(),
-                    UserAgent = Request.UserAgent
-                });
-                var response = client.GetCards(dbCustomer);
-                if (response.InternalException != null)
-                {
-                    generalLogger.Warn(response.InternalException, "Error calling 'GetCards' from MobilExpress client");
-                    ViewBag.ServiceError = RadiusRCustomerWebSite.Localization.Common.GeneralError;
-                    return View();
-                }
-                IEnumerable<CustomerAutomaticPaymentViewModel.CardViewModel> cards = Enumerable.Empty<CustomerAutomaticPaymentViewModel.CardViewModel>();
-                if (response.Response.ResponseCode != RezaB.API.MobilExpress.Response.ResponseCodes.Success)
-                {
-                    if (response.Response.ResponseCode != RezaB.API.MobilExpress.Response.ResponseCodes.CardNotFound && response.Response.ResponseCode != RezaB.API.MobilExpress.Response.ResponseCodes.CustomerNotFound)
-                    {
-                        ViewBag.ServiceError = response.Response.ErrorMessage;
-                        return View();
-                    }
-                }
-                else
-                {
-                    cards = response.Response.CardList.Select(cl => new CustomerAutomaticPaymentViewModel.CardViewModel()
-                    {
-                        MaskedCardNo = cl.MaskedCardNumber,
-                        Token = cl.CardToken,
-                        HasAutoPayments = false
-                    }).ToArray();
-                }
-
-                var subscriptions = dbCustomer.Subscriptions.Where(s => !s.IsCancelled).ToArray();
-
-                var expiredOrInvalidCards = subscriptions.Where(m => m.MobilExpressAutoPayment != null).Select(s => s.MobilExpressAutoPayment).Where(meap => !cards.Select(c => c.Token).Contains(meap.CardToken));
-                db.MobilExpressAutoPayments.RemoveRange(expiredOrInvalidCards);
-                db.SaveChanges();
-                var autoPayments = subscriptions.Select(s => new CustomerAutomaticPaymentViewModel.AutomaticPaymentViewModel()
-                {
-                    SubscriberID = s.ID,
-                    SubscriberNo = s.SubscriberNo,
-                    Card = s.MobilExpressAutoPayment != null ? new CustomerAutomaticPaymentViewModel.CardViewModel()
-                    {
-                        MaskedCardNo = response.Response.CardList.FirstOrDefault(cl => cl.CardToken == s.MobilExpressAutoPayment.CardToken).MaskedCardNumber,
-                        Token = s.MobilExpressAutoPayment.CardToken
-                    } : null
-                }).ToArray();
-                foreach (var card in cards)
-                {
-                    card.HasAutoPayments = autoPayments.Where(ap => ap.Card != null).Any(ap => ap.Card.Token == card.Token);
-                }
-
-                return View(new CustomerAutomaticPaymentViewModel()
-                {
-                    Cards = cards,
-                    AutomaticPayments = autoPayments
-                });
+                return RedirectToAction("BillsAndPayments");
             }
+            var cardBaseRequest = new GenericServiceSettings();
+            var cardList = client.RegisteredMobileExpressCardList(new CustomerServiceRegisteredCardsRequest()
+            {
+                Culture = cardBaseRequest.Culture,
+                Hash = cardBaseRequest.Hash,
+                Rand = cardBaseRequest.Rand,
+                Username = cardBaseRequest.Username,
+                RegisteredCardsParameters = new RegisteredCardsRequest()
+                {
+                    HttpContextParameters = new HttpContextParameters()
+                    {
+                        UserAgent = Request.UserAgent,
+                        UserHostAddress = Request.UserHostAddress.ToString()
+                    },
+                    SubscriptionId = User.GiveUserId()
+                }
+            });
+            if (cardList.ResponseMessage.ErrorCode != 0)
+            {
+                generalLogger.Warn($"Error calling 'GetCards' from MobilExpress client. Code : {cardList.ResponseMessage.ErrorCode} - Message : {cardList.ResponseMessage.ErrorMessage}");
+                ViewBag.ServiceError = RadiusRCustomerWebSite.Localization.Common.GeneralError;
+                return View();
+            }
+            var cards = cardList.RegisteredCardList.Select(cl => new CustomerAutomaticPaymentViewModel.CardViewModel()
+            {
+                HasAutoPayments = cl.HasAutoPayments,
+                Token = cl.Token,
+                MaskedCardNo = cl.MaskedCardNo
+            });
+            var autoPaymentsBaseRequest = new GenericServiceSettings();
+            var autoPaymentList = client.AutoPaymentList(new CustomerServiceAutoPaymentListRequest()
+            {
+                Culture = autoPaymentsBaseRequest.Culture,
+                Hash = autoPaymentsBaseRequest.Hash,
+                Rand = autoPaymentsBaseRequest.Rand,
+                Username = autoPaymentsBaseRequest.Username,
+                AutoPaymentListParameters = new AutoPaymentListRequest()
+                {
+                    SubscriptionId = User.GiveUserId(),
+                    CardList = cardList.RegisteredCardList
+                }
+            });
+            if (autoPaymentList.ResponseMessage.ErrorCode != 0)
+            {
+                generalLogger.Warn($"Error calling 'remove invalid cards' from web service. Code : {autoPaymentList.ResponseMessage.ErrorCode} - Message : {autoPaymentList.ResponseMessage.ErrorMessage}");
+            }
+            var autoPayments = autoPaymentList.AutoPaymentListResult.Select(s => new CustomerAutomaticPaymentViewModel.AutomaticPaymentViewModel()
+            {
+                SubscriberID = s.SubscriberID,
+                SubscriberNo = s.SubscriberNo,
+                Card = s.Cards == null ? null : new CustomerAutomaticPaymentViewModel.CardViewModel()
+                {
+                    Token = s.Cards.Token,
+                    MaskedCardNo = s.Cards.MaskedCardNo
+                }
+            }).ToArray();
+            foreach (var card in cards)
+            {
+                card.HasAutoPayments = autoPayments.Where(ap => ap.Card != null).Any(ap => ap.Card.Token == card.Token);
+            }
+            return View(new CustomerAutomaticPaymentViewModel()
+            {
+                Cards = cards,
+                AutomaticPayments = autoPaymentList.AutoPaymentListResult.Select(ap => new CustomerAutomaticPaymentViewModel.AutomaticPaymentViewModel()
+                {
+                    Card = ap.Cards == null ? null : new CustomerAutomaticPaymentViewModel.CardViewModel()
+                    {
+                        MaskedCardNo = ap.Cards.MaskedCardNo,
+                        Token = ap.Cards.Token
+                    },
+                    SubscriberID = ap.SubscriberID,
+                    SubscriberNo = ap.SubscriberNo
+                })
+            });
         }
 
         [HttpGet]
         public ActionResult AddCard()
         {
-            if (!MobilExpressSettings.MobilExpressIsActive)
+            var settings = GenericAppSettings();
+            if (settings.ResponseMessage.ErrorCode != 0)
+            {
                 return RedirectToAction("BillsAndPayments");
-
+            }
+            if (!settings.GenericAppSettings.MobilExpressIsActive)
+            {
+                return RedirectToAction("BillsAndPayments");
+            }
             return View();
         }
 
         [HttpPost]
         public ActionResult AddCard(AutoPaymentCardViewModel card)
         {
-            if (!MobilExpressSettings.MobilExpressIsActive)
-                return RedirectToAction("BillsAndPayments");
-
             if (ModelState.IsValid)
             {
-                using (RadiusREntities db = new RadiusREntities())
+                var baseRequest = new GenericServiceSettings();
+                var addCardSms = client.AddCardSMSCheck(new CustomerServiceBaseRequest()
                 {
-                    var dbSubscription = db.Subscriptions.Find(User.GiveUserId());
-                    var rand = new Random();
-                    var smsCode = rand.Next(100000, 1000000).ToString();
-                    var smsClient = new SMSService();
-                    smsClient.SendSubscriberSMS(dbSubscription, SMSType.MobilExpressAddRemoveCard, new Dictionary<string, object>() {
-                        { SMSParamaterRepository.SMSParameterNameCollection.SMSCode, smsCode }
-                    });
-                    TempData["smsCode"] = smsCode;
-                    return View(viewName: "AddCardSMSCheck", model: card);
+                    Culture = baseRequest.Culture,
+                    Hash = baseRequest.Hash,
+                    Rand = baseRequest.Rand,
+                    Username = baseRequest.Username,
+                    SubscriptionParameters = new BaseSubscriptionRequest()
+                    {
+                        SubscriptionId = User.GiveUserId()
+                    }
+                });
+                if (addCardSms.ResponseMessage.ErrorCode != 0)
+                {
+                    return RedirectToAction("BillsAndPayments");
                 }
+                TempData["smsCode"] = addCardSms.SMSCode;
+                return View(viewName: "AddCardSMSCheck", model: card);
             }
             return View(card);
         }
@@ -490,41 +484,35 @@ namespace RadiusR_Customer_Website.Controllers
 
             if (ModelState.IsValid)
             {
-                using (RadiusREntities db = new RadiusREntities())
+                var baseRequest = new GenericServiceSettings();
+                var addCard = client.AddCard(new CustomerServiceAddCardRequest()
                 {
-                    var dbCustomer = db.Subscriptions.Find(User.GiveUserId()).Customer;
-                    var client = new MobilExpressAdapterClient(MobilExpressSettings.MobilExpressMerchantKey, MobilExpressSettings.MobilExpressAPIPassword, new ClientConnectionDetails()
+                    AddCardParameters = new AddCardRequest()
                     {
-                        IP = Request.UserHostAddress.ToString(),
-                        UserAgent = Request.UserAgent
-                    });
-
-                    var response = client.SaveCard(dbCustomer, new RadiusR.API.MobilExpress.DBAdapter.AdapterParameters.AdapterCard()
-                    {
-                        CardHolderName = card.CardholderName,
-                        CardNumber = card.CardNo.Replace("-", ""),
-                        CardMonth = Convert.ToInt32(card.ExpirationMonth),
-                        CardYear = Convert.ToInt32("20" + card.ExpirationYear)
-                    });
-
-                    if (response.InternalException != null)
-                    {
-                        generalLogger.Warn(response.InternalException, "Error calling 'SaveCard' from MobilExpress client");
-                        ViewBag.ServiceError = RadiusRCustomerWebSite.Localization.Common.GeneralError;
-                        return View(viewName: "AddCard", model: card);
-                    }
-                    if (response.Response.ResponseCode != RezaB.API.MobilExpress.Response.ResponseCodes.Success)
-                    {
-                        ViewBag.ServiceError = response.Response.ErrorMessage;
-                        return View(viewName: "AddCard", model: card);
-                    }
-
-                    var cardNo = card.CardNo.Replace("-", "");
-                    db.SystemLogs.Add(SystemLogProcessor.AddCreditCard(dbCustomer.ID, SystemLogInterface.CustomerWebsite, User.GiveClientSubscriberNo(), cardNo.Substring(0, 6) + "******" + cardNo.Substring(12)));
-                    db.SaveChanges();
-
+                        HttpContextParameters = new HttpContextParameters()
+                        {
+                            UserAgent = Request.UserAgent,
+                            UserHostAddress = Request.UserHostAddress.ToString()
+                        },
+                        CardholderName = card.CardholderName,
+                        CardNo = card.CardNo,
+                        ExpirationMonth = card.ExpirationMonth,
+                        ExpirationYear = card.ExpirationYear,
+                        SMSCode = "",
+                        SubscriptionId = User.GiveUserId(),
+                    },
+                    Culture = baseRequest.Culture,
+                    Hash = baseRequest.Hash,
+                    Rand = baseRequest.Rand,
+                    Username = baseRequest.Username
+                });
+                if (addCard.ResponseMessage.ErrorCode == 0)
+                {
                     return RedirectToAction("AutomaticPayment");
                 }
+                generalLogger.Warn(addCard.ResponseMessage.ErrorMessage, "Error calling 'SaveCard' from MobilExpress client");
+                ViewBag.ServiceError = RadiusRCustomerWebSite.Localization.Common.GeneralError;
+                return View(viewName: "AddCard", model: card);
             }
 
             return View(viewName: "AddCard", model: card);
@@ -534,22 +522,26 @@ namespace RadiusR_Customer_Website.Controllers
         [HttpPost]
         public ActionResult RemoveCard(string id)
         {
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var removeCardSms = client.RemoveCardSMSCheck(new CustomerServiceRemoveCardSMSCheckRequest()
             {
-                var dbSubscription = db.Subscriptions.Find(User.GiveUserId());
-                if (db.MobilExpressAutoPayments.Any(ap => ap.CardToken == id))
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username,
+                RemoveCardSMSCheckParameters = new RemoveCardSMSCheckRequest()
                 {
-                    return RedirectToAction("AutomaticPayment");
-                }
-                var rand = new Random();
-                var smsCode = rand.Next(100000, 1000000).ToString();
-                var smsClient = new SMSService();
-                smsClient.SendSubscriberSMS(dbSubscription, SMSType.MobilExpressAddRemoveCard, new Dictionary<string, object>() {
-                        { SMSParamaterRepository.SMSParameterNameCollection.SMSCode, smsCode }
-                    });
-                TempData["smsCode"] = smsCode;
-                return View(viewName: "RemoveCardSMSCheck", model: id);
+                    CardToken = id,
+                    SubscriptionId = User.GiveUserId()
+                },
+            });
+            if (removeCardSms.ResponseMessage.ErrorCode != 0)
+            {
+                return RedirectToAction("BillsAndPayments");
             }
+            TempData["smsCode"] = removeCardSms.SMSCode;
+            return View(viewName: "RemoveCardSMSCheck", model: id);
+
         }
 
         [ValidateAntiForgeryToken]
@@ -573,62 +565,45 @@ namespace RadiusR_Customer_Website.Controllers
             }
             TempData.Remove("smsRetries");
 
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var removeCard = client.RemoveCard(new CustomerServiceRemoveCardRequest()
             {
-                if (db.MobilExpressAutoPayments.Any(ap => ap.CardToken == id))
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                RemoveCardParameters = new RemoveCardRequest()
                 {
-                    return RedirectToAction("AutomaticPayment");
-                }
-                var dbCustomer = db.Subscriptions.Find(User.GiveUserId()).Customer;
-                var client = new MobilExpressAdapterClient(MobilExpressSettings.MobilExpressMerchantKey, MobilExpressSettings.MobilExpressAPIPassword, new ClientConnectionDetails()
-                {
-                    IP = Request.UserHostAddress,
-                    UserAgent = Request.UserAgent
-                });
-
-                // get card info
-                var cards = client.GetCards(dbCustomer);
-                if (cards.InternalException != null)
-                {
-                    generalLogger.Warn(cards.InternalException, "Error calling 'GetCards' from MobilExpress client");
-                    TempData["ServiceError"] = RadiusRCustomerWebSite.Localization.Common.GeneralError;
-                    return RedirectToAction("AutomaticPayment");
-                }
-                if (cards.Response.ResponseCode != RezaB.API.MobilExpress.Response.ResponseCodes.Success)
-                {
-                    TempData["ServiceError"] = cards.Response.ErrorMessage;
-                    return RedirectToAction("AutomaticPayment");
-                }
-                var targetCard = cards.Response.CardList.FirstOrDefault(c => c.CardToken == id);
-
-                // delete card
-                var response = client.DeleteCard(dbCustomer, id);
-                if (response.InternalException != null)
-                {
-                    generalLogger.Warn(response.InternalException, "Error calling 'DeleteCard' from MobilExpress client");
-                    TempData["ServiceError"] = RadiusRCustomerWebSite.Localization.Common.GeneralError;
-                    return RedirectToAction("AutomaticPayment");
-                }
-                if (response.Response.ResponseCode != RezaB.API.MobilExpress.Response.ResponseCodes.Success)
-                {
-                    TempData["ServiceError"] = response.Response.ErrorMessage;
-                    return RedirectToAction("AutomaticPayment");
-                }
-
-                db.SystemLogs.Add(SystemLogProcessor.RemoveCreditCard(dbCustomer.ID, SystemLogInterface.CustomerWebsite, User.GiveClientSubscriberNo(), targetCard.MaskedCardNumber));
-                db.SaveChanges();
-
+                    CardToken = id,
+                    SMSCode = "",
+                    SubscriptionId = User.GiveUserId(),
+                    HttpContextParameters = new HttpContextParameters()
+                    {
+                        UserHostAddress = Request.UserHostAddress,
+                        UserAgent = Request.UserAgent
+                    }
+                },
+                Username = baseRequest.Username
+            });
+            if (removeCard.ResponseMessage.ErrorCode != 0)
+            {
+                generalLogger.Warn($"{removeCard.ResponseMessage.ErrorMessage} - Error calling 'DeleteCard' from MobilExpress client");
+                TempData["ServiceError"] = removeCard.ResponseMessage.ErrorMessage;// RadiusRCustomerWebSite.Localization.Common.GeneralError;
                 return RedirectToAction("AutomaticPayment");
             }
+            return RedirectToAction("AutomaticPayment");
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult ActivateAutomaticPayment(long id, string token)
         {
-            if (!MobilExpressSettings.MobilExpressIsActive)
+            var settings = GenericAppSettings();
+            if (settings.ResponseMessage.ErrorCode != 0 || !settings.GenericAppSettings.MobilExpressIsActive)
+            {
                 return RedirectToAction("BillsAndPayments");
+            }
+            var paymentTypes = PaymentTypeList();
 
-            ViewBag.PaymentTypes = new SelectList(new RezaB.Data.Localization.LocalizedList<AutoPaymentType, RadiusR.Localization.Lists.AutoPaymentType>().GetList(), "Key", "Value");
+            ViewBag.PaymentTypes = paymentTypes.PaymentTypes == null ? new SelectList(Enumerable.Empty<Dictionary<int, string>>(), "Key", "Value") : new SelectList(paymentTypes.PaymentTypes, "Key", "Value");
             return View(new ActivateAutomaticPaymentViewModel()
             {
                 CardToken = token,
@@ -639,56 +614,48 @@ namespace RadiusR_Customer_Website.Controllers
         [HttpPost]
         public ActionResult ActivateAutomaticPaymentConfirm(ActivateAutomaticPaymentViewModel automaticPayment)
         {
-            if (!MobilExpressSettings.MobilExpressIsActive)
+            var settings = GenericAppSettings();
+            if (settings.ResponseMessage.ErrorCode != 0 || !settings.GenericAppSettings.MobilExpressIsActive)
+            {
                 return RedirectToAction("BillsAndPayments");
+            }
 
             if (ModelState.IsValid)
             {
-                using (RadiusREntities db = new RadiusREntities())
+                var dbSubscription = GetSubscriptionInfo(automaticPayment.SubscriptionID);
+                var currentCustomer = GetSubscriptionInfo(User.GiveUserId());
+                if (dbSubscription.ResponseMessage.ErrorCode != 0 || currentCustomer.ResponseMessage.ErrorCode != 0)
                 {
-                    var dbSubscription = db.Subscriptions.Find(automaticPayment.SubscriptionID);
-                    var currentCustomer = db.Subscriptions.Find(User.GiveUserId()).Customer;
-                    if (dbSubscription.CustomerID != currentCustomer.ID || dbSubscription.IsCancelled)
-                    {
-                        return RedirectToAction("AutomaticPayment");
-                    }
-
-                    var client = new MobilExpressAdapterClient(MobilExpressSettings.MobilExpressMerchantKey, MobilExpressSettings.MobilExpressAPIPassword, new ClientConnectionDetails()
-                    {
-                        IP = Request.UserHostAddress,
-                        UserAgent = Request.UserAgent
-                    });
-
-                    var response = client.GetCards(currentCustomer);
-                    if (response.InternalException != null)
-                    {
-                        generalLogger.Warn(response.InternalException, "Error calling 'GetCards' from MobilExpress client");
-                        TempData["ServiceError"] = RadiusRCustomerWebSite.Localization.Common.GeneralError;
-                        return RedirectToAction("AutomaticPayment");
-                    }
-                    if (response.Response.ResponseCode != RezaB.API.MobilExpress.Response.ResponseCodes.Success)
-                    {
-                        TempData["ServiceError"] = response.Response.ErrorMessage;
-                        return RedirectToAction("AutomaticPayment");
-                    }
-                    var currentCard = response.Response.CardList.FirstOrDefault(c => c.CardToken == automaticPayment.CardToken);
-                    if (currentCard == null)
-                        return RedirectToAction("AutomaticPayment");
-
-                    dbSubscription.MobilExpressAutoPayment = new MobilExpressAutoPayment()
+                    return RedirectToAction("AutomaticPayment");
+                }
+                if (dbSubscription.SubscriptionBasicInformationResponse.CustomerID != currentCustomer.SubscriptionBasicInformationResponse.ID || dbSubscription.SubscriptionBasicInformationResponse.IsCancelled)
+                {
+                    return RedirectToAction("AutomaticPayment");
+                }
+                var activateBaseRequest = new GenericServiceSettings();
+                var activateAutomaticPayment = client.ActivateAutomaticPayment(new CustomerServiceActivateAutomaticPaymentRequest()
+                {
+                    Culture = activateBaseRequest.Culture,
+                    Hash = activateBaseRequest.Hash,
+                    Rand = activateBaseRequest.Rand,
+                    Username = activateBaseRequest.Username,
+                    ActivateAutomaticPaymentParameters = new ActivateAutomaticPaymentRequest()
                     {
                         CardToken = automaticPayment.CardToken,
-                        PaymentType = automaticPayment.PaymentType
-                    };
-
-                    db.SaveChanges();
-
-                    var smsClient = new SMSService();
-                    db.SMSArchives.AddSafely(smsClient.SendSubscriberSMS(dbSubscription, SMSType.MobilExpressActivation, new Dictionary<string, object> {
-                        { SMSParamaterRepository.SMSParameterNameCollection.CardNo, currentCard.MaskedCardNumber }
-                    }));
-                    db.SystemLogs.Add(SystemLogProcessor.ActivateAutomaticPayment(dbSubscription.ID, SystemLogInterface.CustomerWebsite, User.GiveClientSubscriberNo(), "MobilExpress"));
-                    db.SaveChanges();
+                        HttpContextParameters = new HttpContextParameters()
+                        {
+                            UserHostAddress = Request.UserHostAddress,
+                            UserAgent = Request.UserAgent
+                        },
+                        PaymentType = automaticPayment.PaymentType,
+                        SubscriptionId = automaticPayment.SubscriptionID
+                    }
+                });
+                if (activateAutomaticPayment.ResponseMessage.ErrorCode != 0)
+                {
+                    generalLogger.Warn($"Error calling 'GetCards' from MobilExpress client. Code : {activateAutomaticPayment.ResponseMessage.ErrorCode} - Message : {activateAutomaticPayment.ResponseMessage.ErrorMessage} ");
+                    TempData["ServiceError"] = RadiusRCustomerWebSite.Localization.Common.GeneralError;
+                    return RedirectToAction("AutomaticPayment");
                 }
             }
 
@@ -699,83 +666,84 @@ namespace RadiusR_Customer_Website.Controllers
         [HttpPost]
         public ActionResult DeactivateAutomaticPayment(long id)
         {
-            if (!MobilExpressSettings.MobilExpressIsActive)
-                return RedirectToAction("BillsAndPayments");
-
-            using (RadiusREntities db = new RadiusREntities())
+            var settingRequest = new GenericServiceSettings();
+            var settings = client.GenericAppSettings(new CustomerServiceGenericAppSettingsRequest()
             {
-                var dbSubscription = db.Subscriptions.Find(id);
-                var currentCustomer = db.Subscriptions.Find(User.GiveUserId()).Customer;
-                if (dbSubscription.CustomerID != currentCustomer.ID)
-                {
-                    return RedirectToAction("AutomaticPayment");
-                }
+                Culture = settingRequest.Culture,
+                Hash = settingRequest.Hash,
+                Rand = settingRequest.Rand,
+                Username = settingRequest.Username
+            });
+            if (settings.ResponseMessage.ErrorCode != 0 || !settings.GenericAppSettings.MobilExpressIsActive)
+            {
+                return RedirectToAction("BillsAndPayments");
+            }
+            var dbSubscription = GetSubscriptionInfo(id);
+            var currentCustomer = GetSubscriptionInfo(User.GiveUserId());
 
-                db.MobilExpressAutoPayments.Remove(dbSubscription.MobilExpressAutoPayment);
-                db.SaveChanges();
-
-                var client = new SMSService();
-                db.SMSArchives.AddSafely(client.SendSubscriberSMS(dbSubscription, SMSType.MobilExpressDeactivation));
-                db.SystemLogs.Add(SystemLogProcessor.DeactivateAutomaticPayment(dbSubscription.ID, SystemLogInterface.CustomerWebsite, User.GiveClientSubscriberNo(), "MobilExpress"));
-                db.SaveChanges();
-
+            if (dbSubscription.ResponseMessage.ErrorCode != 0 || currentCustomer.ResponseMessage.ErrorCode != 0)
+            {
                 return RedirectToAction("AutomaticPayment");
             }
+            if (dbSubscription.SubscriptionBasicInformationResponse.CustomerID != currentCustomer.SubscriptionBasicInformationResponse.CustomerID)
+            {
+                return RedirectToAction("AutomaticPayment");
+            }
+            var deactivateBaseRequest = new GenericServiceSettings();
+            var deactiveAutomaticPayment = client.DeativateAutomaticPayment(new CustomerServiceBaseRequest()
+            {
+                Culture = deactivateBaseRequest.Culture,
+                Hash = deactivateBaseRequest.Hash,
+                Rand = deactivateBaseRequest.Rand,
+                Username = deactivateBaseRequest.Username,
+                SubscriptionParameters = new BaseSubscriptionRequest()
+                {
+                    SubscriptionId = dbSubscription.SubscriptionBasicInformationResponse.ID
+                }
+            });
+            generalLogger.Info($"Deactive Automatic Payment Result -> Code : {deactiveAutomaticPayment.ResponseMessage.ErrorCode} - Message : {deactiveAutomaticPayment.ResponseMessage.ErrorMessage}");
+            return RedirectToAction("AutomaticPayment");
         }
 
         public ActionResult TariffAndTraffic()
         {
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var tariffAndTraffic = client.GetCustomerTariffAndTrafficInfo(new CustomerServiceBaseRequest()
             {
-                var dbSubscription = db.Subscriptions.Find(User.GiveUserId());
-                var monthlyUsage = dbSubscription.RadiusDailyAccountings.GroupBy(daily => daily.Date).OrderByDescending(dailyGroup => dailyGroup.Key).Select(dailyGroup => new
+                Culture = baseRequest.Culture,
+                Username = baseRequest.Username,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                SubscriptionParameters = new BaseSubscriptionRequest()
                 {
-                    groupingKey = new
-                    {
-                        year = dailyGroup.Key.Year,
-                        month = dailyGroup.Key.Month
-                    },
-                    download = dailyGroup.Sum(daily => daily.DownloadBytes),
-                    upload = dailyGroup.Sum(daily => daily.UploadBytes)
-                }).GroupBy(monthlyGroup => monthlyGroup.groupingKey).Select(monthlyGroup => new UsageInfoViewModel()
-                {
-                    _year = monthlyGroup.Key.year,
-                    _month = monthlyGroup.Key.month,
-                    Download = monthlyGroup.Sum(dailyGroup => dailyGroup.download),
-                    Upload = monthlyGroup.Sum(dailyGroup => dailyGroup.upload)
-                }).OrderByDescending(usage => usage._year).ThenByDescending(usage => usage._month).Take(3).AsQueryable();
-                var monthlyUsageResults = new List<ClientUsageInfoViewModel>();
-                foreach (var usageInfo in monthlyUsage)
-                {
-                    monthlyUsageResults.Add(new ClientUsageInfoViewModel()
-                    {
-                        _month = usageInfo._month,
-                        _year = usageInfo._year,
-                        Date = usageInfo.Date,
-                        TotalDownload = usageInfo.Download,
-                        TotalUpload = usageInfo.Upload
-                    });
+                    SubscriptionId = User.GiveUserId()
                 }
-                var clientUsage = dbSubscription.GetPeriodUsageInfo(dbSubscription.GetCurrentBillingPeriod(ignoreActivationDate: true), db);
-                var results = new HomePageViewModel()
+            });
+            var results = new HomePageViewModel()
+            {
+                ServiceName = tariffAndTraffic.GetCustomerTariffAndTrafficInfoResponse.ServiceName,
+                MonthlyUsage = tariffAndTraffic.GetCustomerTariffAndTrafficInfoResponse.MonthlyUsage.Select(t => new ClientUsageInfoViewModel()
                 {
-                    ServiceName = dbSubscription.Service.Name,
-                    MonthlyUsage = monthlyUsageResults,
-                    Download = clientUsage.Download,
-                    Upload = clientUsage.Upload
-                };
-                return View(results);
-            }
+                    Date = t.Date,
+                    TotalDownload = t.TotalDownload,
+                    TotalUpload = t.TotalUpload,
+                    _month = t.Month,
+                    _year = t.Year
+                }),
+                Download = tariffAndTraffic.GetCustomerTariffAndTrafficInfoResponse.Download,
+                Upload = tariffAndTraffic.GetCustomerTariffAndTrafficInfoResponse.Upload
+            };
+            return View(results);
         }
         public ActionResult ConnectionStatus()
         {
             var baseRequest = new GenericServiceSettings();
             var response = client.ConnectionStatus(new CustomerServiceBaseRequest()
             {
-                Culture = baseRequest._culture,
-                Hash = baseRequest.hash,
-                Rand = baseRequest._rand,
-                Username = baseRequest._username,
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username,
                 SubscriptionParameters = new BaseSubscriptionRequest()
                 {
                     SubscriptionId = User.GiveUserId()
@@ -803,43 +771,6 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
             }
-            //using (var db = new RadiusR.DB.RadiusREntities())
-            //{
-            //    var Subscription = db.Subscriptions.Find(User.GiveUserId());
-            //    if (Subscription == null)
-            //        return PartialView("Error");
-
-            //    var domainCache = RadiusR.DB.DomainsCache.DomainsCache.GetDomainByID(Subscription.DomainID);
-            //    if (domainCache.TelekomCredential == null)
-            //    {
-            //        return RedirectToAction("Index");
-            //    }
-            //    if (Request.IsAjaxRequest())
-            //    {
-            //        RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient client = new RezaB.TurkTelekom.WebServices.TTOYS.TTOYSServiceClient(domainCache.TelekomCredential.XDSLWebServiceUsernameInt, domainCache.TelekomCredential.XDSLWebServicePassword);
-            //        var Result = client.Check(Subscription.SubscriptionTelekomInfo.SubscriptionNo);
-            //        if (Result.InternalException != null)
-            //        {
-            //            TTErrorslogger.Error(Result.InternalException, "Error telekom line state");
-            //            return PartialView("Error");
-            //        }
-            //        var model = new Models.ViewModels.Home.ConnectionStatusViewModel()
-            //        {
-            //            ConnectionStatus = (short)Result.Data.OperationStatus,
-            //            CurrentDownload = Result.Data.CurrentDown,
-            //            CurrentUpload = Result.Data.CurrentUp,
-            //            XDSLNo = Subscription.SubscriptionTelekomInfo.SubscriptionNo,
-            //            XDSLType = Subscription.SubscriptionTelekomInfo.XDSLType,
-            //            DownloadMargin = Result.Data.NoiseRateDown,
-            //            UploadMargin = Result.Data.NoiseRateUp
-            //        };
-            //        return PartialView("_ConnectionStatusPartial", model);
-            //    }
-            //    else
-            //    {
-            //        return View(new Models.ViewModels.Home.ConnectionStatusViewModel());
-            //    }
-            //}
         }
 
         public ActionResult Services()
@@ -852,9 +783,9 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var subscription = client.GetCustomerInfo(new CustomerServiceBaseRequest()
             {
-                Culture = baseRequest._culture,
-                Hash = baseRequest.hash,
-                Username = baseRequest._username,
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Username = baseRequest.Username,
                 SubscriptionParameters = new BaseSubscriptionRequest()
                 {
                     SubscriptionId = User.GiveUserId()
@@ -877,23 +808,6 @@ namespace RadiusR_Customer_Website.Controllers
                 PSTN = subscription.GetCustomerInfoResponse.PSTN
             };
             return View(viewResults);
-            //using (RadiusREntities db = new RadiusREntities())
-            //{
-            //    var subscription = db.Subscriptions.Find(User.GiveUserId());
-            //    var viewResults = new PersonalInfoViewModel()
-            //    {
-            //        EMail = subscription.Customer.Email,
-            //        PhoneNo = subscription.Customer.ContactPhoneNo,
-            //        ValidDisplayName = subscription.ValidDisplayName,
-            //        InstallationAddress = subscription.Address.AddressText,
-            //        Username = subscription.Username,
-            //        Password = subscription.RadiusPassword,
-            //        ReferenceNo = subscription.ReferenceNo,
-            //        TTSubscriberNo = subscription.SubscriptionTelekomInfo != null ? subscription.SubscriptionTelekomInfo.SubscriptionNo : null,
-            //        PSTN = subscription.SubscriptionTelekomInfo != null && !string.IsNullOrWhiteSpace(subscription.SubscriptionTelekomInfo.PSTN) ? subscription.SubscriptionTelekomInfo.PSTN : null
-            //    };
-            //    return View(viewResults);
-            //}
         }
 
         [ValidateAntiForgeryToken]
@@ -902,10 +816,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var response = client.EArchivePDF(new CustomerServiceEArchivePDFRequest()
             {
-                Culture = baseRequest._culture,
-                Hash = baseRequest.hash,
-                Username = baseRequest._username,
-                Rand = baseRequest._rand,
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Username = baseRequest.Username,
+                Rand = baseRequest.Rand,
                 EArchivePDFParameters = new EArchivePDFRequest()
                 {
                     BillId = id,
@@ -917,20 +831,7 @@ namespace RadiusR_Customer_Website.Controllers
                 return RedirectToAction("BillsAndPayments");
             }
             return File(response.EArchivePDFResponse.FileContent, response.EArchivePDFResponse.ContentType, response.EArchivePDFResponse.FileDownloadName);
-            //using (RadiusREntities db = new RadiusREntities())
-            //{
-            //    var dbBill = db.Bills.Find(id);
-            //    if (dbBill == null || dbBill.EBill == null || dbBill.EBill.EBillType != (short)EBillType.EArchive)
-            //        return RedirectToAction("BillsAndPayments");
-            //    if (dbBill.Subscription.ID != User.GiveUserId())
-            //        return RedirectToAction("BillsAndPayments");
-            //    var serviceClient = new RezaB.NetInvoice.Wrapper.NetInvoiceClient(AppSettings.EBillCompanyCode, AppSettings.EBillApiUsername, AppSettings.EBillApiPassword);
-            //    var response = serviceClient.GetEArchivePDF(dbBill.EBill.ReferenceNo);
-            //    if (response.PDFData == null)
-            //        return RedirectToAction("BillsAndPayments");
 
-            //    return File(response.PDFData, "application/pdf", RadiusRCustomerWebSite.Localization.Common.EArchivePDFFileName + "_" + dbBill.IssueDate.ToString("yyyy-MM-dd") + ".pdf");
-            //}
         }
 
         public ActionResult BuyQuota(int id)
@@ -938,10 +839,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var response = client.QuotaPackageList(new CustomerServiceQuotaPackagesRequest()
             {
-                Culture = baseRequest._culture,
-                Hash = baseRequest.hash,
-                Rand = baseRequest._rand,
-                Username = baseRequest._username,
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username,
             });
             if (response.ResponseMessage.ErrorCode != 0)
             {
@@ -955,10 +856,10 @@ namespace RadiusR_Customer_Website.Controllers
                 {
                     SubscriptionId = User.GiveUserId()
                 },
-                Culture = quotaBaseRequest._culture,
-                Hash = quotaBaseRequest.hash,
-                Username = quotaBaseRequest._username,
-                Rand = quotaBaseRequest._rand
+                Culture = quotaBaseRequest.Culture,
+                Hash = quotaBaseRequest.Hash,
+                Username = quotaBaseRequest.Username,
+                Rand = quotaBaseRequest.Rand
             });
             if (quotaResponse.ResponseMessage.ErrorCode != 0)
             {
@@ -973,10 +874,10 @@ namespace RadiusR_Customer_Website.Controllers
             var quotaPrice = response.QuotaPackageListResponse.Where(q => q.ID == id).FirstOrDefault();
             var vposResponse = client.GetVPOSForm(new CustomerServiceVPOSFormRequest()
             {
-                Culture = vposBaseRequest._culture,
-                Hash = vposBaseRequest.hash,
-                Rand = vposBaseRequest._rand,
-                Username = vposBaseRequest._username,
+                Culture = vposBaseRequest.Culture,
+                Hash = vposBaseRequest.Hash,
+                Rand = vposBaseRequest.Rand,
+                Username = vposBaseRequest.Username,
                 VPOSFormParameters = new VPOSFormRequest()
                 {
                     FailUrl = Url.Action("VPOSFail", null, new { id = tokenKey }, Request.Url.Scheme),
@@ -992,26 +893,7 @@ namespace RadiusR_Customer_Website.Controllers
             ViewBag.POSForm = vposResponse.VPOSFormResponse.HtmlForm;
             return View(viewName: "3DHostPayment");
 
-            //using (RadiusREntities db = new RadiusREntities())
-            //{
-            //    var dbSubscription = db.Subscriptions.Find(User.GiveUserId());
-            //    var dbQuota = db.QuotaPackages.Find(id);
-            //    if (dbSubscription == null || dbQuota == null || !dbSubscription.Service.CanHaveQuotaSale)
-            //        return RedirectToAction("BillsAndPayments");
 
-
-
-            //    var VPOSModel = VPOSManager.GetVPOSModel(
-            //        //Url.Action("QuotaBuySuccess", null, new { id = dbQuota.ID }, Request.Url.Scheme),
-            //        //Url.Action("QuotaBuyFail", null, new { id = dbQuota.ID }, Request.Url.Scheme),
-            //        Url.Action("VPOSSuccess", null, new { id = tokenKey }, Request.Url.Scheme),
-            //        Url.Action("VPOSFail", null, new { id = tokenKey }, Request.Url.Scheme),
-            //        dbQuota.Price,
-            //        dbSubscription.Customer.Culture.Split('-').FirstOrDefault(),
-            //        dbSubscription.ValidDisplayName);
-            //    ViewBag.POSForm = VPOSModel.GetHtmlForm();
-            //    return View(viewName: "3DHostPayment");
-            //}
         }
 
         [HttpPost]
@@ -1024,119 +906,145 @@ namespace RadiusR_Customer_Website.Controllers
                 Session["POSErrorMessage"] = RadiusRCustomerWebSite.Localization.Common.InvalidTokenKey;
                 return RedirectToAction("BillsAndPayments");
             }
-            using (RadiusREntities db = new RadiusREntities())
+            var baseRequest = new GenericServiceSettings();
+            var dbSubscription = client.SubscriptionBasicInfo(new CustomerServiceBaseRequest()
             {
-                var dbSubscription = db.Subscriptions.Find(paymentToken.SubscriberId);
-                if (dbSubscription == null)
+                Username = baseRequest.Username,
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                SubscriptionParameters = new BaseSubscriptionRequest()
                 {
-                    Session["POSErrorMessage"] = RadiusRCustomerWebSite.Localization.Common.SubscriberNotFound;
-                    return RedirectToAction("BillsAndPayments");
+                    SubscriptionId = paymentToken.SubscriberId
                 }
+            });
+            if (dbSubscription.ResponseMessage.ErrorCode != 0)
+            {
+                Session["POSErrorMessage"] = RadiusRCustomerWebSite.Localization.Common.SubscriberNotFound;
+                return RedirectToAction("BillsAndPayments");
+            }
+            //----------- bill paymnet ------------
+            if (paymentToken is BillPaymentToken)
+            {
+                var billPaymentToken = (BillPaymentToken)paymentToken;
 
-                //------------ bill payment ---------------
-                if (paymentToken is BillPaymentToken)
+                var payableAmount = GetPayableAmount(dbSubscription.SubscriptionBasicInformationResponse.ID, billPaymentToken.BillID);
+                // billed sub
+                if (dbSubscription.SubscriptionBasicInformationResponse.HasBilling)
                 {
-                    var billPaymentToken = (BillPaymentToken)paymentToken;
-
-                    var payableAmount = GetPayableAmount(dbSubscription, billPaymentToken.BillID);
-                    // billed sub
-                    if (dbSubscription.HasBilling)
+                    var billBaseRequest = new GenericServiceSettings();
+                    var dbBills = client.GetCustomerBills(new CustomerServiceBaseRequest()
                     {
-                        var billIds = billPaymentToken.BillID.HasValue ? new[] { billPaymentToken.BillID.Value } : dbSubscription.Bills.Where(b => b.BillStatusID == (short)BillState.Unpaid).Select(b => b.ID).ToArray();
-
-                        paymentLogger.Debug("Received successfull payment for clientId= {1}, billId= {2} with total of {3}:" + Environment.NewLine + "{0}",
+                        Culture = billBaseRequest.Culture,
+                        Hash = billBaseRequest.Hash,
+                        Rand = billBaseRequest.Rand,
+                        Username = billBaseRequest.Username,
+                        SubscriptionParameters = new BaseSubscriptionRequest()
+                        {
+                            SubscriptionId = paymentToken.SubscriberId
+                        }
+                    });
+                    if (dbBills.ResponseMessage.ErrorCode != 0)
+                    {
+                        Session["POSErrorMessage"] = dbBills.ResponseMessage.ErrorMessage;
+                        return RedirectToAction("BillsAndPayments");
+                    }
+                    var billIds = billPaymentToken.BillID.HasValue ? new[] { billPaymentToken.BillID.Value } : dbBills.GetCustomerBillsResponse.CustomerBills.Where(b => b.Status == 1).Select(b => b.ID).ToArray();
+                    paymentLogger.Debug("Received successfull payment for clientId= {1}, billId= {2} with total of {3}:" + Environment.NewLine + "{0}",
                                             string.Join(Environment.NewLine, Request.Form.AllKeys.Select(key => key + ": " + Request.Form[key])),
-                                            dbSubscription.SubscriberNo,
+                                            dbSubscription.SubscriptionBasicInformationResponse.SubscriberNo,
                                             billPaymentToken.BillID.HasValue ? billPaymentToken.BillID.Value.ToString() : string.Join(",", billIds),
                                             payableAmount.ToString());
+                    var unpaidBills = dbBills.GetCustomerBillsResponse.CustomerBills.Where(bill => bill.Status == 1).ToList(); // 1 = unpaid enum
+                    if (billPaymentToken.BillID.HasValue)
+                        unpaidBills = unpaidBills.Where(b => b.ID == billPaymentToken.BillID).ToList();
 
-                        var unpaidBills = dbSubscription.Bills.Where(bill => bill.BillStatusID == (short)BillState.Unpaid).ToList();
-                        if (billPaymentToken.BillID.HasValue)
-                            unpaidBills = unpaidBills.Where(b => b.ID == billPaymentToken.BillID).ToList();
-
-                        db.PayBills(unpaidBills, PaymentType.VirtualPos, BillPayment.AccountantType.Admin);
-                        SMSService SMSSerivce = new SMSService();
-                        db.SMSArchives.AddSafely(SMSSerivce.SendSubscriberSMS(dbSubscription, SMSType.PaymentDone, new Dictionary<string, object>()
-                        {
-                            { SMSParamaterRepository.SMSParameterNameCollection.BillTotal, payableAmount }
-                        }));
-                        db.SystemLogs.Add(SystemLogProcessor.BillPayment(billIds, null, dbSubscription.ID, SystemLogInterface.CustomerWebsite, dbSubscription.SubscriberNo, PaymentType.VirtualPos));
-                        db.SaveChanges();
-                    }
-                    // pre-paid sub
-                    else
+                    var payBills = PayBills(unpaidBills.Select(bill => bill.ID).ToArray(), (short)Models.Enums.SubscriptionPaidType.Billing,
+                        dbSubscription.SubscriptionBasicInformationResponse.ID, (int)Models.Enums.PaymentType.VirtualPos, (int)Models.Enums.AccountantType.Seller);
+                    if (payBills.ResponseMessage.ErrorCode != 0)
                     {
-                        paymentLogger.Debug("Received successfull payment for clientId= {1} with total of {2}:" + Environment.NewLine + "{0}",
-                                            string.Join(Environment.NewLine, Request.Form.AllKeys.Select(key => key + ": " + Request.Form[key])),
-                                            dbSubscription.SubscriberNo,
-                                            payableAmount.ToString());
-
-                        db.ExtendClientPackage(dbSubscription, 1, PaymentType.VirtualPos, BillPayment.AccountantType.Admin);
-                        SMSService SMSAsync = new SMSService();
-                        db.SMSArchives.AddSafely(SMSAsync.SendSubscriberSMS(dbSubscription, SMSType.ExtendPackage, new Dictionary<string, object>()
+                        Session["POSErrorMessage"] = payBills.ResponseMessage.ErrorMessage;
+                        return RedirectToAction("BillsAndPayments");
+                    }
+                    var smsBaseRequest = new GenericServiceSettings();
+                    var SendSubscriberSMS = client.SendSubscriberSMS(new CustomerServiceSendSubscriberSMSRequest()
+                    {
+                        Culture = smsBaseRequest.Culture,
+                        Username = smsBaseRequest.Username,
+                        Hash = smsBaseRequest.Hash,
+                        Rand = smsBaseRequest.Rand,
+                        SendSubscriberSMS = new SendSubscriberSMSRequest()
                         {
-                            { SMSParamaterRepository.SMSParameterNameCollection.ExtendedMonths, "1" }
-                        }));
-                        db.SystemLogs.Add(SystemLogProcessor.ExtendPackage(null, dbSubscription.ID, SystemLogInterface.CustomerWebsite, billPaymentToken.SubscriberId.ToString(), 1));
-                        db.SaveChanges();
+                            BillIds = billIds,
+                            PayableAmount = payableAmount,
+                            SubscriptionId = dbSubscription.SubscriptionBasicInformationResponse.ID,
+                            SubscriptionPaidType = 1
+                        }
+                    });
+                    if (SendSubscriberSMS.ResponseMessage.ErrorCode != 0)
+                    {
+                        Session["POSSuccessMessage"] = SendSubscriberSMS.ResponseMessage.ErrorMessage;
+                        return RedirectToAction("BillsAndPayments");
                     }
                 }
-                //------------ quota sale ---------------
-                else if (paymentToken is QuotaSaleToken)
+                //pre paid sub
+                else
                 {
-                    var quotaSaleToken = (QuotaSaleToken)paymentToken;
-
-                    var dbQuota = db.QuotaPackages.Find(quotaSaleToken.PackageID);
-                    if (dbSubscription != null || dbQuota != null || dbSubscription.Service.CanHaveQuotaSale)
-                    {
-                        paymentLogger.Debug("Received successfull payment for clientId= {1} with total of {2}:" + Environment.NewLine + "{0}",
+                    paymentLogger.Debug("Received successfull payment for clientId= {1} with total of {2}:" + Environment.NewLine + "{0}",
                                             string.Join(Environment.NewLine, Request.Form.AllKeys.Select(key => key + ": " + Request.Form[key])),
-                                            dbSubscription.SubscriberNo,
-                                            dbQuota.Price.ToString());
-                        var quotaDescription = RateLimitFormatter.ToQuotaDescription(dbQuota.Amount, dbQuota.Name);
-                        dbSubscription.SubscriptionQuotas.Add(new SubscriptionQuota()
-                        {
-                            AddDate = DateTime.Now,
-                            Amount = dbQuota.Amount
-                        });
+                                            dbSubscription.SubscriptionBasicInformationResponse.SubscriberNo,
+                                            payableAmount.ToString());
 
-                        dbSubscription.Bills.Add(new Bill()
-                        {
-                            BillFees = new[]
-                            {
-                                new BillFee()
-                                {
-                                    InstallmentCount = 1,
-                                    CurrentCost = dbQuota.Price,
-                                    Fee = new Fee()
-                                    {
-                                        Date = DateTime.Now.Date,
-                                        FeeTypeID = (short)FeeType.Quota,
-                                        Description = quotaDescription,
-                                        InstallmentBillCount = 1,
-                                        Cost = dbQuota.Price,
-                                        SubscriptionID = dbSubscription.ID
-                                    }
-                                }
-                            }.ToList(),
-                            DueDate = DateTime.Now.Date,
-                            IssueDate = DateTime.Now.Date,
-                            BillStatusID = (short)BillState.Paid,
-                            PaymentTypeID = (short)PaymentType.VirtualPos,
-                            Source = (short)BillSources.Manual,
-                            PayDate = DateTime.Now
-                        });
-
-                        db.SystemLogs.Add(SystemLogProcessor.AddSubscriptionQuota(null, dbSubscription.ID, SystemLogInterface.CustomerWebsite, quotaSaleToken.SubscriberId.ToString(), quotaDescription));
-
-                        SMSService SMSAsync = new SMSService();
-                        db.SMSArchives.AddSafely(SMSAsync.SendSubscriberSMS(dbSubscription, SMSType.PaymentDone, new Dictionary<string, object>()
-                        {
-                            { SMSParamaterRepository.SMSParameterNameCollection.BillTotal, dbQuota.Price }
-                        }));
-
-                        db.SaveChanges();
+                    var payBills = PayBills(null, (short)Models.Enums.SubscriptionPaidType.PrePaid,
+                        dbSubscription.SubscriptionBasicInformationResponse.ID, (int)Models.Enums.PaymentType.VirtualPos, (int)Models.Enums.AccountantType.Admin);
+                    if (payBills.ResponseMessage.ErrorCode != 0)
+                    {
+                        Session["POSErrorMessage"] = payBills.ResponseMessage.ErrorMessage;
+                        return RedirectToAction("BillsAndPayments");
                     }
+                    var smsBaseRequest = new GenericServiceSettings();
+                    var SendSubscriberSMS = client.SendSubscriberSMS(new CustomerServiceSendSubscriberSMSRequest()
+                    {
+                        Culture = smsBaseRequest.Culture,
+                        Username = smsBaseRequest.Username,
+                        Hash = smsBaseRequest.Hash,
+                        Rand = smsBaseRequest.Rand,
+                        SendSubscriberSMS = new SendSubscriberSMSRequest()
+                        {
+                            SubscriptionPaidType = 2,
+                            BillIds = null,
+                            PayableAmount = payableAmount,
+                            SubscriptionId = dbSubscription.SubscriptionBasicInformationResponse.ID
+                        }
+                    });
+                    if (SendSubscriberSMS.ResponseMessage.ErrorCode != 0)
+                    {
+                        Session["POSSuccessMessage"] = SendSubscriberSMS.ResponseMessage.ErrorMessage;
+                        return RedirectToAction("BillsAndPayments");
+                    }
+                }
+            }
+            //------------ quota sale ---------------
+            else if (paymentToken is QuotaSaleToken)
+            {
+                var quotaSaleToken = (QuotaSaleToken)paymentToken;
+                var quotaBaseRequest = new GenericServiceSettings();
+                var quotaSale = client.QuotaSale(new CustomerServiceQuotaSaleRequest()
+                {
+                    Culture = quotaBaseRequest.Culture,
+                    Hash = quotaBaseRequest.Hash,
+                    Username = quotaBaseRequest.Username,
+                    Rand = quotaBaseRequest.Rand,
+                    QuotaSaleParameters = new QuotaSaleRequest()
+                    {
+                        SubscriptionId = dbSubscription.SubscriptionBasicInformationResponse.ID,
+                        PackageId = quotaSaleToken.PackageID
+                    }
+                });
+                if (quotaSale.ResponseMessage.ErrorCode != 0)
+                {
+                    Session["POSSuccessMessage"] = quotaSale.ResponseMessage.ErrorMessage;
+                    return RedirectToAction("BillsAndPayments");
                 }
             }
 
@@ -1154,52 +1062,87 @@ namespace RadiusR_Customer_Website.Controllers
                 Session["POSErrorMessage"] = RadiusRCustomerWebSite.Localization.Common.InvalidTokenKey;
                 return RedirectToAction("BillsAndPayments");
             }
-            using (RadiusREntities db = new RadiusREntities())
+            var subscriptionBaseRequest = new GenericServiceSettings();
+            var subscription = client.SubscriptionBasicInfo(new CustomerServiceBaseRequest()
             {
-                var dbSubscription = db.Subscriptions.Find(paymentToken.SubscriberId);
-                if (dbSubscription == null)
+                SubscriptionParameters = new BaseSubscriptionRequest()
                 {
-                    Session["POSErrorMessage"] = RadiusRCustomerWebSite.Localization.Common.SubscriberNotFound;
+                    SubscriptionId = paymentToken.SubscriberId,
+                },
+                Culture = subscriptionBaseRequest.Culture,
+                Hash = subscriptionBaseRequest.Hash,
+                Rand = subscriptionBaseRequest.Rand,
+                Username = subscriptionBaseRequest.Username
+            });
+            if (subscription.ResponseMessage.ErrorCode != 0)
+            {
+                Session["POSErrorMessage"] = subscription.ResponseMessage.ErrorMessage;
+                return RedirectToAction("BillsAndPayments");
+            }
+            //--------- bill payment ---------
+            if (paymentToken is BillPaymentToken)
+            {
+                var billPaymentToken = (BillPaymentToken)paymentToken;
+                var billBaseRequest = new GenericServiceSettings();
+                var dbBills = client.GetCustomerBills(new CustomerServiceBaseRequest()
+                {
+                    Culture = billBaseRequest.Culture,
+                    Hash = billBaseRequest.Hash,
+                    Rand = billBaseRequest.Rand,
+                    Username = billBaseRequest.Username,
+                    SubscriptionParameters = new BaseSubscriptionRequest()
+                    {
+                        SubscriptionId = paymentToken.SubscriberId
+                    }
+                });
+                if (dbBills.ResponseMessage.ErrorCode != 0)
+                {
+                    Session["POSErrorMessage"] = dbBills.ResponseMessage.ErrorMessage;
                     return RedirectToAction("BillsAndPayments");
                 }
-
-                //------------ bill payment ---------------
-                if (paymentToken is BillPaymentToken)
+                var unpaidBills = dbBills.GetCustomerBillsResponse.CustomerBills.Where(bill => bill.Status == 1).ToList(); // unpaid billstatus enum
+                if (billPaymentToken.BillID.HasValue)
                 {
-                    var billPaymentToken = (BillPaymentToken)paymentToken;
-
-                    var unpaidBills = dbSubscription.Bills.Where(bill => bill.BillStatusID == (short)BillState.Unpaid).ToList();
-
-                    if (billPaymentToken.BillID.HasValue)
-                    {
-                        unpaidBills = unpaidBills.Where(bill => bill.ID == billPaymentToken.BillID).ToList();
-                    }
-                    var clientCredits = dbSubscription.SubscriptionCredits.Sum(credit => credit.Amount);
-                    var amount = unpaidBills.Sum(bill => bill.GetPayableCost()) - clientCredits;
-                    if (!dbSubscription.HasBilling)
-                    {
-                        amount = dbSubscription.Service.Price;
-                    }
-                    // make changes to database
-                    unpaidLogger.Debug("Unsuccessfull payment for clientId= {1}, billId= {2} with total of {3}:" + Environment.NewLine + "{0}",
-                        string.Join(Environment.NewLine, Request.Form.AllKeys.Select(key => key + ": " + Request.Form[key])),
-                        dbSubscription.SubscriberNo,
-                        billPaymentToken.BillID.HasValue ? billPaymentToken.BillID.Value.ToString() : string.Join(",", unpaidBills.Select(bill => bill.ID.ToString())),
-                        amount.ToString());
+                    unpaidBills = unpaidBills.Where(bill => bill.ID == billPaymentToken.BillID).ToList();
                 }
-                //------------ quota sale ---------------
-                else if (paymentToken is QuotaSaleToken)
+                var clientCredits = dbBills.GetCustomerBillsResponse.SubscriptionCredits;
+                var amount = unpaidBills.Sum(bill => bill.Total) - clientCredits;
+                if (!subscription.SubscriptionBasicInformationResponse.HasBilling)
                 {
-                    var quotaSaleToken = (QuotaSaleToken)paymentToken;
-                    var dbQuota = db.QuotaPackages.Find(id);
-
-                    unpaidLogger.Debug("Unsuccessfull payment for clientId= {1} with total of {2}:" + Environment.NewLine + "{0}",
-                        string.Join(Environment.NewLine, Request.Form.AllKeys.Select(key => key + ": " + Request.Form[key])),
-                        dbSubscription.SubscriberNo,
-                        dbQuota.Price.ToString());
+                    amount = subscription.SubscriptionBasicInformationResponse.SubscriptionService.Price.Value;
                 }
+                // make changes to database
+                unpaidLogger.Debug("Unsuccessfull payment for clientId= {1}, billId= {2} with total of {3}:" + Environment.NewLine + "{0}",
+                    string.Join(Environment.NewLine, Request.Form.AllKeys.Select(key => key + ": " + Request.Form[key])),
+                    subscription.SubscriptionBasicInformationResponse.SubscriberNo,
+                    billPaymentToken.BillID.HasValue ? billPaymentToken.BillID.Value.ToString() : string.Join(",", unpaidBills.Select(bill => bill.ID.ToString())),
+                    amount.ToString());
             }
-
+            //------- quota sale -------------
+            else if (paymentToken is QuotaSaleToken)
+            {
+                var quotaSaleToken = (QuotaSaleToken)paymentToken;
+                var quotaBaseRequest = new GenericServiceSettings();
+                var dbQuota = client.QuotaPackageList(new CustomerServiceQuotaPackagesRequest()
+                {
+                    Culture = quotaBaseRequest.Culture,
+                    Hash = quotaBaseRequest.Hash,
+                    Rand = quotaBaseRequest.Rand,
+                    Username = quotaBaseRequest.Username
+                });
+                if (dbQuota.ResponseMessage.ErrorCode != 0)
+                {
+                    unpaidLogger.Debug("Unsuccessfull payment for clientId= {1} with total of {2}:" + Environment.NewLine + "{0}",
+                                            string.Join(Environment.NewLine, Request.Form.AllKeys.Select(key => key + ": " + Request.Form[key])),
+                                            subscription.SubscriptionBasicInformationResponse.SubscriberNo,
+                                            dbQuota.ResponseMessage.ErrorMessage);
+                }
+                var dbQuotaPrice = dbQuota.QuotaPackageListResponse.Where(q => q.ID.ToString() == id).FirstOrDefault();
+                unpaidLogger.Debug("Unsuccessfull payment for clientId= {1} with total of {2}:" + Environment.NewLine + "{0}",
+                        string.Join(Environment.NewLine, Request.Form.AllKeys.Select(key => key + ": " + Request.Form[key])),
+                        subscription.SubscriptionBasicInformationResponse.SubscriberNo,
+                        dbQuotaPrice == null ? "-" : dbQuotaPrice.Price.ToString());
+            }
             Session["POSErrorMessage"] = GetErrorMessage();
             return RedirectToAction("BillsAndPayments");
         }
@@ -1209,10 +1152,10 @@ namespace RadiusR_Customer_Website.Controllers
             var baseRequest = new GenericServiceSettings();
             var response = client.GetCustomerSpecialOffers(new CustomerServiceBaseRequest()
             {
-                Culture = baseRequest._culture,
-                Username = baseRequest._username,
-                Rand = baseRequest._rand,
-                Hash = baseRequest.hash,
+                Culture = baseRequest.Culture,
+                Username = baseRequest.Username,
+                Rand = baseRequest.Rand,
+                Hash = baseRequest.Hash,
                 SubscriptionParameters = new BaseSubscriptionRequest()
                 {
                     SubscriptionId = User.GiveUserId()
@@ -1241,86 +1184,6 @@ namespace RadiusR_Customer_Website.Controllers
             };
             SetupPages(page, ref viewResults);
             return View(viewResults.ToArray());
-
-            //var currentSubId = User.GiveUserId();
-            //var minDate = DateTime.Now.Date.AddYears(-1);
-            //using (RadiusREntities db = new RadiusREntities())
-            //{
-            //    var dbSubscription = db.Subscriptions.Find(currentSubId);
-            //    var viewResults = db.RecurringDiscounts.Where(rd => rd.SubscriptionID == dbSubscription.ID).Where(rd => rd.ReferrerRecurringDiscount != null || rd.ReferringRecurringDiscounts.Any())
-            //        .OrderByDescending(rd => rd.CreationTime)
-            //        .Select(rd => new SpecialOffersReportViewModel()
-            //        {
-            //            IsCancelled = rd.IsDisabled,
-            //            StartDate = rd.CreationTime,
-            //            TotalCount = rd.ApplicationTimes,
-            //            UsedCount = rd.AppliedRecurringDiscounts.Where(ard => ard.ApplicationState == (short)RecurringDiscountApplicationState.Applied).Count(),
-            //            MissedCount = rd.AppliedRecurringDiscounts.Where(ard => ard.ApplicationState == (short)RecurringDiscountApplicationState.Passed).Count(),
-            //            ReferenceNo = rd.ReferrerRecurringDiscount != null ? rd.ReferrerRecurringDiscount.Subscription.ReferenceNo : rd.ReferringRecurringDiscounts.Any() ? rd.ReferringRecurringDiscounts.FirstOrDefault().Subscription.ReferenceNo : null,
-            //            ReferralSubscriberState = rd.ReferrerRecurringDiscount != null ? rd.ReferrerRecurringDiscount.Subscription.State : rd.ReferringRecurringDiscounts.Any() ? rd.ReferringRecurringDiscounts.FirstOrDefault().Subscription.State : (short?)null,
-            //        });
-
-            //    ViewBag.TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum();
-            //    ViewBag.TotalUsed = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum();
-            //    ViewBag.TotalMissed = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum();
-            //    ViewBag.TotalRemaining = viewResults.Where(r => !r.IsCancelled).Select(r => r.TotalCount - (r.UsedCount + r.MissedCount)).DefaultIfEmpty(0).Sum();
-
-            //    ViewBag.TotalRow = new SpecialOffersReportViewModel()
-            //    {
-            //        TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum(),
-            //        UsedCount = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum(),
-            //        MissedCount = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum(),
-            //    };
-
-            //    SetupPages(page, ref viewResults);
-
-
-            //    ////var rawData = db.RecurringDiscounts.Include(rd => rd.Bills.Select(b => b.BillFees)).Where(rd => rd.SubscriptionID == currentSubId && (rd.ReferrerRecurringDiscount != null || rd.ReferringRecurringDiscounts.Any()) && rd.Bills.Any(b => b.IssueDate >= minDate)).ToArray();
-            //    //var rawData = db.Bills
-            //    //    .OrderBy(b => b.IssueDate)
-            //    //    .Include(b => b.BillFees)
-            //    //    .Include(b => b.AppliedRecurringDiscounts.Select(rd=>rd.RecurringDiscount.ReferrerRecurringDiscount.Subscription))
-            //    //    .Include(b => b.AppliedRecurringDiscounts.Select(rd => rd.RecurringDiscount.ReferringRecurringDiscounts.Select(rd2 => rd2.Subscription)))
-            //    //    .Where(b => b.SubscriptionID == currentSubId && b.IssueDate >= minDate && b.AppliedRecurringDiscounts.Any(rd => rd.RecurringDiscount.ReferrerRecurringDiscount != null || rd.RecurringDiscount.ReferringRecurringDiscounts.Any()))
-            //    //    .ToArray();
-            //    //var discounts = rawData.SelectMany(b => b.AppliedRecurringDiscounts.Select(ard => ard.RecurringDiscount).Select(rd => rd)).OrderBy(rd => rd.CreationTime).ToArray();
-            //    //var viewResults = new List<SpecialOffersReportViewModel>();
-            //    //foreach (var discount in discounts)
-            //    //{
-            //    //    var currentViewModel = new SpecialOffersReportViewModel()
-            //    //    {
-            //    //        CreationDate = discount.CreationTime,
-            //    //        ReferenceNo = discount.ReferrerRecurringDiscount != null ? discount.ReferrerRecurringDiscount.Subscription.ReferenceNo : discount.ReferringRecurringDiscounts.FirstOrDefault().Subscription.ReferenceNo,
-            //    //        TotalCount = discount.IsDisabled ? discount.AppliedRecurringDiscounts.Count() : discount.ApplicationTimes,
-            //    //        UsedCount = discount.AppliedRecurringDiscounts.Count(),
-            //    //        Bills = new List<DiscountRelatedBillViewModel>()
-            //    //    };
-            //    //    foreach (var bill in rawData)
-            //    //    {
-            //    //        var currentRelatedBill = new DiscountRelatedBillViewModel()
-            //    //        {
-            //    //            ID = bill.ID,
-            //    //            IssueDate = bill.IssueDate,
-            //    //            Amount = 0m
-            //    //        };
-            //    //        if(discount.AppliedRecurringDiscounts.Select(ard=> ard.Bill).Any(b=>b.ID == bill.ID))
-            //    //        {
-            //    //            currentRelatedBill.Amount = discount.DiscountType == (short)RecurringDiscountType.Static
-            //    //                ? discount.Amount
-            //    //                : discount.DiscountType == (short)RecurringDiscountType.Percentage
-            //    //                ? discount.ApplicationType == (short)RecurringDiscountApplicationType.FeeBased ? bill.BillFees.FirstOrDefault(bf=>bf.FeeTypeID == discount.FeeTypeID).CurrentCost * discount.Amount : discount.ApplicationType == (short)RecurringDiscountApplicationType.BillBased ? bill.GetTotalCost() * discount.Amount : 0m
-            //    //                : 0m;
-
-            //    //            if (discount.DiscountType == (short)RecurringDiscountType.Percentage)
-            //    //                currentRelatedBill.Percentage = discount.Amount;
-            //    //        }
-            //    //        currentViewModel.Bills.Add(currentRelatedBill);
-            //    //    }
-            //    //    viewResults.Add(currentViewModel);
-            //    //}
-
-            //    return View(viewResults.ToArray());
-            //}
         }
 
         #region Private Methods
@@ -1330,41 +1193,123 @@ namespace RadiusR_Customer_Website.Controllers
             return Request.Form[VPOSManager.GetErrorMessageParameterName()];
         }
 
-        private decimal GetPayableAmount(Subscription dbSubscription, long? billId)
+        private decimal GetPayableAmount(long? subscriptionId, long? billId)
         {
-            // pre-paid sub
-            if (!dbSubscription.HasBilling)
+            var baseRequest = new GenericServiceSettings();
+            var response = client.BillPayableAmount(new CustomerServiceBillPayableAmountRequest()
             {
-                return dbSubscription.GetSubscriberPackageExtentionUnitPrice();
-            }
-            // billed sub
-            var creditsAmount = dbSubscription.SubscriptionCredits.Sum(credit => credit.Amount);
-            var bills = dbSubscription.Bills.Where(bill => bill.BillStatusID == (short)BillState.Unpaid).OrderBy(bill => bill.IssueDate).AsEnumerable();
-            if (billId.HasValue)
-                bills = bills.Where(bill => bill.ID == billId.Value);
-            if (!bills.Any())
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Username = baseRequest.Username,
+                Rand = baseRequest.Rand,
+                BillPayableAmountParameters = new BillPayableAmountRequest()
+                {
+                    SubscriptionId = subscriptionId,
+                    BillId = billId
+                }
+            });
+            if (response.ResponseMessage.ErrorCode != 0)
+            {
                 return 0m;
-
-            var billsAmount = bills.Sum(bill => bill.GetPayableCost());
-            if (!dbSubscription.HasBilling)
-            {
-                billsAmount = dbSubscription.Service.Price;
             }
+            return response.PayableAmount ?? 0m;
+            //// pre-paid sub
+            //if (!dbSubscription.HasBilling)
+            //{
+            //    return dbSubscription.GetSubscriberPackageExtentionUnitPrice();
+            //}
+            //// billed sub
+            //var creditsAmount = dbSubscription.SubscriptionCredits.Sum(credit => credit.Amount);
+            //var bills = dbSubscription.Bills.Where(bill => bill.BillStatusID == (short)BillState.Unpaid).OrderBy(bill => bill.IssueDate).AsEnumerable();
+            //if (billId.HasValue)
+            //    bills = bills.Where(bill => bill.ID == billId.Value);
+            //if (!bills.Any())
+            //    return 0m;
 
-            return Math.Max(0m, billsAmount - creditsAmount);
+            //var billsAmount = bills.Sum(bill => bill.GetPayableCost());
+            //if (!dbSubscription.HasBilling)
+            //{
+            //    billsAmount = dbSubscription.Service.Price;
+            //}
+
+            //return Math.Max(0m, billsAmount - creditsAmount);
         }
-
-        private BillPayment.ResponseType PayBills(RadiusREntities db, Subscription dbSubscription, long? billId, PaymentType paymentType)
+        private CustomerServicePayBillsResponse PayBills(long[] billIds, short? subscriptionPaidType, long? subscriptionId, int? paymentType, int? accountantType)
         {
-            var bills = dbSubscription.Bills.Where(b => b.PaymentTypeID == (short)PaymentType.None);
-            if (billId.HasValue)
-                bills = bills.Where(b => b.ID == billId);
-            if (!bills.Any())
-                return BillPayment.ResponseType.Success;
-
-            return db.PayBills(bills, paymentType, BillPayment.AccountantType.Admin);
+            var payBillBaseRequest = new GenericServiceSettings();
+            var payBills = client.PayBills(new CustomerServicePayBillsRequest()
+            {
+                Culture = payBillBaseRequest.Culture,
+                Hash = payBillBaseRequest.Hash,
+                Rand = payBillBaseRequest.Rand,
+                Username = payBillBaseRequest.Username,
+                PayBillsParameters = new PayBillsRequest()
+                {
+                    BillIds = billIds,
+                    SubscriptionPaidType = subscriptionPaidType,
+                    SubscriptionId = subscriptionId,
+                    PaymentType = paymentType,
+                    AccountantType = accountantType
+                }
+            });
+            return payBills;
         }
-
+        private CustomerServiceSubscriptionBasicInformationResponse GetSubscriptionInfo(long? id)
+        {
+            var subBaseRequest = new GenericServiceSettings();
+            var dbSubscription = client.SubscriptionBasicInfo(new CustomerServiceBaseRequest()
+            {
+                SubscriptionParameters = new BaseSubscriptionRequest()
+                {
+                    SubscriptionId = id
+                },
+                Culture = subBaseRequest.Culture,
+                Hash = subBaseRequest.Hash,
+                Rand = subBaseRequest.Rand,
+                Username = subBaseRequest.Username
+            });
+            return dbSubscription;
+        }
+        private CustomerServiceGenericAppSettingsResponse GenericAppSettings()
+        {
+            var baseRequest = new GenericServiceSettings();
+            var settings = client.GenericAppSettings(new CustomerServiceGenericAppSettingsRequest()
+            {
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Rand = baseRequest.Rand,
+                Username = baseRequest.Username
+            });
+            return settings;
+        }
+        private CustomerServicePaymentTypeListResponse PaymentTypeList()
+        {
+            var paymentRequest = new GenericServiceSettings();
+            var paymentTypes = client.PaymentTypeList(new CustomerServicePaymentTypeListRequest()
+            {
+                Culture = paymentRequest.Culture,
+                Hash = paymentRequest.Hash,
+                Rand = paymentRequest.Rand,
+                Username = paymentRequest.Username
+            });
+            return paymentTypes;
+        }
+        private CustomerServiceGetCustomerBillsResponse GetCustomerBillList(long? subscriptionId)
+        {
+            var billBaseRequest = new GenericServiceSettings();
+            var bills = client.GetCustomerBills(new CustomerServiceBaseRequest()
+            {
+                Culture = billBaseRequest.Culture,
+                Hash = billBaseRequest.Hash,
+                Rand = billBaseRequest.Rand,
+                SubscriptionParameters = new BaseSubscriptionRequest()
+                {
+                    SubscriptionId = subscriptionId,
+                },
+                Username = billBaseRequest.Username
+            });
+            return bills;
+        }
         #endregion
     }
 }

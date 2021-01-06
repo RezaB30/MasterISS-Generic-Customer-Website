@@ -51,7 +51,19 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfChangeSubClientRequestSHA1CuT410mT))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceChangeSubClientRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfBillPayableAmountRequestSHA1CuT410mT))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSendSubscriberSMSRequestSHA1CuT410mT))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfAutoPaymentListRequestSHA1CuT410mT))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfPaymentSystemLogRequestSHA1CuT410mT))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceQuotaPackagesRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfBaseSubscriptionRequestSHA1CuT410mT))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest))]
     public partial class BaseRequestOfSHA1o_Pr6u_PMh : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -373,6 +385,22 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServicePayBillsRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
     [System.SerializableAttribute()]
     public partial class CustomerServicePayBillsRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfPayBillsRequestSHA1CuT410mT {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.PayBillsRequest PayBillsParametersField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.PayBillsRequest PayBillsParameters {
+            get {
+                return this.PayBillsParametersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PayBillsParametersField, value) != true)) {
+                    this.PayBillsParametersField = value;
+                    this.RaisePropertyChanged("PayBillsParameters");
+                }
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -656,9 +684,178 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfBillPayableAmountRequestSHA1CuT410mT", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountRequest))]
+    public partial class BaseRequestOfBillPayableAmountRequestSHA1CuT410mT : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceBillPayableAmountRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceBillPayableAmountRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfBillPayableAmountRequestSHA1CuT410mT {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.BillPayableAmountRequest BillPayableAmountParametersField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.BillPayableAmountRequest BillPayableAmountParameters {
+            get {
+                return this.BillPayableAmountParametersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BillPayableAmountParametersField, value) != true)) {
+                    this.BillPayableAmountParametersField = value;
+                    this.RaisePropertyChanged("BillPayableAmountParameters");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfSendSubscriberSMSRequestSHA1CuT410mT", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSRequest))]
+    public partial class BaseRequestOfSendSubscriberSMSRequestSHA1CuT410mT : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceSendSubscriberSMSRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceSendSubscriberSMSRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSendSubscriberSMSRequestSHA1CuT410mT {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.SendSubscriberSMSRequest SendSubscriberSMSField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.SendSubscriberSMSRequest SendSubscriberSMS {
+            get {
+                return this.SendSubscriberSMSField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SendSubscriberSMSField, value) != true)) {
+                    this.SendSubscriberSMSField = value;
+                    this.RaisePropertyChanged("SendSubscriberSMS");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfAutoPaymentListRequestSHA1CuT410mT", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListRequest))]
+    public partial class BaseRequestOfAutoPaymentListRequestSHA1CuT410mT : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceAutoPaymentListRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceAutoPaymentListRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfAutoPaymentListRequestSHA1CuT410mT {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.AutoPaymentListRequest AutoPaymentListParametersField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.AutoPaymentListRequest AutoPaymentListParameters {
+            get {
+                return this.AutoPaymentListParametersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AutoPaymentListParametersField, value) != true)) {
+                    this.AutoPaymentListParametersField = value;
+                    this.RaisePropertyChanged("AutoPaymentListParameters");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfPaymentSystemLogRequestSHA1CuT410mT", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogRequest))]
+    public partial class BaseRequestOfPaymentSystemLogRequestSHA1CuT410mT : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServicePaymentSystemLogRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServicePaymentSystemLogRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfPaymentSystemLogRequestSHA1CuT410mT {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.PaymentSystemLogRequest PaymentSystemLogParametersField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.PaymentSystemLogRequest PaymentSystemLogParameters {
+            get {
+                return this.PaymentSystemLogParametersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaymentSystemLogParametersField, value) != true)) {
+                    this.PaymentSystemLogParametersField = value;
+                    this.RaisePropertyChanged("PaymentSystemLogParameters");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest))]
+    public partial class BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceMobileExpressPayBillRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceMobileExpressPayBillRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfMobileExpressPayBillRequestSHA1CuT410mT {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.MobileExpressPayBillRequest MobileExpressPayBillParametersField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.MobileExpressPayBillRequest MobileExpressPayBillParameters {
+            get {
+                return this.MobileExpressPayBillParametersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MobileExpressPayBillParametersField, value) != true)) {
+                    this.MobileExpressPayBillParametersField = value;
+                    this.RaisePropertyChanged("MobileExpressPayBillParameters");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceQuotaPackagesRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
     [System.SerializableAttribute()]
     public partial class CustomerServiceQuotaPackagesRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServicePaymentTypeListRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServicePaymentTypeListRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceGenericAppSettingsRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceGenericAppSettingsRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -698,11 +895,17 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.SupportRegisterRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.EArchivePDFRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.PayBillsRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.QuotaSaleRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.RegisteredCardsRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.RemoveCardSMSCheckRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.RemoveCardRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.ActivateAutomaticPaymentRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BillPayableAmountRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.SendSubscriberSMSRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.AutoPaymentListRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.PaymentSystemLogRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.MobileExpressPayBillRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.SupportDetailMessagesRequest))]
     public partial class BaseSubscriptionRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1031,6 +1234,77 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PayBillsRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class PayBillsRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseSubscriptionRequest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> AccountantTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long[] BillIdsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PaymentTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<short> SubscriptionPaidTypeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> AccountantType {
+            get {
+                return this.AccountantTypeField;
+            }
+            set {
+                if ((this.AccountantTypeField.Equals(value) != true)) {
+                    this.AccountantTypeField = value;
+                    this.RaisePropertyChanged("AccountantType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long[] BillIds {
+            get {
+                return this.BillIdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BillIdsField, value) != true)) {
+                    this.BillIdsField = value;
+                    this.RaisePropertyChanged("BillIds");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PaymentType {
+            get {
+                return this.PaymentTypeField;
+            }
+            set {
+                if ((this.PaymentTypeField.Equals(value) != true)) {
+                    this.PaymentTypeField = value;
+                    this.RaisePropertyChanged("PaymentType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<short> SubscriptionPaidType {
+            get {
+                return this.SubscriptionPaidTypeField;
+            }
+            set {
+                if ((this.SubscriptionPaidTypeField.Equals(value) != true)) {
+                    this.SubscriptionPaidTypeField = value;
+                    this.RaisePropertyChanged("SubscriptionPaidType");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="QuotaSaleRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
     [System.SerializableAttribute()]
     public partial class QuotaSaleRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseSubscriptionRequest {
@@ -1210,6 +1484,249 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BillPayableAmountRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class BillPayableAmountRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseSubscriptionRequest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<long> BillIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<long> BillId {
+            get {
+                return this.BillIdField;
+            }
+            set {
+                if ((this.BillIdField.Equals(value) != true)) {
+                    this.BillIdField = value;
+                    this.RaisePropertyChanged("BillId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SendSubscriberSMSRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class SendSubscriberSMSRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseSubscriptionRequest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long[] BillIdsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> PayableAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<short> SubscriptionPaidTypeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long[] BillIds {
+            get {
+                return this.BillIdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BillIdsField, value) != true)) {
+                    this.BillIdsField = value;
+                    this.RaisePropertyChanged("BillIds");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> PayableAmount {
+            get {
+                return this.PayableAmountField;
+            }
+            set {
+                if ((this.PayableAmountField.Equals(value) != true)) {
+                    this.PayableAmountField = value;
+                    this.RaisePropertyChanged("PayableAmount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<short> SubscriptionPaidType {
+            get {
+                return this.SubscriptionPaidTypeField;
+            }
+            set {
+                if ((this.SubscriptionPaidTypeField.Equals(value) != true)) {
+                    this.SubscriptionPaidTypeField = value;
+                    this.RaisePropertyChanged("SubscriptionPaidType");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AutoPaymentListRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class AutoPaymentListRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseSubscriptionRequest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.RegisteredCardsResponse[] CardListField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.RegisteredCardsResponse[] CardList {
+            get {
+                return this.CardListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardListField, value) != true)) {
+                    this.CardListField = value;
+                    this.RaisePropertyChanged("CardList");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PaymentSystemLogRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class PaymentSystemLogRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseSubscriptionRequest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long[] BillIdsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PaymentTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubscriberNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> UserIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long[] BillIds {
+            get {
+                return this.BillIdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BillIdsField, value) != true)) {
+                    this.BillIdsField = value;
+                    this.RaisePropertyChanged("BillIds");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PaymentType {
+            get {
+                return this.PaymentTypeField;
+            }
+            set {
+                if ((this.PaymentTypeField.Equals(value) != true)) {
+                    this.PaymentTypeField = value;
+                    this.RaisePropertyChanged("PaymentType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubscriberNo {
+            get {
+                return this.SubscriberNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubscriberNoField, value) != true)) {
+                    this.SubscriberNoField = value;
+                    this.RaisePropertyChanged("SubscriberNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MobileExpressPayBillRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class MobileExpressPayBillRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseSubscriptionRequest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<long> BillIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.HttpContextParameters HttpContextParametersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> PayableAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TokenField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<long> BillId {
+            get {
+                return this.BillIdField;
+            }
+            set {
+                if ((this.BillIdField.Equals(value) != true)) {
+                    this.BillIdField = value;
+                    this.RaisePropertyChanged("BillId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.HttpContextParameters HttpContextParameters {
+            get {
+                return this.HttpContextParametersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HttpContextParametersField, value) != true)) {
+                    this.HttpContextParametersField = value;
+                    this.RaisePropertyChanged("HttpContextParameters");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> PayableAmount {
+            get {
+                return this.PayableAmountField;
+            }
+            set {
+                if ((this.PayableAmountField.Equals(value) != true)) {
+                    this.PayableAmountField = value;
+                    this.RaisePropertyChanged("PayableAmount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Token {
+            get {
+                return this.TokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TokenField, value) != true)) {
+                    this.TokenField = value;
+                    this.RaisePropertyChanged("Token");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="HttpContextParameters", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
     [System.SerializableAttribute()]
     public partial class HttpContextParameters : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1255,6 +1772,83 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.UserHostAddressField, value) != true)) {
                     this.UserHostAddressField = value;
                     this.RaisePropertyChanged("UserHostAddress");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RegisteredCardsResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class RegisteredCardsResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool HasAutoPaymentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MaskedCardNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TokenField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool HasAutoPayments {
+            get {
+                return this.HasAutoPaymentsField;
+            }
+            set {
+                if ((this.HasAutoPaymentsField.Equals(value) != true)) {
+                    this.HasAutoPaymentsField = value;
+                    this.RaisePropertyChanged("HasAutoPayments");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MaskedCardNo {
+            get {
+                return this.MaskedCardNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MaskedCardNoField, value) != true)) {
+                    this.MaskedCardNoField = value;
+                    this.RaisePropertyChanged("MaskedCardNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Token {
+            get {
+                return this.TokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TokenField, value) != true)) {
+                    this.TokenField = value;
+                    this.RaisePropertyChanged("Token");
                 }
             }
         }
@@ -1462,10 +2056,26 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     public partial class AddCardRequest : RadiusR_Customer_Website.GenericCustomerServiceReference.CreditCardParameters {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.HttpContextParameters HttpContextParametersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SMSCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<long> SubscriptionIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.HttpContextParameters HttpContextParameters {
+            get {
+                return this.HttpContextParametersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HttpContextParametersField, value) != true)) {
+                    this.HttpContextParametersField = value;
+                    this.RaisePropertyChanged("HttpContextParameters");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string SMSCode {
@@ -2344,6 +2954,9 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         private System.DateTime LastPaymentDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short PaymentTypeIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ServiceNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2426,6 +3039,19 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
                 if ((this.LastPaymentDateField.Equals(value) != true)) {
                     this.LastPaymentDateField = value;
                     this.RaisePropertyChanged("LastPaymentDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short PaymentTypeID {
+            get {
+                return this.PaymentTypeIDField;
+            }
+            set {
+                if ((this.PaymentTypeIDField.Equals(value) != true)) {
+                    this.PaymentTypeIDField = value;
+                    this.RaisePropertyChanged("PaymentTypeID");
                 }
             }
         }
@@ -4518,6 +5144,9 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceActivateAutomaticPaymentResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasActiveRequestResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSupportMessageResponse))]
     public partial class BaseResponseOfNullableOfbooleanSHA1qBRhzOKh : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -4780,6 +5409,75 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
                 if ((this.HasActiveRequestField.Equals(value) != true)) {
                     this.HasActiveRequestField = value;
                     this.RaisePropertyChanged("HasActiveRequest");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceSendSubscriberSMSResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceSendSubscriberSMSResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfNullableOfbooleanSHA1qBRhzOKh {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> SendSubscriberSMSResponseField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> SendSubscriberSMSResponse {
+            get {
+                return this.SendSubscriberSMSResponseField;
+            }
+            set {
+                if ((this.SendSubscriberSMSResponseField.Equals(value) != true)) {
+                    this.SendSubscriberSMSResponseField = value;
+                    this.RaisePropertyChanged("SendSubscriberSMSResponse");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServicePaymentSystemLogResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServicePaymentSystemLogResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfNullableOfbooleanSHA1qBRhzOKh {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> PaymentSystemLogResultField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> PaymentSystemLogResult {
+            get {
+                return this.PaymentSystemLogResultField;
+            }
+            set {
+                if ((this.PaymentSystemLogResultField.Equals(value) != true)) {
+                    this.PaymentSystemLogResultField = value;
+                    this.RaisePropertyChanged("PaymentSystemLogResult");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceMobileExpressPayBillResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceMobileExpressPayBillResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfNullableOfbooleanSHA1qBRhzOKh {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> MobileExpressPayBillResultField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> MobileExpressPayBillResult {
+            get {
+                return this.MobileExpressPayBillResultField;
+            }
+            set {
+                if ((this.MobileExpressPayBillResultField.Equals(value) != true)) {
+                    this.MobileExpressPayBillResultField = value;
+                    this.RaisePropertyChanged("MobileExpressPayBillResult");
                 }
             }
         }
@@ -6198,83 +6896,6 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RegisteredCardsResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
-    [System.SerializableAttribute()]
-    public partial class RegisteredCardsResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool HasAutoPaymentsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MaskedCardNoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TokenField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool HasAutoPayments {
-            get {
-                return this.HasAutoPaymentsField;
-            }
-            set {
-                if ((this.HasAutoPaymentsField.Equals(value) != true)) {
-                    this.HasAutoPaymentsField = value;
-                    this.RaisePropertyChanged("HasAutoPayments");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MaskedCardNo {
-            get {
-                return this.MaskedCardNoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MaskedCardNoField, value) != true)) {
-                    this.MaskedCardNoField = value;
-                    this.RaisePropertyChanged("MaskedCardNo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Token {
-            get {
-                return this.TokenField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TokenField, value) != true)) {
-                    this.TokenField = value;
-                    this.RaisePropertyChanged("Token");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfAuthenticationSMSConfirmResponseSHA1KVWl_PpN3", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmResponse))]
@@ -6616,17 +7237,17 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     public partial class CustomerServiceSubscriptionBasicInformationResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfSubscriptionBasicInformationResponseSHA1KVWl_PpN3 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RadiusR_Customer_Website.GenericCustomerServiceReference.SubscriptionBasicInformationResponse AuthenticationSMSConfirmResponseField;
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.SubscriptionBasicInformationResponse SubscriptionBasicInformationResponseField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public RadiusR_Customer_Website.GenericCustomerServiceReference.SubscriptionBasicInformationResponse AuthenticationSMSConfirmResponse {
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.SubscriptionBasicInformationResponse SubscriptionBasicInformationResponse {
             get {
-                return this.AuthenticationSMSConfirmResponseField;
+                return this.SubscriptionBasicInformationResponseField;
             }
             set {
-                if ((object.ReferenceEquals(this.AuthenticationSMSConfirmResponseField, value) != true)) {
-                    this.AuthenticationSMSConfirmResponseField = value;
-                    this.RaisePropertyChanged("AuthenticationSMSConfirmResponse");
+                if ((object.ReferenceEquals(this.SubscriptionBasicInformationResponseField, value) != true)) {
+                    this.SubscriptionBasicInformationResponseField = value;
+                    this.RaisePropertyChanged("SubscriptionBasicInformationResponse");
                 }
             }
         }
@@ -6642,13 +7263,25 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long CustomerIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool HasBillingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsCancelledField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] RelatedCustomersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SubscriberNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.SubscriptionBasicInformationResponse.Service SubscriptionServiceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ValidDisplayNameField;
@@ -6664,6 +7297,32 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public long CustomerID {
+            get {
+                return this.CustomerIDField;
+            }
+            set {
+                if ((this.CustomerIDField.Equals(value) != true)) {
+                    this.CustomerIDField = value;
+                    this.RaisePropertyChanged("CustomerID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool HasBilling {
+            get {
+                return this.HasBillingField;
+            }
+            set {
+                if ((this.HasBillingField.Equals(value) != true)) {
+                    this.HasBillingField = value;
+                    this.RaisePropertyChanged("HasBilling");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public long ID {
             get {
                 return this.IDField;
@@ -6672,6 +7331,19 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
                 if ((this.IDField.Equals(value) != true)) {
                     this.IDField = value;
                     this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsCancelled {
+            get {
+                return this.IsCancelledField;
+            }
+            set {
+                if ((this.IsCancelledField.Equals(value) != true)) {
+                    this.IsCancelledField = value;
+                    this.RaisePropertyChanged("IsCancelled");
                 }
             }
         }
@@ -6703,6 +7375,19 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.SubscriptionBasicInformationResponse.Service SubscriptionService {
+            get {
+                return this.SubscriptionServiceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubscriptionServiceField, value) != true)) {
+                    this.SubscriptionServiceField = value;
+                    this.RaisePropertyChanged("SubscriptionService");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ValidDisplayName {
             get {
                 return this.ValidDisplayNameField;
@@ -6721,6 +7406,50 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThroughAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="SubscriptionBasicInformationResponse.Service", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+        [System.SerializableAttribute()]
+        public partial class Service : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+            
+            [System.NonSerializedAttribute()]
+            private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+            
+            [System.Runtime.Serialization.OptionalFieldAttribute()]
+            private System.Nullable<decimal> PriceField;
+            
+            public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+                get {
+                    return this.extensionDataField;
+                }
+                set {
+                    this.extensionDataField = value;
+                }
+            }
+            
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public System.Nullable<decimal> Price {
+                get {
+                    return this.PriceField;
+                }
+                set {
+                    if ((this.PriceField.Equals(value) != true)) {
+                        this.PriceField = value;
+                        this.RaisePropertyChanged("Price");
+                    }
+                }
+            }
+            
+            public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+            
+            protected void RaisePropertyChanged(string propertyName) {
+                System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+                if ((propertyChanged != null)) {
+                    propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+                }
             }
         }
     }
@@ -7145,6 +7874,736 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfNullableOfdecimalSHA1qBRhzOKh", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountResponse))]
+    public partial class BaseResponseOfNullableOfdecimalSHA1qBRhzOKh : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CultureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HashField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RandField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.ServiceResponse ResponseMessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Culture {
+            get {
+                return this.CultureField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CultureField, value) != true)) {
+                    this.CultureField = value;
+                    this.RaisePropertyChanged("Culture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hash {
+            get {
+                return this.HashField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HashField, value) != true)) {
+                    this.HashField = value;
+                    this.RaisePropertyChanged("Hash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rand {
+            get {
+                return this.RandField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RandField, value) != true)) {
+                    this.RandField = value;
+                    this.RaisePropertyChanged("Rand");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.ServiceResponse ResponseMessage {
+            get {
+                return this.ResponseMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseMessageField, value) != true)) {
+                    this.ResponseMessageField = value;
+                    this.RaisePropertyChanged("ResponseMessage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceBillPayableAmountResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceBillPayableAmountResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfNullableOfdecimalSHA1qBRhzOKh {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> PayableAmountField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> PayableAmount {
+            get {
+                return this.PayableAmountField;
+            }
+            set {
+                if ((this.PayableAmountField.Equals(value) != true)) {
+                    this.PayableAmountField = value;
+                    this.RaisePropertyChanged("PayableAmount");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse))]
+    public partial class BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CultureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HashField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RandField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.ServiceResponse ResponseMessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Culture {
+            get {
+                return this.CultureField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CultureField, value) != true)) {
+                    this.CultureField = value;
+                    this.RaisePropertyChanged("Culture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hash {
+            get {
+                return this.HashField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HashField, value) != true)) {
+                    this.HashField = value;
+                    this.RaisePropertyChanged("Hash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rand {
+            get {
+                return this.RandField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RandField, value) != true)) {
+                    this.RandField = value;
+                    this.RaisePropertyChanged("Rand");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.ServiceResponse ResponseMessage {
+            get {
+                return this.ResponseMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseMessageField, value) != true)) {
+                    this.ResponseMessageField = value;
+                    this.RaisePropertyChanged("ResponseMessage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServicePaymentTypeListResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServicePaymentTypeListResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<int, string> PaymentTypesField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<int, string> PaymentTypes {
+            get {
+                return this.PaymentTypesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaymentTypesField, value) != true)) {
+                    this.PaymentTypesField = value;
+                    this.RaisePropertyChanged("PaymentTypes");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfGenericAppSettingsResponseSHA1KVWl_PpN3", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsResponse))]
+    public partial class BaseResponseOfGenericAppSettingsResponseSHA1KVWl_PpN3 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CultureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HashField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RandField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.ServiceResponse ResponseMessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Culture {
+            get {
+                return this.CultureField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CultureField, value) != true)) {
+                    this.CultureField = value;
+                    this.RaisePropertyChanged("Culture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hash {
+            get {
+                return this.HashField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HashField, value) != true)) {
+                    this.HashField = value;
+                    this.RaisePropertyChanged("Hash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rand {
+            get {
+                return this.RandField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RandField, value) != true)) {
+                    this.RandField = value;
+                    this.RaisePropertyChanged("Rand");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.ServiceResponse ResponseMessage {
+            get {
+                return this.ResponseMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseMessageField, value) != true)) {
+                    this.ResponseMessageField = value;
+                    this.RaisePropertyChanged("ResponseMessage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceGenericAppSettingsResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceGenericAppSettingsResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfGenericAppSettingsResponseSHA1KVWl_PpN3 {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.GenericAppSettingsResponse GenericAppSettingsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.GenericAppSettingsResponse GenericAppSettings {
+            get {
+                return this.GenericAppSettingsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenericAppSettingsField, value) != true)) {
+                    this.GenericAppSettingsField = value;
+                    this.RaisePropertyChanged("GenericAppSettings");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GenericAppSettingsResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class GenericAppSettingsResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool HasAnyTelekomDomainsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool MobilExpressIsActiveField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool HasAnyTelekomDomains {
+            get {
+                return this.HasAnyTelekomDomainsField;
+            }
+            set {
+                if ((this.HasAnyTelekomDomainsField.Equals(value) != true)) {
+                    this.HasAnyTelekomDomainsField = value;
+                    this.RaisePropertyChanged("HasAnyTelekomDomains");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool MobilExpressIsActive {
+            get {
+                return this.MobilExpressIsActiveField;
+            }
+            set {
+                if ((this.MobilExpressIsActiveField.Equals(value) != true)) {
+                    this.MobilExpressIsActiveField = value;
+                    this.RaisePropertyChanged("MobilExpressIsActive");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfArrayOfAutoPaymentListResponseSHA1KVWl_PpN3", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListResponse))]
+    public partial class BaseResponseOfArrayOfAutoPaymentListResponseSHA1KVWl_PpN3 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CultureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HashField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RandField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.ServiceResponse ResponseMessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Culture {
+            get {
+                return this.CultureField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CultureField, value) != true)) {
+                    this.CultureField = value;
+                    this.RaisePropertyChanged("Culture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hash {
+            get {
+                return this.HashField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HashField, value) != true)) {
+                    this.HashField = value;
+                    this.RaisePropertyChanged("Hash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rand {
+            get {
+                return this.RandField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RandField, value) != true)) {
+                    this.RandField = value;
+                    this.RaisePropertyChanged("Rand");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.ServiceResponse ResponseMessage {
+            get {
+                return this.ResponseMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseMessageField, value) != true)) {
+                    this.ResponseMessageField = value;
+                    this.RaisePropertyChanged("ResponseMessage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceAutoPaymentListResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceAutoPaymentListResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfArrayOfAutoPaymentListResponseSHA1KVWl_PpN3 {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.AutoPaymentListResponse[] AutoPaymentListResultField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.AutoPaymentListResponse[] AutoPaymentListResult {
+            get {
+                return this.AutoPaymentListResultField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AutoPaymentListResultField, value) != true)) {
+                    this.AutoPaymentListResultField = value;
+                    this.RaisePropertyChanged("AutoPaymentListResult");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AutoPaymentListResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class AutoPaymentListResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RadiusR_Customer_Website.GenericCustomerServiceReference.AutoPaymentListResponse.Card CardsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long SubscriberIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubscriberNoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.AutoPaymentListResponse.Card Cards {
+            get {
+                return this.CardsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardsField, value) != true)) {
+                    this.CardsField = value;
+                    this.RaisePropertyChanged("Cards");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long SubscriberID {
+            get {
+                return this.SubscriberIDField;
+            }
+            set {
+                if ((this.SubscriberIDField.Equals(value) != true)) {
+                    this.SubscriberIDField = value;
+                    this.RaisePropertyChanged("SubscriberID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubscriberNo {
+            get {
+                return this.SubscriberNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubscriberNoField, value) != true)) {
+                    this.SubscriberNoField = value;
+                    this.RaisePropertyChanged("SubscriberNo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThroughAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="AutoPaymentListResponse.Card", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+        [System.SerializableAttribute()]
+        public partial class Card : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+            
+            [System.NonSerializedAttribute()]
+            private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+            
+            [System.Runtime.Serialization.OptionalFieldAttribute()]
+            private string MaskedCardNoField;
+            
+            [System.Runtime.Serialization.OptionalFieldAttribute()]
+            private string TokenField;
+            
+            public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+                get {
+                    return this.extensionDataField;
+                }
+                set {
+                    this.extensionDataField = value;
+                }
+            }
+            
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public string MaskedCardNo {
+                get {
+                    return this.MaskedCardNoField;
+                }
+                set {
+                    if ((object.ReferenceEquals(this.MaskedCardNoField, value) != true)) {
+                        this.MaskedCardNoField = value;
+                        this.RaisePropertyChanged("MaskedCardNo");
+                    }
+                }
+            }
+            
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public string Token {
+                get {
+                    return this.TokenField;
+                }
+                set {
+                    if ((object.ReferenceEquals(this.TokenField, value) != true)) {
+                        this.TokenField = value;
+                        this.RaisePropertyChanged("Token");
+                    }
+                }
+            }
+            
+            public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+            
+            protected void RaisePropertyChanged(string propertyName) {
+                System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+                if ((propertyChanged != null)) {
+                    propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+                }
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GenericCustomerServiceReference.IGenericCustomerService")]
     public interface IGenericCustomerService {
@@ -7271,11 +8730,13 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/AddCard", ReplyAction="http://tempuri.org/IGenericCustomerService/AddCardResponse")]
         System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAddCardResponse> AddCardAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAddCardRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/RegisteredCardList", ReplyAction="http://tempuri.org/IGenericCustomerService/RegisteredCardListResponse")]
-        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse RegisteredCardList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardList", ReplyAction="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardListRespons" +
+            "e")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse RegisteredMobileExpressCardList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/RegisteredCardList", ReplyAction="http://tempuri.org/IGenericCustomerService/RegisteredCardListResponse")]
-        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse> RegisteredCardListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardList", ReplyAction="http://tempuri.org/IGenericCustomerService/RegisteredMobileExpressCardListRespons" +
+            "e")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse> RegisteredMobileExpressCardListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/RemoveCardSMSCheck", ReplyAction="http://tempuri.org/IGenericCustomerService/RemoveCardSMSCheckResponse")]
         RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardSMSValidationResponse RemoveCardSMSCheck(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardSMSCheckRequest request);
@@ -7330,6 +8791,48 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/SupportStatus", ReplyAction="http://tempuri.org/IGenericCustomerService/SupportStatusResponse")]
         System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSupportStatusResponse> SupportStatusAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/BillPayableAmount", ReplyAction="http://tempuri.org/IGenericCustomerService/BillPayableAmountResponse")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountResponse BillPayableAmount(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/BillPayableAmount", ReplyAction="http://tempuri.org/IGenericCustomerService/BillPayableAmountResponse")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountResponse> BillPayableAmountAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/PaymentTypeList", ReplyAction="http://tempuri.org/IGenericCustomerService/PaymentTypeListResponse")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse PaymentTypeList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/PaymentTypeList", ReplyAction="http://tempuri.org/IGenericCustomerService/PaymentTypeListResponse")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse> PaymentTypeListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GenericAppSettings", ReplyAction="http://tempuri.org/IGenericCustomerService/GenericAppSettingsResponse")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsResponse GenericAppSettings(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GenericAppSettings", ReplyAction="http://tempuri.org/IGenericCustomerService/GenericAppSettingsResponse")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsResponse> GenericAppSettingsAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/SendSubscriberSMS", ReplyAction="http://tempuri.org/IGenericCustomerService/SendSubscriberSMSResponse")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSResponse SendSubscriberSMS(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/SendSubscriberSMS", ReplyAction="http://tempuri.org/IGenericCustomerService/SendSubscriberSMSResponse")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSResponse> SendSubscriberSMSAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/AutoPaymentList", ReplyAction="http://tempuri.org/IGenericCustomerService/AutoPaymentListResponse")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListResponse AutoPaymentList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/AutoPaymentList", ReplyAction="http://tempuri.org/IGenericCustomerService/AutoPaymentListResponse")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListResponse> AutoPaymentListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/PaymentSystemLog", ReplyAction="http://tempuri.org/IGenericCustomerService/PaymentSystemLogResponse")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse PaymentSystemLog(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/PaymentSystemLog", ReplyAction="http://tempuri.org/IGenericCustomerService/PaymentSystemLogResponse")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse> PaymentSystemLogAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/MobileExpressPayBill", ReplyAction="http://tempuri.org/IGenericCustomerService/MobileExpressPayBillResponse")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse MobileExpressPayBill(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/MobileExpressPayBill", ReplyAction="http://tempuri.org/IGenericCustomerService/MobileExpressPayBillResponse")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse> MobileExpressPayBillAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -7519,12 +9022,12 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
             return base.Channel.AddCardAsync(request);
         }
         
-        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse RegisteredCardList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request) {
-            return base.Channel.RegisteredCardList(request);
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse RegisteredMobileExpressCardList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request) {
+            return base.Channel.RegisteredMobileExpressCardList(request);
         }
         
-        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse> RegisteredCardListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request) {
-            return base.Channel.RegisteredCardListAsync(request);
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsResponse> RegisteredMobileExpressCardListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRegisteredCardsRequest request) {
+            return base.Channel.RegisteredMobileExpressCardListAsync(request);
         }
         
         public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardSMSValidationResponse RemoveCardSMSCheck(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceRemoveCardSMSCheckRequest request) {
@@ -7597,6 +9100,62 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         
         public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSupportStatusResponse> SupportStatusAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
             return base.Channel.SupportStatusAsync(request);
+        }
+        
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountResponse BillPayableAmount(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountRequest request) {
+            return base.Channel.BillPayableAmount(request);
+        }
+        
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountResponse> BillPayableAmountAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBillPayableAmountRequest request) {
+            return base.Channel.BillPayableAmountAsync(request);
+        }
+        
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse PaymentTypeList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListRequest request) {
+            return base.Channel.PaymentTypeList(request);
+        }
+        
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse> PaymentTypeListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentTypeListRequest request) {
+            return base.Channel.PaymentTypeListAsync(request);
+        }
+        
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsResponse GenericAppSettings(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsRequest request) {
+            return base.Channel.GenericAppSettings(request);
+        }
+        
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsResponse> GenericAppSettingsAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsRequest request) {
+            return base.Channel.GenericAppSettingsAsync(request);
+        }
+        
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSResponse SendSubscriberSMS(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSRequest request) {
+            return base.Channel.SendSubscriberSMS(request);
+        }
+        
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSResponse> SendSubscriberSMSAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSRequest request) {
+            return base.Channel.SendSubscriberSMSAsync(request);
+        }
+        
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListResponse AutoPaymentList(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListRequest request) {
+            return base.Channel.AutoPaymentList(request);
+        }
+        
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListResponse> AutoPaymentListAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListRequest request) {
+            return base.Channel.AutoPaymentListAsync(request);
+        }
+        
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse PaymentSystemLog(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogRequest request) {
+            return base.Channel.PaymentSystemLog(request);
+        }
+        
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse> PaymentSystemLogAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogRequest request) {
+            return base.Channel.PaymentSystemLogAsync(request);
+        }
+        
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse MobileExpressPayBill(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest request) {
+            return base.Channel.MobileExpressPayBill(request);
+        }
+        
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse> MobileExpressPayBillAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillRequest request) {
+            return base.Channel.MobileExpressPayBillAsync(request);
         }
     }
 }

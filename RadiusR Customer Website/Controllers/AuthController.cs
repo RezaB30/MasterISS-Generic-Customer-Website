@@ -43,10 +43,10 @@ namespace RadiusR_Customer_Website.Controllers
                 var baseRequest = new GenericServiceSettings();
                 var result = client.CustomerAuthentication(new GenericCustomerServiceReference.CustomerServiceAuthenticationRequest()
                 {
-                    Culture = baseRequest._culture,
-                    Rand = baseRequest._rand,
-                    Username = baseRequest._username,
-                    Hash = baseRequest.hash,
+                    Culture = baseRequest.Culture,
+                    Rand = baseRequest.Rand,
+                    Username = baseRequest.Username,
+                    Hash = baseRequest.Hash,
                     AuthenticationParameters = new GenericCustomerServiceReference.AuthenticationRequest()
                     {
                         PhoneNo = login.CustomerCode,
@@ -129,10 +129,10 @@ namespace RadiusR_Customer_Website.Controllers
                 var baseRequest = new GenericServiceSettings();
                 var result = client.AuthenticationSMSConfirm(new GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmRequest()
                 {
-                    Culture = baseRequest._culture,
-                    Hash = baseRequest.hash,
-                    Rand = baseRequest._rand,
-                    Username = baseRequest._username,
+                    Culture = baseRequest.Culture,
+                    Hash = baseRequest.Hash,
+                    Rand = baseRequest.Rand,
+                    Username = baseRequest.Username,
                     AuthenticationSMSConfirmParameters = new GenericCustomerServiceReference.AuthenticationSMSConfirmRequest()
                     {
                         CustomerCode = login.CustomerCode,
@@ -149,35 +149,8 @@ namespace RadiusR_Customer_Website.Controllers
                 {
                     ModelState.AddModelError("CustomerCode", result.ResponseMessage.ErrorMessage);
                 }
-                //using (RadiusREntities db = new RadiusREntities())
-                //{
-                //    // find customers
-                //    var dbCustomers = db.Customers.Where(c => c.CustomerIDCard.TCKNo == login.CustomerCode || c.ContactPhoneNo == login.CustomerCode).ToArray();
-                //    // select a subscriber
-                //    var dbClient = dbCustomers.SelectMany(c => c.Subscriptions).FirstOrDefault();
-
-                //    if (dbCustomers.Count() > 0 && dbClient != null)
-                //    {
-
-                //        // if need to send a new password
-                //        if (string.IsNullOrEmpty(dbClient.OnlinePassword) || !dbClient.OnlinePasswordExpirationDate.HasValue)
-                //            return RedirectToAction("Login");
-                //        if (dbClient.OnlinePassword != login.SMSPassword)
-                //        {
-                //            ModelState.AddModelError("SMSPassword", RadiusRCustomerWebSite.Localization.Common.SMSPasswordWrong);
-                //            return View(login);
-                //        }
-                //        // sign in
-                //        SignInUser(dbClient, dbCustomers, Request.GetOwinContext());
-                //        return Redirect(GetRedirectUrl(Request.QueryString["ReturnUrl"]));
-                //    }
-                //    else
-                //    {
-                //        ModelState.AddModelError("CustomerCode", RadiusRCustomerWebSite.Localization.Common.ClientNotFound);
-                //    }
-                //}
+                
             }
-            //ViewBag.SMSWarning = string.Format(RadiusRCustomerWebSite.Localization.Common.SMSWarningMessage, AppSettings.OnlinePasswordDuration.Hours);
             return View(login);
         }
         //public ActionResult GetPassword()
@@ -225,7 +198,7 @@ namespace RadiusR_Customer_Website.Controllers
         //    return View(login);
         //}
         public ActionResult LogOut()
-        { 
+        {
             SignoutUser(Request.GetOwinContext());
             return RedirectToAction("Login");
         }
@@ -253,21 +226,24 @@ namespace RadiusR_Customer_Website.Controllers
 
         internal static void SignInCurrentUserAgain(IOwinContext context)
         {
-            GenericCustomerServiceClient client = new GenericCustomerServiceClient();
+            GenericCustomerServiceClient serviceClient = new GenericCustomerServiceClient();
             var baseRequest = new GenericServiceSettings();
             var subId = context.Authentication.User.GiveUserId();
-            var result = client.SubscriptionBasicInfo(new CustomerServiceBaseRequest()
+            var result = serviceClient.SubscriptionBasicInfo(new CustomerServiceBaseRequest()
             {
-                Culture = baseRequest._culture,
-                Username = baseRequest._username,
-                Rand = baseRequest._rand,
-                Hash = baseRequest.hash,
+                Culture = baseRequest.Culture,
+                Username = baseRequest.Username,
+                Rand = baseRequest.Rand,
+                Hash = baseRequest.Hash,
                 SubscriptionParameters = new BaseSubscriptionRequest()
                 {
                     SubscriptionId = subId
                 }
             });
-            SignInUser(result.AuthenticationSMSConfirmResponse.ValidDisplayName, result.AuthenticationSMSConfirmResponse.ID.ToString(), result.AuthenticationSMSConfirmResponse.SubscriberNo, result.AuthenticationSMSConfirmResponse.RelatedCustomers, context);
+            if (result.ResponseMessage.ErrorCode == 0)
+            {
+                SignInUser(result.SubscriptionBasicInformationResponse.ValidDisplayName, result.SubscriptionBasicInformationResponse.ID.ToString(), result.SubscriptionBasicInformationResponse.SubscriberNo, result.SubscriptionBasicInformationResponse.RelatedCustomers, context);
+            }
         }
         internal static void SignoutUser(IOwinContext context)
         {

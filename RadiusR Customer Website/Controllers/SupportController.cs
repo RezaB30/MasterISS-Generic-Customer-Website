@@ -304,7 +304,7 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 return new SelectList(Enumerable.Empty<object>());
             }
-            return new SelectList(response.NameValuePairList.Select(pair => new { Name = pair.Name, Value = pair.Value }), "Value", "Name", selectedValue);
+            return new SelectList(response.ValueNamePairList.Select(pair => new { Name = pair.Name, Value = pair.Value }), "Value", "Name", selectedValue);
         }
         private SelectList GetSupportSubTypes(int? SupportTypeId, object selectedValue = null)
         {
@@ -325,7 +325,7 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 return new SelectList(Enumerable.Empty<object>());
             }
-            return new SelectList(response.NameValuePairList.Select(pair => new { Name = pair.Name, Value = pair.Value }), "Value", "Name", selectedValue);
+            return new SelectList(response.ValueNamePairList.Select(pair => new { Name = pair.Name, Value = pair.Value }), "Value", "Name", selectedValue);
         }
         #endregion
     }

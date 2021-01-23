@@ -13,9 +13,9 @@
 {
     @Html.AntiForgeryToken()
     <div class="login-form">
-        @*<div class="login-title" style="border-bottom:1px solid white; margin-bottom:1em;">
+        <div class="login-title" style="border-bottom:1px solid white; margin-bottom:1em;">
             @Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.LoginWithPassword, "Login", "Auth", null, new { @class = "link-button" })
-        </div>*@
+        </div>
         <div class="login-title">@RadiusRCustomerWebSite.Localization.Common.SiteTitle</div>
         @Html.EditorFor(model => model.CustomerCode, new { htmlAttributes = new { @placeholder = Html.DisplayNameFor(model => model.CustomerCode), @autocomplete = "off" } })
         <div class="validation-container">

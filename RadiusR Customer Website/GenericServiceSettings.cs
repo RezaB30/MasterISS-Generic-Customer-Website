@@ -14,13 +14,15 @@ namespace RadiusR_Customer_Website
         public string Culture { get; set; }
         public string Rand { get; set; }
         public string Username { get; set; }
+        private string Password { get; set; }
         public GenericServiceSettings()
         {
             Culture = Thread.CurrentThread.CurrentUICulture.Name;
             Rand = Guid.NewGuid().ToString();
-            Username = "onur";
+            Username = Properties.Settings.Default.WebServiceUsername;
+            Password = Properties.Settings.Default.WebServicePassword;
         }
-        public string Hash { get { return HashUtilities.CalculateHash<SHA1>(Username + Rand + HashUtilities.CalculateHash<SHA1>("123456") + client.GetKeyFragment(Username)); } }
+        public string Hash { get { return HashUtilities.CalculateHash<SHA1>(Username + Rand + HashUtilities.CalculateHash<SHA1>(Password) + client.GetKeyFragment(Username)); } }
     }
     public static class HashUtilities
     {

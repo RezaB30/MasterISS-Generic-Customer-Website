@@ -25,23 +25,9 @@
         <div class="validation-container">
             @Html.ValidationMessageFor(model => model.Password)
         </div>
-        <div class="centered" style="margin-bottom:1em;">@Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.GetNewPassword, "GetPassword", "Auth", null, new { @class = "link-button", @style = "font-size:1em;" })</div>
-        <div class="captcha">
-            <div class="captcha-image-wrapper">
-                <img class="captcha-image" src="@Url.Action("DirectLoginCaptcha","Captcha",new { id = random.Next(1000, int.MaxValue) })" />
-                <input class="captcha-reload-button" type="button" />
-            </div>
-        </div>
-
-
-        @Html.EditorFor(m => m.Captcha, new { htmlAttributes = new { @placeholder = RadiusRCustomerWebSite.Localization.Common.Captcha, @autocomplete = "off" } })
-        <div class="validation-container">@Html.ValidationMessageFor(m => m.Captcha)</div>
+        @*<div class="centered" style="margin-bottom:1em;">@Html.ActionLink(RadiusRCustomerWebSite.Localization.Common.GetNewPassword, "GetPassword", "Auth", null, new { @class = "link-button", @style = "font-size:1em;" })</div>*@
         <input type="submit" value="@RadiusRCustomerWebSite.Localization.Common.Send" />
+        <div class="validation-container">@Html.ValidationSummary()</div>
         <div class="copyright"> @ViewBag.Copyright | @Html.Raw(ViewBag.WebSite) </div>
     </div>
-}
-@section scripts{
-    <script>
-        $('#Captcha').val("");
-    </script>
 }

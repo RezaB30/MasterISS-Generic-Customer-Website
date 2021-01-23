@@ -20,5 +20,11 @@
     <Setting Name="TableRows" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">10</Value>
     </Setting>
+    <Setting Name="WebServiceUsername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">testwebservice</Value>
+    </Setting>
+    <Setting Name="WebServicePassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">12345678</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

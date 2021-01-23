@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.Payment" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.Payment" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd9" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Payment" />
+  <xs:complexType name="CustomerServiceEArchivePDFRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q1:BaseRequestOfEArchivePDFRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EArchivePDFParameters" nillable="true" type="tns:EArchivePDFRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceEArchivePDFRequest" nillable="true" type="tns:CustomerServiceEArchivePDFRequest" />
+  <xs:complexType name="EArchivePDFRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q2:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BillId" nillable="true" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EArchivePDFRequest" nillable="true" type="tns:EArchivePDFRequest" />
+  <xs:complexType name="CustomerServicePayBillsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q3:BaseRequestOfPayBillsRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PayBillsParameters" nillable="true" type="tns:PayBillsRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServicePayBillsRequest" nillable="true" type="tns:CustomerServicePayBillsRequest" />
+  <xs:complexType name="PayBillsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q4:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountantType" nillable="true" type="xs:int" />
+          <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BillIds" nillable="true" type="q5:ArrayOflong" />
+          <xs:element minOccurs="0" name="PaymentType" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SubscriptionPaidType" nillable="true" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PayBillsRequest" nillable="true" type="tns:PayBillsRequest" />
+  <xs:complexType name="CustomerServiceVPOSFormRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q6:BaseRequestOfVPOSFormRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="VPOSFormParameters" nillable="true" type="tns:VPOSFormRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceVPOSFormRequest" nillable="true" type="tns:CustomerServiceVPOSFormRequest" />
+  <xs:complexType name="VPOSFormRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FailUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OkUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PayableAmount" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SubscriptionId" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VPOSFormRequest" nillable="true" type="tns:VPOSFormRequest" />
+  <xs:complexType name="CustomerServiceQuotaSaleRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q7:BaseRequestOfQuotaSaleRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QuotaSaleParameters" nillable="true" type="tns:QuotaSaleRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceQuotaSaleRequest" nillable="true" type="tns:CustomerServiceQuotaSaleRequest" />
+  <xs:complexType name="QuotaSaleRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q8:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PackageId" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QuotaSaleRequest" nillable="true" type="tns:QuotaSaleRequest" />
+  <xs:complexType name="CustomerServiceAddCardRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q9:BaseRequestOfAddCardRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AddCardParameters" nillable="true" type="tns:AddCardRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceAddCardRequest" nillable="true" type="tns:CustomerServiceAddCardRequest" />
+  <xs:complexType name="AddCardRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CreditCardParameters">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" minOccurs="0" name="HttpContextParameters" nillable="true" type="q10:HttpContextParameters" />
+          <xs:element minOccurs="0" name="SMSCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SubscriptionId" nillable="true" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddCardRequest" nillable="true" type="tns:AddCardRequest" />
+  <xs:complexType name="CreditCardParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardholderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpirationMonth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpirationYear" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditCardParameters" nillable="true" type="tns:CreditCardParameters" />
+  <xs:complexType name="CustomerServiceRegisteredCardsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q11:BaseRequestOfRegisteredCardsRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RegisteredCardsParameters" nillable="true" type="tns:RegisteredCardsRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceRegisteredCardsRequest" nillable="true" type="tns:CustomerServiceRegisteredCardsRequest" />
+  <xs:complexType name="RegisteredCardsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q12:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HttpContextParameters" nillable="true" type="q12:HttpContextParameters" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisteredCardsRequest" nillable="true" type="tns:RegisteredCardsRequest" />
+  <xs:complexType name="CustomerServiceRemoveCardSMSCheckRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q13:BaseRequestOfRemoveCardSMSCheckRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RemoveCardSMSCheckParameters" nillable="true" type="tns:RemoveCardSMSCheckRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceRemoveCardSMSCheckRequest" nillable="true" type="tns:CustomerServiceRemoveCardSMSCheckRequest" />
+  <xs:complexType name="RemoveCardSMSCheckRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q14="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q14:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardToken" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoveCardSMSCheckRequest" nillable="true" type="tns:RemoveCardSMSCheckRequest" />
+  <xs:complexType name="CustomerServiceRemoveCardRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q15="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q15:BaseRequestOfRemoveCardRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RemoveCardParameters" nillable="true" type="tns:RemoveCardRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceRemoveCardRequest" nillable="true" type="tns:CustomerServiceRemoveCardRequest" />
+  <xs:complexType name="RemoveCardRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q16:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HttpContextParameters" nillable="true" type="q16:HttpContextParameters" />
+          <xs:element minOccurs="0" name="SMSCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoveCardRequest" nillable="true" type="tns:RemoveCardRequest" />
+  <xs:complexType name="CustomerServiceActivateAutomaticPaymentRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q17="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q17:BaseRequestOfActivateAutomaticPaymentRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActivateAutomaticPaymentParameters" nillable="true" type="tns:ActivateAutomaticPaymentRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceActivateAutomaticPaymentRequest" nillable="true" type="tns:CustomerServiceActivateAutomaticPaymentRequest" />
+  <xs:complexType name="ActivateAutomaticPaymentRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q18="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q18:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HttpContextParameters" nillable="true" type="q18:HttpContextParameters" />
+          <xs:element minOccurs="0" name="PaymentType" nillable="true" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActivateAutomaticPaymentRequest" nillable="true" type="tns:ActivateAutomaticPaymentRequest" />
+  <xs:complexType name="CustomerServiceBillPayableAmountRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q19:BaseRequestOfBillPayableAmountRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BillPayableAmountParameters" nillable="true" type="tns:BillPayableAmountRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceBillPayableAmountRequest" nillable="true" type="tns:CustomerServiceBillPayableAmountRequest" />
+  <xs:complexType name="BillPayableAmountRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q20:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BillId" nillable="true" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BillPayableAmountRequest" nillable="true" type="tns:BillPayableAmountRequest" />
+  <xs:complexType name="CustomerServicePaymentTypeListRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q21:BaseRequestOfSHA1o_Pr6u_PMh">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServicePaymentTypeListRequest" nillable="true" type="tns:CustomerServicePaymentTypeListRequest" />
+  <xs:complexType name="CustomerServiceAutoPaymentListRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q22="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q22:BaseRequestOfAutoPaymentListRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AutoPaymentListParameters" nillable="true" type="tns:AutoPaymentListRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceAutoPaymentListRequest" nillable="true" type="tns:CustomerServiceAutoPaymentListRequest" />
+  <xs:complexType name="AutoPaymentListRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q23="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q23:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Payment" minOccurs="0" name="CardList" nillable="true" type="q24:ArrayOfRegisteredCardsResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AutoPaymentListRequest" nillable="true" type="tns:AutoPaymentListRequest" />
+  <xs:complexType name="CustomerServicePaymentSystemLogRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q25:BaseRequestOfPaymentSystemLogRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PaymentSystemLogParameters" nillable="true" type="tns:PaymentSystemLogRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServicePaymentSystemLogRequest" nillable="true" type="tns:CustomerServicePaymentSystemLogRequest" />
+  <xs:complexType name="PaymentSystemLogRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q26="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q26:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BillIds" nillable="true" type="q27:ArrayOflong" />
+          <xs:element minOccurs="0" name="PaymentType" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SubscriberNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PaymentSystemLogRequest" nillable="true" type="tns:PaymentSystemLogRequest" />
+  <xs:complexType name="CustomerServiceMobilexpressPayBillRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q28="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q28:BaseRequestOfMobilexpressPayBillRequestSHA1_Sce8qIMB">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MobileExpressPayBillParameters" nillable="true" type="tns:MobilexpressPayBillRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceMobilexpressPayBillRequest" nillable="true" type="tns:CustomerServiceMobilexpressPayBillRequest" />
+  <xs:complexType name="MobilexpressPayBillRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q29="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q29:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BillId" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="HttpContextParameters" nillable="true" type="q29:HttpContextParameters" />
+          <xs:element minOccurs="0" name="PayableAmount" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MobilexpressPayBillRequest" nillable="true" type="tns:MobilexpressPayBillRequest" />
+</xs:schema>

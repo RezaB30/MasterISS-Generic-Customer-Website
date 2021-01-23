@@ -10,6 +10,7 @@ namespace RadiusR_Customer_Website
 {
     public class GenericServiceSettings
     {
+        GenericCustomerServiceReference.GenericCustomerServiceClient client = new GenericCustomerServiceReference.GenericCustomerServiceClient();
         public string Culture { get; set; }
         public string Rand { get; set; }
         public string Username { get; set; }
@@ -19,7 +20,7 @@ namespace RadiusR_Customer_Website
             Rand = Guid.NewGuid().ToString();
             Username = "onur";
         }
-        public string Hash { get { return HashUtilities.CalculateHash<SHA1>(Username + Rand + HashUtilities.CalculateHash<SHA1>("123456")); } }
+        public string Hash { get { return HashUtilities.CalculateHash<SHA1>(Username + Rand + HashUtilities.CalculateHash<SHA1>("123456") + client.GetKeyFragment(Username)); } }
     }
     public static class HashUtilities
     {

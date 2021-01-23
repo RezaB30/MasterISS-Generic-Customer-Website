@@ -2535,10 +2535,22 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         private string CurrentSubscriberNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short CustomerStateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerStateTextField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EMailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool HashAutoPaymentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string InstallationAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OnlinePasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PSTNField;
@@ -2551,6 +2563,9 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ReferenceNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StaticIPField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TTSubscriberNoField;
@@ -2585,6 +2600,32 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public short CustomerState {
+            get {
+                return this.CustomerStateField;
+            }
+            set {
+                if ((this.CustomerStateField.Equals(value) != true)) {
+                    this.CustomerStateField = value;
+                    this.RaisePropertyChanged("CustomerState");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerStateText {
+            get {
+                return this.CustomerStateTextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerStateTextField, value) != true)) {
+                    this.CustomerStateTextField = value;
+                    this.RaisePropertyChanged("CustomerStateText");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string EMail {
             get {
                 return this.EMailField;
@@ -2598,6 +2639,19 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool HashAutoPayment {
+            get {
+                return this.HashAutoPaymentField;
+            }
+            set {
+                if ((this.HashAutoPaymentField.Equals(value) != true)) {
+                    this.HashAutoPaymentField = value;
+                    this.RaisePropertyChanged("HashAutoPayment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string InstallationAddress {
             get {
                 return this.InstallationAddressField;
@@ -2606,6 +2660,19 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.InstallationAddressField, value) != true)) {
                     this.InstallationAddressField = value;
                     this.RaisePropertyChanged("InstallationAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OnlinePassword {
+            get {
+                return this.OnlinePasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OnlinePasswordField, value) != true)) {
+                    this.OnlinePasswordField = value;
+                    this.RaisePropertyChanged("OnlinePassword");
                 }
             }
         }
@@ -2658,6 +2725,19 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.ReferenceNoField, value) != true)) {
                     this.ReferenceNoField = value;
                     this.RaisePropertyChanged("ReferenceNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StaticIP {
+            get {
+                return this.StaticIPField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StaticIPField, value) != true)) {
+                    this.StaticIPField = value;
+                    this.RaisePropertyChanged("StaticIP");
                 }
             }
         }
@@ -3801,6 +3881,9 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<long> BaseQuotaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long DownloadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -3819,6 +3902,19 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<long> BaseQuota {
+            get {
+                return this.BaseQuotaField;
+            }
+            set {
+                if ((this.BaseQuotaField.Equals(value) != true)) {
+                    this.BaseQuotaField = value;
+                    this.RaisePropertyChanged("BaseQuota");
+                }
             }
         }
         
@@ -8656,6 +8752,12 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GenericCustomerServiceReference.IGenericCustomerService")]
     public interface IGenericCustomerService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GetKeyFragment", ReplyAction="http://tempuri.org/IGenericCustomerService/GetKeyFragmentResponse")]
+        string GetKeyFragment(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GetKeyFragment", ReplyAction="http://tempuri.org/IGenericCustomerService/GetKeyFragmentResponse")]
+        System.Threading.Tasks.Task<string> GetKeyFragmentAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GetCustomerInfo", ReplyAction="http://tempuri.org/IGenericCustomerService/GetCustomerInfoResponse")]
         RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGetCustomerInfoResponse GetCustomerInfo(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
         
@@ -8914,6 +9016,14 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         
         public GenericCustomerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string GetKeyFragment(string username) {
+            return base.Channel.GetKeyFragment(username);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetKeyFragmentAsync(string username) {
+            return base.Channel.GetKeyFragmentAsync(username);
         }
         
         public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceGetCustomerInfoResponse GetCustomerInfo(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {

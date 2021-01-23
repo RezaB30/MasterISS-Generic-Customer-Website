@@ -15,12 +15,17 @@
   <xs:complexType name="GetCustomerInfoResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="CurrentSubscriberNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerState" type="xs:short" />
+      <xs:element minOccurs="0" name="CustomerStateText" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HashAutoPayment" type="xs:boolean" />
       <xs:element minOccurs="0" name="InstallationAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OnlinePassword" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PSTN" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PhoneNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReferenceNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StaticIP" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TTSubscriberNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ValidDisplayName" nillable="true" type="xs:string" />
@@ -128,6 +133,7 @@
   <xs:element name="CustomerServiceGetCustomerTariffAndTrafficInfoResponse" nillable="true" type="tns:CustomerServiceGetCustomerTariffAndTrafficInfoResponse" />
   <xs:complexType name="GetCustomerTariffAndTrafficInfoResponse">
     <xs:sequence>
+      <xs:element minOccurs="0" name="BaseQuota" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="Download" type="xs:long" />
       <xs:element minOccurs="0" name="MonthlyUsage" nillable="true" type="tns:ArrayOfGetCustomerUsageInfoResponse" />
       <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />

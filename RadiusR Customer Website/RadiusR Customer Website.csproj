@@ -354,9 +354,6 @@
     <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAutoPaymentListResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobileExpressPayBillResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -364,6 +361,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\GenericCustomerServiceReference\RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\GenericCustomerServiceReference\Reference.svcmap">

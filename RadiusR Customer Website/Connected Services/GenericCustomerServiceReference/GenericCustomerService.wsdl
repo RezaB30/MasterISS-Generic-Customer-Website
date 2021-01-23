@@ -10,6 +10,12 @@
       <xsd:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IGenericCustomerService_GetKeyFragment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKeyFragment" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_GetKeyFragment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKeyFragmentResponse" />
+  </wsdl:message>
   <wsdl:message name="IGenericCustomerService_GetCustomerInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCustomerInfo" />
   </wsdl:message>
@@ -239,6 +245,10 @@
     <wsdl:part name="parameters" element="tns:GetVPOSErrorParameterNameResponse" />
   </wsdl:message>
   <wsdl:portType name="IGenericCustomerService">
+    <wsdl:operation name="GetKeyFragment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GetKeyFragment" message="tns:IGenericCustomerService_GetKeyFragment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/GetKeyFragmentResponse" message="tns:IGenericCustomerService_GetKeyFragment_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetCustomerInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GetCustomerInfo" message="tns:IGenericCustomerService_GetCustomerInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/GetCustomerInfoResponse" message="tns:IGenericCustomerService_GetCustomerInfo_OutputMessage" />
@@ -394,6 +404,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGenericCustomerService" type="tns:IGenericCustomerService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetKeyFragment">
+      <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/GetKeyFragment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetCustomerInfo">
       <soap:operation soapAction="http://tempuri.org/IGenericCustomerService/GetCustomerInfo" style="document" />
       <wsdl:input>

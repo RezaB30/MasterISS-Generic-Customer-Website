@@ -262,6 +262,8 @@
   <xs:element name="CustomerServiceGenericAppSettingsResponse" nillable="true" type="tns:CustomerServiceGenericAppSettingsResponse" />
   <xs:complexType name="GenericAppSettingsResponse">
     <xs:sequence>
+      <xs:element minOccurs="0" name="FileMaxCount" type="xs:long" />
+      <xs:element minOccurs="0" name="FileMaxSize" type="xs:long" />
       <xs:element minOccurs="0" name="HasAnyTelekomDomains" type="xs:boolean" />
       <xs:element minOccurs="0" name="MobilExpressIsActive" type="xs:boolean" />
     </xs:sequence>
@@ -466,4 +468,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CustomerAuthenticationWithPasswordResponse" nillable="true" type="tns:CustomerAuthenticationWithPasswordResponse" />
+  <xs:complexType name="CustomerServiceHasClientPreRegisterResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q26="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q26:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HasClientPreRegister" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceHasClientPreRegisterResponse" nillable="true" type="tns:CustomerServiceHasClientPreRegisterResponse" />
 </xs:schema>

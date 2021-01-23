@@ -363,6 +363,12 @@
   <wsdl:message name="IGenericCustomerService_CustomerAuthenticationWithPassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:CustomerAuthenticationWithPasswordResponse" />
   </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_HasClientPreRegisterSubscription_InputMessage">
+    <wsdl:part name="parameters" element="tns:HasClientPreRegisterSubscription" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_HasClientPreRegisterSubscription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HasClientPreRegisterSubscriptionResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGenericCustomerService">
     <wsdl:operation name="GetKeyFragment">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GetKeyFragment" message="tns:IGenericCustomerService_GetKeyFragment_InputMessage" />
@@ -591,6 +597,10 @@
     <wsdl:operation name="CustomerAuthenticationWithPassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/CustomerAuthenticationWithPassword" message="tns:IGenericCustomerService_CustomerAuthenticationWithPassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/CustomerAuthenticationWithPasswordResponse" message="tns:IGenericCustomerService_CustomerAuthenticationWithPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HasClientPreRegisterSubscription">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/HasClientPreRegisterSubscription" message="tns:IGenericCustomerService_HasClientPreRegisterSubscription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/HasClientPreRegisterSubscriptionResponse" message="tns:IGenericCustomerService_HasClientPreRegisterSubscription_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IGenericCustomerService" type="tns:IGenericCustomerService">
@@ -1102,6 +1112,15 @@
     </wsdl:operation>
     <wsdl:operation name="CustomerAuthenticationWithPassword">
       <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/CustomerAuthenticationWithPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasClientPreRegisterSubscription">
+      <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/HasClientPreRegisterSubscription" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

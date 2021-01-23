@@ -4,6 +4,7 @@ using RadiusR_Customer_Website.Models.ViewModels.Supports;
 using RezaB.Web.Authentication;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -152,6 +153,16 @@ namespace RadiusR_Customer_Website.Controllers
                     SubscriptionId = User.GiveUserId()
                 }
             });
+            var attachments = new ServiceUtilities().GetSupportAttachmentList(ID);
+            var genericAppSetting = new ServiceUtilities().CustomerWebsiteGenericSettings();
+            var fileMaxCount = genericAppSetting.GenericAppSettings == null ? 20 : genericAppSetting.GenericAppSettings.FileMaxCount;
+            var fileMaxSize = genericAppSetting.GenericAppSettings == null ? 5242880 : genericAppSetting.GenericAppSettings.FileMaxSize;
+            ViewBag.FileMaxSize = fileMaxSize;
+            ViewBag.CanSendFile = false;
+            if (attachments.GetSupportAttachmentList == null || attachments.GetSupportAttachmentList.Count() == 0 || attachments.GetSupportAttachmentList.Count() < fileMaxCount)
+            {
+                ViewBag.CanSendFile = true;
+            }
             if (supportDetailResponse.ResponseMessage.ErrorCode != 0)
             {
                 return ReturnMessageUrl(Url.Action("SupportRequests", "Support"));
@@ -174,16 +185,17 @@ namespace RadiusR_Customer_Website.Controllers
                         MessageDate = m.MessageDate,
                         SenderName = m.IsCustomer ? User.Identity.Name.Length > 20 ? User.Identity.Name.Substring(0, 20) + "..." : User.Identity.Name
                           : RadiusRCustomerWebSite.Localization.Common.Agent,
-                        IsCustomer = m.IsCustomer
+                        IsCustomer = m.IsCustomer,
+                        StageId = m.StageId
                     })
                 };
                 return View(result);
             }
-            return ReturnMessageUrl(Url.Action("SupportRequests", "Support"));            
+            return ReturnMessageUrl(Url.Action("SupportRequests", "Support"));
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult NewSupportMessage(RequestSupportMessage requestMessage)
+        public ActionResult NewSupportMessage(RequestSupportMessage requestMessage, HttpPostedFileBase[] attachments)
         {
             if (requestMessage.Message != null)
                 requestMessage.Message = requestMessage.Message.Trim(new char[] { ' ', '\n', '\r' });
@@ -197,6 +209,13 @@ namespace RadiusR_Customer_Website.Controllers
             if (!ModelState.IsValid)
             {
                 return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { requestMessage.ID }), ModelErrorMessages(ModelState));
+            }
+            attachments = attachments != null ? attachments.Where(att => att != null).FirstOrDefault() == null ? null : attachments : attachments;
+            var genericAppSetting = new ServiceUtilities().CustomerWebsiteGenericSettings();
+            var fileMaxSize = genericAppSetting.GenericAppSettings == null ? 5242880 : genericAppSetting.GenericAppSettings.FileMaxSize;
+            if (attachments != null && attachments.Where(att => att.ContentLength > fileMaxSize).FirstOrDefault() != null)
+            {
+                return ReturnMessageUrl(Url.Action("SupportResults", "Support", new { requestMessage.ID }), string.Format(RadiusRCustomerWebSite.Localization.Common.FileSizeError, (fileMaxSize / 1000000)));
             }
             var baseRequest = new GenericServiceSettings();
             var newMessageResponse = client.SendSupportMessage(new CustomerServiceSendSupportMessageRequest()
@@ -218,6 +237,34 @@ namespace RadiusR_Customer_Website.Controllers
             if (newMessageResponse.ResponseMessage.ErrorCode == 5) // has active request
             {
                 return ReturnMessageUrl(Url.Action("SupportRequests", "Support"), newMessageResponse.ResponseMessage.ErrorMessage);
+            }
+            if (attachments != null && attachments.Count() != 0)
+            {
+                var fileMaxCount = genericAppSetting.GenericAppSettings == null ? 20 : genericAppSetting.GenericAppSettings.FileMaxCount;
+                var attachmentsList = new ServiceUtilities().GetSupportAttachmentList(requestMessage.ID);
+                if (attachmentsList.GetSupportAttachmentList == null || attachmentsList.GetSupportAttachmentList.Count() == 0
+                    || (attachments.Count() + attachmentsList.GetSupportAttachmentList.Count()) <= fileMaxCount)
+                {
+                    if (newMessageResponse.ResponseMessage.ErrorCode == 0)
+                    {
+                        // save attachment
+                        foreach (var item in attachments)
+                        {
+                            using (var binaryReader = new BinaryReader(item.InputStream))
+                            {
+                                var attachmentByte = binaryReader.ReadBytes(item.ContentLength);
+                                var fileInfo = new System.IO.FileInfo(item.FileName);
+                                var fileExtension = fileInfo.Extension.Replace(".", "");
+                                var saveAttachment = new ServiceUtilities().SaveSupportAttachment(newMessageResponse.SendSupportMessageResponse.Value, item.FileName, attachmentByte, fileExtension, requestMessage.ID);
+                                generalLogger.Info($"Save Attachment Service Response | Error Code : {saveAttachment.ResponseMessage.ErrorCode} - Error Message : {saveAttachment.ResponseMessage.ErrorMessage}");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return ReturnMessageUrl(Url.Action("SupportResults", "Support", new { requestMessage.ID }), RadiusRCustomerWebSite.Localization.Common.FileUploadError);
+                }
             }
             return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { requestMessage.ID }), newMessageResponse.ResponseMessage.ErrorMessage);
         }
@@ -259,6 +306,29 @@ namespace RadiusR_Customer_Website.Controllers
             }
 
         }
+        [HttpPost]
+        public ActionResult GetSupportAttachments(long supportId)
+        {
+            var attachments = new ServiceUtilities().GetSupportAttachmentList(supportId);
+            if (attachments.GetSupportAttachmentList == null)
+            {
+                return Json(Enumerable.Empty<object>(), JsonRequestBehavior.AllowGet);
+            }
+            return Json(attachments.GetSupportAttachmentList.Select(a => new { FileName = a.FileName, ServerName = a.ServerSideName, StageId = a.StageId }).ToArray(), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DownloadSupportAttachment(long? supportId, string fileName)
+        {
+            var attachment = new ServiceUtilities().GetSupportAttachment(supportId, fileName);
+            if (attachment.ResponseMessage.ErrorCode != 0)
+            {
+                return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { ID = supportId }), attachment.ResponseMessage.ErrorMessage);
+            }
+            if (attachment.GetSupportAttachment == null)
+            {
+                return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { ID = supportId }), RadiusRCustomerWebSite.Localization.Common.InternalErrorDescription);
+            }
+            return File(attachment.GetSupportAttachment.FileContent, attachment.GetSupportAttachment.MIMEType, $"{attachment.GetSupportAttachment.FileName}.{attachment.GetSupportAttachment.FileExtention}");
+        }
         #region private methods        
         private bool HasOpenRequest()
         {
@@ -280,7 +350,7 @@ namespace RadiusR_Customer_Website.Controllers
                 return hasActiveRequest.HasActiveRequest != null && hasActiveRequest.HasActiveRequest.Value;
             }
             return false;
-        }        
+        }
         private string ModelErrorMessages(ModelStateDictionary ModelState)
         {
             return string.Join(Environment.NewLine, ModelState.Values.Select(m => string.Join(Environment.NewLine, m.Errors.Where(s => !string.IsNullOrEmpty(s.ErrorMessage)).Select(s => $"<div class='text-red'>{s.ErrorMessage}<div>"))));

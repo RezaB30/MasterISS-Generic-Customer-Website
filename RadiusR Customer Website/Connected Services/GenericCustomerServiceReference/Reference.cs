@@ -3577,6 +3577,7 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceCanHaveQuotaSaleResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasClientPreRegisterResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasActiveRequestResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfstringSHA1Miy85_SUl))]
@@ -4243,6 +4244,7 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceCanHaveQuotaSaleResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasClientPreRegisterResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasActiveRequestResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSResponse))]
     public partial class BaseResponseOfNullableOfbooleanSHA1qBRhzOKh : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfSHA1o_Pr6u_PMh {
@@ -4434,6 +4436,29 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
                 if ((this.CanHaveQuotaSaleField.Equals(value) != true)) {
                     this.CanHaveQuotaSaleField = value;
                     this.RaisePropertyChanged("CanHaveQuotaSale");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceHasClientPreRegisterResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceHasClientPreRegisterResponse : RadiusR_Customer_Website.GenericCustomerServiceReference.BaseResponseOfNullableOfbooleanSHA1qBRhzOKh {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> HasClientPreRegisterField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> HasClientPreRegister {
+            get {
+                return this.HasClientPreRegisterField;
+            }
+            set {
+                if ((this.HasClientPreRegisterField.Equals(value) != true)) {
+                    this.HasClientPreRegisterField = value;
+                    this.RaisePropertyChanged("HasClientPreRegister");
                 }
             }
         }
@@ -7783,6 +7808,12 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long FileMaxCountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long FileMaxSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool HasAnyTelekomDomainsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -7795,6 +7826,32 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long FileMaxCount {
+            get {
+                return this.FileMaxCountField;
+            }
+            set {
+                if ((this.FileMaxCountField.Equals(value) != true)) {
+                    this.FileMaxCountField = value;
+                    this.RaisePropertyChanged("FileMaxCount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long FileMaxSize {
+            get {
+                return this.FileMaxSizeField;
+            }
+            set {
+                if ((this.FileMaxSizeField.Equals(value) != true)) {
+                    this.FileMaxSizeField = value;
+                    this.RaisePropertyChanged("FileMaxSize");
+                }
             }
         }
         
@@ -9738,6 +9795,14 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/CustomerAuthenticationWithPassword", ReplyAction="http://tempuri.org/IGenericCustomerService/CustomerAuthenticationWithPasswordResp" +
             "onse")]
         System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceCustomerAuthenticationWithPasswordResponse> CustomerAuthenticationWithPasswordAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAuthenticationWithPasswordRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/HasClientPreRegisterSubscription", ReplyAction="http://tempuri.org/IGenericCustomerService/HasClientPreRegisterSubscriptionRespon" +
+            "se")]
+        RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasClientPreRegisterResponse HasClientPreRegisterSubscription(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/HasClientPreRegisterSubscription", ReplyAction="http://tempuri.org/IGenericCustomerService/HasClientPreRegisterSubscriptionRespon" +
+            "se")]
+        System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasClientPreRegisterResponse> HasClientPreRegisterSubscriptionAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -10221,6 +10286,14 @@ namespace RadiusR_Customer_Website.GenericCustomerServiceReference {
         
         public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceCustomerAuthenticationWithPasswordResponse> CustomerAuthenticationWithPasswordAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceAuthenticationWithPasswordRequest request) {
             return base.Channel.CustomerAuthenticationWithPasswordAsync(request);
+        }
+        
+        public RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasClientPreRegisterResponse HasClientPreRegisterSubscription(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
+            return base.Channel.HasClientPreRegisterSubscription(request);
+        }
+        
+        public System.Threading.Tasks.Task<RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceHasClientPreRegisterResponse> HasClientPreRegisterSubscriptionAsync(RadiusR_Customer_Website.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
+            return base.Channel.HasClientPreRegisterSubscriptionAsync(request);
         }
     }
 }

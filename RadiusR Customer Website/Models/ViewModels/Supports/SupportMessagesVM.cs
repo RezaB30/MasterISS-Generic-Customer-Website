@@ -33,6 +33,7 @@ namespace RadiusR_Customer_Website.Models.ViewModels.Supports
         public DateTime MessageDate { get; set; }
         public string SenderName { get; set; } // agent or customer
         public bool IsCustomer { get; set; }
+        public long StageId { get; set; }
     }
     //public class SupportFileList
     //{

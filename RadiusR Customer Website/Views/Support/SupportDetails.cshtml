@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = RadiusRCustomerWebSite.Localization.Common.SupportDetails;
+    var FileMaxSize = (long)ViewBag.FileMaxSize;
 }
 
 <div class="content-box title shallow-blue">
@@ -50,7 +51,7 @@
             {
                 <tr class="seperate">
                     <td>
-                        @using (Html.BeginForm("NewSupportMessage", "Support", FormMethod.Post))
+                        @using (Html.BeginForm("NewSupportMessage", "Support", FormMethod.Post,new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             @Html.HiddenFor(m => m.ID)
@@ -60,6 +61,12 @@
                                         <td class="borderless" colspan="2">
                                             <div class="centered" style="margin-top:1em;">
                                                 @Html.TextAreaFor(m => m.Message, new { @placeholder = RadiusRCustomerWebSite.Localization.Common.SupportRequestMessage, @class = "new-request-text", @maxlength = "500" })
+                                                @if (ViewBag.CanSendFile)
+                                                {
+                                                    <div style="color:mediumpurple">
+                                                        @string.Format(RadiusRCustomerWebSite.Localization.Common.FileSizeError, (FileMaxSize / 1000000))
+                                                    </div>
+                                                }
                                             </div>
                                         </td>
                                     </tr>
@@ -72,9 +79,27 @@
                                         <td class="borderless">
                                             <div class="centered">
                                                 <input onclick="FormSubmit(submitType.ADD);" type="button" value="@RadiusRCustomerWebSite.Localization.Common.AddNote" class="link-button stencil-blue" style="font-size:small;" />
+                                                @if (ViewBag.CanSendFile)
+                                                {
+                                                    <span id="support-attachment-id">
+                                                        <img style="vertical-align:middle; cursor:pointer;" src="@Url.Content("~/Content/Images/Icons/attachment.svg")" />
+                                                    </span>
+                                                }
+
                                             </div>
                                         </td>
                                     </tr>
+                                    @if (ViewBag.CanSendFile)
+                                    {
+                                        <tr>
+                                            <td class="borderless">
+                                                <div class="centered">
+                                                    <input class="upload-attachments" name="attachments" type="file" style="visibility:hidden;" multiple />
+                                                    <ul class="upload-attachment-list mt-1 list-unstyled"></ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         }
@@ -91,7 +116,10 @@
                                 <span class="bold">@Html.DisplayFor(m => item.SenderName)</span>
                                 <small>@Html.DisplayFor(m => item.MessageDate)</small>
                             </div>
-                            <div style="overflow-wrap:anywhere;" class="message-box shallow-blue multiline-text">@Html.DisplayFor(m => item.Message)</div>
+                            <div style="overflow-wrap:anywhere;" class="message-box shallow-blue multiline-text">
+                                @Html.DisplayFor(m => item.Message)
+                                <div data-stage="@item.StageId" class="support-file-content"></div>
+                            </div>
                         }
                         else
                         {
@@ -99,9 +127,11 @@
                                 <span class="bold">@Html.DisplayFor(m => item.SenderName)</span>
                                 <small>@Html.DisplayFor(m => item.MessageDate)</small>
                             </div>
-                            <div class="message-box light-green multiline-text">@Html.DisplayFor(m => item.Message)</div>
+                            <div class="message-box light-green multiline-text">
+                                @Html.DisplayFor(m => item.Message)
+                                <div data-stage="@item.StageId" class="support-file-content"></div>
+                            </div>
                         }
-
                     </td>
                 </tr>
             }
@@ -109,6 +139,7 @@
     </table>
 </div>
 @section scripts{
+    @Scripts.Render("~/Scripts/Custom/support-attachment.js")
     <script>
         const submitType = {
             SOLVED: 'solved',
@@ -135,5 +166,6 @@
                 ShowConfirm($('form'));
             }
         }
+        GetSupportAttachments('@Url.Action("GetSupportAttachments","Support")', '@Model.ID', '@Url.Action("DownloadSupportAttachment","Support")');
     </script>
 }

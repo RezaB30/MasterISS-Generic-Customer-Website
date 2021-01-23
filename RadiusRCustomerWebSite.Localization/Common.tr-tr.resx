@@ -300,6 +300,12 @@
   <data name="ExtendPacket" xml:space="preserve">
     <value>Paketi Uzat</value>
   </data>
+  <data name="FileSizeError" xml:space="preserve">
+    <value>Dosya boyutu {0} mb'den fazla olamaz</value>
+  </data>
+  <data name="FileUploadError" xml:space="preserve">
+    <value>Dosya yükleme işlemi başarısız. Yüklenebilecek maksimum dosya sayısına ulaşıldı.</value>
+  </data>
   <data name="FullName" xml:space="preserve">
     <value>Ad Soyad</value>
   </data>

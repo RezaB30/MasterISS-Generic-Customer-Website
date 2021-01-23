@@ -619,6 +619,24 @@ namespace RadiusRCustomerWebSite.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File size can&apos;t be more than {0} mb.
+        /// </summary>
+        public static string FileSizeError {
+            get {
+                return ResourceManager.GetString("FileSizeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File upload failed. The maximum number of files that can be uploaded has been reached..
+        /// </summary>
+        public static string FileUploadError {
+            get {
+                return ResourceManager.GetString("FileUploadError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fullname.
         /// </summary>
         public static string FullName {

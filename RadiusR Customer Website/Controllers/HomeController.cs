@@ -11,7 +11,8 @@ using NLog;
 using System.Collections.Specialized;
 using RadiusR_Customer_Website.VPOSToken;
 using RezaB.Data.Formating;
-using RadiusR_Customer_Website.GenericCustomerServiceReference;
+using MasterISS.CustomerService.GenericCustomerServiceReference;
+//using RadiusR_Customer_Website.GenericCustomerServiceReference;
 
 namespace RadiusR_Customer_Website.Controllers
 {

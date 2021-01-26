@@ -1,5 +1,6 @@
 ﻿using NLog;
-using RadiusR_Customer_Website.GenericCustomerServiceReference;
+//using RadiusR_Customer_Website.GenericCustomerServiceReference;
+using MasterISS.CustomerService.GenericCustomerServiceReference;
 using RadiusR_Customer_Website.Models.ViewModels.Supports;
 using RezaB.Web.Authentication;
 using System;

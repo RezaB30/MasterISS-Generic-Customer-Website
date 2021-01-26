@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadiusRCustomerWebSite.Loca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadiusR.API.AddressQueryAdapter", "RadiusR.API.AddressQueryAdapter\RadiusR.API.AddressQueryAdapter.csproj", "{A92EB1F3-1813-44A7-A2ED-FCA18F1CD40E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterISS.CustomerService", "MasterISS.CustomerService\MasterISS.CustomerService.csproj", "{F58F9613-98BC-4001-9AD5-6AD738A37D3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A92EB1F3-1813-44A7-A2ED-FCA18F1CD40E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A92EB1F3-1813-44A7-A2ED-FCA18F1CD40E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A92EB1F3-1813-44A7-A2ED-FCA18F1CD40E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F58F9613-98BC-4001-9AD5-6AD738A37D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F58F9613-98BC-4001-9AD5-6AD738A37D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F58F9613-98BC-4001-9AD5-6AD738A37D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F58F9613-98BC-4001-9AD5-6AD738A37D3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

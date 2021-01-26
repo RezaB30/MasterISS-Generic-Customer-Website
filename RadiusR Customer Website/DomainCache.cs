@@ -1,5 +1,6 @@
 ﻿using NLog;
-using RadiusR_Customer_Website.GenericCustomerServiceReference;
+using MasterISS.CustomerService.GenericCustomerServiceReference;
+//using RadiusR_Customer_Website.GenericCustomerServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;

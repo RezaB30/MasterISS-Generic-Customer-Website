@@ -10,14 +10,15 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.Security.Principal;
 using System.Net;
-using RadiusR_Customer_Website.GenericCustomerServiceReference;
+//using RadiusR_Customer_Website.GenericCustomerServiceReference;
+using MasterISS.CustomerService.GenericCustomerServiceReference;
 
 namespace RadiusR_Customer_Website.Controllers
 {
     [AllowAnonymous]
     public class AuthController : BaseController
     {
-        GenericCustomerServiceReference.GenericCustomerServiceClient client = new GenericCustomerServiceReference.GenericCustomerServiceClient();
+        MasterISS.CustomerService.GenericCustomerServiceReference.GenericCustomerServiceClient client = new MasterISS.CustomerService.GenericCustomerServiceReference.GenericCustomerServiceClient();
         [HttpGet]
         // GET: Auth
         public ActionResult DirectLogin()
@@ -38,13 +39,13 @@ namespace RadiusR_Customer_Website.Controllers
                     login.CustomerCode = login.CustomerCode.TrimStart('0');
 
                 var baseRequest = new GenericServiceSettings();
-                var result = client.CustomerAuthentication(new GenericCustomerServiceReference.CustomerServiceAuthenticationRequest()
+                var result = client.CustomerAuthentication(new MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAuthenticationRequest()
                 {
                     Culture = baseRequest.Culture,
                     Rand = baseRequest.Rand,
                     Username = baseRequest.Username,
                     Hash = baseRequest.Hash,
-                    AuthenticationParameters = new GenericCustomerServiceReference.AuthenticationRequest()
+                    AuthenticationParameters = new MasterISS.CustomerService.GenericCustomerServiceReference.AuthenticationRequest()
                     {
                         CustomerCode = login.CustomerCode,
                     }
@@ -108,13 +109,13 @@ namespace RadiusR_Customer_Website.Controllers
                     login.CustomerCode = login.CustomerCode.TrimStart('0');
 
                 var baseRequest = new GenericServiceSettings();
-                var result = client.AuthenticationSMSConfirm(new GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmRequest()
+                var result = client.AuthenticationSMSConfirm(new MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmRequest()
                 {
                     Culture = baseRequest.Culture,
                     Hash = baseRequest.Hash,
                     Rand = baseRequest.Rand,
                     Username = baseRequest.Username,
-                    AuthenticationSMSConfirmParameters = new GenericCustomerServiceReference.AuthenticationSMSConfirmRequest()
+                    AuthenticationSMSConfirmParameters = new MasterISS.CustomerService.GenericCustomerServiceReference.AuthenticationSMSConfirmRequest()
                     {
                         CustomerCode = login.CustomerCode,
                         SMSPassword = login.SMSPassword

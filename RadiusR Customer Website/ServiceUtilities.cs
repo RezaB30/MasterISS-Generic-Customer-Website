@@ -1,4 +1,5 @@
-﻿using RadiusR_Customer_Website.GenericCustomerServiceReference;
+﻿//using RadiusR_Customer_Website.GenericCustomerServiceReference;
+using MasterISS.CustomerService.GenericCustomerServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace RadiusR_Customer_Website
 {
     public class ServiceUtilities
     {
-        GenericCustomerServiceReference.GenericCustomerServiceClient client = new GenericCustomerServiceReference.GenericCustomerServiceClient();
+        MasterISS.CustomerService.GenericCustomerServiceReference.GenericCustomerServiceClient client = new MasterISS.CustomerService.GenericCustomerServiceReference.GenericCustomerServiceClient();
         public CustomerServiceGenericAppSettingsResponse CustomerWebsiteGenericSettings()
         {
             var baseRequest = new GenericServiceSettings();

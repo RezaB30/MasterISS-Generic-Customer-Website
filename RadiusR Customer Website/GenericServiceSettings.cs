@@ -10,7 +10,7 @@ namespace RadiusR_Customer_Website
 {
     public class GenericServiceSettings
     {
-        GenericCustomerServiceReference.GenericCustomerServiceClient client = new GenericCustomerServiceReference.GenericCustomerServiceClient();
+        MasterISS.CustomerService.GenericCustomerServiceReference.GenericCustomerServiceClient client = new MasterISS.CustomerService.GenericCustomerServiceReference.GenericCustomerServiceClient();
         public string Culture { get; set; }
         public string Rand { get; set; }
         public string Username { get; set; }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F58F9613-98BC-4001-9AD5-6AD738A37D3A}</ProjectGuid>
+    <ProjectGuid>{F4D37296-737D-4E84-A889-85A93C41431F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MasterISS.CustomerService</RootNamespace>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Connected Services\GenericCustomerServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -119,10 +120,10 @@
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceCustomerAuthenticationResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceCustomerAuthenticationWithPasswordResponse.datasource">
+    <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse.datasource">
+    <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFMailResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFResponse.datasource">
@@ -156,9 +157,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerTariffAndTrafficInfoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportAttachmentResponse.datasource">

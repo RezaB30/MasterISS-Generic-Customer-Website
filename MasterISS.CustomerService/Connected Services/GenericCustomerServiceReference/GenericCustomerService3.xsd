@@ -846,4 +846,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="EArchivePDFMail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q119="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.Payment" minOccurs="0" name="request" nillable="true" type="q119:CustomerServiceEArchivePDFRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EArchivePDFMailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q120="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Payment" minOccurs="0" name="EArchivePDFMailResult" nillable="true" type="q120:CustomerServiceEArchivePDFMailResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

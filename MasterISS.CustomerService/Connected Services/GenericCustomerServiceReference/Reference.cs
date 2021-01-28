@@ -3706,6 +3706,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFMailResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfstringSHA1Miy85_SUl))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAddCardSMSValidationResponse))]
@@ -4377,6 +4378,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServicePaymentSystemLogResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceMobilexpressPayBillResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFMailResponse))]
     public partial class BaseResponseOfNullableOfbooleanSHA1qBRhzOKh : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfSHA1o_Pr6u_PMh {
     }
     
@@ -4637,6 +4639,30 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 if ((this.MobilexpressPayBillResultField.Equals(value) != true)) {
                     this.MobilexpressPayBillResultField = value;
                     this.RaisePropertyChanged("MobilexpressPayBillResult");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceEArchivePDFMailResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses." +
+        "Payment")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceEArchivePDFMailResponse : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfNullableOfbooleanSHA1qBRhzOKh {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> EArchivePDFMailResponseField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> EArchivePDFMailResponse {
+            get {
+                return this.EArchivePDFMailResponseField;
+            }
+            set {
+                if ((this.EArchivePDFMailResponseField.Equals(value) != true)) {
+                    this.EArchivePDFMailResponseField = value;
+                    this.RaisePropertyChanged("EArchivePDFMailResponse");
                 }
             }
         }
@@ -10145,6 +10171,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GetClientPDFForm", ReplyAction="http://tempuri.org/IGenericCustomerService/GetClientPDFFormResponse")]
         System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetClientPDFFormResponse> GetClientPDFFormAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/EArchivePDFMail", ReplyAction="http://tempuri.org/IGenericCustomerService/EArchivePDFMailResponse")]
+        MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFMailResponse EArchivePDFMail(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/EArchivePDFMail", ReplyAction="http://tempuri.org/IGenericCustomerService/EArchivePDFMailResponse")]
+        System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFMailResponse> EArchivePDFMailAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFRequest request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -10652,6 +10684,14 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         
         public System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetClientPDFFormResponse> GetClientPDFFormAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
             return base.Channel.GetClientPDFFormAsync(request);
+        }
+        
+        public MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFMailResponse EArchivePDFMail(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFRequest request) {
+            return base.Channel.EArchivePDFMail(request);
+        }
+        
+        public System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFMailResponse> EArchivePDFMailAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceEArchivePDFRequest request) {
+            return base.Channel.EArchivePDFMailAsync(request);
         }
     }
 }

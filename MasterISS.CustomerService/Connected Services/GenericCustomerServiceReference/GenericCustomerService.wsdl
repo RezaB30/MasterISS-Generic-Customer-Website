@@ -381,6 +381,12 @@
   <wsdl:message name="IGenericCustomerService_GetClientPDFForm_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetClientPDFFormResponse" />
   </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_EArchivePDFMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:EArchivePDFMail" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_EArchivePDFMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EArchivePDFMailResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGenericCustomerService">
     <wsdl:operation name="GetKeyFragment">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GetKeyFragment" message="tns:IGenericCustomerService_GetKeyFragment_InputMessage" />
@@ -621,6 +627,10 @@
     <wsdl:operation name="GetClientPDFForm">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GetClientPDFForm" message="tns:IGenericCustomerService_GetClientPDFForm_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/GetClientPDFFormResponse" message="tns:IGenericCustomerService_GetClientPDFForm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EArchivePDFMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/EArchivePDFMail" message="tns:IGenericCustomerService_EArchivePDFMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/EArchivePDFMailResponse" message="tns:IGenericCustomerService_EArchivePDFMail_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IGenericCustomerService" type="tns:IGenericCustomerService">
@@ -1159,6 +1169,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetClientPDFForm">
       <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/GetClientPDFForm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EArchivePDFMail">
+      <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/EArchivePDFMail" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -383,7 +383,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MasterISS.CustomerService\MasterISS.CustomerService.csproj">
-      <Project>{f58f9613-98bc-4001-9ad5-6ad738a37d3a}</Project>
+      <Project>{f4d37296-737d-4e84-a889-85a93c41431f}</Project>
       <Name>MasterISS.CustomerService</Name>
     </ProjectReference>
     <ProjectReference Include="..\RadiusR.API.AddressQueryAdapter\RadiusR.API.AddressQueryAdapter.csproj">

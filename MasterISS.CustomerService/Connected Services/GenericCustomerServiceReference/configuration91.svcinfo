@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="6GNXgqdJXLPAXlR1kH3nrdkH4SZUVNA76aG9T3hHbkI=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="qrLL8bKcFZJcIlX/ym2CoCDpMHyCjWZq1fZVRvPh5w0=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_IGenericCustomerService">
+    <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_IGenericCustomerService1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IGenericCustomerService</serializedValue>
+          <serializedValue>WSHttpBinding_IGenericCustomerService1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -127,7 +127,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WSHttpBinding_IGenericCustomerService" contract="GenericCustomerServiceReference.IGenericCustomerService" bindingType="wsHttpBinding" address="http://10.184.3.63:5998/GenericCustomerService.svc/GenericCustomerService.svc" bindingConfiguration="WSHttpBinding_IGenericCustomerService">
+    <endpoint name="WSHttpBinding_IGenericCustomerService1" contract="GenericCustomerServiceReference.IGenericCustomerService" bindingType="wsHttpBinding" address="http://10.184.3.63:5998/GenericCustomerService.svc/GenericCustomerService.svc" bindingConfiguration="WSHttpBinding_IGenericCustomerService1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://10.184.3.63:5998/GenericCustomerService.svc/GenericCustomerService.svc</serializedValue>
@@ -139,7 +139,7 @@
           <serializedValue>wsHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IGenericCustomerService</serializedValue>
+          <serializedValue>WSHttpBinding_IGenericCustomerService1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>GenericCustomerServiceReference.IGenericCustomerService</serializedValue>
@@ -202,7 +202,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IGenericCustomerService</serializedValue>
+          <serializedValue>WSHttpBinding_IGenericCustomerService1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

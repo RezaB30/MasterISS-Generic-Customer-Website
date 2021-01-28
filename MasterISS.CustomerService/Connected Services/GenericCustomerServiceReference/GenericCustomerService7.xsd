@@ -283,4 +283,14 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="CustomerServiceMobilexpressPayBillResponse" nillable="true" type="tns:CustomerServiceMobilexpressPayBillResponse" />
+  <xs:complexType name="CustomerServiceEArchivePDFMailResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q20:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EArchivePDFMailResponse" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceEArchivePDFMailResponse" nillable="true" type="tns:CustomerServiceEArchivePDFMailResponse" />
 </xs:schema>

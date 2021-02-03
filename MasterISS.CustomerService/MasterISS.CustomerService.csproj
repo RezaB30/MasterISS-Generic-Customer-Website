@@ -63,6 +63,9 @@
     <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService10.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -109,6 +112,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceCanHaveQuotaSaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceChangeClientInfoConfirmResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceChangeClientInfoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceChangeSubClientResponse.datasource">
@@ -172,6 +181,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceNameValuePair.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceNameValuePair1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServicePayBillsResponse.datasource">

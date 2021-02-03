@@ -19,19 +19,19 @@ namespace RadiusR_Customer_Website
                         "~/Scripts/Custom/information-box-utility.js"
                         ));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/css/main.css",
-                "~/Content/css/captcha.css",
-                "~/Content/css/data-table.css",
-                "~/Content/css/media.css"
-                ));
+            bundles.Add(new StyleBundle("~/bundles/css")
+                .Include("~/Content/css/main.css", new CssRewriteUrlTransform())
+                .Include("~/Content/css/captcha.css", new CssRewriteUrlTransform())
+                .Include("~/Content/css/data-table.css", new CssRewriteUrlTransform())
+                .Include("~/Content/css/media.css", new CssRewriteUrlTransform())
+                );
 
-            bundles.Add(new StyleBundle("~/Content/css/login").Include(
-                "~/Content/css/main.css",
-                "~/Content/css/login.css",
-                "~/Content/css/captcha.css",
-                "~/Content/css/media.css"
-                ));
+            bundles.Add(new StyleBundle("~/bundles/css/login")
+                .Include("~/Content/css/main.css", new CssRewriteUrlTransform())
+                .Include("~/Content/css/login.css", new CssRewriteUrlTransform())
+                .Include("~/Content/css/captcha.css", new CssRewriteUrlTransform())
+                .Include("~/Content/css/media.css", new CssRewriteUrlTransform())
+                );
         }
     }
 }

@@ -1004,14 +1004,14 @@ div.availability-form-inputs {
 }
 
 input.arrow {
-    background-image: url(/Content/Images/Icons/arrow-right.svg);
+    background-image: url(../Images/Icons/arrow-right.svg);
     background-position: right;
     background-size: 2em;
     background-repeat: no-repeat;
 }
 
     input.arrow:hover {
-        background-image: url(/Content/Images/Icons/arrow-down.svg);
+        background-image: url(../Images/Icons/arrow-down.svg);
         background-position: right;
         background-size: 1em;
         background-repeat: no-repeat;
@@ -1035,7 +1035,7 @@ input.arrow {
 }
 
 .tooltiptext-animate {
-    background-image: url(../../../Content/Images/Icons/arrow-up-white.svg);
+    background-image: url(../Images/Icons/arrow-up-white.svg);
     background-size: 2em;
     background-repeat: no-repeat;
     background-position: top;

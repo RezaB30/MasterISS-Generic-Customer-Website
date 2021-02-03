@@ -1,4 +1,5 @@
 ﻿using NLog;
+using RadiusR.DB;
 using RadiusR.DB.Settings;
 using RadiusR_Customer_Website.Models.ViewModels.Supports;
 using RezaB.Web.Authentication;

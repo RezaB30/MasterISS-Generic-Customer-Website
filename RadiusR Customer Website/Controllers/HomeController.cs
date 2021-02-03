@@ -765,7 +765,6 @@ namespace RadiusR_Customer_Website.Controllers
             }
         }
 
-        [HttpPost]
         [AllowAnonymous]
         public ActionResult VPOSSuccess(string id)
         {
@@ -895,7 +894,6 @@ namespace RadiusR_Customer_Website.Controllers
             return RedirectToAction("BillsAndPayments");
         }
 
-        [HttpPost]
         [AllowAnonymous]
         public ActionResult VPOSFail(string id)
         {

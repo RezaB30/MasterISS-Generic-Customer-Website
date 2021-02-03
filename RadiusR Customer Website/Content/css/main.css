@@ -93,7 +93,7 @@ div.page-header {
 
 div.header-logo {
     background-image: url('../Images/Shared/header-logo.png');
-    background-size: contain;
+    background-size: 9em;
     width: 15em;
     height: 3em;
     background-repeat: no-repeat;

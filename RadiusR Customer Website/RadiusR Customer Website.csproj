@@ -116,7 +116,7 @@
       <HintPath>..\packages\RadiusR.SystemLogs.1.0.1\lib\net452\RadiusR.SystemLogs.dll</HintPath>
     </Reference>
     <Reference Include="RadiusR.VPOS, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.VPOS.1.0.2-beta1\lib\net452\RadiusR.VPOS.dll</HintPath>
+      <HintPath>..\packages\RadiusR.VPOS.1.0.2\lib\net452\RadiusR.VPOS.dll</HintPath>
     </Reference>
     <Reference Include="RezaB.API.MobilExpress, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.API.MobilExpress.1.0.0\lib\net452\RezaB.API.MobilExpress.dll</HintPath>
@@ -147,8 +147,8 @@
     <Reference Include="RezaB.Web.Helpers, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.Web.Helpers.1.0.3\lib\net452\RezaB.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="RezaB.Web.VPOS, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RezaB.Web.VPOS.1.1.0\lib\net452\RezaB.Web.VPOS.dll</HintPath>
+    <Reference Include="RezaB.Web.VPOS, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RezaB.Web.VPOS.1.1.1\lib\net452\RezaB.Web.VPOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

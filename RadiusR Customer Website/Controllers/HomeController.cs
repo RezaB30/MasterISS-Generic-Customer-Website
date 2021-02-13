@@ -765,17 +765,7 @@ namespace RadiusR_Customer_Website.Controllers
 
         public ActionResult PersonalInfo()
         {
-            var baseRequest = new GenericServiceSettings();
-            var subscription = client.GetCustomerInfo(new CustomerServiceBaseRequest()
-            {
-                Culture = baseRequest.Culture,
-                Hash = baseRequest.Hash,
-                Username = baseRequest.Username,
-                SubscriptionParameters = new BaseSubscriptionRequest()
-                {
-                    SubscriptionId = User.GiveUserId()
-                }
-            });
+            var subscription = new ServiceUtilities().GetCustomerInfo(User.GiveUserId().Value);
             if (subscription.ResponseMessage.ErrorCode != 0)
             {
                 return View(new PersonalInfoViewModel());

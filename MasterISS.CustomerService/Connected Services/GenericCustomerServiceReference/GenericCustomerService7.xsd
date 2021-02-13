@@ -282,19 +282,9 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="CustomerServiceVPOSErrorParameterNameResponse" nillable="true" type="tns:CustomerServiceVPOSErrorParameterNameResponse" />
-  <xs:complexType name="CustomerServiceExistingCustomerRegisterResponse">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q17="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q17:BaseResponseOfArrayOfKeyValueOfstringstringSHA1PGu3YCeQ">
-        <xs:sequence>
-          <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="KeyValuePairs" nillable="true" type="q18:ArrayOfKeyValueOfstringstring" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="CustomerServiceExistingCustomerRegisterResponse" nillable="true" type="tns:CustomerServiceExistingCustomerRegisterResponse" />
   <xs:complexType name="CustomerServiceExternalTariffResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q19="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q19:BaseResponseOfArrayOfExternalTariffResponseSHA1KVWl_PpN3">
+      <xs:extension xmlns:q17="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q17:BaseResponseOfArrayOfExternalTariffResponseSHA1KVWl_PpN3">
         <xs:sequence>
           <xs:element minOccurs="0" name="ExternalTariffList" nillable="true" type="tns:ArrayOfExternalTariffResponse" />
         </xs:sequence>
@@ -321,7 +311,7 @@
   <xs:element name="ExternalTariffResponse" nillable="true" type="tns:ExternalTariffResponse" />
   <xs:complexType name="CustomerServiceGetCustomerFileResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q20="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q20:BaseResponseOfArrayOfGetCustomerFilesResponseSHA1KVWl_PpN3">
+      <xs:extension xmlns:q18="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q18:BaseResponseOfArrayOfGetCustomerFilesResponseSHA1KVWl_PpN3">
         <xs:sequence>
           <xs:element minOccurs="0" name="CustomerFiles" nillable="true" type="tns:ArrayOfGetCustomerFilesResponse" />
         </xs:sequence>
@@ -353,7 +343,7 @@
   <xs:element name="FileInfo" nillable="true" type="tns:FileInfo" />
   <xs:complexType name="CustomerServiceGetClientAttachmentResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q21="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q21:BaseResponseOfGetClientAttachmentResponseSHA1KVWl_PpN3">
+      <xs:extension xmlns:q19="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q19:BaseResponseOfGetClientAttachmentResponseSHA1KVWl_PpN3">
         <xs:sequence>
           <xs:element minOccurs="0" name="GetClientAttachment" nillable="true" type="tns:GetClientAttachmentResponse" />
         </xs:sequence>
@@ -374,7 +364,7 @@
   <xs:element name="GetClientAttachmentResponse" nillable="true" type="tns:GetClientAttachmentResponse" />
   <xs:complexType name="CustomerServiceCustomerAuthenticationWithPasswordResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q22="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q22:BaseResponseOfCustomerAuthenticationWithPasswordResponseSHA1KVWl_PpN3">
+      <xs:extension xmlns:q20="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q20:BaseResponseOfCustomerAuthenticationWithPasswordResponseSHA1KVWl_PpN3">
         <xs:sequence>
           <xs:element minOccurs="0" name="AuthenticationWithPasswordResult" nillable="true" type="tns:CustomerAuthenticationWithPasswordResponse" />
         </xs:sequence>
@@ -385,7 +375,7 @@
   <xs:complexType name="CustomerAuthenticationWithPasswordResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="ID" type="xs:long" />
-      <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RelatedCustomers" nillable="true" type="q23:ArrayOfstring" />
+      <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RelatedCustomers" nillable="true" type="q21:ArrayOfstring" />
       <xs:element minOccurs="0" name="SubscriberNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ValidDisplayName" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -393,7 +383,7 @@
   <xs:element name="CustomerAuthenticationWithPasswordResponse" nillable="true" type="tns:CustomerAuthenticationWithPasswordResponse" />
   <xs:complexType name="CustomerServiceHasClientPreRegisterResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q24="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q24:BaseResponseOfHasPreRegisterResponseSHA1KVWl_PpN3">
+      <xs:extension xmlns:q22="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q22:BaseResponseOfHasPreRegisterResponseSHA1KVWl_PpN3">
         <xs:sequence>
           <xs:element minOccurs="0" name="HasClientPreRegister" nillable="true" type="tns:HasPreRegisterResponse" />
         </xs:sequence>
@@ -410,7 +400,7 @@
   <xs:element name="HasPreRegisterResponse" nillable="true" type="tns:HasPreRegisterResponse" />
   <xs:complexType name="CustomerServiceSaveClientAttachmentResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q25="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q25:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
+      <xs:extension xmlns:q23="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q23:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
         <xs:sequence>
           <xs:element minOccurs="0" name="SaveClientAttachmentResult" nillable="true" type="xs:boolean" />
         </xs:sequence>
@@ -420,7 +410,7 @@
   <xs:element name="CustomerServiceSaveClientAttachmentResponse" nillable="true" type="tns:CustomerServiceSaveClientAttachmentResponse" />
   <xs:complexType name="CustomerServiceGetClientPDFFormResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q26="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q26:BaseResponseOfGetClientPDFFormResponseSHA1KVWl_PpN3">
+      <xs:extension xmlns:q24="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q24:BaseResponseOfGetClientPDFFormResponseSHA1KVWl_PpN3">
         <xs:sequence>
           <xs:element minOccurs="0" name="GetClientPDFFormResult" nillable="true" type="tns:GetClientPDFFormResponse" />
         </xs:sequence>
@@ -436,25 +426,9 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GetClientPDFFormResponse" nillable="true" type="tns:GetClientPDFFormResponse" />
-  <xs:complexType name="CustomerServiceChangeClientInfoResponse">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q27="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q27:BaseResponseOfChangeClientInfoResponseSHA1KVWl_PpN3">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="ChangeClientInfoResponse" nillable="true" type="tns:ChangeClientInfoResponse" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="CustomerServiceChangeClientInfoResponse" nillable="true" type="tns:CustomerServiceChangeClientInfoResponse" />
-  <xs:complexType name="ChangeClientInfoResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="SMSCode" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ChangeClientInfoResponse" nillable="true" type="tns:ChangeClientInfoResponse" />
   <xs:complexType name="CustomerServiceChangeClientInfoConfirmResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q28="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q28:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
+      <xs:extension xmlns:q25="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q25:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
         <xs:sequence>
           <xs:element minOccurs="0" name="ChangeClientInfoConfirmResult" nillable="true" type="xs:boolean" />
         </xs:sequence>

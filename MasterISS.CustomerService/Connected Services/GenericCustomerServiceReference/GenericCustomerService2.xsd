@@ -915,41 +915,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BaseRequestOfMobilexpressPayBillRequestSHA1_Sce8qIMB" nillable="true" type="tns:BaseRequestOfMobilexpressPayBillRequestSHA1_Sce8qIMB" />
-  <xs:complexType name="BaseRequestOfExistingCustomerRegisterRequestSHA1CuT410mT">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="BaseRequestOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ExistingCustomerRegisterRequest" Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" />
-          <GenericParameter Name="SHA1" Namespace="http://schemas.datacontract.org/2004/07/System.Security.Cryptography" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:BaseRequestOfSHA1o_Pr6u_PMh">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="BaseRequestOfExistingCustomerRegisterRequestSHA1CuT410mT" nillable="true" type="tns:BaseRequestOfExistingCustomerRegisterRequestSHA1CuT410mT" />
-  <xs:complexType name="BaseResponseOfArrayOfKeyValueOfstringstringSHA1PGu3YCeQ">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="BaseResponseOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ArrayOfKeyValueOf{0}{1}{#}" Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-            <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
-            <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
-          </GenericParameter>
-          <GenericParameter Name="SHA1" Namespace="http://schemas.datacontract.org/2004/07/System.Security.Cryptography" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:BaseResponseOfSHA1o_Pr6u_PMh">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="BaseResponseOfArrayOfKeyValueOfstringstringSHA1PGu3YCeQ" nillable="true" type="tns:BaseResponseOfArrayOfKeyValueOfstringstringSHA1PGu3YCeQ" />
   <xs:complexType name="BaseResponseOfArrayOfExternalTariffResponseSHA1KVWl_PpN3">
     <xs:annotation>
       <xs:appinfo>
@@ -1190,11 +1155,11 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BaseResponseOfGetClientPDFFormResponseSHA1KVWl_PpN3" nillable="true" type="tns:BaseResponseOfGetClientPDFFormResponseSHA1KVWl_PpN3" />
-  <xs:complexType name="BaseRequestOfChangeClientInfoRequestSHA1CuT410mT">
+  <xs:complexType name="BaseRequestOfChangeClientOnlinePasswordRequestSHA1CuT410mT">
     <xs:annotation>
       <xs:appinfo>
         <GenericType Name="BaseRequestOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ChangeClientInfoRequest" Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" />
+          <GenericParameter Name="ChangeClientOnlinePasswordRequest" Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" />
           <GenericParameter Name="SHA1" Namespace="http://schemas.datacontract.org/2004/07/System.Security.Cryptography" />
         </GenericType>
       </xs:appinfo>
@@ -1205,37 +1170,5 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="BaseRequestOfChangeClientInfoRequestSHA1CuT410mT" nillable="true" type="tns:BaseRequestOfChangeClientInfoRequestSHA1CuT410mT" />
-  <xs:complexType name="BaseResponseOfChangeClientInfoResponseSHA1KVWl_PpN3">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="BaseResponseOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ChangeClientInfoResponse" Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" />
-          <GenericParameter Name="SHA1" Namespace="http://schemas.datacontract.org/2004/07/System.Security.Cryptography" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:BaseResponseOfSHA1o_Pr6u_PMh">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="BaseResponseOfChangeClientInfoResponseSHA1KVWl_PpN3" nillable="true" type="tns:BaseResponseOfChangeClientInfoResponseSHA1KVWl_PpN3" />
-  <xs:complexType name="BaseRequestOfChangeClientInfoConfirmRequestSHA1CuT410mT">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="BaseRequestOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ChangeClientInfoConfirmRequest" Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" />
-          <GenericParameter Name="SHA1" Namespace="http://schemas.datacontract.org/2004/07/System.Security.Cryptography" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:BaseRequestOfSHA1o_Pr6u_PMh">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="BaseRequestOfChangeClientInfoConfirmRequestSHA1CuT410mT" nillable="true" type="tns:BaseRequestOfChangeClientInfoConfirmRequestSHA1CuT410mT" />
+  <xs:element name="BaseRequestOfChangeClientOnlinePasswordRequestSHA1CuT410mT" nillable="true" type="tns:BaseRequestOfChangeClientOnlinePasswordRequestSHA1CuT410mT" />
 </xs:schema>

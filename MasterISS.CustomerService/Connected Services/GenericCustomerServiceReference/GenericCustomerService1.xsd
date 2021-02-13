@@ -121,62 +121,9 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="CustomerServiceVPOSErrorParameterNameRequest" nillable="true" type="tns:CustomerServiceVPOSErrorParameterNameRequest" />
-  <xs:complexType name="CustomerServiceExistingCustomerRegisterRequest">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q10:BaseRequestOfExistingCustomerRegisterRequestSHA1CuT410mT">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="ExistingCustomerRegister" nillable="true" type="tns:ExistingCustomerRegisterRequest" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="CustomerServiceExistingCustomerRegisterRequest" nillable="true" type="tns:CustomerServiceExistingCustomerRegisterRequest" />
-  <xs:complexType name="ExistingCustomerRegisterRequest">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="RegistrationInfo" nillable="true" type="tns:RegistrationInfo" />
-      <xs:element minOccurs="0" name="SubscriberID" nillable="true" type="xs:long" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ExistingCustomerRegisterRequest" nillable="true" type="tns:ExistingCustomerRegisterRequest" />
-  <xs:complexType name="RegistrationInfo">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ReferralDiscount" nillable="true" type="tns:ReferralDiscountInfo" />
-      <xs:element minOccurs="0" name="ServiceID" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="SetupAddress" nillable="true" type="tns:AddressInfo" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="RegistrationInfo" nillable="true" type="tns:RegistrationInfo" />
-  <xs:complexType name="ReferralDiscountInfo">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ReferenceNo" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ReferralDiscountInfo" nillable="true" type="tns:ReferralDiscountInfo" />
-  <xs:complexType name="AddressInfo">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AddressNo" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="AddressText" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ApartmentID" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="ApartmentNo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DistrictID" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="DistrictName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DoorID" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="DoorNo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Floor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="NeighbourhoodID" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="NeighbourhoodName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="ProvinceID" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="ProvinceName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RuralCode" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="StreetID" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="StreetName" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="AddressInfo" nillable="true" type="tns:AddressInfo" />
   <xs:complexType name="CustomerServiceCommitmentLengthsRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q11:BaseRequestOfSHA1o_Pr6u_PMh">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q10:BaseRequestOfSHA1o_Pr6u_PMh">
         <xs:sequence />
       </xs:extension>
     </xs:complexContent>
@@ -184,7 +131,7 @@
   <xs:element name="CustomerServiceCommitmentLengthsRequest" nillable="true" type="tns:CustomerServiceCommitmentLengthsRequest" />
   <xs:complexType name="CustomerServiceExternalTariffRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q12:BaseRequestOfSHA1o_Pr6u_PMh">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q11:BaseRequestOfSHA1o_Pr6u_PMh">
         <xs:sequence />
       </xs:extension>
     </xs:complexContent>
@@ -192,7 +139,7 @@
   <xs:element name="CustomerServiceExternalTariffRequest" nillable="true" type="tns:CustomerServiceExternalTariffRequest" />
   <xs:complexType name="CustomerServiceGetClientAttachmentRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q13="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q13:BaseRequestOfGetClientAttachmentRequestSHA1CuT410mT">
+      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q12:BaseRequestOfGetClientAttachmentRequestSHA1CuT410mT">
         <xs:sequence>
           <xs:element minOccurs="0" name="GetClientAttachment" nillable="true" type="tns:GetClientAttachmentRequest" />
         </xs:sequence>
@@ -209,7 +156,7 @@
   <xs:element name="GetClientAttachmentRequest" nillable="true" type="tns:GetClientAttachmentRequest" />
   <xs:complexType name="CustomerServiceAuthenticationWithPasswordRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q14="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q14:BaseRequestOfAuthenticationWithPasswordRequestSHA1CuT410mT">
+      <xs:extension xmlns:q13="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q13:BaseRequestOfAuthenticationWithPasswordRequestSHA1CuT410mT">
         <xs:sequence>
           <xs:element minOccurs="0" name="AuthenticationWithPasswordParameters" nillable="true" type="tns:AuthenticationWithPasswordRequest" />
         </xs:sequence>
@@ -226,7 +173,7 @@
   <xs:element name="AuthenticationWithPasswordRequest" nillable="true" type="tns:AuthenticationWithPasswordRequest" />
   <xs:complexType name="CustomerServiceSaveClientAttachmentRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q15="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q15:BaseRequestOfSaveClientAttachmentRequestSHA1CuT410mT">
+      <xs:extension xmlns:q14="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q14:BaseRequestOfSaveClientAttachmentRequestSHA1CuT410mT">
         <xs:sequence>
           <xs:element minOccurs="0" name="SaveClientAttachmentParameters" nillable="true" type="tns:SaveClientAttachmentRequest" />
         </xs:sequence>
@@ -243,39 +190,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SaveClientAttachmentRequest" nillable="true" type="tns:SaveClientAttachmentRequest" />
-  <xs:complexType name="CustomerServiceChangeClientInfoRequest">
+  <xs:complexType name="CustomerServiceChangeClientOnlinePasswordRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q16="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q16:BaseRequestOfChangeClientInfoRequestSHA1CuT410mT">
+      <xs:extension xmlns:q15="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q15:BaseRequestOfChangeClientOnlinePasswordRequestSHA1CuT410mT">
         <xs:sequence>
-          <xs:element minOccurs="0" name="ChangeClientInfoRequest" nillable="true" type="tns:ChangeClientInfoRequest" />
+          <xs:element minOccurs="0" name="ChangeClientOnlinePasswordParameters" nillable="true" type="tns:ChangeClientOnlinePasswordRequest" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="CustomerServiceChangeClientInfoRequest" nillable="true" type="tns:CustomerServiceChangeClientInfoRequest" />
-  <xs:complexType name="ChangeClientInfoRequest">
+  <xs:element name="CustomerServiceChangeClientOnlinePasswordRequest" nillable="true" type="tns:CustomerServiceChangeClientOnlinePasswordRequest" />
+  <xs:complexType name="ChangeClientOnlinePasswordRequest">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ContactPhoneNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OnlinePassword" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SubscriptionId" nillable="true" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ChangeClientInfoRequest" nillable="true" type="tns:ChangeClientInfoRequest" />
-  <xs:complexType name="CustomerServiceChangeClientInfoConfirmRequest">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q17="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q17:BaseRequestOfChangeClientInfoConfirmRequestSHA1CuT410mT">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="ChangeClientInfoConfirmRequest" nillable="true" type="tns:ChangeClientInfoConfirmRequest" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="CustomerServiceChangeClientInfoConfirmRequest" nillable="true" type="tns:CustomerServiceChangeClientInfoConfirmRequest" />
-  <xs:complexType name="ChangeClientInfoConfirmRequest">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ContactPhoneNo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SubscriptionId" nillable="true" type="xs:long" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ChangeClientInfoConfirmRequest" nillable="true" type="tns:ChangeClientInfoConfirmRequest" />
+  <xs:element name="ChangeClientOnlinePasswordRequest" nillable="true" type="tns:ChangeClientOnlinePasswordRequest" />
 </xs:schema>

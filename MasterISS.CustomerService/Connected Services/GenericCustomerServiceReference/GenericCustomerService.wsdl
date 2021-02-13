@@ -310,12 +310,6 @@
   <wsdl:message name="IGenericCustomerService_GetVPOSErrorParameterName_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetVPOSErrorParameterNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_ExistingCustomerRegister_InputMessage">
-    <wsdl:part name="parameters" element="tns:ExistingCustomerRegister" />
-  </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_ExistingCustomerRegister_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ExistingCustomerRegisterResponse" />
-  </wsdl:message>
   <wsdl:message name="IGenericCustomerService_CommitmentLengthList_InputMessage">
     <wsdl:part name="parameters" element="tns:CommitmentLengthList" />
   </wsdl:message>
@@ -388,17 +382,11 @@
   <wsdl:message name="IGenericCustomerService_EArchivePDFMail_OutputMessage">
     <wsdl:part name="parameters" element="tns:EArchivePDFMailResponse" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_ChangeClientInfoSMSCheck_InputMessage">
-    <wsdl:part name="parameters" element="tns:ChangeClientInfoSMSCheck" />
+  <wsdl:message name="IGenericCustomerService_ChangeClientOnlinePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeClientOnlinePassword" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_ChangeClientInfoSMSCheck_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ChangeClientInfoSMSCheckResponse" />
-  </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_ChangeClientInfoConfirm_InputMessage">
-    <wsdl:part name="parameters" element="tns:ChangeClientInfoConfirm" />
-  </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_ChangeClientInfoConfirm_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ChangeClientInfoConfirmResponse" />
+  <wsdl:message name="IGenericCustomerService_ChangeClientOnlinePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeClientOnlinePasswordResponse" />
   </wsdl:message>
   <wsdl:portType name="IGenericCustomerService">
     <wsdl:operation name="GetProvinces">
@@ -593,10 +581,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GetVPOSErrorParameterName" message="tns:IGenericCustomerService_GetVPOSErrorParameterName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/GetVPOSErrorParameterNameResponse" message="tns:IGenericCustomerService_GetVPOSErrorParameterName_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ExistingCustomerRegister">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/ExistingCustomerRegister" message="tns:IGenericCustomerService_ExistingCustomerRegister_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/ExistingCustomerRegisterResponse" message="tns:IGenericCustomerService_ExistingCustomerRegister_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="CommitmentLengthList">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/CommitmentLengthList" message="tns:IGenericCustomerService_CommitmentLengthList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/CommitmentLengthListResponse" message="tns:IGenericCustomerService_CommitmentLengthList_OutputMessage" />
@@ -645,13 +629,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/EArchivePDFMail" message="tns:IGenericCustomerService_EArchivePDFMail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/EArchivePDFMailResponse" message="tns:IGenericCustomerService_EArchivePDFMail_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ChangeClientInfoSMSCheck">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/ChangeClientInfoSMSCheck" message="tns:IGenericCustomerService_ChangeClientInfoSMSCheck_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/ChangeClientInfoSMSCheckResponse" message="tns:IGenericCustomerService_ChangeClientInfoSMSCheck_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ChangeClientInfoConfirm">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/ChangeClientInfoConfirm" message="tns:IGenericCustomerService_ChangeClientInfoConfirm_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/ChangeClientInfoConfirmResponse" message="tns:IGenericCustomerService_ChangeClientInfoConfirm_OutputMessage" />
+    <wsdl:operation name="ChangeClientOnlinePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/ChangeClientOnlinePassword" message="tns:IGenericCustomerService_ChangeClientOnlinePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/ChangeClientOnlinePasswordResponse" message="tns:IGenericCustomerService_ChangeClientOnlinePassword_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IGenericCustomerService" type="tns:IGenericCustomerService">
@@ -1089,15 +1069,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ExistingCustomerRegister">
-      <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/ExistingCustomerRegister" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="CommitmentLengthList">
       <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/CommitmentLengthList" style="document" />
       <wsdl:input>
@@ -1206,17 +1177,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ChangeClientInfoSMSCheck">
-      <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/ChangeClientInfoSMSCheck" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ChangeClientInfoConfirm">
-      <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/ChangeClientInfoConfirm" style="document" />
+    <wsdl:operation name="ChangeClientOnlinePassword">
+      <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/ChangeClientOnlinePassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

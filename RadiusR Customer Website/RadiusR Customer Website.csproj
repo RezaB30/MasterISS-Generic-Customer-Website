@@ -88,18 +88,18 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RadiusR.Localization, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.Localization.1.0.2\lib\net452\RadiusR.Localization.dll</HintPath>
+    <Reference Include="RadiusR.Localization, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RadiusR.Localization.1.0.3\lib\net452\RadiusR.Localization.dll</HintPath>
     </Reference>
-    <Reference Include="RadiusR.Localization.Lists, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.Localization.Lists.1.0.6\lib\net452\RadiusR.Localization.Lists.dll</HintPath>
+    <Reference Include="RadiusR.Localization.Lists, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RadiusR.Localization.Lists.1.0.7\lib\net452\RadiusR.Localization.Lists.dll</HintPath>
     </Reference>
     <Reference Include="RezaB.Data, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.Data.1.0.1\lib\net452\RezaB.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RezaB.Web, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RezaB.Web.1.1.1\lib\net452\RezaB.Web.dll</HintPath>
+    <Reference Include="RezaB.Web, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RezaB.Web.1.1.5\lib\net472\RezaB.Web.dll</HintPath>
     </Reference>
     <Reference Include="RezaB.Web.Helpers, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.Web.Helpers.1.0.3\lib\net452\RezaB.Web.Helpers.dll</HintPath>

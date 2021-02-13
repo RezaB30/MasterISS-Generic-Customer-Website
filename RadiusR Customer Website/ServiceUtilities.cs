@@ -108,5 +108,21 @@ namespace RadiusR_Customer_Website
             });
             return result;
         }
+        public CustomerServiceGetCustomerInfoResponse GetCustomerInfo(long subscriptionId)
+        {
+            var baseRequest = new GenericServiceSettings();
+            var subscription = client.GetCustomerInfo(new CustomerServiceBaseRequest()
+            {
+                Culture = baseRequest.Culture,
+                Hash = baseRequest.Hash,
+                Username = baseRequest.Username,
+                Rand = baseRequest.Rand,
+                SubscriptionParameters = new BaseSubscriptionRequest()
+                {
+                    SubscriptionId = subscriptionId
+                }
+            });
+            return subscription;
+        }
     }
 }

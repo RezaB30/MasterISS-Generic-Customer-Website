@@ -436,4 +436,28 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="CustomerServiceChangeClientInfoConfirmResponse" nillable="true" type="tns:CustomerServiceChangeClientInfoConfirmResponse" />
+  <xs:complexType name="CustomerServiceSubscriberListResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q26="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q26:BaseResponseOfArrayOfSubscriptionKeyValueSHA1KVWl_PpN3">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SubscriptionList" nillable="true" type="tns:ArrayOfSubscriptionKeyValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceSubscriberListResponse" nillable="true" type="tns:CustomerServiceSubscriberListResponse" />
+  <xs:complexType name="ArrayOfSubscriptionKeyValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubscriptionKeyValue" nillable="true" type="tns:SubscriptionKeyValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubscriptionKeyValue" nillable="true" type="tns:ArrayOfSubscriptionKeyValue" />
+  <xs:complexType name="SubscriptionKeyValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="State" type="xs:int" />
+      <xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubscriptionId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubscriptionKeyValue" nillable="true" type="tns:SubscriptionKeyValue" />
 </xs:schema>

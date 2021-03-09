@@ -388,6 +388,12 @@
   <wsdl:message name="IGenericCustomerService_ChangeClientOnlinePassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChangeClientOnlinePasswordResponse" />
   </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_GetSubscriptionList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionList" />
+  </wsdl:message>
+  <wsdl:message name="IGenericCustomerService_GetSubscriptionList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGenericCustomerService">
     <wsdl:operation name="GetProvinces">
       <wsdl:input wsaw:Action="http://tempuri.org/ITelekomInfrastructureService/GetProvinces" message="tns:IGenericCustomerService_GetProvinces_InputMessage" />
@@ -632,6 +638,10 @@
     <wsdl:operation name="ChangeClientOnlinePassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/ChangeClientOnlinePassword" message="tns:IGenericCustomerService_ChangeClientOnlinePassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/ChangeClientOnlinePasswordResponse" message="tns:IGenericCustomerService_ChangeClientOnlinePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptionList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GetSubscriptionList" message="tns:IGenericCustomerService_GetSubscriptionList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/GetSubscriptionListResponse" message="tns:IGenericCustomerService_GetSubscriptionList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IGenericCustomerService" type="tns:IGenericCustomerService">
@@ -1179,6 +1189,15 @@
     </wsdl:operation>
     <wsdl:operation name="ChangeClientOnlinePassword">
       <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/ChangeClientOnlinePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptionList">
+      <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/GetSubscriptionList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

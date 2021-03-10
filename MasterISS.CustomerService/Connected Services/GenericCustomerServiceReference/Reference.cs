@@ -17,6 +17,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfSHA1o_Pr6u_PMh", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServicePaymentTypeListRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceQuotaPackagesRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceCommitmentLengthsRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceExternalTariffRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfNullableOflongSHA1qBRhzOKh))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceNameValuePairRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAddressDetailsRequest))]
@@ -82,12 +88,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveClientAttachmentRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfChangeClientOnlinePasswordRequestSHA1CuT410mT))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceChangeClientOnlinePasswordRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceQuotaPackagesRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceVPOSErrorParameterNameRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceCommitmentLengthsRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceExternalTariffRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServicePaymentTypeListRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceProvincesRequest))]
     public partial class BaseRequestOfSHA1o_Pr6u_PMh : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -176,6 +176,49 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServicePaymentTypeListRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.P" +
+        "ayment")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServicePaymentTypeListRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceQuotaPackagesRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceQuotaPackagesRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceGenericAppSettingsRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceGenericAppSettingsRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceVPOSErrorParameterNameRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceVPOSErrorParameterNameRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceCommitmentLengthsRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceCommitmentLengthsRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceExternalTariffRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceExternalTariffRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1217,49 +1260,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceQuotaPackagesRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
-    [System.SerializableAttribute()]
-    public partial class CustomerServiceQuotaPackagesRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceGenericAppSettingsRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
-    [System.SerializableAttribute()]
-    public partial class CustomerServiceGenericAppSettingsRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceVPOSErrorParameterNameRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
-    [System.SerializableAttribute()]
-    public partial class CustomerServiceVPOSErrorParameterNameRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceCommitmentLengthsRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
-    [System.SerializableAttribute()]
-    public partial class CustomerServiceCommitmentLengthsRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceExternalTariffRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
-    [System.SerializableAttribute()]
-    public partial class CustomerServiceExternalTariffRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServicePaymentTypeListRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.P" +
-        "ayment")]
-    [System.SerializableAttribute()]
-    public partial class CustomerServicePaymentTypeListRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceProvincesRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.TelekomInfrastructureService")]
     [System.SerializableAttribute()]
     public partial class CustomerServiceProvincesRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
@@ -1314,9 +1314,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseSubscriptionRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.SendSubscriberSMSRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.SupportDetailMessagesRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.SupportRegisterRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.EArchivePDFRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.PayBillsRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.QuotaSaleRequest))]
@@ -1328,6 +1325,9 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.AutoPaymentListRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.PaymentSystemLogRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.MobilexpressPayBillRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.SendSubscriberSMSRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.SupportDetailMessagesRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.SupportRegisterRequest))]
     public partial class BaseSubscriptionRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -1365,141 +1365,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SendSubscriberSMSRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
-    [System.SerializableAttribute()]
-    public partial class SendSubscriberSMSRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseSubscriptionRequest {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long[] BillIdsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<decimal> PayableAmountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<short> SubscriptionPaidTypeField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long[] BillIds {
-            get {
-                return this.BillIdsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BillIdsField, value) != true)) {
-                    this.BillIdsField = value;
-                    this.RaisePropertyChanged("BillIds");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> PayableAmount {
-            get {
-                return this.PayableAmountField;
-            }
-            set {
-                if ((this.PayableAmountField.Equals(value) != true)) {
-                    this.PayableAmountField = value;
-                    this.RaisePropertyChanged("PayableAmount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<short> SubscriptionPaidType {
-            get {
-                return this.SubscriptionPaidTypeField;
-            }
-            set {
-                if ((this.SubscriptionPaidTypeField.Equals(value) != true)) {
-                    this.SubscriptionPaidTypeField = value;
-                    this.RaisePropertyChanged("SubscriptionPaidType");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SupportDetailMessagesRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.S" +
-        "upport")]
-    [System.SerializableAttribute()]
-    public partial class SupportDetailMessagesRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseSubscriptionRequest {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<long> SupportIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<long> SupportId {
-            get {
-                return this.SupportIdField;
-            }
-            set {
-                if ((this.SupportIdField.Equals(value) != true)) {
-                    this.SupportIdField = value;
-                    this.RaisePropertyChanged("SupportId");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SupportRegisterRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.S" +
-        "upport")]
-    [System.SerializableAttribute()]
-    public partial class SupportRegisterRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseSubscriptionRequest {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> RequestTypeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> SubRequestTypeIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> RequestTypeId {
-            get {
-                return this.RequestTypeIdField;
-            }
-            set {
-                if ((this.RequestTypeIdField.Equals(value) != true)) {
-                    this.RequestTypeIdField = value;
-                    this.RaisePropertyChanged("RequestTypeId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> SubRequestTypeId {
-            get {
-                return this.SubRequestTypeIdField;
-            }
-            set {
-                if ((this.SubRequestTypeIdField.Equals(value) != true)) {
-                    this.SubRequestTypeIdField = value;
-                    this.RaisePropertyChanged("SubRequestTypeId");
-                }
             }
         }
     }
@@ -1971,6 +1836,141 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.TokenField, value) != true)) {
                     this.TokenField = value;
                     this.RaisePropertyChanged("Token");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SendSubscriberSMSRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
+    [System.SerializableAttribute()]
+    public partial class SendSubscriberSMSRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseSubscriptionRequest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long[] BillIdsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> PayableAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<short> SubscriptionPaidTypeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long[] BillIds {
+            get {
+                return this.BillIdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BillIdsField, value) != true)) {
+                    this.BillIdsField = value;
+                    this.RaisePropertyChanged("BillIds");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> PayableAmount {
+            get {
+                return this.PayableAmountField;
+            }
+            set {
+                if ((this.PayableAmountField.Equals(value) != true)) {
+                    this.PayableAmountField = value;
+                    this.RaisePropertyChanged("PayableAmount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<short> SubscriptionPaidType {
+            get {
+                return this.SubscriptionPaidTypeField;
+            }
+            set {
+                if ((this.SubscriptionPaidTypeField.Equals(value) != true)) {
+                    this.SubscriptionPaidTypeField = value;
+                    this.RaisePropertyChanged("SubscriptionPaidType");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SupportDetailMessagesRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.S" +
+        "upport")]
+    [System.SerializableAttribute()]
+    public partial class SupportDetailMessagesRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseSubscriptionRequest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<long> SupportIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<long> SupportId {
+            get {
+                return this.SupportIdField;
+            }
+            set {
+                if ((this.SupportIdField.Equals(value) != true)) {
+                    this.SupportIdField = value;
+                    this.RaisePropertyChanged("SupportId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SupportRegisterRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.S" +
+        "upport")]
+    [System.SerializableAttribute()]
+    public partial class SupportRegisterRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseSubscriptionRequest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> RequestTypeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> SubRequestTypeIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> RequestTypeId {
+            get {
+                return this.RequestTypeIdField;
+            }
+            set {
+                if ((this.RequestTypeIdField.Equals(value) != true)) {
+                    this.RequestTypeIdField = value;
+                    this.RaisePropertyChanged("RequestTypeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> SubRequestTypeId {
+            get {
+                return this.SubRequestTypeIdField;
+            }
+            set {
+                if ((this.SubRequestTypeIdField.Equals(value) != true)) {
+                    this.SubRequestTypeIdField = value;
+                    this.RaisePropertyChanged("SubRequestTypeId");
                 }
             }
         }
@@ -5536,6 +5536,9 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
             [System.Runtime.Serialization.OptionalFieldAttribute()]
             private bool HasInfrastructureAdslField;
             
+            [System.Runtime.Serialization.OptionalFieldAttribute()]
+            private int PortStateField;
+            
             public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
                 get {
                     return this.extensionDataField;
@@ -5610,6 +5613,19 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 }
             }
             
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public int PortState {
+                get {
+                    return this.PortStateField;
+                }
+                set {
+                    if ((this.PortStateField.Equals(value) != true)) {
+                        this.PortStateField = value;
+                        this.RaisePropertyChanged("PortState");
+                    }
+                }
+            }
+            
             public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
             
             protected void RaisePropertyChanged(string propertyName) {
@@ -5643,6 +5659,9 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
             
             [System.Runtime.Serialization.OptionalFieldAttribute()]
             private bool HasInfrastructureFiberField;
+            
+            [System.Runtime.Serialization.OptionalFieldAttribute()]
+            private int PortStateField;
             
             public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
                 get {
@@ -5718,6 +5737,19 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 }
             }
             
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public int PortState {
+                get {
+                    return this.PortStateField;
+                }
+                set {
+                    if ((this.PortStateField.Equals(value) != true)) {
+                        this.PortStateField = value;
+                        this.RaisePropertyChanged("PortState");
+                    }
+                }
+            }
+            
             public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
             
             protected void RaisePropertyChanged(string propertyName) {
@@ -5739,6 +5771,9 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
             
             [System.Runtime.Serialization.OptionalFieldAttribute()]
             private bool HasInfrastructureVdslField;
+            
+            [System.Runtime.Serialization.OptionalFieldAttribute()]
+            private int PortStateField;
             
             [System.Runtime.Serialization.OptionalFieldAttribute()]
             private System.Nullable<int> VdslDistanceField;
@@ -5770,6 +5805,19 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                     if ((this.HasInfrastructureVdslField.Equals(value) != true)) {
                         this.HasInfrastructureVdslField = value;
                         this.RaisePropertyChanged("HasInfrastructureVdsl");
+                    }
+                }
+            }
+            
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public int PortState {
+                get {
+                    return this.PortStateField;
+                }
+                set {
+                    if ((this.PortStateField.Equals(value) != true)) {
+                        this.PortStateField = value;
+                        this.RaisePropertyChanged("PortState");
                     }
                 }
             }

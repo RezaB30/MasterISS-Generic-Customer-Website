@@ -56,38 +56,38 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService.wsdl" />
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService1.wsdl" />
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService1.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService111.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService10.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService1110.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService2.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService112.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService3.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService113.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService4.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService114.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService5.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService115.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService6.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService116.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService7.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService117.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService8.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService118.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService9.xsd">
+    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService119.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceActivateAutomaticPaymentResponse.datasource">
@@ -246,9 +246,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\GenericCustomerServiceReference\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\GenericCustomerServiceReference\GenericCustomerService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\GenericCustomerServiceReference\configuration91.svcinfo" />

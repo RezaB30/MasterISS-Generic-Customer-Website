@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://10.184.3.63:5998/GenericCustomerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.TelekomInfrastructureService" />
-  <xs:import schemaLocation="http://10.184.3.63:5998/GenericCustomerService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" />
-  <xs:import schemaLocation="http://10.184.3.63:5998/GenericCustomerService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" />
-  <xs:import schemaLocation="http://10.184.3.63:5998/GenericCustomerService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Payment" />
-  <xs:import schemaLocation="http://10.184.3.63:5998/GenericCustomerService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.Support" />
-  <xs:import schemaLocation="http://10.184.3.63:5998/GenericCustomerService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Support" />
-  <xs:import schemaLocation="http://10.184.3.63:5998/GenericCustomerService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.Payment" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.TelekomInfrastructureService" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Payment" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.Support" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Support" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.Payment" />
   <xs:element name="GetProvinces">
     <xs:complexType>
       <xs:sequence>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RadiusR.API.TelekomInfrastructureService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RadiusR.API.TelekomInfrastructureService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://10.184.3.63:5998/GenericCustomerService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" />
   <xs:complexType name="CustomerServiceProvincesRequest">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q1:BaseRequestOfSHA1o_Pr6u_PMh">
@@ -125,6 +125,7 @@
       <xs:element minOccurs="0" name="AdslSVUID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="AdslSpeed" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="HasInfrastructureAdsl" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PortState" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ServiceAvailabilityResponse.ADSLInfo" nillable="true" type="tns:ServiceAvailabilityResponse.ADSLInfo" />
@@ -135,12 +136,14 @@
       <xs:element minOccurs="0" name="FiberSVUID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FiberSpeed" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="HasInfrastructureFiber" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PortState" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ServiceAvailabilityResponse.FIBERInfo" nillable="true" type="tns:ServiceAvailabilityResponse.FIBERInfo" />
   <xs:complexType name="ServiceAvailabilityResponse.VDSLInfo">
     <xs:sequence>
       <xs:element minOccurs="0" name="HasInfrastructureVdsl" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PortState" type="xs:int" />
       <xs:element minOccurs="0" name="VdslDistance" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="VdslPortState" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="VdslSVUID" nillable="true" type="xs:string" />

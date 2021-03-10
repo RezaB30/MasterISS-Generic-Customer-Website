@@ -199,7 +199,6 @@ namespace RadiusR_Customer_Website.Controllers
                         return RedirectToAction("BillsAndPayments");
                     }
                 }
-
                 // log - need web service
                 var logBaseRequest = new GenericServiceSettings();
                 var systemLog = client.PaymentSystemLog(new CustomerServicePaymentSystemLogRequest()

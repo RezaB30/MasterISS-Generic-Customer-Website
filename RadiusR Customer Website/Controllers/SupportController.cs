@@ -98,7 +98,7 @@ namespace RadiusR_Customer_Website.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult NewRequest(NewRequestVM newRequest)
+        public ActionResult NewRequest(NewRequestVM newRequest , HttpPostedFileBase[] attachments)
         {
             if (newRequest.Description != null)
                 newRequest.Description = newRequest.Description.Trim(new char[] { ' ', '\n', '\r' });
@@ -112,9 +112,36 @@ namespace RadiusR_Customer_Website.Controllers
             }
             else
             {
+                attachments = attachments != null ? attachments.Where(att => att != null).FirstOrDefault() == null ? null : attachments : attachments;
                 if (HasOpenRequest())
                 {
                     return ReturnMessageUrl(Url.Action("SupportRequests", "Support"), RadiusRCustomerWebSite.Localization.Common.HasActiveRequest);
+                }
+                var genericAppSetting = new ServiceUtilities().CustomerWebsiteGenericSettings();
+                var fileMaxSize = genericAppSetting.GenericAppSettings == null ? 5242880 : genericAppSetting.GenericAppSettings.FileMaxSize;
+                var fileMaxCount = genericAppSetting.GenericAppSettings == null ? 20 : genericAppSetting.GenericAppSettings.FileMaxCount;
+                if (attachments != null && attachments.Where(att => att.ContentLength > fileMaxSize).FirstOrDefault() != null)
+                {
+                    return ReturnMessageUrl(Url.Action("NewRequests", "Support"), string.Format(RadiusRCustomerWebSite.Localization.Common.FileSizeError, (fileMaxSize / 1000000)));
+                }
+                List<MasterISS.CustomerService.GenericCustomerServiceReference.Attachment> attachmentList = new List<MasterISS.CustomerService.GenericCustomerServiceReference.Attachment>();
+                if (attachments != null && attachments.Count() != 0 && attachments.Count() <= fileMaxCount)
+                {
+                    foreach (var item in attachments)
+                    {
+                        using (var binaryReader = new BinaryReader(item.InputStream))
+                        {
+                            var attachmentByte = binaryReader.ReadBytes(item.ContentLength);
+                            System.IO.FileInfo fileInfo = new System.IO.FileInfo(item.FileName);
+                            var fileExtension = fileInfo.Extension.Replace(".", "");
+                            attachmentList.Add(new MasterISS.CustomerService.GenericCustomerServiceReference.Attachment()
+                            {
+                                FileContent = attachmentByte,
+                                FileExtention = fileExtension,
+                                FileName = item.FileName
+                            });
+                        }
+                    }
                 }
                 var baseRequest = new GenericServiceSettings();
                 var register = client.SupportRegister(new CustomerServiceSupportRegisterRequest()
@@ -127,7 +154,8 @@ namespace RadiusR_Customer_Website.Controllers
                         Description = newRequest.Description,
                         RequestTypeId = newRequest.RequestTypeId,
                         SubRequestTypeId = newRequest.SubRequestTypeId,
-                        SubscriptionId = User.GiveUserId()
+                        SubscriptionId = User.GiveUserId(),
+                        Attachments = attachmentList.ToArray()
                     },
                     Username = baseRequest.Username
                 });
@@ -218,6 +246,39 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 return ReturnMessageUrl(Url.Action("SupportResults", "Support", new { requestMessage.ID }), string.Format(RadiusRCustomerWebSite.Localization.Common.FileSizeError, (fileMaxSize / 1000000)));
             }
+            //
+            List<MasterISS.CustomerService.GenericCustomerServiceReference.Attachment> getAttachments = new List<Attachment>();
+            if (attachments != null && attachments.Count() != 0)
+            {
+                var fileMaxCount = genericAppSetting.GenericAppSettings == null ? 20 : genericAppSetting.GenericAppSettings.FileMaxCount;
+                var attachmentsList = new ServiceUtilities().GetSupportAttachmentList(requestMessage.ID);
+                if (attachmentsList.GetSupportAttachmentList == null || attachmentsList.GetSupportAttachmentList.Count() == 0
+                    || (attachments.Count() + attachmentsList.GetSupportAttachmentList.Count()) <= fileMaxCount)
+                {
+                    foreach (var item in attachments)
+                    {
+                        using (var binaryReader = new BinaryReader(item.InputStream))
+                        {
+                            var attachmentByte = binaryReader.ReadBytes(item.ContentLength);
+                            var fileInfo = new System.IO.FileInfo(item.FileName);
+                            var fileExtension = fileInfo.Extension.Replace(".", "");
+                            getAttachments.Add(new Attachment()
+                            {
+                                FileContent = attachmentByte,
+                                FileName = item.FileName,
+                                FileExtention = fileExtension
+                            });
+                            //var saveAttachment = new ServiceUtilities().SaveSupportAttachment(newMessageResponse.SendSupportMessageResponse.Value, item.FileName, attachmentByte, fileExtension, requestMessage.ID);
+                            //generalLogger.Info($"Save Attachment Service Response | Error Code : {saveAttachment.ResponseMessage.ErrorCode} - Error Message : {saveAttachment.ResponseMessage.ErrorMessage}");
+                        }
+                    }
+                }
+                else
+                {
+                    return ReturnMessageUrl(Url.Action("SupportResults", "Support", new { requestMessage.ID }), RadiusRCustomerWebSite.Localization.Common.FileUploadError);
+                }
+            }
+            //
             var baseRequest = new GenericServiceSettings();
             var newMessageResponse = client.SendSupportMessage(new CustomerServiceSendSupportMessageRequest()
             {
@@ -227,6 +288,7 @@ namespace RadiusR_Customer_Website.Controllers
                 Username = baseRequest.Username,
                 SendSupportMessageParameters = new SendSupportMessageRequest()
                 {
+                    Attachments = getAttachments.ToArray(),
                     Message = requestMessage.Message,
                     SubscriptionId = User.GiveUserId(),
                     SupportId = requestMessage.ID,
@@ -238,34 +300,6 @@ namespace RadiusR_Customer_Website.Controllers
             if (newMessageResponse.ResponseMessage.ErrorCode == 5) // has active request
             {
                 return ReturnMessageUrl(Url.Action("SupportRequests", "Support"), newMessageResponse.ResponseMessage.ErrorMessage);
-            }
-            if (attachments != null && attachments.Count() != 0)
-            {
-                var fileMaxCount = genericAppSetting.GenericAppSettings == null ? 20 : genericAppSetting.GenericAppSettings.FileMaxCount;
-                var attachmentsList = new ServiceUtilities().GetSupportAttachmentList(requestMessage.ID);
-                if (attachmentsList.GetSupportAttachmentList == null || attachmentsList.GetSupportAttachmentList.Count() == 0
-                    || (attachments.Count() + attachmentsList.GetSupportAttachmentList.Count()) <= fileMaxCount)
-                {
-                    if (newMessageResponse.ResponseMessage.ErrorCode == 0)
-                    {
-                        // save attachment
-                        foreach (var item in attachments)
-                        {
-                            using (var binaryReader = new BinaryReader(item.InputStream))
-                            {
-                                var attachmentByte = binaryReader.ReadBytes(item.ContentLength);
-                                var fileInfo = new System.IO.FileInfo(item.FileName);
-                                var fileExtension = fileInfo.Extension.Replace(".", "");
-                                var saveAttachment = new ServiceUtilities().SaveSupportAttachment(newMessageResponse.SendSupportMessageResponse.Value, item.FileName, attachmentByte, fileExtension, requestMessage.ID);
-                                generalLogger.Info($"Save Attachment Service Response | Error Code : {saveAttachment.ResponseMessage.ErrorCode} - Error Message : {saveAttachment.ResponseMessage.ErrorMessage}");
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    return ReturnMessageUrl(Url.Action("SupportResults", "Support", new { requestMessage.ID }), RadiusRCustomerWebSite.Localization.Common.FileUploadError);
-                }
             }
             return ReturnMessageUrl(Url.Action("SupportDetails", "Support", new { requestMessage.ID }), newMessageResponse.ResponseMessage.ErrorMessage);
         }

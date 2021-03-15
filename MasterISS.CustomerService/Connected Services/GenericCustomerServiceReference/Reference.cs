@@ -80,8 +80,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportAttachmentListRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfGetSupportAttachmentRequestSHA1Owyew9Fe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportAttachmentRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSaveSupportAttachmentRequestSHA1Owyew9Fe))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfAuthenticationWithPasswordRequestSHA1CuT410mT))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAuthenticationWithPasswordRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSaveClientAttachmentRequestSHA1CuT410mT))]
@@ -1135,38 +1133,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfSaveSupportAttachmentRequestSHA1Owyew9Fe", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentRequest))]
-    public partial class BaseRequestOfSaveSupportAttachmentRequestSHA1Owyew9Fe : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceSaveSupportAttachmentRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.S" +
-        "upport")]
-    [System.SerializableAttribute()]
-    public partial class CustomerServiceSaveSupportAttachmentRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSaveSupportAttachmentRequestSHA1Owyew9Fe {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MasterISS.CustomerService.GenericCustomerServiceReference.SaveSupportAttachmentRequest SaveSupportAttachmentParametersField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MasterISS.CustomerService.GenericCustomerServiceReference.SaveSupportAttachmentRequest SaveSupportAttachmentParameters {
-            get {
-                return this.SaveSupportAttachmentParametersField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SaveSupportAttachmentParametersField, value) != true)) {
-                    this.SaveSupportAttachmentParametersField = value;
-                    this.RaisePropertyChanged("SaveSupportAttachmentParameters");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfAuthenticationWithPasswordRequestSHA1CuT410mT", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAuthenticationWithPasswordRequest))]
@@ -1928,6 +1894,9 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     public partial class SupportRegisterRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseSubscriptionRequest {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MasterISS.CustomerService.GenericCustomerServiceReference.Attachment[] AttachmentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1935,6 +1904,19 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> SubRequestTypeIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MasterISS.CustomerService.GenericCustomerServiceReference.Attachment[] Attachments {
+            get {
+                return this.AttachmentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AttachmentsField, value) != true)) {
+                    this.AttachmentsField = value;
+                    this.RaisePropertyChanged("Attachments");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Description {
@@ -2101,6 +2083,84 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.TokenField, value) != true)) {
                     this.TokenField = value;
                     this.RaisePropertyChanged("Token");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Attachment", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.S" +
+        "upport")]
+    [System.SerializableAttribute()]
+    public partial class Attachment : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] FileContentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileExtentionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] FileContent {
+            get {
+                return this.FileContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileContentField, value) != true)) {
+                    this.FileContentField = value;
+                    this.RaisePropertyChanged("FileContent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileExtention {
+            get {
+                return this.FileExtentionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileExtentionField, value) != true)) {
+                    this.FileExtentionField = value;
+                    this.RaisePropertyChanged("FileExtention");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileName {
+            get {
+                return this.FileNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
+                    this.FileNameField = value;
+                    this.RaisePropertyChanged("FileName");
                 }
             }
         }
@@ -2295,6 +2355,9 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MasterISS.CustomerService.GenericCustomerServiceReference.Attachment[] AttachmentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2313,6 +2376,19 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MasterISS.CustomerService.GenericCustomerServiceReference.Attachment[] Attachments {
+            get {
+                return this.AttachmentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AttachmentsField, value) != true)) {
+                    this.AttachmentsField = value;
+                    this.RaisePropertyChanged("Attachments");
+                }
             }
         }
         
@@ -2916,116 +2992,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SaveSupportAttachmentRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.S" +
-        "upport")]
-    [System.SerializableAttribute()]
-    public partial class SaveSupportAttachmentRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] FileContentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FileExtentionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FileNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<long> StageIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<long> SupportRequestIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] FileContent {
-            get {
-                return this.FileContentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FileContentField, value) != true)) {
-                    this.FileContentField = value;
-                    this.RaisePropertyChanged("FileContent");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FileExtention {
-            get {
-                return this.FileExtentionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FileExtentionField, value) != true)) {
-                    this.FileExtentionField = value;
-                    this.RaisePropertyChanged("FileExtention");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FileName {
-            get {
-                return this.FileNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
-                    this.FileNameField = value;
-                    this.RaisePropertyChanged("FileName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<long> StageId {
-            get {
-                return this.StageIdField;
-            }
-            set {
-                if ((this.StageIdField.Equals(value) != true)) {
-                    this.StageIdField = value;
-                    this.RaisePropertyChanged("StageId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<long> SupportRequestId {
-            get {
-                return this.SupportRequestIdField;
-            }
-            set {
-                if ((this.SupportRequestIdField.Equals(value) != true)) {
-                    this.SupportRequestIdField = value;
-                    this.RaisePropertyChanged("SupportRequestId");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AuthenticationWithPasswordRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests")]
     [System.SerializableAttribute()]
     public partial class AuthenticationWithPasswordRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -3265,7 +3231,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSupportDetailMessagesResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfSupportRegisterResponseSHA1Tzfx7AaR))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSupportRegisterResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfNullableOflongSHA1qBRhzOKh))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfbooleanSHA1Miy85_SUl))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSendSupportMessageResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfGetCustomerConnectionStatusResponseSHA1KVWl_PpN3))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceConnectionStatusResponse))]
@@ -3323,8 +3289,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServicGetSupportAttachmentListResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfGetSupportAttachmentResponseSHA1Tzfx7AaR))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportAttachmentResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfbooleanSHA1Miy85_SUl))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfCustomerAuthenticationWithPasswordResponseSHA1KVWl_PpN3))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceCustomerAuthenticationWithPasswordResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfHasPreRegisterResponseSHA1KVWl_PpN3))]
@@ -3848,23 +3812,23 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfNullableOflongSHA1qBRhzOKh", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfbooleanSHA1Miy85_SUl", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSendSupportMessageResponse))]
-    public partial class BaseResponseOfNullableOflongSHA1qBRhzOKh : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfSHA1o_Pr6u_PMh {
+    public partial class BaseResponseOfbooleanSHA1Miy85_SUl : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfSHA1o_Pr6u_PMh {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceSendSupportMessageResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses")]
     [System.SerializableAttribute()]
-    public partial class CustomerServiceSendSupportMessageResponse : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfNullableOflongSHA1qBRhzOKh {
+    public partial class CustomerServiceSendSupportMessageResponse : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfbooleanSHA1Miy85_SUl {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<long> SendSupportMessageResponseField;
+        private bool SendSupportMessageResponseField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<long> SendSupportMessageResponse {
+        public bool SendSupportMessageResponse {
             get {
                 return this.SendSupportMessageResponseField;
             }
@@ -4882,38 +4846,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.GetSupportAttachmentField, value) != true)) {
                     this.GetSupportAttachmentField = value;
                     this.RaisePropertyChanged("GetSupportAttachment");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfbooleanSHA1Miy85_SUl", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentResponse))]
-    public partial class BaseResponseOfbooleanSHA1Miy85_SUl : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfSHA1o_Pr6u_PMh {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceSaveSupportAttachmentResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses." +
-        "Support")]
-    [System.SerializableAttribute()]
-    public partial class CustomerServiceSaveSupportAttachmentResponse : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfbooleanSHA1Miy85_SUl {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool SaveSupportAttachmentResultField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool SaveSupportAttachmentResult {
-            get {
-                return this.SaveSupportAttachmentResultField;
-            }
-            set {
-                if ((this.SaveSupportAttachmentResultField.Equals(value) != true)) {
-                    this.SaveSupportAttachmentResultField = value;
-                    this.RaisePropertyChanged("SaveSupportAttachmentResult");
                 }
             }
         }
@@ -7541,7 +7473,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long SupportIdField;
+        private bool SupportRegisterResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -7554,14 +7486,14 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public long SupportId {
+        public bool SupportRegisterResult {
             get {
-                return this.SupportIdField;
+                return this.SupportRegisterResultField;
             }
             set {
-                if ((this.SupportIdField.Equals(value) != true)) {
-                    this.SupportIdField = value;
-                    this.RaisePropertyChanged("SupportId");
+                if ((this.SupportRegisterResultField.Equals(value) != true)) {
+                    this.SupportRegisterResultField = value;
+                    this.RaisePropertyChanged("SupportRegisterResult");
                 }
             }
         }
@@ -10003,12 +9935,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GetSupportAttachment", ReplyAction="http://tempuri.org/IGenericCustomerService/GetSupportAttachmentResponse")]
         System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportAttachmentResponse> GetSupportAttachmentAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportAttachmentRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/SaveSupportAttachment", ReplyAction="http://tempuri.org/IGenericCustomerService/SaveSupportAttachmentResponse")]
-        MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentResponse SaveSupportAttachment(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/SaveSupportAttachment", ReplyAction="http://tempuri.org/IGenericCustomerService/SaveSupportAttachmentResponse")]
-        System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentResponse> SaveSupportAttachmentAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentRequest request);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/CustomerAuthenticationWithPassword", ReplyAction="http://tempuri.org/IGenericCustomerService/CustomerAuthenticationWithPasswordResp" +
             "onse")]
         MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceCustomerAuthenticationWithPasswordResponse CustomerAuthenticationWithPassword(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAuthenticationWithPasswordRequest request);
@@ -10513,14 +10439,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         
         public System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportAttachmentResponse> GetSupportAttachmentAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportAttachmentRequest request) {
             return base.Channel.GetSupportAttachmentAsync(request);
-        }
-        
-        public MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentResponse SaveSupportAttachment(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentRequest request) {
-            return base.Channel.SaveSupportAttachment(request);
-        }
-        
-        public System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentResponse> SaveSupportAttachmentAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentRequest request) {
-            return base.Channel.SaveSupportAttachmentAsync(request);
         }
         
         public MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceCustomerAuthenticationWithPasswordResponse CustomerAuthenticationWithPassword(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAuthenticationWithPasswordRequest request) {

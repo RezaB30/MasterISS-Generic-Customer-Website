@@ -8,7 +8,7 @@
     @RadiusRCustomerWebSite.Localization.Common.NewRequest
 </div>
 <div class="content-box">
-    @using (Html.BeginForm(FormMethod.Post))
+    @using (Html.BeginForm("NewRequest", "Support", FormMethod.Post,new { @enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         <div class="centered bold">@Html.DisplayNameFor(m => m.RequestTypeId)</div>
@@ -26,11 +26,19 @@
             <div>@Html.ValidationMessageFor(m => m.Description)</div>
         </div>
         <div class="centered">
+            <span id="support-attachment-id">
+                <img style="vertical-align:middle; cursor:pointer;" src="@Url.Content("~/Content/Images/Icons/attachment.svg")" />
+            </span>
             <input type="button" onclick="ShowConfirm($('form'));" class="link-button red" value="@RadiusRCustomerWebSite.Localization.Common.SendSupportRequest" />
+        </div>
+        <div class="centered">
+            <input class="upload-attachments" name="attachments" type="file" style="visibility:hidden;" multiple />
+            <ul class="upload-attachment-list mt-1 list-unstyled"></ul>
         </div>
     }
 </div>
 @section scripts{
+    @Scripts.Render("~/Scripts/Custom/support-attachment.js")
     <script>
 
         $('#RequestTypeId').change(function () {

@@ -346,12 +346,6 @@
   <wsdl:message name="IGenericCustomerService_GetSupportAttachment_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSupportAttachmentResponse" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_SaveSupportAttachment_InputMessage">
-    <wsdl:part name="parameters" element="tns:SaveSupportAttachment" />
-  </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_SaveSupportAttachment_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SaveSupportAttachmentResponse" />
-  </wsdl:message>
   <wsdl:message name="IGenericCustomerService_CustomerAuthenticationWithPassword_InputMessage">
     <wsdl:part name="parameters" element="tns:CustomerAuthenticationWithPassword" />
   </wsdl:message>
@@ -610,10 +604,6 @@
     <wsdl:operation name="GetSupportAttachment">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/GetSupportAttachment" message="tns:IGenericCustomerService_GetSupportAttachment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/GetSupportAttachmentResponse" message="tns:IGenericCustomerService_GetSupportAttachment_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SaveSupportAttachment">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/SaveSupportAttachment" message="tns:IGenericCustomerService_SaveSupportAttachment_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/SaveSupportAttachmentResponse" message="tns:IGenericCustomerService_SaveSupportAttachment_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CustomerAuthenticationWithPassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/CustomerAuthenticationWithPassword" message="tns:IGenericCustomerService_CustomerAuthenticationWithPassword_InputMessage" />
@@ -1126,15 +1116,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetSupportAttachment">
       <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/GetSupportAttachment" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SaveSupportAttachment">
-      <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/SaveSupportAttachment" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

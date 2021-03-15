@@ -207,9 +207,6 @@
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveClientAttachmentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSaveSupportAttachmentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\GenericCustomerServiceReference\MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSendSubscriberSMSResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

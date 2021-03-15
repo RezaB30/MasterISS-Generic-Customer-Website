@@ -70,6 +70,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q6:BaseSubscriptionRequest">
         <xs:sequence>
+          <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachment" />
           <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="RequestTypeId" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="SubRequestTypeId" nillable="true" type="xs:int" />
@@ -78,6 +79,20 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="SupportRegisterRequest" nillable="true" type="tns:SupportRegisterRequest" />
+  <xs:complexType name="ArrayOfAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Attachment" nillable="true" type="tns:Attachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttachment" nillable="true" type="tns:ArrayOfAttachment" />
+  <xs:complexType name="Attachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileContent" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="FileExtention" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Attachment" nillable="true" type="tns:Attachment" />
   <xs:complexType name="CustomerServiceSendSupportMessageRequest">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q7:BaseRequestOfSendSupportMessageRequestSHA1Owyew9Fe">
@@ -90,6 +105,7 @@
   <xs:element name="CustomerServiceSendSupportMessageRequest" nillable="true" type="tns:CustomerServiceSendSupportMessageRequest" />
   <xs:complexType name="SendSupportMessageRequest">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachment" />
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SubscriptionId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="SupportId" nillable="true" type="xs:long" />
@@ -130,24 +146,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GetSupportAttachmentRequest" nillable="true" type="tns:GetSupportAttachmentRequest" />
-  <xs:complexType name="CustomerServiceSaveSupportAttachmentRequest">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q10:BaseRequestOfSaveSupportAttachmentRequestSHA1Owyew9Fe">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="SaveSupportAttachmentParameters" nillable="true" type="tns:SaveSupportAttachmentRequest" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="CustomerServiceSaveSupportAttachmentRequest" nillable="true" type="tns:CustomerServiceSaveSupportAttachmentRequest" />
-  <xs:complexType name="SaveSupportAttachmentRequest">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="FileContent" nillable="true" type="xs:base64Binary" />
-      <xs:element minOccurs="0" name="FileExtention" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="StageId" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="SupportRequestId" nillable="true" type="xs:long" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="SaveSupportAttachmentRequest" nillable="true" type="tns:SaveSupportAttachmentRequest" />
 </xs:schema>

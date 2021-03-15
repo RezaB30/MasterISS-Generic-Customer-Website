@@ -96,7 +96,7 @@
   <xs:element name="CustomerServiceSupportRegisterResponse" nillable="true" type="tns:CustomerServiceSupportRegisterResponse" />
   <xs:complexType name="SupportRegisterResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="SupportId" type="xs:long" />
+      <xs:element minOccurs="0" name="SupportRegisterResult" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SupportRegisterResponse" nillable="true" type="tns:SupportRegisterResponse" />
@@ -188,14 +188,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GetSupportAttachmentResponse" nillable="true" type="tns:GetSupportAttachmentResponse" />
-  <xs:complexType name="CustomerServiceSaveSupportAttachmentResponse">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q10:BaseResponseOfbooleanSHA1Miy85_SUl">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="SaveSupportAttachmentResult" type="xs:boolean" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="CustomerServiceSaveSupportAttachmentResponse" nillable="true" type="tns:CustomerServiceSaveSupportAttachmentResponse" />
 </xs:schema>

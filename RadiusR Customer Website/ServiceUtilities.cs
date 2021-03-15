@@ -55,26 +55,26 @@ namespace RadiusR_Customer_Website
             });
             return result;
         }
-        public CustomerServiceSaveSupportAttachmentResponse SaveSupportAttachment(long stageId, string fileName, byte[] fileContent, string fileExtention, long? supportRequestId)
-        {
-            var baseRequest = new GenericServiceSettings();
-            var result = client.SaveSupportAttachment(new CustomerServiceSaveSupportAttachmentRequest()
-            {
-                Culture = baseRequest.Culture,
-                Hash = baseRequest.Hash,
-                Rand = baseRequest.Rand,
-                Username = baseRequest.Username,
-                SaveSupportAttachmentParameters = new SaveSupportAttachmentRequest()
-                {
-                    FileContent = fileContent,
-                    FileExtention = fileExtention,
-                    FileName = fileName,
-                    StageId = stageId,
-                    SupportRequestId = supportRequestId
-                }
-            });
-            return result;
-        }
+        //public CustomerServiceSaveSupportAttachmentResponse SaveSupportAttachment(long stageId, string fileName, byte[] fileContent, string fileExtention, long? supportRequestId)
+        //{
+        //    var baseRequest = new GenericServiceSettings();
+        //    var result = client.SaveSupportAttachment(new CustomerServiceSaveSupportAttachmentRequest()
+        //    {
+        //        Culture = baseRequest.Culture,
+        //        Hash = baseRequest.Hash,
+        //        Rand = baseRequest.Rand,
+        //        Username = baseRequest.Username,
+        //        SaveSupportAttachmentParameters = new SaveSupportAttachmentRequest()
+        //        {
+        //            FileContent = fileContent,
+        //            FileExtention = fileExtention,
+        //            FileName = fileName,
+        //            StageId = stageId,
+        //            SupportRequestId = supportRequestId
+        //        }
+        //    });
+        //    return result;
+        //}
         public CustomerServicGetSupportAttachmentListResponse GetSupportAttachmentList(long? supportId)
         {
             var baseRequest = new GenericServiceSettings();

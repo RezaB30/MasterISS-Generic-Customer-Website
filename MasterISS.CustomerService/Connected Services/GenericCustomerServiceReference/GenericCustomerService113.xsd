@@ -141,9 +141,9 @@
   <xs:element name="ValueNamePair" nillable="true" type="tns:ValueNamePair" />
   <xs:complexType name="CustomerServiceSendSupportMessageResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q6:BaseResponseOfNullableOflongSHA1qBRhzOKh">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q6:BaseResponseOfbooleanSHA1Miy85_SUl">
         <xs:sequence>
-          <xs:element minOccurs="0" name="SendSupportMessageResponse" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="SendSupportMessageResponse" type="xs:boolean" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

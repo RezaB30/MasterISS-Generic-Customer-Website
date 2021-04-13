@@ -101,7 +101,6 @@
       <xs:extension base="tns:CreditCardParameters">
         <xs:sequence>
           <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" minOccurs="0" name="HttpContextParameters" nillable="true" type="q10:HttpContextParameters" />
-          <xs:element minOccurs="0" name="SMSCode" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="SubscriptionId" nillable="true" type="xs:long" />
         </xs:sequence>
       </xs:extension>

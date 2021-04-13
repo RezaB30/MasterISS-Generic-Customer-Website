@@ -11,7 +11,7 @@
         @string.Format(RadiusRCustomerWebSite.Localization.Common.WelcomeMessageText, ViewBag.CompanyTitle)
     </div>
 </div>
-@if (Model.BillCount > 0)
+@if (Model != null && Model.BillCount > 0)
 {
     <div class="content-box content-box-unpaid-bills">
         <div>

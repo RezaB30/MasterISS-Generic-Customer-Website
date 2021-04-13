@@ -34,8 +34,8 @@ namespace RadiusR_Customer_Website.Controllers
             var results = response.ResponseMessage.ErrorCode != 0 ? Enumerable.Empty<SupportRequestsVM>().AsQueryable() : response.GetCustomerSupportListResponse.OrderByDescending(m => m.State == 1).ThenByDescending(m => m.Date).Select(m => new SupportRequestsVM()
             {
                 ID = m.ID,
-                ApprovalDate = m.ApprovalDate,
-                Date = m.Date,
+                ApprovalDate = Utilities.InternalUtilities.DateTimeConverter.ParseDateTime(m.ApprovalDate),
+                Date = Utilities.InternalUtilities.DateTimeConverter.ParseDateTime(m.Date).Value,
                 SupportNo = m.SupportNo,
                 State = m.StateText,
                 SupportRequestType = m.SupportRequestType,
@@ -98,7 +98,7 @@ namespace RadiusR_Customer_Website.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult NewRequest(NewRequestVM newRequest , HttpPostedFileBase[] attachments)
+        public ActionResult NewRequest(NewRequestVM newRequest, HttpPostedFileBase[] attachments)
         {
             if (newRequest.Description != null)
                 newRequest.Description = newRequest.Description.Trim(new char[] { ' ', '\n', '\r' });
@@ -201,17 +201,17 @@ namespace RadiusR_Customer_Website.Controllers
                 var result = new SupportMessagesVM()
                 {
                     SupportDisplayType = (SupportRequestDisplayTypes)supportDetailResponse.SupportDetailMessagesResponse.SupportRequestDisplayType.SupportRequestDisplayTypeId,
-                    CustomerApprovalDate = supportDetailResponse.SupportDetailMessagesResponse.CustomerApprovalDate,
+                    CustomerApprovalDate = Utilities.InternalUtilities.DateTimeConverter.ParseDateTime(supportDetailResponse.SupportDetailMessagesResponse.CustomerApprovalDate),
                     ID = ID,
                     State = supportDetailResponse.SupportDetailMessagesResponse.State.StateName,
-                    SupportDate = supportDetailResponse.SupportDetailMessagesResponse.SupportDate,
+                    SupportDate = Utilities.InternalUtilities.DateTimeConverter.ParseDateTime(supportDetailResponse.SupportDetailMessagesResponse.SupportDate).Value,
                     SupportNo = supportDetailResponse.SupportDetailMessagesResponse.SupportNo,
                     SupportRequestName = supportDetailResponse.SupportDetailMessagesResponse.SupportRequestName,
                     SupportRequestSummary = supportDetailResponse.SupportDetailMessagesResponse.SupportRequestSubName,
                     SupportMessageList = supportDetailResponse.SupportDetailMessagesResponse.SupportMessages.OrderByDescending(m => m.MessageDate).Select(m => new SupportMessageList()
                     {
                         Message = m.Message,
-                        MessageDate = m.MessageDate,
+                        MessageDate = Utilities.InternalUtilities.DateTimeConverter.ParseDateTime(m.MessageDate).Value,
                         SenderName = m.IsCustomer ? User.Identity.Name.Length > 20 ? User.Identity.Name.Substring(0, 20) + "..." : User.Identity.Name
                           : RadiusRCustomerWebSite.Localization.Common.Agent,
                         IsCustomer = m.IsCustomer,

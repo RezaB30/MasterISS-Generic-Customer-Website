@@ -67,14 +67,14 @@
   <xs:element name="ArrayOfGetCustomerSpecialOffersResponse" nillable="true" type="tns:ArrayOfGetCustomerSpecialOffersResponse" />
   <xs:complexType name="GetCustomerSpecialOffersResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsApplicableThisPeriod" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsCancelled" type="xs:boolean" />
       <xs:element minOccurs="0" name="MissedCount" type="xs:int" />
       <xs:element minOccurs="0" name="ReferenceNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReferralSubscriberState" nillable="true" type="xs:short" />
       <xs:element minOccurs="0" name="RemainingCount" type="xs:int" />
-      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
       <xs:element minOccurs="0" name="UsedCount" type="xs:int" />
     </xs:sequence>

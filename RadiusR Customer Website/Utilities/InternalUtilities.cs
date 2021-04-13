@@ -48,5 +48,40 @@ namespace RadiusR_Customer_Website.Utilities
                 return "???";
             }
         }
+        public static class DateTimeConverter
+        {
+            private const string dateTimeFormat = @"yyyy-MM-dd HH:mm:ss";
+            private const string dateFormat = @"yyyy-MM-dd";
+
+            public static string GetDateString(DateTime? datetime)
+            {
+                return datetime.HasValue ? datetime.Value.ToString(dateFormat) : null;
+            }
+
+            public static string GetDateTimeString(DateTime? datetime)
+            {
+                return datetime.HasValue ? datetime.Value.ToString(dateTimeFormat) : null;
+            }
+
+            public static DateTime? ParseDate(string dateString)
+            {
+                DateTime result;
+                if (DateTime.TryParseExact(dateString, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out result))
+                {
+                    return result;
+                }
+                return null;
+            }
+
+            public static DateTime? ParseDateTime(string datetimeString)
+            {
+                DateTime result;
+                if (DateTime.TryParseExact(datetimeString, dateTimeFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out result))
+                {
+                    return result;
+                }
+                return null;
+            }
+        }
     }
 }

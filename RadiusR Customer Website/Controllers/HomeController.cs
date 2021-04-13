@@ -26,7 +26,7 @@ namespace RadiusR_Customer_Website.Controllers
         GenericCustomerServiceClient client = new GenericCustomerServiceClient();
         public ActionResult Index()
         {
-            HomePageViewModel results = null;
+            HomePageViewModel results = new HomePageViewModel();
             var baseRequest = new GenericServiceSettings();
             var getCustomerBills = client.GetCustomerBills(new CustomerServiceBaseRequest()
             {
@@ -95,8 +95,8 @@ namespace RadiusR_Customer_Website.Controllers
             {
                 ID = bill.ID,
                 ServiceName = bill.ServiceName,
-                BillDate = bill.BillDate,
-                LastPaymentDate = bill.LastPaymentDate,
+                BillDate = Utilities.InternalUtilities.DateTimeConverter.ParseDateTime(bill.BillDate).Value,
+                LastPaymentDate = Utilities.InternalUtilities.DateTimeConverter.ParseDateTime(bill.LastPaymentDate).Value,
                 Total = bill.Total.ToString("###,##0.00"),
                 Status = bill.Status,
                 CanBePaid = bill.CanBePaid,
@@ -482,7 +482,6 @@ namespace RadiusR_Customer_Website.Controllers
                         CardNo = card.CardNo,
                         ExpirationMonth = card.ExpirationMonth,
                         ExpirationYear = card.ExpirationYear,
-                        SMSCode = "",
                         SubscriptionId = User.GiveUserId(),
                     },
                     Culture = baseRequest.Culture,
@@ -1138,7 +1137,7 @@ namespace RadiusR_Customer_Website.Controllers
             var viewResults = response.GetCustomerSpecialOffersResponse.Select(rd => new SpecialOffersReportViewModel()
             {
                 IsCancelled = rd.IsCancelled,
-                StartDate = rd.StartDate,
+                StartDate = Utilities.InternalUtilities.DateTimeConverter.ParseDateTime(rd.StartDate).Value,
                 TotalCount = rd.TotalCount,
                 UsedCount = rd.UsedCount,
                 MissedCount = rd.MissedCount,

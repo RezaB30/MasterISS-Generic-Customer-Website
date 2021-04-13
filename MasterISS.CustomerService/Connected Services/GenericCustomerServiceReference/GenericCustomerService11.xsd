@@ -30,11 +30,11 @@
   <xs:element name="ArrayOfGetCustomerBillsResponse" nillable="true" type="tns:ArrayOfGetCustomerBillsResponse" />
   <xs:complexType name="GetCustomerBillsResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="BillDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BillDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CanBePaid" type="xs:boolean" />
       <xs:element minOccurs="0" name="HasEArchiveBill" type="xs:boolean" />
       <xs:element minOccurs="0" name="ID" type="xs:long" />
-      <xs:element minOccurs="0" name="LastPaymentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastPaymentDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PaymentTypeID" type="xs:short" />
       <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" type="xs:short" />

@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RadiusR.API.AddressQueryAdapter</RootNamespace>
     <AssemblyName>RadiusR.API.AddressQueryAdapter</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,8 +43,8 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="RadiusR.DB, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RadiusR.DB.1.1.5\lib\net452\RadiusR.DB.dll</HintPath>
+    <Reference Include="RadiusR.DB, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RadiusR.DB.1.2.4\lib\net472\RadiusR.DB.dll</HintPath>
     </Reference>
     <Reference Include="RezaB.DBUtilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RezaB.DBUtilities.1.0.0\lib\net452\RezaB.DBUtilities.dll</HintPath>
@@ -88,6 +89,9 @@
     </None>
     <None Include="Service References\AddressQueryServiceReference\AddressQueryService2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AddressQueryServiceReference\RadiusR.API.AddressQueryAdapter.AddressQueryServiceReference.AddressQueryResultsOfAddressDetailsOOn8viJD.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AddressQueryServiceReference\RadiusR.API.AddressQueryAdapter.AddressQueryServiceReference.AddressQueryResultsOfstring.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

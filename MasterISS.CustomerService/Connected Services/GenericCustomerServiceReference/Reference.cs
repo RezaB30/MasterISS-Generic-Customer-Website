@@ -2559,9 +2559,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private MasterISS.CustomerService.GenericCustomerServiceReference.HttpContextParameters HttpContextParametersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SMSCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<long> SubscriptionIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
@@ -2573,19 +2570,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.HttpContextParametersField, value) != true)) {
                     this.HttpContextParametersField = value;
                     this.RaisePropertyChanged("HttpContextParameters");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SMSCode {
-            get {
-                return this.SMSCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SMSCodeField, value) != true)) {
-                    this.SMSCodeField = value;
-                    this.RaisePropertyChanged("SMSCode");
                 }
             }
         }
@@ -6207,7 +6191,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime BillDateField;
+        private string BillDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool CanBePaidField;
@@ -6219,7 +6203,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private long IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime LastPaymentDateField;
+        private string LastPaymentDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private short PaymentTypeIDField;
@@ -6247,12 +6231,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime BillDate {
+        public string BillDate {
             get {
                 return this.BillDateField;
             }
             set {
-                if ((this.BillDateField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.BillDateField, value) != true)) {
                     this.BillDateField = value;
                     this.RaisePropertyChanged("BillDate");
                 }
@@ -6299,12 +6283,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime LastPaymentDate {
+        public string LastPaymentDate {
             get {
                 return this.LastPaymentDateField;
             }
             set {
-                if ((this.LastPaymentDateField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.LastPaymentDateField, value) != true)) {
                     this.LastPaymentDateField = value;
                     this.RaisePropertyChanged("LastPaymentDate");
                 }
@@ -6457,7 +6441,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime EndDateField;
+        private string EndDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsApplicableThisPeriodField;
@@ -6478,7 +6462,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private int RemainingCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime StartDateField;
+        private string StartDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalCountField;
@@ -6497,12 +6481,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime EndDate {
+        public string EndDate {
             get {
                 return this.EndDateField;
             }
             set {
-                if ((this.EndDateField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.EndDateField, value) != true)) {
                     this.EndDateField = value;
                     this.RaisePropertyChanged("EndDate");
                 }
@@ -6588,12 +6572,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime StartDate {
+        public string StartDate {
             get {
                 return this.StartDateField;
             }
             set {
-                if ((this.StartDateField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.StartDateField, value) != true)) {
                     this.StartDateField = value;
                     this.RaisePropertyChanged("StartDate");
                 }
@@ -6926,10 +6910,10 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> ApprovalDateField;
+        private string ApprovalDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateField;
+        private string DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long IDField;
@@ -6960,12 +6944,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> ApprovalDate {
+        public string ApprovalDate {
             get {
                 return this.ApprovalDateField;
             }
             set {
-                if ((this.ApprovalDateField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.ApprovalDateField, value) != true)) {
                     this.ApprovalDateField = value;
                     this.RaisePropertyChanged("ApprovalDate");
                 }
@@ -6973,12 +6957,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Date {
+        public string Date {
             get {
                 return this.DateField;
             }
             set {
-                if ((this.DateField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.DateField, value) != true)) {
                     this.DateField = value;
                     this.RaisePropertyChanged("Date");
                 }
@@ -7084,7 +7068,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> CustomerApprovalDateField;
+        private string CustomerApprovalDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long IDField;
@@ -7093,7 +7077,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private MasterISS.CustomerService.GenericCustomerServiceReference.SupportDetailMessagesResponse.StateType StateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime SupportDateField;
+        private string SupportDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private MasterISS.CustomerService.GenericCustomerServiceReference.SupportDetailMessagesResponse.SupportMessageList[] SupportMessagesField;
@@ -7121,12 +7105,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> CustomerApprovalDate {
+        public string CustomerApprovalDate {
             get {
                 return this.CustomerApprovalDateField;
             }
             set {
-                if ((this.CustomerApprovalDateField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.CustomerApprovalDateField, value) != true)) {
                     this.CustomerApprovalDateField = value;
                     this.RaisePropertyChanged("CustomerApprovalDate");
                 }
@@ -7160,12 +7144,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime SupportDate {
+        public string SupportDate {
             get {
                 return this.SupportDateField;
             }
             set {
-                if ((this.SupportDateField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.SupportDateField, value) != true)) {
                     this.SupportDateField = value;
                     this.RaisePropertyChanged("SupportDate");
                 }
@@ -7385,7 +7369,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
             private string MessageField;
             
             [System.Runtime.Serialization.OptionalFieldAttribute()]
-            private System.DateTime MessageDateField;
+            private string MessageDateField;
             
             [System.Runtime.Serialization.OptionalFieldAttribute()]
             private long StageIdField;
@@ -7426,12 +7410,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
             }
             
             [System.Runtime.Serialization.DataMemberAttribute()]
-            public System.DateTime MessageDate {
+            public string MessageDate {
                 get {
                     return this.MessageDateField;
                 }
                 set {
-                    if ((this.MessageDateField.Equals(value) != true)) {
+                    if ((object.ReferenceEquals(this.MessageDateField, value) != true)) {
                         this.MessageDateField = value;
                         this.RaisePropertyChanged("MessageDate");
                     }

@@ -20,8 +20,8 @@
   <xs:element name="ArrayOfGetCustomerSupportListResponse" nillable="true" type="tns:ArrayOfGetCustomerSupportListResponse" />
   <xs:complexType name="GetCustomerSupportListResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ApprovalDate" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ApprovalDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:long" />
       <xs:element minOccurs="0" name="State" type="xs:short" />
       <xs:element minOccurs="0" name="StateText" nillable="true" type="xs:string" />
@@ -43,10 +43,10 @@
   <xs:element name="CustomerServiceSupportDetailMessagesResponse" nillable="true" type="tns:CustomerServiceSupportDetailMessagesResponse" />
   <xs:complexType name="SupportDetailMessagesResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="CustomerApprovalDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CustomerApprovalDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:long" />
       <xs:element minOccurs="0" name="State" nillable="true" type="tns:SupportDetailMessagesResponse.StateType" />
-      <xs:element minOccurs="0" name="SupportDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SupportDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupportMessages" nillable="true" type="tns:ArrayOfSupportDetailMessagesResponse.SupportMessageList" />
       <xs:element minOccurs="0" name="SupportNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupportRequestDisplayType" nillable="true" type="tns:SupportDetailMessagesResponse.SupportRequestDisplay" />
@@ -72,7 +72,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="IsCustomer" type="xs:boolean" />
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="MessageDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MessageDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StageId" type="xs:long" />
     </xs:sequence>
   </xs:complexType>

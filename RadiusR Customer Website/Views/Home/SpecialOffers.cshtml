@@ -42,53 +42,56 @@
                 @Html.DisplayNameFor(model => model.ReferralSubscriberState)
             </th>
         </tr>
-        @foreach (var item in Model)
+        @if (Model != null)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReferenceNo)
-                </td>
-                <td class="centered">
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                </td>
-                <td class="centered">
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-                <td class="centered">
-                    @Html.DisplayFor(modelItem => item.TotalCount)
-                </td>
-                <td class="centered">
-                    @Html.DisplayFor(modelItem => item.UsedCount)
-                </td>
-                <td class="centered">
-                    @Html.DisplayFor(modelItem => item.MissedCount)
-                </td>
-                <td class="centered">
-                    @Html.DisplayFor(modelItem => item.RemainingCount)
-                </td>
-                <td class="centered">
-                    @Html.DisplayFor(modelItem => item.IsApplicableThisPeriod)
-                </td>
-                <td class="centered">
-                    @switch (item.ReferralSubscriberState)
-                    {
-                        case (short)RadiusR.DB.Enums.CustomerState.PreRegisterd:
-                        case (short)RadiusR.DB.Enums.CustomerState.Registered:
-                            @RadiusRCustomerWebSite.Localization.ReferenceSubscirberState.InProcess;
-                            break;
-                        case (short)RadiusR.DB.Enums.CustomerState.Reserved:
-                        case (short)RadiusR.DB.Enums.CustomerState.Active:
-                            @RadiusRCustomerWebSite.Localization.ReferenceSubscirberState.Active;
-                            break;
-                        case (short)RadiusR.DB.Enums.CustomerState.Disabled:
-                        case (short)RadiusR.DB.Enums.CustomerState.Cancelled:
-                            @RadiusRCustomerWebSite.Localization.ReferenceSubscirberState.Inactive;
-                            break;
-                        default:
-                            break;
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReferenceNo)
+                    </td>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.TotalCount)
+                    </td>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.UsedCount)
+                    </td>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.MissedCount)
+                    </td>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.RemainingCount)
+                    </td>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.IsApplicableThisPeriod)
+                    </td>
+                    <td class="centered">
+                        @switch (item.ReferralSubscriberState)
+                        {
+                            case (short)RadiusR.DB.Enums.CustomerState.PreRegisterd:
+                            case (short)RadiusR.DB.Enums.CustomerState.Registered:
+                                @RadiusRCustomerWebSite.Localization.ReferenceSubscirberState.InProcess;
+                                break;
+                            case (short)RadiusR.DB.Enums.CustomerState.Reserved:
+                            case (short)RadiusR.DB.Enums.CustomerState.Active:
+                                @RadiusRCustomerWebSite.Localization.ReferenceSubscirberState.Active;
+                                break;
+                            case (short)RadiusR.DB.Enums.CustomerState.Disabled:
+                            case (short)RadiusR.DB.Enums.CustomerState.Cancelled:
+                                @RadiusRCustomerWebSite.Localization.ReferenceSubscirberState.Inactive;
+                                break;
+                            default:
+                                break;
+                        }
+                    </td>
+                </tr>
+            }
         }
         <tr>
             <td colspan="3">

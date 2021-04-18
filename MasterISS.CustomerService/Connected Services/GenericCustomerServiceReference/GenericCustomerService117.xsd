@@ -483,17 +483,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DeativateAutomaticPayment">
+  <xs:element name="DeactivateAutomaticPayment">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" minOccurs="0" name="request" nillable="true" type="q67:CustomerServiceBaseRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DeativateAutomaticPaymentResponse">
+  <xs:element name="DeactivateAutomaticPaymentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Payment" minOccurs="0" name="DeativateAutomaticPaymentResult" nillable="true" type="q68:CustomerServiceDeactivateAutomaticPaymentResponse" />
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Payment" minOccurs="0" name="DeactivateAutomaticPaymentResult" nillable="true" type="q68:CustomerServiceDeactivateAutomaticPaymentResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

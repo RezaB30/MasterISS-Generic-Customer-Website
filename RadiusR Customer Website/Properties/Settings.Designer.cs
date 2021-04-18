@@ -80,7 +80,7 @@ namespace RadiusR_Customer_Website.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("testwebservice")]
+        [global::System.Configuration.DefaultSettingValueAttribute("netspeed-services")]
         public string WebServiceUsername {
             get {
                 return ((string)(this["WebServiceUsername"]));
@@ -89,7 +89,7 @@ namespace RadiusR_Customer_Website.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12345678")]
+        [global::System.Configuration.DefaultSettingValueAttribute("BWzQGencrDqW9qxT")]
         public string WebServicePassword {
             get {
                 return ((string)(this["WebServicePassword"]));

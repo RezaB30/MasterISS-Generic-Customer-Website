@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Payment" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Payment" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" />
-  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd10" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" />
   <xs:complexType name="CustomerServiceGetCustomerBillsResponse">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q1:BaseResponseOfGetCustomerBillInfoSHA1m7dItXwX">
@@ -224,9 +224,9 @@
   <xs:element name="CustomerServiceBillPayableAmountResponse" nillable="true" type="tns:CustomerServiceBillPayableAmountResponse" />
   <xs:complexType name="CustomerServicePaymentTypeListResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q15="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q15:BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ">
+      <xs:extension xmlns:q15="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q15:BaseResponseOfArrayOfValueNamePairSHA1KVWl_PpN3">
         <xs:sequence>
-          <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PaymentTypes" nillable="true" type="q16:ArrayOfKeyValueOfintstring" />
+          <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses" minOccurs="0" name="PaymentTypes" nillable="true" type="q16:ArrayOfValueNamePair" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

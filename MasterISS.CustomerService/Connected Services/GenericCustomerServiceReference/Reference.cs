@@ -1020,17 +1020,17 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     public partial class CustomerServiceMobilexpressPayBillRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfMobilexpressPayBillRequestSHA1_Sce8qIMB {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MasterISS.CustomerService.GenericCustomerServiceReference.MobilexpressPayBillRequest MobileExpressPayBillParametersField;
+        private MasterISS.CustomerService.GenericCustomerServiceReference.MobilexpressPayBillRequest MobilexpressPayBillParametersField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MasterISS.CustomerService.GenericCustomerServiceReference.MobilexpressPayBillRequest MobileExpressPayBillParameters {
+        public MasterISS.CustomerService.GenericCustomerServiceReference.MobilexpressPayBillRequest MobilexpressPayBillParameters {
             get {
-                return this.MobileExpressPayBillParametersField;
+                return this.MobilexpressPayBillParametersField;
             }
             set {
-                if ((object.ReferenceEquals(this.MobileExpressPayBillParametersField, value) != true)) {
-                    this.MobileExpressPayBillParametersField = value;
-                    this.RaisePropertyChanged("MobileExpressPayBillParameters");
+                if ((object.ReferenceEquals(this.MobilexpressPayBillParametersField, value) != true)) {
+                    this.MobilexpressPayBillParametersField = value;
+                    this.RaisePropertyChanged("MobilexpressPayBillParameters");
                 }
             }
         }
@@ -1516,9 +1516,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private MasterISS.CustomerService.GenericCustomerServiceReference.HttpContextParameters HttpContextParametersField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SMSCodeField;
-        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string CardToken {
             get {
@@ -1541,19 +1538,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.HttpContextParametersField, value) != true)) {
                     this.HttpContextParametersField = value;
                     this.RaisePropertyChanged("HttpContextParameters");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SMSCode {
-            get {
-                return this.SMSCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SMSCodeField, value) != true)) {
-                    this.SMSCodeField = value;
-                    this.RaisePropertyChanged("SMSCode");
                 }
             }
         }
@@ -1679,9 +1663,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SubscriberNoField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> UserIdField;
-        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public long[] BillIds {
             get {
@@ -1717,19 +1698,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.SubscriberNoField, value) != true)) {
                     this.SubscriberNoField = value;
                     this.RaisePropertyChanged("SubscriberNo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> UserId {
-            get {
-                return this.UserIdField;
-            }
-            set {
-                if ((this.UserIdField.Equals(value) != true)) {
-                    this.UserIdField = value;
-                    this.RaisePropertyChanged("UserId");
                 }
             }
         }
@@ -3208,6 +3176,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfGetCustomerTariffAndTrafficInfoResponseSHA1KVWl_PpN3))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerTariffAndTrafficInfoResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfArrayOfValueNamePairSHA1KVWl_PpN3))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceNameValuePair))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfArrayOfGetCustomerSupportListResponseSHA1Tzfx7AaR))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse))]
@@ -3257,8 +3226,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSupportStatusResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfNullableOfdecimalSHA1qBRhzOKh))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBillPayableAmountResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfGenericAppSettingsResponseSHA1KVWl_PpN3))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGenericAppSettingsResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfArrayOfAutoPaymentListResponseSHA1m7dItXwX))]
@@ -3671,8 +3638,33 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfArrayOfValueNamePairSHA1KVWl_PpN3", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceNameValuePair))]
     public partial class BaseResponseOfArrayOfValueNamePairSHA1KVWl_PpN3 : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServicePaymentTypeListResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses." +
+        "Payment")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServicePaymentTypeListResponse : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfArrayOfValueNamePairSHA1KVWl_PpN3 {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MasterISS.CustomerService.GenericCustomerServiceReference.ValueNamePair1[] PaymentTypesField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MasterISS.CustomerService.GenericCustomerServiceReference.ValueNamePair1[] PaymentTypes {
+            get {
+                return this.PaymentTypesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaymentTypesField, value) != true)) {
+                    this.PaymentTypesField = value;
+                    this.RaisePropertyChanged("PaymentTypes");
+                }
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4578,38 +4570,6 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 if ((this.PayableAmountField.Equals(value) != true)) {
                     this.PayableAmountField = value;
                     this.RaisePropertyChanged("PayableAmount");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServicePaymentTypeListResponse))]
-    public partial class BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfSHA1o_Pr6u_PMh {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServicePaymentTypeListResponse", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses." +
-        "Payment")]
-    [System.SerializableAttribute()]
-    public partial class CustomerServicePaymentTypeListResponse : MasterISS.CustomerService.GenericCustomerServiceReference.BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.Dictionary<int, string> PaymentTypesField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.Dictionary<int, string> PaymentTypes {
-            get {
-                return this.PaymentTypesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PaymentTypesField, value) != true)) {
-                    this.PaymentTypesField = value;
-                    this.RaisePropertyChanged("PaymentTypes");
                 }
             }
         }
@@ -9799,11 +9759,11 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/ActivateAutomaticPayment", ReplyAction="http://tempuri.org/IGenericCustomerService/ActivateAutomaticPaymentResponse")]
         System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceActivateAutomaticPaymentResponse> ActivateAutomaticPaymentAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceActivateAutomaticPaymentRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/DeativateAutomaticPayment", ReplyAction="http://tempuri.org/IGenericCustomerService/DeativateAutomaticPaymentResponse")]
-        MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse DeativateAutomaticPayment(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/DeactivateAutomaticPayment", ReplyAction="http://tempuri.org/IGenericCustomerService/DeactivateAutomaticPaymentResponse")]
+        MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse DeactivateAutomaticPayment(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/DeativateAutomaticPayment", ReplyAction="http://tempuri.org/IGenericCustomerService/DeativateAutomaticPaymentResponse")]
-        System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse> DeativateAutomaticPaymentAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/DeactivateAutomaticPayment", ReplyAction="http://tempuri.org/IGenericCustomerService/DeactivateAutomaticPaymentResponse")]
+        System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse> DeactivateAutomaticPaymentAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/AuthenticationSMSConfirm", ReplyAction="http://tempuri.org/IGenericCustomerService/AuthenticationSMSConfirmResponse")]
         MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmResponse AuthenticationSMSConfirm(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmRequest request);
@@ -10265,12 +10225,12 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
             return base.Channel.ActivateAutomaticPaymentAsync(request);
         }
         
-        public MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse DeativateAutomaticPayment(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
-            return base.Channel.DeativateAutomaticPayment(request);
+        public MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse DeactivateAutomaticPayment(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
+            return base.Channel.DeactivateAutomaticPayment(request);
         }
         
-        public System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse> DeativateAutomaticPaymentAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
-            return base.Channel.DeativateAutomaticPaymentAsync(request);
+        public System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceDeactivateAutomaticPaymentResponse> DeactivateAutomaticPaymentAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
+            return base.Channel.DeactivateAutomaticPaymentAsync(request);
         }
         
         public MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmResponse AuthenticationSMSConfirm(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceAuthenticationSMSConfirmRequest request) {

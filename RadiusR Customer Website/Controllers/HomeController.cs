@@ -213,7 +213,7 @@ namespace RadiusR_Customer_Website.Controllers
                         PaymentType = (int)Models.Enums.PaymentType.Cash,
                         SubscriberNo = User.GiveClientSubscriberNo(),
                         SubscriptionId = User.GiveUserId(),
-                        UserId = null
+                        //UserId = null
                     }
                 });
                 if (systemLog.ResponseMessage.ErrorCode != 0)
@@ -268,7 +268,7 @@ namespace RadiusR_Customer_Website.Controllers
                 Hash = baseRequest.Hash,
                 Rand = baseRequest.Rand,
                 Username = baseRequest.Username,
-                MobileExpressPayBillParameters = new MobilexpressPayBillRequest()
+                MobilexpressPayBillParameters = new MobilexpressPayBillRequest()
                 {
                     BillId = id,
                     PayableAmount = payableAmount,
@@ -557,7 +557,7 @@ namespace RadiusR_Customer_Website.Controllers
                 RemoveCardParameters = new RemoveCardRequest()
                 {
                     CardToken = id,
-                    SMSCode = "",
+                    //SMSCode = "",
                     SubscriptionId = User.GiveUserId(),
                     HttpContextParameters = new HttpContextParameters()
                     {
@@ -673,7 +673,7 @@ namespace RadiusR_Customer_Website.Controllers
                 return RedirectToAction("AutomaticPayment");
             }
             var deactivateBaseRequest = new GenericServiceSettings();
-            var deactiveAutomaticPayment = client.DeativateAutomaticPayment(new CustomerServiceBaseRequest()
+            var deactiveAutomaticPayment = client.DeactivateAutomaticPayment(new CustomerServiceBaseRequest()
             {
                 Culture = deactivateBaseRequest.Culture,
                 Hash = deactivateBaseRequest.Hash,
@@ -1134,7 +1134,7 @@ namespace RadiusR_Customer_Website.Controllers
                     SubscriptionId = User.GiveUserId()
                 }
             });
-            var viewResults = response.GetCustomerSpecialOffersResponse.Select(rd => new SpecialOffersReportViewModel()
+            var viewResults = response.GetCustomerSpecialOffersResponse?.Select(rd => new SpecialOffersReportViewModel()
             {
                 IsCancelled = rd.IsCancelled,
                 StartDate = Utilities.InternalUtilities.DateTimeConverter.ParseDateTime(rd.StartDate).Value,
@@ -1144,6 +1144,12 @@ namespace RadiusR_Customer_Website.Controllers
                 ReferenceNo = rd.ReferenceNo,
                 ReferralSubscriberState = rd.ReferralSubscriberState
             }).AsQueryable();
+            if (viewResults == null)
+            {
+                viewResults = Enumerable.Empty<SpecialOffersReportViewModel>().AsQueryable();
+                SetupPages(page, ref viewResults);
+                return View();
+            }
             ViewBag.TotalCount = viewResults.Select(r => r.TotalCount).DefaultIfEmpty(0).Sum();
             ViewBag.TotalUsed = viewResults.Select(r => r.UsedCount).DefaultIfEmpty(0).Sum();
             ViewBag.TotalMissed = viewResults.Select(r => r.MissedCount).DefaultIfEmpty(0).Sum();

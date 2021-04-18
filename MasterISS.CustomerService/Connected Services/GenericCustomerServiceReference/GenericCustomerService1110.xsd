@@ -798,25 +798,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BaseResponseOfNullableOfdecimalSHA1qBRhzOKh" nillable="true" type="tns:BaseResponseOfNullableOfdecimalSHA1qBRhzOKh" />
-  <xs:complexType name="BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="BaseResponseOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ArrayOfKeyValueOf{0}{1}{#}" Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-            <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema" />
-            <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
-          </GenericParameter>
-          <GenericParameter Name="SHA1" Namespace="http://schemas.datacontract.org/2004/07/System.Security.Cryptography" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:BaseResponseOfSHA1o_Pr6u_PMh">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ" nillable="true" type="tns:BaseResponseOfArrayOfKeyValueOfintstringSHA1PGu3YCeQ" />
   <xs:complexType name="BaseResponseOfGenericAppSettingsResponseSHA1KVWl_PpN3">
     <xs:annotation>
       <xs:appinfo>

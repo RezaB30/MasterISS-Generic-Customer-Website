@@ -226,11 +226,11 @@
   <wsdl:message name="IGenericCustomerService_ActivateAutomaticPayment_OutputMessage">
     <wsdl:part name="parameters" element="tns:ActivateAutomaticPaymentResponse" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_DeativateAutomaticPayment_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeativateAutomaticPayment" />
+  <wsdl:message name="IGenericCustomerService_DeactivateAutomaticPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeactivateAutomaticPayment" />
   </wsdl:message>
-  <wsdl:message name="IGenericCustomerService_DeativateAutomaticPayment_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeativateAutomaticPaymentResponse" />
+  <wsdl:message name="IGenericCustomerService_DeactivateAutomaticPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeactivateAutomaticPaymentResponse" />
   </wsdl:message>
   <wsdl:message name="IGenericCustomerService_AuthenticationSMSConfirm_InputMessage">
     <wsdl:part name="parameters" element="tns:AuthenticationSMSConfirm" />
@@ -525,9 +525,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/ActivateAutomaticPayment" message="tns:IGenericCustomerService_ActivateAutomaticPayment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/ActivateAutomaticPaymentResponse" message="tns:IGenericCustomerService_ActivateAutomaticPayment_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="DeativateAutomaticPayment">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/DeativateAutomaticPayment" message="tns:IGenericCustomerService_DeativateAutomaticPayment_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/DeativateAutomaticPaymentResponse" message="tns:IGenericCustomerService_DeativateAutomaticPayment_OutputMessage" />
+    <wsdl:operation name="DeactivateAutomaticPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/DeactivateAutomaticPayment" message="tns:IGenericCustomerService_DeactivateAutomaticPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGenericCustomerService/DeactivateAutomaticPaymentResponse" message="tns:IGenericCustomerService_DeactivateAutomaticPayment_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AuthenticationSMSConfirm">
       <wsdl:input wsaw:Action="http://tempuri.org/IGenericCustomerService/AuthenticationSMSConfirm" message="tns:IGenericCustomerService_AuthenticationSMSConfirm_InputMessage" />
@@ -943,8 +943,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeativateAutomaticPayment">
-      <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/DeativateAutomaticPayment" style="document" />
+    <wsdl:operation name="DeactivateAutomaticPayment">
+      <soap12:operation soapAction="http://tempuri.org/IGenericCustomerService/DeactivateAutomaticPayment" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

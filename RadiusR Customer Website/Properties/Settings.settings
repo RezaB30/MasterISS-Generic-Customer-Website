@@ -21,10 +21,10 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="WebServiceUsername" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">testwebservice</Value>
+      <Value Profile="(Default)">netspeed-services</Value>
     </Setting>
     <Setting Name="WebServicePassword" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">12345678</Value>
+      <Value Profile="(Default)">BWzQGencrDqW9qxT</Value>
     </Setting>
   </Settings>
 </SettingsFile>

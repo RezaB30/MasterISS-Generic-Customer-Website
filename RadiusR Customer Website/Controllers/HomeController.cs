@@ -1031,7 +1031,7 @@ namespace RadiusR_Customer_Website.Controllers
         {
             var paymentToken = VPOSTokenManager.RetrievePaymentToken(id);
             if (paymentToken == null)
-            {
+            { 
                 Session["POSErrorMessage"] = RadiusRCustomerWebSite.Localization.Common.InvalidTokenKey;
                 return RedirectToAction("BillsAndPayments");
             }

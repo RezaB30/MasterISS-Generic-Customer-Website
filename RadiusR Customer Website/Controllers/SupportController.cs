@@ -331,7 +331,7 @@ namespace RadiusR_Customer_Website.Controllers
                 generalLogger.Debug($"SupportStatus response -> ErrorCode : {statusResponse.ResponseMessage.ErrorCode} - Error Message : {statusResponse.ResponseMessage.ErrorMessage}");
                 if (statusResponse.ResponseMessage.ErrorCode == 0 && statusResponse.SupportStatusResponse != null)
                 {
-                    return Json(new { openRequestCount = statusResponse.SupportStatusResponse.Count, requestIds = statusResponse.SupportStatusResponse.SupportRequestIds.ToArray() }, JsonRequestBehavior.AllowGet);
+                    return Json(new { openRequestCount = statusResponse.SupportStatusResponse.Count, requestIds = new long[] { statusResponse.SupportStatusResponse.StageId.GetValueOrDefault(0) } }, JsonRequestBehavior.AllowGet);
                 }
                 return Json(new { openRequest = 0, requestIds = new long[] { } }, JsonRequestBehavior.AllowGet);
             }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Support" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Responses.Support" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" />
-  <xs:import schemaLocation="http://localhost:56365/GenericCustomerService.svc?xsd=xsd10" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="CustomerServiceGetCustomerSupportListResponse">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q1:BaseResponseOfArrayOfGetCustomerSupportListResponseSHA1Tzfx7AaR">
@@ -123,13 +122,13 @@
   <xs:complexType name="SupportStatusResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Count" type="xs:int" />
-      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SupportRequestIds" nillable="true" type="q6:ArrayOflong" />
+      <xs:element minOccurs="0" name="StageId" nillable="true" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SupportStatusResponse" nillable="true" type="tns:SupportStatusResponse" />
   <xs:complexType name="CustomerServiceSendSubscriberSMSResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q7:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q6:BaseResponseOfNullableOfbooleanSHA1qBRhzOKh">
         <xs:sequence>
           <xs:element minOccurs="0" name="SendSubscriberSMSResponse" nillable="true" type="xs:boolean" />
         </xs:sequence>
@@ -139,7 +138,7 @@
   <xs:element name="CustomerServiceSendSubscriberSMSResponse" nillable="true" type="tns:CustomerServiceSendSubscriberSMSResponse" />
   <xs:complexType name="CustomerServicGetSupportAttachmentListResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q8:BaseResponseOfArrayOfGetSupportAttachmentListResponseSHA1Tzfx7AaR">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q7:BaseResponseOfArrayOfGetSupportAttachmentListResponseSHA1Tzfx7AaR">
         <xs:sequence>
           <xs:element minOccurs="0" name="GetSupportAttachmentList" nillable="true" type="tns:ArrayOfGetSupportAttachmentListResponse" />
         </xs:sequence>
@@ -167,7 +166,7 @@
   <xs:element name="GetSupportAttachmentListResponse" nillable="true" type="tns:GetSupportAttachmentListResponse" />
   <xs:complexType name="CustomerServiceGetSupportAttachmentResponse">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q9:BaseResponseOfGetSupportAttachmentResponseSHA1Tzfx7AaR">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q8:BaseResponseOfGetSupportAttachmentResponseSHA1Tzfx7AaR">
         <xs:sequence>
           <xs:element minOccurs="0" name="GetSupportAttachment" nillable="true" type="tns:GetSupportAttachmentResponse" />
         </xs:sequence>

@@ -8290,7 +8290,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         private int CountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long[] SupportRequestIdsField;
+        private System.Nullable<long> StageIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -8316,14 +8316,14 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public long[] SupportRequestIds {
+        public System.Nullable<long> StageId {
             get {
-                return this.SupportRequestIdsField;
+                return this.StageIdField;
             }
             set {
-                if ((object.ReferenceEquals(this.SupportRequestIdsField, value) != true)) {
-                    this.SupportRequestIdsField = value;
-                    this.RaisePropertyChanged("SupportRequestIds");
+                if ((this.StageIdField.Equals(value) != true)) {
+                    this.StageIdField = value;
+                    this.RaisePropertyChanged("StageId");
                 }
             }
         }

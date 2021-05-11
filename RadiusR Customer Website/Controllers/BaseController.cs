@@ -93,7 +93,7 @@ namespace RadiusR_Customer_Website.Controllers
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            logger.Error(filterContext.Exception);            
+            logger.Error(filterContext.Exception);
             //var error = ErrorHandler.GetMessage(filterContext.Exception, Request.IsLocal);
             //filterContext.ExceptionHandled = true;
             ////filterContext.HttpContext.Response.Clear();

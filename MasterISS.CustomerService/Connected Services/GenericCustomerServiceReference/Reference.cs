@@ -36,6 +36,8 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSupportTypesRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSupportSubTypesRequestSHA1Owyew9Fe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSupportSubTypesRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfGetSupportListRequestSHA1Owyew9Fe))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportListRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSupportDetailMessagesRequestSHA1Owyew9Fe))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSupportDetailMessagesRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSupportRegisterRequestSHA1Owyew9Fe))]
@@ -426,6 +428,38 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 if ((object.ReferenceEquals(this.SupportSubTypesParametersField, value) != true)) {
                     this.SupportSubTypesParametersField = value;
                     this.RaisePropertyChanged("SupportSubTypesParameters");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseRequestOfGetSupportListRequestSHA1Owyew9Fe", Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportListRequest))]
+    public partial class BaseRequestOfGetSupportListRequestSHA1Owyew9Fe : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfSHA1o_Pr6u_PMh {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerServiceGetSupportListRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.S" +
+        "upport")]
+    [System.SerializableAttribute()]
+    public partial class CustomerServiceGetSupportListRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseRequestOfGetSupportListRequestSHA1Owyew9Fe {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MasterISS.CustomerService.GenericCustomerServiceReference.GetSupportListRequest GetSupportListField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MasterISS.CustomerService.GenericCustomerServiceReference.GetSupportListRequest GetSupportList {
+            get {
+                return this.GetSupportListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GetSupportListField, value) != true)) {
+                    this.GetSupportListField = value;
+                    this.RaisePropertyChanged("GetSupportList");
                 }
             }
         }
@@ -1292,6 +1326,7 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.PaymentSystemLogRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.MobilexpressPayBillRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.SendSubscriberSMSRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.GetSupportListRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.SupportDetailMessagesRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MasterISS.CustomerService.GenericCustomerServiceReference.SupportRegisterRequest))]
     public partial class BaseSubscriptionRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1825,6 +1860,30 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
                 if ((this.SubscriptionPaidTypeField.Equals(value) != true)) {
                     this.SubscriptionPaidTypeField = value;
                     this.RaisePropertyChanged("SubscriptionPaidType");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetSupportListRequest", Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.S" +
+        "upport")]
+    [System.SerializableAttribute()]
+    public partial class GetSupportListRequest : MasterISS.CustomerService.GenericCustomerServiceReference.BaseSubscriptionRequest {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> RowCountField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> RowCount {
+            get {
+                return this.RowCountField;
+            }
+            set {
+                if ((this.RowCountField.Equals(value) != true)) {
+                    this.RowCountField = value;
+                    this.RaisePropertyChanged("RowCount");
                 }
             }
         }
@@ -9656,10 +9715,10 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
         System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceNameValuePair> GetSupportSubTypesAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSupportSubTypesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GetSupportList", ReplyAction="http://tempuri.org/IGenericCustomerService/GetSupportListResponse")]
-        MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse GetSupportList(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
+        MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse GetSupportList(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportListRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GetSupportList", ReplyAction="http://tempuri.org/IGenericCustomerService/GetSupportListResponse")]
-        System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse> GetSupportListAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request);
+        System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse> GetSupportListAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportListRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGenericCustomerService/GetSupportDetailMessages", ReplyAction="http://tempuri.org/IGenericCustomerService/GetSupportDetailMessagesResponse")]
         MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSupportDetailMessagesResponse GetSupportDetailMessages(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceSupportDetailMessagesRequest request);
@@ -10089,11 +10148,11 @@ namespace MasterISS.CustomerService.GenericCustomerServiceReference {
             return base.Channel.GetSupportSubTypesAsync(request);
         }
         
-        public MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse GetSupportList(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
+        public MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse GetSupportList(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportListRequest request) {
             return base.Channel.GetSupportList(request);
         }
         
-        public System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse> GetSupportListAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceBaseRequest request) {
+        public System.Threading.Tasks.Task<MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetCustomerSupportListResponse> GetSupportListAsync(MasterISS.CustomerService.GenericCustomerServiceReference.CustomerServiceGetSupportListRequest request) {
             return base.Channel.GetSupportListAsync(request);
         }
         

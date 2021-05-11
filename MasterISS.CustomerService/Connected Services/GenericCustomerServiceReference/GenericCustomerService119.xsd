@@ -36,9 +36,29 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SupportSubTypesRequest" nillable="true" type="tns:SupportSubTypesRequest" />
+  <xs:complexType name="CustomerServiceGetSupportListRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q3:BaseRequestOfGetSupportListRequestSHA1Owyew9Fe">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetSupportList" nillable="true" type="tns:GetSupportListRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerServiceGetSupportListRequest" nillable="true" type="tns:CustomerServiceGetSupportListRequest" />
+  <xs:complexType name="GetSupportListRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q4:BaseSubscriptionRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RowCount" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSupportListRequest" nillable="true" type="tns:GetSupportListRequest" />
   <xs:complexType name="CustomerServiceSupportDetailMessagesRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q3:BaseRequestOfSupportDetailMessagesRequestSHA1Owyew9Fe">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q5:BaseRequestOfSupportDetailMessagesRequestSHA1Owyew9Fe">
         <xs:sequence>
           <xs:element minOccurs="0" name="SupportDetailMessagesParameters" nillable="true" type="tns:SupportDetailMessagesRequest" />
         </xs:sequence>
@@ -48,7 +68,7 @@
   <xs:element name="CustomerServiceSupportDetailMessagesRequest" nillable="true" type="tns:CustomerServiceSupportDetailMessagesRequest" />
   <xs:complexType name="SupportDetailMessagesRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q4:BaseSubscriptionRequest">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q6:BaseSubscriptionRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="SupportId" nillable="true" type="xs:long" />
         </xs:sequence>
@@ -58,7 +78,7 @@
   <xs:element name="SupportDetailMessagesRequest" nillable="true" type="tns:SupportDetailMessagesRequest" />
   <xs:complexType name="CustomerServiceSupportRegisterRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q5:BaseRequestOfSupportRegisterRequestSHA1Owyew9Fe">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q7:BaseRequestOfSupportRegisterRequestSHA1Owyew9Fe">
         <xs:sequence>
           <xs:element minOccurs="0" name="SupportRegisterParameters" nillable="true" type="tns:SupportRegisterRequest" />
         </xs:sequence>
@@ -68,7 +88,7 @@
   <xs:element name="CustomerServiceSupportRegisterRequest" nillable="true" type="tns:CustomerServiceSupportRegisterRequest" />
   <xs:complexType name="SupportRegisterRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q6:BaseSubscriptionRequest">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests" base="q8:BaseSubscriptionRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachment" />
           <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
@@ -95,7 +115,7 @@
   <xs:element name="Attachment" nillable="true" type="tns:Attachment" />
   <xs:complexType name="CustomerServiceSendSupportMessageRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q7:BaseRequestOfSendSupportMessageRequestSHA1Owyew9Fe">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q9:BaseRequestOfSendSupportMessageRequestSHA1Owyew9Fe">
         <xs:sequence>
           <xs:element minOccurs="0" name="SendSupportMessageParameters" nillable="true" type="tns:SendSupportMessageRequest" />
         </xs:sequence>
@@ -115,7 +135,7 @@
   <xs:element name="SendSupportMessageRequest" nillable="true" type="tns:SendSupportMessageRequest" />
   <xs:complexType name="CustomerServiceGetSupportAttachmentListRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q8:BaseRequestOfGetSupportAttachmentListRequestSHA1Owyew9Fe">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q10:BaseRequestOfGetSupportAttachmentListRequestSHA1Owyew9Fe">
         <xs:sequence>
           <xs:element minOccurs="0" name="GetSupportAttachmentsParameters" nillable="true" type="tns:GetSupportAttachmentListRequest" />
         </xs:sequence>
@@ -131,7 +151,7 @@
   <xs:element name="GetSupportAttachmentListRequest" nillable="true" type="tns:GetSupportAttachmentListRequest" />
   <xs:complexType name="CustomerServiceGetSupportAttachmentRequest">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q9:BaseRequestOfGetSupportAttachmentRequestSHA1Owyew9Fe">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" base="q11:BaseRequestOfGetSupportAttachmentRequestSHA1Owyew9Fe">
         <xs:sequence>
           <xs:element minOccurs="0" name="GetSupportAttachmentParameters" nillable="true" type="tns:GetSupportAttachmentRequest" />
         </xs:sequence>

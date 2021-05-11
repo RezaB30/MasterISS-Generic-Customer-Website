@@ -20,13 +20,13 @@ namespace RadiusR_Customer_Website.Controllers
         public ActionResult SupportRequests(int? page)
         {
             var baseRequest = new GenericServiceSettings();
-            var response = client.GetSupportList(new CustomerServiceBaseRequest()
+            var response = client.GetSupportList(new CustomerServiceGetSupportListRequest()
             {
                 Culture = baseRequest.Culture,
                 Username = baseRequest.Username,
                 Rand = baseRequest.Rand,
                 Hash = baseRequest.Hash,
-                SubscriptionParameters = new BaseSubscriptionRequest()
+                GetSupportList = new GetSupportListRequest()
                 {
                     SubscriptionId = User.GiveUserId()
                 }

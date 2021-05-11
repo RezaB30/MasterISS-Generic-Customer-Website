@@ -586,7 +586,7 @@ namespace RadiusR_Customer_Website.Controllers
             }
             var paymentTypes = PaymentTypeList();
 
-            ViewBag.PaymentTypes = paymentTypes.PaymentTypes == null ? new SelectList(Enumerable.Empty<Dictionary<int, string>>(), "Key", "Value") : new SelectList(paymentTypes.PaymentTypes, "Key", "Value");
+            ViewBag.PaymentTypes = paymentTypes.PaymentTypes == null ? new SelectList(Enumerable.Empty<Dictionary<int, string>>(), "Name", "Value") : new SelectList(paymentTypes.PaymentTypes, "Name", "Value");
             return View(new ActivateAutomaticPaymentViewModel()
             {
                 CardToken = token,

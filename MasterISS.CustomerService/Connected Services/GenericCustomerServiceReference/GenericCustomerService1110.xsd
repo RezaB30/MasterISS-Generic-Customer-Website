@@ -282,6 +282,22 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BaseRequestOfSupportSubTypesRequestSHA1Owyew9Fe" nillable="true" type="tns:BaseRequestOfSupportSubTypesRequestSHA1Owyew9Fe" />
+  <xs:complexType name="BaseRequestOfGetSupportListRequestSHA1Owyew9Fe">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BaseRequestOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/RezaB.API.WebService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="GetSupportListRequest" Namespace="http://schemas.datacontract.org/2004/07/RadiusR.API.CustomerWebService.Requests.Support" />
+          <GenericParameter Name="SHA1" Namespace="http://schemas.datacontract.org/2004/07/System.Security.Cryptography" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseRequestOfSHA1o_Pr6u_PMh">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BaseRequestOfGetSupportListRequestSHA1Owyew9Fe" nillable="true" type="tns:BaseRequestOfGetSupportListRequestSHA1Owyew9Fe" />
   <xs:complexType name="BaseResponseOfArrayOfGetCustomerSupportListResponseSHA1Tzfx7AaR">
     <xs:annotation>
       <xs:appinfo>
